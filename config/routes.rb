@@ -1,8 +1,8 @@
 Rails.application.routes.draw do
-  # The priority is based upon order of creation: first created -> highest priority.
-  # See how all your routes lay out with "rake routes".
+# The priority is based upon order of creation: first created -> highest priority.
+# See how all your routes lay out with "rake routes".
 
-  # You can have the root of your site routed with "root"
+# You can have the root of your site routed with "root"
   root 'welcome#index'
 
   # Example of regular route:
@@ -53,4 +53,11 @@ Rails.application.routes.draw do
   #     # (app/controllers/admin/products_controller.rb)
   #     resources :products
   #   end
+
+  namespace :api do
+    namespace :v1 do
+      resources :user
+    end
+  end
+
 end
