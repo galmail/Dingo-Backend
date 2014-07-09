@@ -37,5 +37,8 @@ gem 'unicorn'
 # Use debugger
 # gem 'debugger', group: [:development, :test]
 
+# logging to heroku in production
+gem 'rails_12factor', group: :production
+
 ruby "2.1.1"
 
