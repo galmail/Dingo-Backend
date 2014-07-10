@@ -4,12 +4,22 @@
              xmlns="http://wadl.dev.java.net/2009/02"
              xsi:schemaLocation="http://wadl.dev.java.net/2009/02 http://apigee.com/schemas/wadl-schema.xsd http://api.apigee.com/wadl/2010/07/ http://apigee.com/schemas/apigee-wadl-extensions.xsd">
 
-    <!-- Base defines the domain and base path of the endpoint -->
-    <resources base="http://dingoapp.herokuapp.com/api/v1">
-        
-        <!-- get_events -->
-        <resource path="/events">
+    <resources base="http://dingoapp.herokuapp.com">
+        <!-- sign_up -->
+        <resource path="/users/sign_up">
             <param name="Content-Type" required="true" type="xsd:string" style="header" default="application/json"></param>
+            <param name="Accept" required="true" type="xsd:string" style="header" default="application/json"></param>
+            <param name="email" required="true" type="xsd:string" style="query"></param>
+            <method id="sign_up" name="GET" apigee:displayName="sign_up">
+                <apigee:tags>
+                    <apigee:tag primary="true">Auth</apigee:tag>
+                </apigee:tags>
+                <doc apigee:url="http://api.mydomain.com/doc/my-method">sign_up</doc>
+            </method>
+        </resource>
+
+        <!-- get_events -->
+        <resource path="/api/v1/events">
             <method id="get_events" name="GET" apigee:displayName="Get Events">
                 <apigee:tags>
                     <apigee:tag primary="true">Client Methods</apigee:tag>
