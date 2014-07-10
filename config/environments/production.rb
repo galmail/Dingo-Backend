@@ -82,4 +82,14 @@ Rails.application.configure do
   
   # For Devise Mailer
   config.action_mailer.default_url_options = { host: 'dingoapp.co.uk' }
+  
+  config.paperclip_defaults = {
+    :storage => :s3,
+    :s3_credentials => {
+      :bucket => 'dingoapp-prod',
+      :access_key_id => 'AKIAIW4PW5CMS4TEGVIA',
+      :secret_access_key => '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'
+    }
+  }
+  
 end

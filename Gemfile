@@ -51,5 +51,7 @@ gem 'devise'
 
 gem 'simple_token_authentication'
 
+gem 'paperclip'
+gem 'aws-sdk'
 
 
