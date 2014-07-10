@@ -1,0 +1,108 @@
+<application xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+             xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+             xmlns:apigee="http://api.apigee.com/wadl/2010/07/"
+             xmlns="http://wadl.dev.java.net/2009/02"
+             xsi:schemaLocation="http://wadl.dev.java.net/2009/02 http://apigee.com/schemas/wadl-schema.xsd http://api.apigee.com/wadl/2010/07/ http://apigee.com/schemas/apigee-wadl-extensions.xsd">
+
+    <!-- Base defines the domain and base path of the endpoint -->
+    <resources base="http://dingoapp.herokuapp.com/api/v1">
+        
+        <!-- get_events -->
+        <resource path="/events">
+            <param name="Content-Type" required="true" type="xsd:string" style="header" default="application/json"></param>
+            <method id="get_events" name="GET" apigee:displayName="Get Events">
+                <apigee:tags>
+                    <apigee:tag primary="true">Client Methods</apigee:tag>
+                </apigee:tags>
+                <apigee:authentication required="true"/>
+                <doc apigee:url="http://api.mydomain.com/doc/my-method">get_events</doc>
+            </method>
+        </resource>
+
+        <!-- login -->
+        <resource path="/functions/login">
+            <param name="Content-Type" required="true" type="xsd:string" style="header" default="application/json"></param>
+            <method id="login" name="POST" apigee:displayName="Login">
+                <apigee:tags>
+                    <apigee:tag primary="true">Client Methods</apigee:tag>
+                </apigee:tags>
+                <apigee:authentication required="true"/>
+                <doc apigee:url="http://api.mydomain.com/doc/my-method">login</doc>
+                <request>
+                    <representation>
+                        <apigee:payload required="true">
+                            <apigee:content>
+                                <![CDATA[
+                                { "email": "dingo@dingoapp.co.uk", "password": "dingo" }
+                                ]]>
+                            </apigee:content>
+                        </apigee:payload>
+                    </representation>
+                </request>
+            </method>
+        </resource>
+
+        <!-- signup -->
+        <resource path="/functions/signup">
+            <param name="Content-Type" required="true" type="xsd:string" style="header" default="application/json"></param>
+            <method id="signup" name="POST" apigee:displayName="Signup">
+                <apigee:tags>
+                    <apigee:tag primary="true">Client Methods</apigee:tag>
+                </apigee:tags>
+                <apigee:authentication required="true"/>
+                <doc apigee:url="http://api.mydomain.com/doc/my-method">signup</doc>
+                <request>
+                    <representation>
+                        <apigee:payload required="true">
+                            <apigee:content>
+                                <![CDATA[
+                                {
+                                    "username": "user@example.com",
+                                    "email": "user@example.com",
+                                    "password": "user123",
+                                    "name": "John Smith",
+                                    "date_of_birth": "01/01/2000",
+                                    "device_uuid": "0123456789",
+                                    "device_type": "iPhone 5S",
+                                    "mobile_number": "+447912345678",
+                                    "latitude": 30.0,
+                                    "longitude": -40.0
+                                }
+                                ]]>
+                            </apigee:content>
+                        </apigee:payload>
+                    </representation>
+                </request>
+            </method>
+        </resource>
+
+        <!-- get events -->
+        <resource path="/classes/Event">
+            <method id="get_events" name="GET" apigee:displayName="Old Get Events">
+                <apigee:tags>
+                    <apigee:tag primary="true">Client Methods</apigee:tag>
+                </apigee:tags>
+                <apigee:authentication required="true"/>
+                <doc apigee:url="http://api.mydomain.com/doc/my-method">Get Events</doc>
+            </method>
+        </resource>
+
+        <!-- get tickets -->
+        <resource path="/classes/Ticket">
+            <param name="event" required="true" type="xsd:string" style="query" default="main_event">
+                <doc>
+                    Filter tickets by a specific event
+                </doc>
+            </param>
+            <method id="get_tickets" name="GET" apigee:displayName="Old Get Tickets">
+                <apigee:tags>
+                    <apigee:tag primary="true">Client Methods</apigee:tag>
+                </apigee:tags>
+                <apigee:authentication required="true"/>
+                <doc apigee:url="http://api.mydomain.com/doc/my-method">Get Tickets</doc>
+            </method>
+        </resource>
+
+    </resources>
+
+</application>
