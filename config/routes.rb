@@ -28,39 +28,13 @@ Rails.application.routes.draw do
   #       get 'sold'
   #     end
   #   end
-
-  # Example resource route with sub-resources:
-  #   resources :products do
-  #     resources :comments, :sales
-  #     resource :seller
-  #   end
-
-  # Example resource route with more complex sub-resources:
-  #   resources :products do
-  #     resources :comments
-  #     resources :sales do
-  #       get 'recent', on: :collection
-  #     end
-  #   end
-
-  # Example resource route with concerns:
-  #   concern :toggleable do
-  #     post 'toggle'
-  #   end
-  #   resources :posts, concerns: :toggleable
-  #   resources :photos, concerns: :toggleable
-
-  # Example resource route within a namespace:
-  #   namespace :admin do
-  #     # Directs /admin/products/* to Admin::ProductsController
-  #     # (app/controllers/admin/products_controller.rb)
-  #     resources :products
-  #   end
+  
+  get "/api" => redirect("https://apigee.com/dingoapp/console/dingo1")
   
   devise_for :users, :controllers => {:registrations => "registrations"}
   namespace :api do
     namespace   :v1 do
-      resources :events
+      resources :events, defaults: {format: :json}
     end
   end
 

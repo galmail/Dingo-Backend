@@ -19,7 +19,7 @@
             </method>
         </resource>
 
-        <!-- login -->
+        <!--
         <resource path="/functions/login">
             <param name="Content-Type" required="true" type="xsd:string" style="header" default="application/json"></param>
             <method id="login" name="POST" apigee:displayName="Login">
@@ -42,7 +42,7 @@
             </method>
         </resource>
 
-        <!-- signup -->
+        
         <resource path="/functions/signup">
             <param name="Content-Type" required="true" type="xsd:string" style="header" default="application/json"></param>
             <method id="signup" name="POST" apigee:displayName="Signup">
@@ -76,18 +76,6 @@
             </method>
         </resource>
 
-        <!-- get events -->
-        <resource path="/classes/Event">
-            <method id="get_events" name="GET" apigee:displayName="Old Get Events">
-                <apigee:tags>
-                    <apigee:tag primary="true">Client Methods</apigee:tag>
-                </apigee:tags>
-                <apigee:authentication required="true"/>
-                <doc apigee:url="http://api.mydomain.com/doc/my-method">Get Events</doc>
-            </method>
-        </resource>
-
-        <!-- get tickets -->
         <resource path="/classes/Ticket">
             <param name="event" required="true" type="xsd:string" style="query" default="main_event">
                 <doc>
@@ -102,6 +90,8 @@
                 <doc apigee:url="http://api.mydomain.com/doc/my-method">Get Tickets</doc>
             </method>
         </resource>
+        
+        -->
 
     </resources>
 
