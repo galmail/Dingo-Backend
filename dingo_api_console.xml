@@ -10,6 +10,13 @@
             <param name="Content-Type" required="true" type="xsd:string" style="header" default="application/json"></param>
             <param name="Accept" required="true" type="xsd:string" style="header" default="application/json"></param>
             <param name="email" required="true" type="xsd:string" style="query"></param>
+            <param name="password" required="false" type="xsd:string" style="query"></param>
+            <param name="name" required="false" type="xsd:string" style="query"></param>
+            <param name="date_of_birth" required="false" type="xsd:date" style="query"></param>
+            <param name="photo_url" required="false" type="xsd:string" style="query"></param>
+            <param name="device_id" required="false" type="xsd:string" style="query"></param>
+            <param name="device_type" required="false" type="xsd:string" style="query"></param>
+            <param name="location" required="false" type="xsd:string" style="query"></param>
             <method id="sign_up" name="GET" apigee:displayName="sign_up">
                 <apigee:tags>
                     <apigee:tag primary="true">Auth</apigee:tag>
