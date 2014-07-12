@@ -17,11 +17,35 @@
             <param name="device_id" required="false" type="xsd:string" style="query"></param>
             <param name="device_type" required="false" type="xsd:string" style="query"></param>
             <param name="location" required="false" type="xsd:string" style="query"></param>
-            <method id="sign_up" name="GET" apigee:displayName="sign_up">
+            <method id="signup" name="GET" apigee:displayName="Sign Up">
                 <apigee:tags>
-                    <apigee:tag primary="true">Auth</apigee:tag>
+                    <apigee:tag primary="true">Authentication</apigee:tag>
                 </apigee:tags>
                 <doc apigee:url="http://api.mydomain.com/doc/my-method">sign_up</doc>
+            </method>
+        </resource>
+        
+        <!-- login -->
+        <resource path="/users/sign_in">
+            <param name="Content-Type" required="true" type="xsd:string" style="header" default="application/json"></param>
+            <param name="Accept" required="true" type="xsd:string" style="header" default="application/json"></param>
+            <method id="login" name="GET" apigee:displayName="Login">
+                <apigee:tags>
+                    <apigee:tag primary="true">Authentication</apigee:tag>
+                </apigee:tags>
+                <apigee:authentication required="true"/>
+                <doc apigee:url="http://api.mydomain.com/doc/my-method">login</doc>
+            </method>
+        </resource>
+        
+        <!-- get_categories -->
+        <resource path="/api/v1/categories">
+            <method id="get_categories" name="GET" apigee:displayName="Get Categories">
+                <apigee:tags>
+                    <apigee:tag primary="true">Methods</apigee:tag>
+                </apigee:tags>
+                <apigee:authentication required="true"/>
+                <doc apigee:url="http://api.mydomain.com/doc/my-method">get_categories</doc>
             </method>
         </resource>
 
@@ -29,12 +53,16 @@
         <resource path="/api/v1/events">
             <method id="get_events" name="GET" apigee:displayName="Get Events">
                 <apigee:tags>
-                    <apigee:tag primary="true">Client Methods</apigee:tag>
+                    <apigee:tag primary="true">Methods</apigee:tag>
                 </apigee:tags>
                 <apigee:authentication required="true"/>
                 <doc apigee:url="http://api.mydomain.com/doc/my-method">get_events</doc>
             </method>
         </resource>
+        
+        
+        
+        
 
         <!--
         <resource path="/functions/login">
