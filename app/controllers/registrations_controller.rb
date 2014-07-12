@@ -3,6 +3,7 @@ class RegistrationsController < Devise::RegistrationsController
   respond_to :json
   
   def new
+    verify_params
     user = User.new(user_params)
     user.password = "11111111111" if params[:password].nil?
     if user.save
@@ -17,9 +18,13 @@ class RegistrationsController < Devise::RegistrationsController
   
   private
   
-  def user_params
+  def verify_params
     params.require(:email)
-    params.permit(:email,:password)
+    params.permit(:email,:password,:name,:photo_url,:date_of_birth,:device_id,:device_type,:location)
+  end
+  
+  def user_params
+    params.permit(:email,:password,:name,:photo_url,:date_of_birth)
   end
 
 end
