@@ -42,6 +42,8 @@
         
         <!-- get_categories -->
         <resource path="/api/v1/categories">
+            <param name="Content-Type" required="true" type="xsd:string" style="header" default="application/json"></param>
+            <param name="Accept" required="true" type="xsd:string" style="header" default="application/json"></param>
             <method id="get_categories" name="GET" apigee:displayName="Get Categories">
                 <apigee:tags>
                     <apigee:tag primary="true">Methods</apigee:tag>
@@ -53,6 +55,8 @@
 
         <!-- get_events -->
         <resource path="/api/v1/events">
+            <param name="Content-Type" required="true" type="xsd:string" style="header" default="application/json"></param>
+            <param name="Accept" required="true" type="xsd:string" style="header" default="application/json"></param>
             <method id="get_events" name="GET" apigee:displayName="Get Events">
                 <apigee:tags>
                     <apigee:tag primary="true">Methods</apigee:tag>

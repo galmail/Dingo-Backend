@@ -11,10 +11,11 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140713085924) do
+ActiveRecord::Schema.define(version: 20140713091720) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+  enable_extension "uuid-ossp"
 
   create_table "active_admin_comments", force: true do |t|
     t.string   "namespace"
@@ -49,7 +50,7 @@ ActiveRecord::Schema.define(version: 20140713085924) do
   add_index "admin_users", ["email"], name: "index_admin_users_on_email", unique: true, using: :btree
   add_index "admin_users", ["reset_password_token"], name: "index_admin_users_on_reset_password_token", unique: true, using: :btree
 
-  create_table "categories", force: true do |t|
+  create_table "categories", id: :uuid, default: "uuid_generate_v4()", force: true do |t|
     t.string   "name"
     t.datetime "created_at"
     t.datetime "updated_at"
@@ -59,12 +60,16 @@ ActiveRecord::Schema.define(version: 20140713085924) do
     t.datetime "photo_updated_at"
   end
 
-  create_table "events", force: true do |t|
+  create_table "events", id: :uuid, default: "uuid_generate_v4()", force: true do |t|
     t.string   "name"
     t.string   "description"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.integer  "category_id"
+    t.uuid     "category_id"
+    t.string   "photo_file_name"
+    t.string   "photo_content_type"
+    t.integer  "photo_file_size"
+    t.datetime "photo_updated_at"
   end
 
   add_index "events", ["category_id"], name: "index_events_on_category_id", using: :btree

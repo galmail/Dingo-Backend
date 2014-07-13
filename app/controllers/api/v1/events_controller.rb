@@ -1,8 +1,12 @@
 class Api::V1::EventsController < Api::BaseController
     
-    # Get All Events
+    # Get Events
     def index
-      @events = Event.all
+      if !params[:category_ids].nil?
+        @events = Event.where(category_id: params[:category_ids])
+      else
+        @events = Event.all
+      end
     end
     
 end
