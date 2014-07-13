@@ -13,6 +13,7 @@
             <param name="password" required="false" type="xsd:string" style="query"></param>
             <param name="name" required="false" type="xsd:string" style="query"></param>
             <param name="date_of_birth" required="false" type="xsd:date" style="query"></param>
+            <param name="city" required="false" type="xsd:date" style="query"></param>
             <param name="photo_url" required="false" type="xsd:string" style="query"></param>
             <param name="device_uid" required="false" type="xsd:string" style="query"></param>
             <param name="device_brand" required="false" type="xsd:string" style="query"></param>
@@ -20,6 +21,7 @@
             <param name="device_os" required="false" type="xsd:string" style="query"></param>
             <param name="device_app_version" required="false" type="xsd:string" style="query"></param>
             <param name="device_mobile_number" required="false" type="xsd:string" style="query"></param>
+            <param name="device_ip" required="false" type="xsd:string" style="query"></param>
             <param name="device_location" required="false" type="xsd:string" style="query"></param>
             <method id="signup" name="GET" apigee:displayName="Sign Up">
                 <apigee:tags>

@@ -10,7 +10,7 @@ class RegistrationsController < Devise::RegistrationsController
       user.password = user.authentication_token unless !params[:password].nil?
       if !params[:device_uid].nil?
         device = Device.new(device_params)
-        device.user = user
+        device.user_id = user.id
         #user.devices.add(device)
         device.save
       end
@@ -26,15 +26,25 @@ class RegistrationsController < Devise::RegistrationsController
   
   def verify_params
     params.require(:email)
-    params.permit(:email,:password,:name,:photo_url,:date_of_birth,:device_uid,:device_brand,:device_model,:device_os,:device_app_version,:device_mobile_number,:device_location)
+    params.permit(:email,:password,:name,:photo_url,:date_of_birth,:city,:device_uid,:device_brand,:device_model,:device_os,:device_app_version,:device_mobile_number,:device_location,:device_ip)
   end
   
   def user_params
-    params.permit(:email,:password,:name,:photo_url,:date_of_birth)
+    params.permit(:email,:password,:name,:photo_url,:date_of_birth,:city)
   end
   
   def device_params
-    params.permit(:device_uid,:device_brand,:device_model,:device_os,:device_app_version,:device_mobile_number,:device_location)
+    params.permit(:device_uid,:device_brand,:device_model,:device_os,:device_app_version,:device_mobile_number,:device_location,:device_ip)
+    return {
+      :brand  => params[:device_brand],
+      :model  => params[:device_model],
+      :os     => params[:device_os],
+      :uid    => params[:device_uid],
+      :ip => params[:device_ip],
+      :app_version => params[:device_app_version],
+      :mobile_number => params[:device_mobile_number],
+      :location => params[:device_location]
+    }
   end
 
 end
