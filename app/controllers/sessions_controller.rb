@@ -5,7 +5,11 @@ class SessionsController < Devise::RegistrationsController
   respond_to :json
   
   def new
-    render :json => { :success => user_signed_in? }
+    if user_signed_in?
+      render :json => { :success => true }
+    else
+      render :json => { :success => false }, status: :unauthorized
+    end
   end
   
 
