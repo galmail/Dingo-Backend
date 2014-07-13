@@ -29,11 +29,13 @@
         <resource path="/users/sign_in">
             <param name="Content-Type" required="true" type="xsd:string" style="header" default="application/json"></param>
             <param name="Accept" required="true" type="xsd:string" style="header" default="application/json"></param>
+            <param name="user_email" required="true" type="xsd:string" style="query" default="user1@example.com"></param>
+            <param name="user_token" required="true" type="xsd:string" style="query" default="-_wxb38ZbNEExLsCcaTa"></param>
             <method id="login" name="GET" apigee:displayName="Login">
                 <apigee:tags>
                     <apigee:tag primary="true">Authentication</apigee:tag>
                 </apigee:tags>
-                <apigee:authentication required="true"/>
+                <apigee:authentication required="false"/>
                 <doc apigee:url="http://api.mydomain.com/doc/my-method">login</doc>
             </method>
         </resource>
