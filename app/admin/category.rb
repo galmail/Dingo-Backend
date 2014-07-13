@@ -2,6 +2,15 @@ ActiveAdmin.register Category do
   config.filters = false
 
   permit_params :name, :photo
+  
+  index do
+    column :id
+    column :name
+    column :photo do |ad|
+      image_tag(ad.photo.url(:tiny_pic))
+    end
+    actions
+  end
 
   form do |f|
     f.inputs "Details" do

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140713091720) do
+ActiveRecord::Schema.define(version: 20140713154323) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -60,6 +60,20 @@ ActiveRecord::Schema.define(version: 20140713091720) do
     t.datetime "photo_updated_at"
   end
 
+  create_table "devices", id: :uuid, default: "uuid_generate_v4()", force: true do |t|
+    t.integer  "user_id"
+    t.string   "brand"
+    t.string   "model"
+    t.string   "os"
+    t.string   "app_version"
+    t.string   "uid"
+    t.string   "mobile_number"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "devices", ["user_id"], name: "index_devices_on_user_id", using: :btree
+
   create_table "events", id: :uuid, default: "uuid_generate_v4()", force: true do |t|
     t.string   "name"
     t.string   "description"
@@ -70,9 +84,11 @@ ActiveRecord::Schema.define(version: 20140713091720) do
     t.string   "photo_content_type"
     t.integer  "photo_file_size"
     t.datetime "photo_updated_at"
+    t.datetime "date"
   end
 
   add_index "events", ["category_id"], name: "index_events_on_category_id", using: :btree
+  add_index "events", ["date"], name: "index_events_on_date", using: :btree
 
   create_table "users", force: true do |t|
     t.string   "email",                  default: "", null: false
