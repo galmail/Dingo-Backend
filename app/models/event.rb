@@ -4,5 +4,6 @@ class Event < ActiveRecord::Base
   validates_attachment :photo, content_type: { content_type: ["image/jpg", "image/jpeg", "image/png"] }
   
   belongs_to  :category
+  validates   :category_id, :presence => true
   
 end
