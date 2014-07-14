@@ -7,8 +7,8 @@ class RegistrationsController < Devise::RegistrationsController
     user = User.new(user_params)
     user.password = "11111111111" if params[:password].nil?
     if user.save
-      user.password = user.authentication_token unless !params[:password].nil?
-      if !params[:device_uid].nil?
+      user.password = user.authentication_token unless params.has_key?(:password)
+      if params.has_key?(:device_uid)
         device = Device.new(device_params)
         device.user_id = user.id
         #user.devices.add(device)
