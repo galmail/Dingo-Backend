@@ -1,12 +1,15 @@
 ActiveAdmin.register Event do
   config.filters = false
-  permit_params :name, :description, :photo, :date, :category_id
+  permit_params :name, :description, :photo, :date, :category_id, :active, :address, :postcode, :featured
   
   index do
     column :id
     column :date
     column :category
     column :name
+    column :address
+    column :active
+    column :featured
     column :photo do |ad|
       image_tag(ad.photo.url(:tiny_pic))
     end
@@ -18,6 +21,10 @@ ActiveAdmin.register Event do
       f.input :date, :required => true
       f.input :category, :required => true
       f.input :name, :required => true
+      f.input :address
+      f.input :postcode
+      f.input :active, :required => true
+      f.input :featured, :required => true
       f.input :description
       f.input :photo, :required => false, :as => :file
     end
@@ -30,6 +37,10 @@ ActiveAdmin.register Event do
       row :category
       row :name
       row :description
+      row :address
+      row :postcode
+      row :active
+      row :featured
       row :photo do
         image_tag(ad.photo.url(:thumb))
       end
