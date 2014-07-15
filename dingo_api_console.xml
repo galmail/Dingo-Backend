@@ -59,20 +59,64 @@
             </method>
         </resource>
 
-        <!-- get_events -->
+        <!-- get_all_events -->
         <resource path="/api/v1/events">
             <param name="Content-Type" required="true" type="xsd:string" style="header" default="application/json"></param>
             <param name="Accept" required="true" type="xsd:string" style="header" default="application/json"></param>
-            <method id="get_events" name="GET" apigee:displayName="Get Events">
+            <method id="get_all_events" name="GET" apigee:displayName="Get All Events">
                 <apigee:tags>
                     <apigee:tag primary="true">Methods</apigee:tag>
+                    <apigee:tag primary="true">Events</apigee:tag>
                 </apigee:tags>
                 <apigee:authentication required="true"/>
                 <doc apigee:url="http://api.mydomain.com/doc/my-method">get_events</doc>
             </method>
         </resource>
         
+        <!-- get_events_by_categories -->
+        <resource path="/api/v1/events?category_ids[]=03487377-4146-4067-a048-04859710b8c8">
+            <param name="Content-Type" required="true" type="xsd:string" style="header" default="application/json"></param>
+            <param name="Accept" required="true" type="xsd:string" style="header" default="application/json"></param>
+            <method id="get_events_by_categories" name="GET" apigee:displayName="Get Events by Categories">
+                <apigee:tags>
+                    <apigee:tag primary="true">Methods</apigee:tag>
+                    <apigee:tag primary="true">Events</apigee:tag>
+                </apigee:tags>
+                <apigee:authentication required="true"/>
+                <doc apigee:url="http://api.mydomain.com/doc/my-method">get_events</doc>
+            </method>
+        </resource>
         
+        <!-- get_events_by_location -->
+        <resource path="/api/v1/events">
+            <param name="Content-Type" required="true" type="xsd:string" style="header" default="application/json"></param>
+            <param name="Accept" required="true" type="xsd:string" style="header" default="application/json"></param>
+            <param name="location" required="false" type="xsd:string" style="query" default="latitude,longitude"></param>
+            <param name="city" required="false" type="xsd:string" style="query" default="London"></param>
+            <method id="get_events_by_location" name="GET" apigee:displayName="Get Events by Location">
+                <apigee:tags>
+                    <apigee:tag primary="true">Methods</apigee:tag>
+                    <apigee:tag primary="true">Events</apigee:tag>
+                </apigee:tags>
+                <apigee:authentication required="true"/>
+                <doc apigee:url="http://api.mydomain.com/doc/my-method">get_events</doc>
+            </method>
+        </resource>
+        
+        <!-- get_featured_events -->
+        <resource path="/api/v1/events">
+            <param name="Content-Type" required="true" type="xsd:string" style="header" default="application/json"></param>
+            <param name="Accept" required="true" type="xsd:string" style="header" default="application/json"></param>
+            <param name="featured" required="true" type="xsd:boolean" style="query" default="true"></param>
+            <method id="get_featured_events" name="GET" apigee:displayName="Get Featured Events">
+                <apigee:tags>
+                    <apigee:tag primary="true">Methods</apigee:tag>
+                    <apigee:tag primary="true">Events</apigee:tag>
+                </apigee:tags>
+                <apigee:authentication required="true"/>
+                <doc apigee:url="http://api.mydomain.com/doc/my-method">get_events</doc>
+            </method>
+        </resource>
         
         
 
