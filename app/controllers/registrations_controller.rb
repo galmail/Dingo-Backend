@@ -15,10 +15,10 @@ class RegistrationsController < Devise::RegistrationsController
         device.save
       end
       user.save
-      render :json=> user.as_json(:auth_token=>user.authentication_token, :email=>user.email), :status=>201
+      render :json=> user.as_json(:auth_token=>user.authentication_token, :email=>user.email), status: :created
     else
       warden.custom_failure!
-      render :json=> user.errors, :status=>422
+      render :json=> user.errors, status: :unprocessable_entity
     end
   end
   

@@ -1,6 +1,6 @@
 ActiveAdmin.register Event do
   config.filters = false
-  permit_params :name, :description, :photo, :date, :category_id, :active, :address, :postcode, :featured
+  permit_params :name, :description, :photo, :date, :category_id, :active, :address, :postcode, :city, :featured
   
   index do
     column :id
@@ -8,6 +8,7 @@ ActiveAdmin.register Event do
     column :category
     column :name
     column :address
+    column :city
     column :active
     column :featured
     column :photo do |ad|
@@ -23,6 +24,7 @@ ActiveAdmin.register Event do
       f.input :name, :required => true
       f.input :address
       f.input :postcode
+      f.input :city
       f.input :active, :required => true
       f.input :featured, :required => true
       f.input :description
@@ -39,6 +41,7 @@ ActiveAdmin.register Event do
       row :description
       row :address
       row :postcode
+      row :city
       row :active
       row :featured
       row :photo do

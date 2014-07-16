@@ -5,6 +5,9 @@
              xsi:schemaLocation="http://wadl.dev.java.net/2009/02 http://apigee.com/schemas/wadl-schema.xsd http://api.apigee.com/wadl/2010/07/ http://apigee.com/schemas/apigee-wadl-extensions.xsd">
 
     <resources base="http://dingoapp.herokuapp.com">
+        
+<!----------------------- AUTHENTICATION ----------------------->        
+        
         <!-- sign_up -->
         <resource path="/users/sign_up">
             <param name="Content-Type" required="true" type="xsd:string" style="header" default="application/json"></param>
@@ -46,6 +49,8 @@
             </method>
         </resource>
         
+<!----------------------- CATEGORIES ----------------------->        
+        
         <!-- get_categories -->
         <resource path="/api/v1/categories">
             <param name="Content-Type" required="true" type="xsd:string" style="header" default="application/json"></param>
@@ -58,6 +63,8 @@
                 <doc apigee:url="http://api.mydomain.com/doc/my-method">get_categories</doc>
             </method>
         </resource>
+        
+<!----------------------- EVENTS ----------------------->        
 
         <!-- get_all_events -->
         <resource path="/api/v1/events">
@@ -134,16 +141,17 @@
         </resource>
         
         <!-- create_event -->
-        <resource path="/api/v1/event">
+        <resource path="/api/v1/events/new">
             <param name="Content-Type" required="true" type="xsd:string" style="header" default="application/json"></param>
             <param name="Accept" required="true" type="xsd:string" style="header" default="application/json"></param>
             <param name="category_id" required="true" type="xsd:string" style="query" default=""></param>
-            <param name="name" required="true" type="xsd:string" style="query" default=""></param>
             <param name="date" required="true" type="xsd:datetime" style="query" default=""></param>
+            <param name="name" required="true" type="xsd:string" style="query" default=""></param>
+            <param name="description" required="false" type="xsd:string" style="query" default=""></param>
             <param name="address" required="false" type="xsd:string" style="query" default=""></param>
             <param name="postcode" required="false" type="xsd:string" style="query" default=""></param>
-            <param name="description" required="false" type="xsd:string" style="query" default=""></param>
-            <method id="create_event" name="POST" apigee:displayName="Create Event">
+            <param name="city" required="false" type="xsd:string" style="query" default=""></param>
+            <method id="create_event" name="GET" apigee:displayName="Create Event">
                 <apigee:tags>
                     <apigee:tag primary="true">Methods</apigee:tag>
                     <apigee:tag primary="true">Events</apigee:tag>
@@ -153,8 +161,10 @@
             </method>
         </resource>
         
+<!----------------------- TICKETS ----------------------->
+        
         <!-- create_ticket -->
-        <resource path="/api/v1/ticket">
+        <resource path="/api/v1/tickets/new">
             <param name="Content-Type" required="true" type="xsd:string" style="header" default="application/json"></param>
             <param name="Accept" required="true" type="xsd:string" style="header" default="application/json"></param>
             <param name="event_id" required="true" type="xsd:string" style="query" default=""></param>
@@ -164,13 +174,43 @@
             <param name="pic3_url" required="false" type="xsd:string" style="query" default=""></param>
             <param name="seat_type" required="false" type="xsd:string" style="query" default=""></param>
             <param name="description" required="false" type="xsd:string" style="query" default=""></param>
-            <method id="create_ticket" name="POST" apigee:displayName="Create Ticket">
+            <method id="create_ticket" name="GET" apigee:displayName="Create Ticket">
                 <apigee:tags>
                     <apigee:tag primary="true">Methods</apigee:tag>
                     <apigee:tag primary="true">Tickets</apigee:tag>
                 </apigee:tags>
                 <apigee:authentication required="true"/>
                 <doc apigee:url="http://api.mydomain.com/doc/my-method">create_ticket</doc>
+            </method>
+        </resource>
+        
+        <!-- get_tickets_by_event -->
+        <resource path="/api/v1/tickets">
+            <param name="Content-Type" required="true" type="xsd:string" style="header" default="application/json"></param>
+            <param name="Accept" required="true" type="xsd:string" style="header" default="application/json"></param>
+            <param name="event_id" required="true" type="xsd:string" style="query" default=""></param>
+            <method id="get_tickets_by_event" name="GET" apigee:displayName="Get Tickets By Event">
+                <apigee:tags>
+                    <apigee:tag primary="true">Methods</apigee:tag>
+                    <apigee:tag primary="true">Tickets</apigee:tag>
+                </apigee:tags>
+                <apigee:authentication required="true"/>
+                <doc apigee:url="http://api.mydomain.com/doc/my-method">get_tickets_by_event</doc>
+            </method>
+        </resource>
+        
+        <!-- get_tickets_by_user -->
+        <resource path="/api/v1/tickets">
+            <param name="Content-Type" required="true" type="xsd:string" style="header" default="application/json"></param>
+            <param name="Accept" required="true" type="xsd:string" style="header" default="application/json"></param>
+            <param name="user_token" required="true" type="xsd:string" style="query" default=""></param>
+            <method id="get_tickets_by_user" name="GET" apigee:displayName="Get Tickets By User">
+                <apigee:tags>
+                    <apigee:tag primary="true">Methods</apigee:tag>
+                    <apigee:tag primary="true">Tickets</apigee:tag>
+                </apigee:tags>
+                <apigee:authentication required="true"/>
+                <doc apigee:url="http://api.mydomain.com/doc/my-method">get_tickets_by_user</doc>
             </method>
         </resource>
         

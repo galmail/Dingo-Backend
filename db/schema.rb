@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140715154543) do
+ActiveRecord::Schema.define(version: 20140716193434) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -91,10 +91,23 @@ ActiveRecord::Schema.define(version: 20140715154543) do
     t.string   "address"
     t.string   "postcode"
     t.boolean  "featured",           default: false
+    t.string   "city"
   end
 
   add_index "events", ["category_id"], name: "index_events_on_category_id", using: :btree
   add_index "events", ["date"], name: "index_events_on_date", using: :btree
+
+  create_table "tickets", id: :uuid, default: "uuid_generate_v4()", force: true do |t|
+    t.integer  "user_id"
+    t.uuid     "event_id"
+    t.decimal  "price",       precision: 8, scale: 2
+    t.string   "seat_type"
+    t.string   "description"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "tickets", ["event_id"], name: "index_tickets_on_event_id", using: :btree
 
   create_table "users", force: true do |t|
     t.string   "email",                  default: "", null: false

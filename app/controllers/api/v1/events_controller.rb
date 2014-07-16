@@ -29,4 +29,20 @@ class Api::V1::EventsController < Api::BaseController
       
     end
     
+    # Create Event
+    def new
+      params.require(:name)
+      params.require(:date)
+      params.require(:category_id)
+      event_params = params.permit(:name, :description, :date, :category_id, :address, :postcode, :city)
+      event = Event.new(event_params)
+      if event.save
+        render :json=> event.as_json, status: :created
+      else
+        render :json=> event.errors, status: :unprocessable_entity
+      end
+    end
+    
+    
+    
 end

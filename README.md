@@ -6,8 +6,21 @@ Check the APIs at: http://dingoapp.herokuapp.com/api
 
 Admin Web App is running at: http://dingoapp.herokuapp.com/admin
 
-## Setting Up ##
+## Tech Stack and Dependencies ##
 
-* Quick summary
-* Version
-* [Learn Markdown](https://bitbucket.org/tutorials/markdowndemo)
+* [Heroku](http://heroku.com) Cedar Stack
+* [Ruby on Rails](http://rubyonrails.org)
+* [PostgreSQL](http://www.postgresql.org)
+* [Amazon S3](http://aws.amazon.com/console/)
+* [Apigee](http://apigee.com) Console
+* [ActiveAdmin](http://activeadmin.info)
+
+## ActiveAdmin ##
+
+To manage a new model do: rails generate active_admin:resource <Model>
+
+## Annotate ##
+
+To comment model attributes do: annotate --exclude tests,fixtures,factories
+
+
