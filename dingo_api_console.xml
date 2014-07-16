@@ -6,7 +6,7 @@
 
     <resources base="http://dingoapp.herokuapp.com">
         
-<!----------------------- AUTHENTICATION ----------------------->        
+<!-- ##################### AUTHENTICATION ##################### -->        
         
         <!-- sign_up -->
         <resource path="/users/sign_up">
@@ -48,8 +48,8 @@
                 <doc apigee:url="http://api.mydomain.com/doc/my-method">login</doc>
             </method>
         </resource>
-        
-<!----------------------- CATEGORIES ----------------------->        
+
+<!-- ##################### CATEGORIES ##################### -->        
         
         <!-- get_categories -->
         <resource path="/api/v1/categories">
@@ -57,14 +57,14 @@
             <param name="Accept" required="true" type="xsd:string" style="header" default="application/json"></param>
             <method id="get_categories" name="GET" apigee:displayName="Get Categories">
                 <apigee:tags>
-                    <apigee:tag primary="true">Methods</apigee:tag>
+                    <apigee:tag primary="true">Categories</apigee:tag>
                 </apigee:tags>
                 <apigee:authentication required="true"/>
                 <doc apigee:url="http://api.mydomain.com/doc/my-method">get_categories</doc>
             </method>
         </resource>
         
-<!----------------------- EVENTS ----------------------->        
+<!-- ##################### EVENTS ##################### -->        
 
         <!-- get_all_events -->
         <resource path="/api/v1/events">
@@ -72,7 +72,6 @@
             <param name="Accept" required="true" type="xsd:string" style="header" default="application/json"></param>
             <method id="get_all_events" name="GET" apigee:displayName="Get All Events">
                 <apigee:tags>
-                    <apigee:tag primary="true">Methods</apigee:tag>
                     <apigee:tag primary="true">Events</apigee:tag>
                 </apigee:tags>
                 <apigee:authentication required="true"/>
@@ -86,7 +85,6 @@
             <param name="Accept" required="true" type="xsd:string" style="header" default="application/json"></param>
             <method id="get_events_by_categories" name="GET" apigee:displayName="Get Events by Categories">
                 <apigee:tags>
-                    <apigee:tag primary="true">Methods</apigee:tag>
                     <apigee:tag primary="true">Events</apigee:tag>
                 </apigee:tags>
                 <apigee:authentication required="true"/>
@@ -102,7 +100,6 @@
             <param name="city" required="false" type="xsd:string" style="query" default="London"></param>
             <method id="get_events_by_location" name="GET" apigee:displayName="Get Events by Location">
                 <apigee:tags>
-                    <apigee:tag primary="true">Methods</apigee:tag>
                     <apigee:tag primary="true">Events</apigee:tag>
                 </apigee:tags>
                 <apigee:authentication required="true"/>
@@ -117,7 +114,6 @@
             <param name="featured" required="true" type="xsd:boolean" style="query" default="true"></param>
             <method id="get_featured_events" name="GET" apigee:displayName="Get Featured Events">
                 <apigee:tags>
-                    <apigee:tag primary="true">Methods</apigee:tag>
                     <apigee:tag primary="true">Events</apigee:tag>
                 </apigee:tags>
                 <apigee:authentication required="true"/>
@@ -132,7 +128,6 @@
             <param name="name" required="true" type="xsd:string" style="query" default=""></param>
             <method id="search_events_by_name" name="GET" apigee:displayName="Search Events by Name">
                 <apigee:tags>
-                    <apigee:tag primary="true">Methods</apigee:tag>
                     <apigee:tag primary="true">Events</apigee:tag>
                 </apigee:tags>
                 <apigee:authentication required="true"/>
@@ -153,7 +148,6 @@
             <param name="city" required="false" type="xsd:string" style="query" default=""></param>
             <method id="create_event" name="GET" apigee:displayName="Create Event">
                 <apigee:tags>
-                    <apigee:tag primary="true">Methods</apigee:tag>
                     <apigee:tag primary="true">Events</apigee:tag>
                 </apigee:tags>
                 <apigee:authentication required="true"/>
@@ -161,7 +155,7 @@
             </method>
         </resource>
         
-<!----------------------- TICKETS ----------------------->
+<!-- ##################### TICKETS ##################### -->
         
         <!-- create_ticket -->
         <resource path="/api/v1/tickets/new">
@@ -176,7 +170,6 @@
             <param name="description" required="false" type="xsd:string" style="query" default=""></param>
             <method id="create_ticket" name="GET" apigee:displayName="Create Ticket">
                 <apigee:tags>
-                    <apigee:tag primary="true">Methods</apigee:tag>
                     <apigee:tag primary="true">Tickets</apigee:tag>
                 </apigee:tags>
                 <apigee:authentication required="true"/>
@@ -191,7 +184,6 @@
             <param name="event_id" required="true" type="xsd:string" style="query" default=""></param>
             <method id="get_tickets_by_event" name="GET" apigee:displayName="Get Tickets By Event">
                 <apigee:tags>
-                    <apigee:tag primary="true">Methods</apigee:tag>
                     <apigee:tag primary="true">Tickets</apigee:tag>
                 </apigee:tags>
                 <apigee:authentication required="true"/>
@@ -206,7 +198,6 @@
             <param name="user_token" required="true" type="xsd:string" style="query" default=""></param>
             <method id="get_tickets_by_user" name="GET" apigee:displayName="Get Tickets By User">
                 <apigee:tags>
-                    <apigee:tag primary="true">Methods</apigee:tag>
                     <apigee:tag primary="true">Tickets</apigee:tag>
                 </apigee:tags>
                 <apigee:authentication required="true"/>
