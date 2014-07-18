@@ -38,8 +38,9 @@
         <resource path="/users/sign_in">
             <param name="Content-Type" required="true" type="xsd:string" style="header" default="application/json"></param>
             <param name="Accept" required="true" type="xsd:string" style="header" default="application/json"></param>
-            <param name="user_email" required="true" type="xsd:string" style="query" default="user1@example.com"></param>
-            <param name="user_token" required="true" type="xsd:string" style="query" default="-_wxb38ZbNEExLsCcaTa"></param>
+            <param name="email" required="true" type="xsd:string" style="query" default="user1@example.com"></param>
+            <param name="password" required="false" type="xsd:string" style="query" default="dingodingo"></param>
+            <param name="auth_token" required="false" type="xsd:string" style="query" default="kZz88RuBL5t5coJfitpR"></param>
             <method id="login" name="GET" apigee:displayName="Login">
                 <apigee:tags>
                     <apigee:tag primary="true">Authentication</apigee:tag>
