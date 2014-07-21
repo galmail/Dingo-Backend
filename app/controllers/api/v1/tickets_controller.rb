@@ -19,10 +19,15 @@ class Api::V1::TicketsController < Api::BaseController
     end
     
     # Create Ticket
-    def new
+    def create
       params.require(:event_id)
       params.require(:price)
-      ticket_params = params.permit(:event_id, :price, :seat_type, :description)
+      ticket_params = params.permit(:event_id, :price, :seat_type, :description, :photo1, :photo2, :photo3)
+      
+      params[:photo1].content_type=params[:photo1].content_type.split(";")[0].strip if params[:photo1].present?
+      params[:photo2].content_type=params[:photo2].content_type.split(";")[0].strip if params[:photo2].present?
+      params[:photo3].content_type=params[:photo3].content_type.split(";")[0].strip if params[:photo3].present?
+      
       ticket = Ticket.new(ticket_params)
       ticket.user = current_user
       if ticket.save

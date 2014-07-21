@@ -18,7 +18,9 @@
 #  postcode           :string(255)
 #  featured           :boolean          default(FALSE)
 #  city               :string(255)
+#  created_by_id      :integer
 #
+
 class Event < ActiveRecord::Base
 
   has_attached_file    :photo, :styles => { :medium => "300x300#", :thumb => "200x200#", :tiny_pic => "70x70#" }

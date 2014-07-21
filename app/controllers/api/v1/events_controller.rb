@@ -38,18 +38,7 @@ class Api::V1::EventsController < Api::BaseController
       
       params[:photo].content_type=params[:photo].content_type.split(";")[0].strip if params[:photo].present?
       
-      
-      puts "ContentType:" + params[:photo].content_type.to_s
-      puts "Headers" + params[:photo].headers.to_s
-      puts "FileName" + params[:photo].original_filename.to_s
-      puts "TempFile" + params[:photo].tempfile.to_s
-      
-      
-      
-      #event.photo = params[:photo] if params[:photo].present?
       event = Event.new(event_params)
-      
-      
       event.created_by=current_user
       if event.save
         render :json=> event.as_json, status: :created

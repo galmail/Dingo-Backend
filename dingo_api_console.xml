@@ -159,17 +159,14 @@
 <!-- ##################### TICKETS ##################### -->
         
         <!-- create_ticket -->
-        <resource path="/api/v1/tickets/new">
+        <resource path="/api/v1/tickets">
             <param name="Content-Type" required="true" type="xsd:string" style="header" default="application/json"></param>
             <param name="Accept" required="true" type="xsd:string" style="header" default="application/json"></param>
             <param name="event_id" required="true" type="xsd:string" style="query" default=""></param>
             <param name="price" required="true" type="xsd:double" style="query" default=""></param>
-            <param name="pic1_url" required="false" type="xsd:string" style="query" default=""></param>
-            <param name="pic2_url" required="false" type="xsd:string" style="query" default=""></param>
-            <param name="pic3_url" required="false" type="xsd:string" style="query" default=""></param>
             <param name="seat_type" required="false" type="xsd:string" style="query" default=""></param>
             <param name="description" required="false" type="xsd:string" style="query" default=""></param>
-            <method id="create_ticket" name="GET" apigee:displayName="Create Ticket">
+            <method id="create_ticket" name="POST" apigee:displayName="Create Ticket">
                 <apigee:tags>
                     <apigee:tag primary="true">Tickets</apigee:tag>
                 </apigee:tags>
