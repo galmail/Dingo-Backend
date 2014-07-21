@@ -18,4 +18,6 @@
 
 class Device < ActiveRecord::Base
   belongs_to  :user
+  validates :user_id, :uid, presence: true
+  validates :uid, uniqueness: true
 end

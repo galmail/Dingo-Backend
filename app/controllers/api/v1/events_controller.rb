@@ -30,7 +30,7 @@ class Api::V1::EventsController < Api::BaseController
     end
     
     # Create Event
-    def new
+    def create
       params.require(:name)
       params.require(:date)
       params.require(:category_id)
@@ -44,7 +44,6 @@ class Api::V1::EventsController < Api::BaseController
         render :json=> event.errors, status: :unprocessable_entity
       end
     end
-    
     
     
 end

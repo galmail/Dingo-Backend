@@ -137,7 +137,7 @@
         </resource>
         
         <!-- create_event -->
-        <resource path="/api/v1/events/new">
+        <resource path="/api/v1/events">
             <param name="Content-Type" required="true" type="xsd:string" style="header" default="application/json"></param>
             <param name="Accept" required="true" type="xsd:string" style="header" default="application/json"></param>
             <param name="category_id" required="true" type="xsd:string" style="query" default=""></param>
@@ -147,7 +147,8 @@
             <param name="address" required="false" type="xsd:string" style="query" default=""></param>
             <param name="postcode" required="false" type="xsd:string" style="query" default=""></param>
             <param name="city" required="false" type="xsd:string" style="query" default=""></param>
-            <method id="create_event" name="GET" apigee:displayName="Create Event">
+            <param name="photo" required="false" type="xsd:object" style="query" default=""></param>
+            <method id="create_event" name="POST" apigee:displayName="Create Event">
                 <apigee:tags>
                     <apigee:tag primary="true">Events</apigee:tag>
                 </apigee:tags>
