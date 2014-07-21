@@ -36,8 +36,10 @@ class Api::V1::EventsController < Api::BaseController
       params.require(:category_id)
       event_params = params.permit(:name, :description, :date, :category_id, :address, :postcode, :city, :photo)
       
-      puts params[:photo].class
-      puts params[:photo]
+      puts "ContentType:" + params[:photo].content_type.to_s
+      puts "Headers" + params[:photo].headers.to_s
+      puts "FileName" + params[:photo].original_filename.to_s
+      puts "TempFile" + params[:photo].tempfile.to_s
       
       
       
