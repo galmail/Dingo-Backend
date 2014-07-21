@@ -147,7 +147,6 @@
             <param name="address" required="false" type="xsd:string" style="query" default=""></param>
             <param name="postcode" required="false" type="xsd:string" style="query" default=""></param>
             <param name="city" required="false" type="xsd:string" style="query" default=""></param>
-            <param name="photo" required="false" type="xsd:object" style="query" default=""></param>
             <method id="create_event" name="POST" apigee:displayName="Create Event">
                 <apigee:tags>
                     <apigee:tag primary="true">Events</apigee:tag>

@@ -35,6 +35,12 @@ class Api::V1::EventsController < Api::BaseController
       params.require(:date)
       params.require(:category_id)
       event_params = params.permit(:name, :description, :date, :category_id, :address, :postcode, :city, :photo)
+      
+      puts params[:photo].class
+      puts params[:photo]
+      
+      
+      
       #event.photo = params[:photo] if params[:photo].present?
       event = Event.new(event_params)
       event.created_by=current_user
