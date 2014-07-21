@@ -36,6 +36,7 @@ class Api::V1::EventsController < Api::BaseController
       params.require(:category_id)
       event_params = params.permit(:name, :description, :date, :category_id, :address, :postcode, :city)
       event = Event.new(event_params)
+      event.created_by=current_user
       if event.save
         render :json=> event.as_json, status: :created
       else

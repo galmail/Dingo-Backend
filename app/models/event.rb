@@ -26,6 +26,7 @@ class Event < ActiveRecord::Base
 
   belongs_to  :category
   has_many    :tickets
+  belongs_to  :created_by, :class_name => 'User'
   validates   :category_id, :presence => true
 
 end
