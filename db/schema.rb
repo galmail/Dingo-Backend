@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140721190654) do
+ActiveRecord::Schema.define(version: 20140722130003) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -93,6 +93,7 @@ ActiveRecord::Schema.define(version: 20140721190654) do
     t.boolean  "featured",           default: false
     t.string   "city"
     t.integer  "created_by_id"
+    t.datetime "end_date"
   end
 
   add_index "events", ["category_id"], name: "index_events_on_category_id", using: :btree

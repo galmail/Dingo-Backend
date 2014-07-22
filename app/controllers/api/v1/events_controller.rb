@@ -40,7 +40,7 @@ class Api::V1::EventsController < Api::BaseController
       params.require(:name)
       params.require(:date)
       params.require(:category_id)
-      event_params = params.permit(:name, :description, :date, :category_id, :address, :postcode, :city, :photo)
+      event_params = params.permit(:name, :description, :date, :end_date, :category_id, :address, :postcode, :city, :photo)
       
       params[:photo].content_type=params[:photo].content_type.split(";")[0].strip if params[:photo].present?
       

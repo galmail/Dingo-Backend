@@ -1,10 +1,11 @@
 ActiveAdmin.register Event do
   config.filters = false
-  permit_params :name, :description, :photo, :date, :category_id, :active, :address, :postcode, :city, :featured
+  permit_params :name, :description, :photo, :date, :end_date, :category_id, :active, :address, :postcode, :city, :featured
   
   index do
     column :id
     column :date
+    column :end_date
     column :category
     column :name
     column :address
@@ -20,6 +21,7 @@ ActiveAdmin.register Event do
   form do |f|
     f.inputs "Details" do
       f.input :date, :required => true
+      f.input :end_date
       f.input :category, :required => true
       f.input :name, :required => true
       f.input :address
@@ -36,6 +38,7 @@ ActiveAdmin.register Event do
   show do |ad|
     attributes_table do
       row :date
+      row :end_date
       row :category
       row :name
       row :description
