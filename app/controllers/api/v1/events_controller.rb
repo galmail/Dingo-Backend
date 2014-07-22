@@ -3,6 +3,7 @@ class Api::V1::EventsController < Api::BaseController
     # Get Events
     def index
       filters = { active: true }
+      query = ""
       conditions = []
       
       # get_events_by_categories
@@ -17,15 +18,20 @@ class Api::V1::EventsController < Api::BaseController
       
       # search_events_by_name
       if params.has_key?(:name)
-        conditions = ["name ILIKE ?","%#{params[:name]}%"]
+        query << and_query(query) << "name ILIKE ?"
+        conditions << "%#{params[:name]}%"
       end
       
       # get_events_by_location
-      if params.has_key?(:location) or params.has_key?(:city)
-        
+      if params.has_key?(:city)
+        query << and_query(query) << "city ILIKE ?"
+        conditions << "#{params[:city]}"
+      elsif params.has_key?(:location)
+        query << and_query(query) << "city ILIKE ?"
+        conditions << "#{get_city(params[:location])}"
       end
       
-      @events = Event.where(filters).where(conditions).order('date ASC').limit(100)
+      @events = Event.where(filters).where(conditions.insert(0,query)).order('date ASC').limit(100)
       
     end
     
@@ -47,5 +53,27 @@ class Api::V1::EventsController < Api::BaseController
       end
     end
     
+    private
+    
+    def get_city(location)
+      res = Geocoder.search(params[:location])
+      if res.length>0
+        addr = res[0].data["address_components"]
+        if addr.length>0
+          addr.each { |obj|
+            return obj["long_name"] if obj["types"].include?("locality")
+          }
+        end
+      end
+      return nil
+    end
+    
+    def and_query(query)
+      if query.length>0
+        return " AND "
+      else
+        return ""
+      end
+    end
     
 end

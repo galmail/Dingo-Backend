@@ -56,4 +56,6 @@ gem 'aws-sdk'
 
 gem 'annotate', github: 'ctran/annotate_models'
 
+gem 'geocoder'
+
 
