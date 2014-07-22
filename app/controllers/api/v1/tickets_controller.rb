@@ -22,7 +22,7 @@ class Api::V1::TicketsController < Api::BaseController
     def create
       params.require(:event_id)
       params.require(:price)
-      ticket_params = params.permit(:event_id, :price, :seat_type, :description, :photo1, :photo2, :photo3)
+      ticket_params = params.permit(:event_id, :price, :seat_type, :description, :photo1, :photo2, :photo3, :delivery_options, :payment_options, :number_of_tickets, :face_value_per_ticket)
       
       params[:photo1].content_type=params[:photo1].content_type.split(";")[0].strip if params[:photo1].present?
       params[:photo2].content_type=params[:photo2].content_type.split(";")[0].strip if params[:photo2].present?

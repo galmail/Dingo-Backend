@@ -142,11 +142,13 @@
             <param name="Accept" required="true" type="xsd:string" style="header" default="application/json"></param>
             <param name="category_id" required="true" type="xsd:string" style="query" default=""></param>
             <param name="date" required="true" type="xsd:datetime" style="query" default=""></param>
+            <param name="end_date" required="true" type="xsd:datetime" style="query" default=""></param>
             <param name="name" required="true" type="xsd:string" style="query" default=""></param>
             <param name="description" required="false" type="xsd:string" style="query" default=""></param>
             <param name="address" required="false" type="xsd:string" style="query" default=""></param>
             <param name="postcode" required="false" type="xsd:string" style="query" default=""></param>
             <param name="city" required="false" type="xsd:string" style="query" default=""></param>
+            <param name="location" required="false" type="xsd:string" style="query" default=""></param>
             <method id="create_event" name="POST" apigee:displayName="Create Event">
                 <apigee:tags>
                     <apigee:tag primary="true">Events</apigee:tag>
@@ -166,6 +168,13 @@
             <param name="price" required="true" type="xsd:double" style="query" default=""></param>
             <param name="seat_type" required="false" type="xsd:string" style="query" default=""></param>
             <param name="description" required="false" type="xsd:string" style="query" default=""></param>
+            
+            <param name="delivery_options" required="false" type="xsd:string" style="query" default=""></param>
+            <param name="payment_options" required="false" type="xsd:string" style="query" default=""></param>
+            <param name="number_of_tickets" required="false" type="xsd:integer" style="query" default=""></param>
+            <param name="face_value_per_ticket" required="false" type="xsd:double" style="query" default=""></param>
+            
+            
             <method id="create_ticket" name="POST" apigee:displayName="Create Ticket">
                 <apigee:tags>
                     <apigee:tag primary="true">Tickets</apigee:tag>
