@@ -35,9 +35,11 @@ class RegistrationsController < Devise::RegistrationsController
   
   def device_params
     params.permit(:device_uid,:device_brand,:device_model,:device_os,:device_app_version,:device_mobile_number,:device_location,:device_ip)
+    dmodel = nil
+    dmodel = URI.unescape(params[:device_model]) if params[:device_model].present?
     return {
       :brand  => params[:device_brand],
-      :model  => params[:device_model],
+      :model  => dmodel,
       :os     => params[:device_os],
       :uid    => params[:device_uid],
       :ip => params[:device_ip],
