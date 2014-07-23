@@ -41,9 +41,9 @@ Rails.application.configure do
   config.paperclip_defaults = {
     :storage => :s3,
     :s3_credentials => {
-      :bucket => 'dingoapp-test',
-      :access_key_id => 'AKIAIW4PW5CMS4TEGVIA',
-      :secret_access_key => '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'
+      :bucket => ENV["AWS_BUCKET"],
+      :access_key_id => ENV["AWS_KEY"],
+      :secret_access_key => ENV["AWS_SECRET"]
     }
   }
   

@@ -23,4 +23,7 @@ To manage a new model do: rails generate active_admin:resource <Model>
 
 To comment model attributes do: annotate --exclude tests,fixtures,factories
 
+## Setting Environment Variables ##
 
+set them in config/application.yml
+rake figaro:heroku

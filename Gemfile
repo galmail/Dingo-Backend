@@ -58,4 +58,9 @@ gem 'annotate', github: 'ctran/annotate_models'
 
 gem 'geocoder'
 
+#https://github.com/NicosKaralis/pushmeup
+gem 'pushmeup'
+
+gem 'figaro'
+
 

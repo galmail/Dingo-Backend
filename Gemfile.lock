@@ -89,6 +89,9 @@ GEM
       warden (~> 1.2.3)
     erubis (2.7.0)
     execjs (2.2.1)
+    figaro (0.7.0)
+      bundler (~> 1.0)
+      rails (>= 3, < 5)
     formtastic (2.3.0.rc3)
       actionpack (>= 3.0)
     geocoder (1.2.3)
@@ -96,6 +99,9 @@ GEM
       actionpack (>= 3.2, < 5)
       activesupport (>= 3.2, < 5)
     hike (1.2.3)
+    httparty (0.13.1)
+      json (~> 1.8)
+      multi_xml (>= 0.5.2)
     i18n (0.6.11)
     inherited_resources (1.4.1)
       has_scope (~> 0.6.0.rc)
@@ -120,6 +126,7 @@ GEM
     mini_portile (0.6.0)
     minitest (5.4.0)
     multi_json (1.10.1)
+    multi_xml (0.5.5)
     nokogiri (1.6.2.1)
       mini_portile (= 0.6.0)
     orm_adapter (0.5.0)
@@ -132,6 +139,9 @@ GEM
     polyamorous (1.0.0)
       activerecord (>= 3.0)
     polyglot (0.3.5)
+    pushmeup (0.2.0)
+      httparty
+      json
     rack (1.5.2)
     rack-test (0.6.2)
       rack (>= 1.0)
@@ -220,11 +230,13 @@ DEPENDENCIES
   coffee-rails (~> 4.0.0)
   debugger
   devise
+  figaro
   geocoder
   jbuilder (~> 2.0)
   jquery-ui-rails (~> 4.2.1)
   paperclip
   pg
+  pushmeup
   rails (= 4.1.4)
   rails_12factor
   sass-rails (~> 4.0.3)
