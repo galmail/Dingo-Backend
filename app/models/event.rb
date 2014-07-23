@@ -19,6 +19,7 @@
 #  featured           :boolean          default(FALSE)
 #  city               :string(255)
 #  created_by_id      :integer
+#  end_date           :datetime
 #
 
 class Event < ActiveRecord::Base
@@ -30,5 +31,21 @@ class Event < ActiveRecord::Base
   has_many    :tickets
   belongs_to  :created_by, :class_name => 'User'
   validates   :category_id, :presence => true
+  
+  def min_price
+    if self.tickets.length>0
+      self.tickets.min_by { |ticket| ticket.price }.price.to_s
+    else
+      "0"
+    end
+  end
+  
+  def available_tickets
+    if self.tickets.length>0
+      self.tickets.select { |ticket| ticket.available }.count.to_s
+    else
+      "0"
+    end
+  end
 
 end

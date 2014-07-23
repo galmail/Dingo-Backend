@@ -9,7 +9,7 @@ json.events @events do |event|
   json.address event.address
   json.postcode event.postcode
   json.city event.city
-  json.min_price "10.5"
-  json.available_tickets "10"
+  json.min_price event.min_price
+  json.available_tickets event.available_tickets
   json.thumb event.photo(:thumb) if event.photo.present?
 end
