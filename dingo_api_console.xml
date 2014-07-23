@@ -212,6 +212,36 @@
             </method>
         </resource>
         
+<!-- ##################### MESSAGES ##################### -->        
+        
+        <!-- get_conversations -->
+        <resource path="/api/v1/messages">
+            <param name="Content-Type" required="true" type="xsd:string" style="header" default="application/json"></param>
+            <param name="Accept" required="true" type="xsd:string" style="header" default="application/json"></param>
+            <param name="conversations" required="true" type="xsd:boolean" style="query" default="true"></param>
+            <method id="get_conversations" name="GET" apigee:displayName="Get User's Conversations">
+                <apigee:tags>
+                    <apigee:tag primary="true">Messages</apigee:tag>
+                </apigee:tags>
+                <apigee:authentication required="true"/>
+                <doc apigee:url="http://api.mydomain.com/doc/my-method">get_conversations</doc>
+            </method>
+        </resource>
+        
+        <!-- send_message -->
+        <resource path="/api/v1/messages">
+            <param name="Content-Type" required="true" type="xsd:string" style="header" default="application/json"></param>
+            <param name="Accept" required="true" type="xsd:string" style="header" default="application/json"></param>
+            <param name="receiver_id" required="true" type="xsd:string" style="query" default=""></param>
+            <param name="content" required="true" type="xsd:string" style="query" default=""></param>
+            <method id="send_message" name="POST" apigee:displayName="Send Message">
+                <apigee:tags>
+                    <apigee:tag primary="true">Messages</apigee:tag>
+                </apigee:tags>
+                <apigee:authentication required="true"/>
+                <doc apigee:url="http://api.mydomain.com/doc/my-method">send_message</doc>
+            </method>
+        </resource>
         
 
         <!--

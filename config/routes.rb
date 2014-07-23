@@ -36,6 +36,7 @@ Rails.application.routes.draw do
       resources :tickets, defaults: {format: :json}
       resources :events, defaults: {format: :json}
       resources :categories, defaults: {format: :json}
+      resources :messages, defaults: {format: :json}
     end
   end
 

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140723122829) do
+ActiveRecord::Schema.define(version: 20140723125155) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -98,6 +98,14 @@ ActiveRecord::Schema.define(version: 20140723122829) do
 
   add_index "events", ["category_id"], name: "index_events_on_category_id", using: :btree
   add_index "events", ["date"], name: "index_events_on_date", using: :btree
+
+  create_table "messages", id: :uuid, default: "uuid_generate_v4()", force: true do |t|
+    t.integer  "sender_id"
+    t.integer  "receiver_id"
+    t.string   "content"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "tickets", id: :uuid, default: "uuid_generate_v4()", force: true do |t|
     t.integer  "user_id"
