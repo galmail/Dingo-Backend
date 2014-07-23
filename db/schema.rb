@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140723101733) do
+ActiveRecord::Schema.define(version: 20140723122829) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -121,7 +121,7 @@ ActiveRecord::Schema.define(version: 20140723101733) do
     t.datetime "photo3_updated_at"
     t.string   "delivery_options"
     t.string   "payment_options"
-    t.integer  "number_of_tickets"
+    t.integer  "number_of_tickets",                             default: 1
     t.decimal  "face_value_per_ticket", precision: 8, scale: 2
     t.boolean  "available",                                     default: true
   end

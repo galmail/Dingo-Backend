@@ -33,19 +33,19 @@ class Event < ActiveRecord::Base
   validates   :category_id, :presence => true
   
   def min_price
+    price = 0
     if self.tickets.length>0
-      self.tickets.min_by { |ticket| ticket.price }.price.to_s
-    else
-      "0"
+      price = self.tickets.min_by { |ticket| ticket.price if ticket.available }.price
     end
+    price.to_s
   end
   
   def available_tickets
+    total = 0
     if self.tickets.length>0
-      self.tickets.select { |ticket| ticket.available }.count.to_s
-    else
-      "0"
+      total = self.tickets.inject(0) { |sum,ticket| sum + ticket.number_of_tickets if ticket.available }
     end
+    total.to_s
   end
 
 end
