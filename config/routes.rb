@@ -37,6 +37,7 @@ Rails.application.routes.draw do
       resources :events, defaults: {format: :json}
       resources :categories, defaults: {format: :json}
       resources :messages, defaults: {format: :json}
+      resources :offers, defaults: {format: :json}
     end
   end
 

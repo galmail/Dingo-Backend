@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140723125155) do
+ActiveRecord::Schema.define(version: 20140724084446) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -103,6 +103,18 @@ ActiveRecord::Schema.define(version: 20140723125155) do
     t.integer  "sender_id"
     t.integer  "receiver_id"
     t.string   "content"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "offers", id: :uuid, default: "uuid_generate_v4()", force: true do |t|
+    t.integer  "sender_id"
+    t.integer  "receiver_id"
+    t.uuid     "ticket_id"
+    t.integer  "num_tickets",                         default: 1
+    t.decimal  "price",       precision: 8, scale: 2
+    t.boolean  "accepted",                            default: false
+    t.boolean  "rejected",                            default: false
     t.datetime "created_at"
     t.datetime "updated_at"
   end

@@ -243,80 +243,37 @@
             </method>
         </resource>
         
+<!-- ##################### OFFERS ##################### -->        
 
-        <!--
-        <resource path="/functions/login">
+        <!-- get_offers_by_user -->
+        <resource path="/api/v1/offers">
             <param name="Content-Type" required="true" type="xsd:string" style="header" default="application/json"></param>
-            <method id="login" name="POST" apigee:displayName="Login">
+            <param name="Accept" required="true" type="xsd:string" style="header" default="application/json"></param>
+            <param name="user_token" required="true" type="xsd:string" style="query" default=""></param>
+            <method id="get_offers_by_user" name="GET" apigee:displayName="Get Offers By User">
                 <apigee:tags>
-                    <apigee:tag primary="true">Client Methods</apigee:tag>
+                    <apigee:tag primary="true">Offers</apigee:tag>
                 </apigee:tags>
                 <apigee:authentication required="true"/>
-                <doc apigee:url="http://api.mydomain.com/doc/my-method">login</doc>
-                <request>
-                    <representation>
-                        <apigee:payload required="true">
-                            <apigee:content>
-                                <![CDATA[
-                                { "email": "dingo@dingoapp.co.uk", "password": "dingo" }
-                                ]]>
-                            </apigee:content>
-                        </apigee:payload>
-                    </representation>
-                </request>
-            </method>
-        </resource>
-
-        
-        <resource path="/functions/signup">
-            <param name="Content-Type" required="true" type="xsd:string" style="header" default="application/json"></param>
-            <method id="signup" name="POST" apigee:displayName="Signup">
-                <apigee:tags>
-                    <apigee:tag primary="true">Client Methods</apigee:tag>
-                </apigee:tags>
-                <apigee:authentication required="true"/>
-                <doc apigee:url="http://api.mydomain.com/doc/my-method">signup</doc>
-                <request>
-                    <representation>
-                        <apigee:payload required="true">
-                            <apigee:content>
-                                <![CDATA[
-                                {
-                                    "username": "user@example.com",
-                                    "email": "user@example.com",
-                                    "password": "user123",
-                                    "name": "John Smith",
-                                    "date_of_birth": "01/01/2000",
-                                    "device_uuid": "0123456789",
-                                    "device_type": "iPhone 5S",
-                                    "mobile_number": "+447912345678",
-                                    "latitude": 30.0,
-                                    "longitude": -40.0
-                                }
-                                ]]>
-                            </apigee:content>
-                        </apigee:payload>
-                    </representation>
-                </request>
-            </method>
-        </resource>
-
-        <resource path="/classes/Ticket">
-            <param name="event" required="true" type="xsd:string" style="query" default="main_event">
-                <doc>
-                    Filter tickets by a specific event
-                </doc>
-            </param>
-            <method id="get_tickets" name="GET" apigee:displayName="Old Get Tickets">
-                <apigee:tags>
-                    <apigee:tag primary="true">Client Methods</apigee:tag>
-                </apigee:tags>
-                <apigee:authentication required="true"/>
-                <doc apigee:url="http://api.mydomain.com/doc/my-method">Get Tickets</doc>
+                <doc apigee:url="http://api.mydomain.com/doc/my-method">get_offers_by_user</doc>
             </method>
         </resource>
         
-        -->
+        <!-- send_offer -->
+        <resource path="/api/v1/offers">
+            <param name="Content-Type" required="true" type="xsd:string" style="header" default="application/json"></param>
+            <param name="Accept" required="true" type="xsd:string" style="header" default="application/json"></param>
+            <param name="receiver_id" required="true" type="xsd:string" style="query" default=""></param>
+            <param name="num_tickets" required="true" type="xsd:integer" style="query" default="1"></param>
+            <param name="price" required="true" type="xsd:double" style="query" default=""></param>
+            <method id="send_offer" name="POST" apigee:displayName="Send Message">
+                <apigee:tags>
+                    <apigee:tag primary="true">Offers</apigee:tag>
+                </apigee:tags>
+                <apigee:authentication required="true"/>
+                <doc apigee:url="http://api.mydomain.com/doc/my-method">send_offer</doc>
+            </method>
+        </resource>
 
     </resources>
 
