@@ -266,7 +266,7 @@
             <param name="receiver_id" required="true" type="xsd:string" style="query" default=""></param>
             <param name="num_tickets" required="true" type="xsd:integer" style="query" default="1"></param>
             <param name="price" required="true" type="xsd:double" style="query" default=""></param>
-            <method id="send_offer" name="POST" apigee:displayName="Send Message">
+            <method id="send_offer" name="POST" apigee:displayName="Send Offer">
                 <apigee:tags>
                     <apigee:tag primary="true">Offers</apigee:tag>
                 </apigee:tags>
