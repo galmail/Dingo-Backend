@@ -274,6 +274,20 @@
                 <doc apigee:url="http://api.mydomain.com/doc/my-method">send_offer</doc>
             </method>
         </resource>
+        
+        <!-- accept_offer -->
+        <resource path="/api/v1/offers/:id">
+            <param name="Content-Type" required="true" type="xsd:string" style="header" default="application/json"></param>
+            <param name="Accept" required="true" type="xsd:string" style="header" default="application/json"></param>
+            <param name="accept" required="true" type="xsd:boolean" style="query" default="true"></param>
+            <method id="accept_offer" name="PUT" apigee:displayName="Accept Offer">
+                <apigee:tags>
+                    <apigee:tag primary="true">Offers</apigee:tag>
+                </apigee:tags>
+                <apigee:authentication required="true"/>
+                <doc apigee:url="http://api.mydomain.com/doc/my-method">accept_offer</doc>
+            </method>
+        </resource>
 
     </resources>
 
