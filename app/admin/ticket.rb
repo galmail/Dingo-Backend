@@ -12,13 +12,13 @@ ActiveAdmin.register Ticket do
     column :number_of_tickets
     column :available
     column :photo1 do |ad|
-      image_tag(ad.photo.url(:thumb))
+      image_tag(ad.photo1.url(:thumb))
     end
     column :photo2 do |ad|
-      image_tag(ad.photo.url(:thumb))
+      image_tag(ad.photo2.url(:thumb))
     end
     column :photo3 do |ad|
-      image_tag(ad.photo.url(:thumb))
+      image_tag(ad.photo3.url(:thumb))
     end
     actions
   end
