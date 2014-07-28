@@ -20,4 +20,14 @@ class Offer < ActiveRecord::Base
   belongs_to  :receiver, :class_name => 'User'
   belongs_to  :ticket
   
+  def notify
+    device_token = User.find(self.receiver_id).devices.first.uid
+    APNS.send_notification(device_token, self.price)
+  end
+  
+  def notify_back
+    device_token = User.find(self.sender_id).devices.first.uid
+    APNS.send_notification(device_token, self.price)
+  end
+  
 end

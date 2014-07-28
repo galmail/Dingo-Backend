@@ -36,7 +36,7 @@ class Api::V1::OffersController < Api::BaseController
     offer = Offer.new(offer_params)
     offer.sender = current_user
     if offer.save
-      send_offer(offer)
+      offer.notify
       render :json=> offer.as_json, status: :created
     else
       render :json=> offer.errors, status: :unprocessable_entity
@@ -52,7 +52,7 @@ class Api::V1::OffersController < Api::BaseController
     offer.accepted = params[:accept_offer]
     offer.rejected = !params[:accept_offer]
     if offer.save
-      notify_offer(offer)
+      offer.notify_back
       render :json=> offer.as_json, status: :updated
     else
       render :json=> offer.errors, status: :unprocessable_entity
@@ -61,26 +61,6 @@ class Api::V1::OffersController < Api::BaseController
   
 
   private
-
-  # Sending offer via push to device: https://github.com/NicosKaralis/pushmeup
-  def send_offer(offer)
-    puts "Sending offer_id: #{offer.id} to receiver_id #{offer.receiver_id}"
-    
-    APNS.send_notifications(User.find(offer.receiver_id).devices.map { |device|
-      APNS::Notification.new(device.uid, offer.price)
-      #APNS::Notification.new(device.uid, :alert => msg.content, :badge => 1, :sound => 'default')
-    })
-  end
-  
-  # Notify offer via push to device: https://github.com/NicosKaralis/pushmeup
-  def notify_offer(offer)
-    puts "Notify offer_id: #{offer.id} back to sender_id #{offer.sender_id}"
-    
-    APNS.send_notifications(User.find(offer.sender_id).devices.map { |device|
-      APNS::Notification.new(device.uid, offer.accepted)
-      #APNS::Notification.new(device.uid, :alert => msg.content, :badge => 1, :sound => 'default')
-    })
-  end
 
   def and_query(query)
     if query.length>0
