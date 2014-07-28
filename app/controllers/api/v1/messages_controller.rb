@@ -37,7 +37,7 @@ class Api::V1::MessagesController < Api::BaseController
     message = Message.new(message_params)
     message.sender = current_user
     if message.save
-      send_message(message)
+      message.notify
       render :json=> message.as_json, status: :created
     else
       render :json=> message.errors, status: :unprocessable_entity
@@ -50,10 +50,10 @@ class Api::V1::MessagesController < Api::BaseController
   def send_message(msg)
     puts "Sending message: #{msg.content} to receiver_id #{msg.receiver_id}"
     
-    APNS.send_notifications(User.find(msg.receiver_id).devices.map { |device|
-      APNS::Notification.new(device.uid, msg.content)
+    #APNS.send_notifications(User.find(msg.receiver_id).devices.map { |device|
+      #APNS::Notification.new(device.uid, msg.content)
       #APNS::Notification.new(device.uid, :alert => msg.content, :badge => 1, :sound => 'default')
-    })
+    #})
   end
 
   def and_query(query)
