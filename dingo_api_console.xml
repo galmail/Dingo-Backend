@@ -185,6 +185,29 @@
             </method>
         </resource>
         
+        <!-- update_ticket -->
+        <resource path="/api/v1/tickets/:id">
+            <param name="Content-Type" required="true" type="xsd:string" style="header" default="application/json"></param>
+            <param name="Accept" required="true" type="xsd:string" style="header" default="application/json"></param>
+            
+            <param name="price" required="true" type="xsd:double" style="query" default=""></param>
+            <param name="seat_type" required="false" type="xsd:string" style="query" default=""></param>
+            <param name="ticket_type" required="false" type="xsd:string" style="query" default=""></param>
+            <param name="description" required="false" type="xsd:string" style="query" default=""></param>
+            <param name="delivery_options" required="false" type="xsd:string" style="query" default=""></param>
+            <param name="payment_options" required="false" type="xsd:string" style="query" default=""></param>
+            <param name="number_of_tickets" required="false" type="xsd:integer" style="query" default=""></param>
+            <param name="face_value_per_ticket" required="false" type="xsd:double" style="query" default=""></param>
+            
+            <method id="update_ticket" name="PUT" apigee:displayName="Update Ticket">
+                <apigee:tags>
+                    <apigee:tag primary="true">Tickets</apigee:tag>
+                </apigee:tags>
+                <apigee:authentication required="true"/>
+                <doc apigee:url="http://api.mydomain.com/doc/my-method">update_ticket</doc>
+            </method>
+        </resource>
+        
         <!-- get_tickets_by_event -->
         <resource path="/api/v1/tickets">
             <param name="Content-Type" required="true" type="xsd:string" style="header" default="application/json"></param>
