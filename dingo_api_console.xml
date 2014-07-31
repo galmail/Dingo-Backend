@@ -167,6 +167,7 @@
             <param name="event_id" required="true" type="xsd:string" style="query" default=""></param>
             <param name="price" required="true" type="xsd:double" style="query" default=""></param>
             <param name="seat_type" required="false" type="xsd:string" style="query" default=""></param>
+            <param name="ticket_type" required="false" type="xsd:string" style="query" default=""></param>
             <param name="description" required="false" type="xsd:string" style="query" default=""></param>
             
             <param name="delivery_options" required="false" type="xsd:string" style="query" default=""></param>

@@ -27,6 +27,7 @@
 #  number_of_tickets     :integer          default(1)
 #  face_value_per_ticket :decimal(8, 2)
 #  available             :boolean          default(TRUE)
+#  ticket_type           :string(255)
 #
 
 class Ticket < ActiveRecord::Base
