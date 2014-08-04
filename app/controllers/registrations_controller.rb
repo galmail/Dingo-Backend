@@ -15,11 +15,18 @@ class RegistrationsController < Devise::RegistrationsController
         device.save
       end
       user.save
-      render :json=> user.as_json(:auth_token=>user.authentication_token, :email=>user.email), status: :created
+      render :json => user.as_json(:auth_token=>user.authentication_token, :email=>user.email), status: :created
     else
       warden.custom_failure!
-      render :json=> user.errors, status: :unprocessable_entity
+      render :json => user.errors, status: :unprocessable_entity
     end
+  end
+  
+  # Update User's Profile
+  def update
+    user_data = params.permit(:name,:photo_url,:date_of_birth,:city)
+    current_user.update_all(user_data)
+    render :json => user.as_json
   end
   
   private

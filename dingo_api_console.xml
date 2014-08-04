@@ -49,6 +49,27 @@
                 <doc apigee:url="http://api.mydomain.com/doc/my-method">login</doc>
             </method>
         </resource>
+        
+<!-- ##################### USERS ##################### -->        
+        
+        <!-- update_profile -->
+        <resource path="/users">
+            <param name="Content-Type" required="true" type="xsd:string" style="header" default="application/json"></param>
+            <param name="Accept" required="true" type="xsd:string" style="header" default="application/json"></param>
+            
+            <param name="name" required="false" type="xsd:string" style="query"></param>
+            <param name="date_of_birth" required="false" type="xsd:date" style="query"></param>
+            <param name="city" required="false" type="xsd:date" style="query"></param>
+            <param name="photo_url" required="false" type="xsd:string" style="query"></param>
+            
+            <method id="update_profile" name="PUT" apigee:displayName="Update Profile">
+                <apigee:tags>
+                    <apigee:tag primary="true">Users</apigee:tag>
+                </apigee:tags>
+                <apigee:authentication required="true"/>
+                <doc apigee:url="http://api.mydomain.com/doc/my-method">update_profile</doc>
+            </method>
+        </resource>
 
 <!-- ##################### CATEGORIES ##################### -->        
         
