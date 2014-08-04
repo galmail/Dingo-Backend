@@ -62,7 +62,7 @@
             <param name="city" required="false" type="xsd:date" style="query"></param>
             <param name="photo_url" required="false" type="xsd:string" style="query"></param>
             
-            <method id="update_profile" name="PUT" apigee:displayName="Update Profile">
+            <method id="update_profile" name="POST" apigee:displayName="Update Profile">
                 <apigee:tags>
                     <apigee:tag primary="true">Users</apigee:tag>
                 </apigee:tags>

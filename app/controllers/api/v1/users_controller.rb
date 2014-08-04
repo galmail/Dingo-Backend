@@ -1,7 +1,7 @@
 class Api::V1::UsersController < Api::BaseController
   
   # Update User's Profile
-  def update
+  def create
     puts "updating user..."
     user_data = params.permit(:name,:photo_url,:date_of_birth,:city)
     current_user.update_all(user_data)
