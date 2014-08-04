@@ -39,6 +39,12 @@ Rails.application.routes.draw do
       resources :categories, defaults: {format: :json}
       resources :messages, defaults: {format: :json}
       resources :offers, defaults: {format: :json}
+      
+      
+      namespace :payments do
+        post  'store_credit_card'
+        get   'verify_credit_card'
+      end
     end
   end
 

@@ -135,6 +135,14 @@ GEM
       activesupport (>= 3.0.0)
       cocaine (~> 0.5.3)
       mime-types
+    paypal-sdk-adaptivepayments (1.110.0)
+      paypal-sdk-core (~> 0.2.3)
+    paypal-sdk-core (0.2.10)
+      multi_json (~> 1.0)
+      xml-simple
+    paypal-sdk-rest (0.6.1)
+      paypal-sdk-core (~> 0.2.8)
+      uuidtools (~> 2.1)
     pg (0.17.1)
     polyamorous (1.0.0)
       activerecord (>= 3.0)
@@ -217,8 +225,10 @@ GEM
       kgio (~> 2.6)
       rack
       raindrops (~> 0.7)
+    uuidtools (2.1.4)
     warden (1.2.3)
       rack (>= 1.0)
+    xml-simple (1.1.4)
 
 PLATFORMS
   ruby
@@ -235,6 +245,8 @@ DEPENDENCIES
   jbuilder (~> 2.0)
   jquery-ui-rails (~> 4.2.1)
   paperclip
+  paypal-sdk-adaptivepayments
+  paypal-sdk-rest
   pg
   pushmeup
   rails (= 4.1.4)

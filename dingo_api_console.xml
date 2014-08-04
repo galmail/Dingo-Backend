@@ -333,6 +333,30 @@
                 <doc apigee:url="http://api.mydomain.com/doc/my-method">accept_offer</doc>
             </method>
         </resource>
+        
+<!-- ##################### PAYMENTS ##################### -->        
+
+        <!-- store_credit_card -->
+        <resource path="/api/v1/payments/store_credit_card">
+            <param name="Content-Type" required="true" type="xsd:string" style="header" default="application/json"></param>
+            <param name="Accept" required="true" type="xsd:string" style="header" default="application/json"></param>
+            
+            <param name="type" required="true" type="xsd:string" style="query" default="visa"></param>
+            <param name="number" required="true" type="xsd:string" style="query" default="4417119669820331"></param>
+            <param name="expire_month" required="true" type="xsd:string" style="query" default="11"></param>
+            <param name="expire_year" required="true" type="xsd:string" style="query" default="2018"></param>
+            <param name="cvv2" required="true" type="xsd:string" style="query" default="874"></param>
+            <param name="first_name" required="true" type="xsd:string" style="query" default="Joe"></param>
+            <param name="last_name" required="true" type="xsd:string" style="query" default="Shopper"></param>
+            
+            <method id="store_credit_card" name="POST" apigee:displayName="Store Credit Card">
+                <apigee:tags>
+                    <apigee:tag primary="true">Payments</apigee:tag>
+                </apigee:tags>
+                <apigee:authentication required="true"/>
+                <doc apigee:url="http://api.mydomain.com/doc/my-method">store_credit_card</doc>
+            </method>
+        </resource>
 
     </resources>
 

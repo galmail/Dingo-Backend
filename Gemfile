@@ -63,4 +63,6 @@ gem 'pushmeup'
 
 gem 'figaro'
 
+gem 'paypal-sdk-rest'
+gem 'paypal-sdk-adaptivepayments'
 

@@ -1,6 +1,6 @@
 ActiveAdmin.register User do
   config.filters = false
-  permit_params :email, :password, :name, :date_of_birth, :city, :photo_url
+  permit_params :email, :password, :name, :date_of_birth, :city, :photo_url, :credit_card_id
   
   index do
     column :email
