@@ -22,13 +22,6 @@ class RegistrationsController < Devise::RegistrationsController
     end
   end
   
-  # Update User's Profile
-  def update
-    user_data = params.permit(:name,:photo_url,:date_of_birth,:city)
-    current_user.update_all(user_data)
-    render :json => user.as_json
-  end
-  
   private
   
   def verify_params
