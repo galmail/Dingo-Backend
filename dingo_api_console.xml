@@ -334,6 +334,31 @@
             </method>
         </resource>
         
+<!-- ##################### DEVICES ##################### -->        
+        
+        <!-- register_device -->
+        <resource path="/api/v1/devices">
+            <param name="Content-Type" required="true" type="xsd:string" style="header" default="application/json"></param>
+            <param name="Accept" required="true" type="xsd:string" style="header" default="application/json"></param>
+            
+            <param name="uid" required="false" type="xsd:string" style="query"></param>
+            <param name="brand" required="false" type="xsd:string" style="query"></param>
+            <param name="model" required="false" type="xsd:string" style="query"></param>
+            <param name="os" required="false" type="xsd:string" style="query"></param>
+            <param name="app_version" required="false" type="xsd:string" style="query"></param>
+            <param name="mobile_number" required="false" type="xsd:string" style="query"></param>
+            <param name="ip" required="false" type="xsd:string" style="query"></param>
+            <param name="location" required="false" type="xsd:string" style="query"></param>
+            
+            <method id="register_device" name="POST" apigee:displayName="Register Device">
+                <apigee:tags>
+                    <apigee:tag primary="true">Devices</apigee:tag>
+                </apigee:tags>
+                <apigee:authentication required="true"/>
+                <doc apigee:url="http://api.mydomain.com/doc/my-method">register_device</doc>
+            </method>
+        </resource>
+        
 <!-- ##################### PAYMENTS ##################### -->        
 
         <!-- store_credit_card -->
@@ -357,6 +382,26 @@
                 <doc apigee:url="http://api.mydomain.com/doc/my-method">store_credit_card</doc>
             </method>
         </resource>
+        
+        <!-- authorize_payment -->
+        <resource path="/api/v1/payments/authorize_payment">
+            <param name="Content-Type" required="true" type="xsd:string" style="header" default="application/json"></param>
+            <param name="Accept" required="true" type="xsd:string" style="header" default="application/json"></param>
+            
+            <param name="offer_id" required="false" type="xsd:string" style="query" default=""></param>
+            <param name="ticket_id" required="false" type="xsd:string" style="query" default=""></param>
+            <param name="num_tickets" required="false" type="xsd:string" style="query" default=""></param>
+            
+            <method id="authorize_payment" name="POST" apigee:displayName="Authorize Payment">
+                <apigee:tags>
+                    <apigee:tag primary="true">Payments</apigee:tag>
+                </apigee:tags>
+                <apigee:authentication required="true"/>
+                <doc apigee:url="http://api.mydomain.com/doc/my-method">authorize_payment</doc>
+            </method>
+        </resource>
+        
+
 
     </resources>
 
