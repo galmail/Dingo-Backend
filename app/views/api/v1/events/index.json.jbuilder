@@ -5,6 +5,7 @@ json.events @events do |event|
   json.description event.description
   json.category_id event.category.id
   json.date event.date
+  json.end_date event.end_date
   json.featured event.featured
   json.address event.address
   json.postcode event.postcode
