@@ -11,9 +11,9 @@ class RegistrationsController < Devise::RegistrationsController
       if params.has_key?(:device_uid)
         device = Device.new(device_params)
         device.user_id = user.id
-        #user.devices.add(device)
         device.save
       end
+      UserNotifier.send_signup_email(user).deliver
       user.save
       render :json => user.as_json(:auth_token=>user.authentication_token, :email=>user.email), status: :created
     else
