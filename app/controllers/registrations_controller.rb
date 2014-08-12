@@ -26,11 +26,11 @@ class RegistrationsController < Devise::RegistrationsController
   
   def verify_params
     params.require(:email)
-    params.permit(:email,:password,:name,:photo_url,:date_of_birth,:city,:device_uid,:device_brand,:device_model,:device_os,:device_app_version,:device_mobile_number,:device_location,:device_ip)
+    params.permit(:email,:password,:name,:surname,:photo_url,:date_of_birth,:city,:device_uid,:device_brand,:device_model,:device_os,:device_app_version,:device_mobile_number,:device_location,:device_ip)
   end
   
   def user_params
-    params.permit(:email,:password,:name,:photo_url,:date_of_birth,:city)
+    params.permit(:email,:password,:name,:surname,:photo_url,:date_of_birth,:city)
   end
   
   def device_params

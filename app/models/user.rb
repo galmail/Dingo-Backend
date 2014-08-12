@@ -21,6 +21,7 @@
 #  city                   :string(255)
 #  photo_url              :string(255)
 #  credit_card_id         :string(255)
+#  surname                :string(255)
 #
 
 class User < ActiveRecord::Base
