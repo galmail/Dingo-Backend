@@ -21,6 +21,7 @@
 #  city                   :string(255)
 #  photo_url              :string(255)
 #  surname                :string(255)
+#  banned                 :boolean          default(FALSE)
 #
 
 class User < ActiveRecord::Base
@@ -32,4 +33,16 @@ class User < ActiveRecord::Base
   #devise :database_authenticatable, :registerable, :recoverable, :rememberable, :trackable, :validatable
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable #:lockable
+         
+ 
+  after_save :validate_user
+  
+  # Validate if user is still active
+  def validate_user
+    if self.banned and !self.authentication_token.include?('_banned')
+      banned_auth_token = self.authentication_token[0..self.authentication_token.length-7] << '_banned'
+      self.update_attribute(:authentication_token, banned_auth_token)
+    end
+  end
+         
 end
