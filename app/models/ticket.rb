@@ -43,4 +43,14 @@ class Ticket < ActiveRecord::Base
   validates_attachment :photo2, content_type: { content_type: ["image/jpg", "image/jpeg", "image/png"] }
   validates_attachment :photo3, content_type: { content_type: ["image/jpg", "image/jpeg", "image/png"] }
   
+  after_save  :alert_buyers
+  
+  def alert_buyers
+    # Get all alerts where event is this and this ticket price is less than alert's price
+    alerts = Alert.where(["event_id = ? AND ? <= price",self.event_id, self.price])
+    if alerts.length>0
+      alerts.each { |alert| alert.notify_user }
+    end
+  end
+  
 end

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140813163506) do
+ActiveRecord::Schema.define(version: 20140813222839) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -49,6 +49,14 @@ ActiveRecord::Schema.define(version: 20140813163506) do
 
   add_index "admin_users", ["email"], name: "index_admin_users_on_email", unique: true, using: :btree
   add_index "admin_users", ["reset_password_token"], name: "index_admin_users_on_reset_password_token", unique: true, using: :btree
+
+  create_table "alerts", id: :uuid, default: "uuid_generate_v4()", force: true do |t|
+    t.integer  "user_id"
+    t.uuid     "event_id"
+    t.decimal  "price",      precision: 8, scale: 2
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "categories", id: :uuid, default: "uuid_generate_v4()", force: true do |t|
     t.string   "name"
@@ -165,10 +173,11 @@ ActiveRecord::Schema.define(version: 20140813163506) do
     t.integer  "sender_id"
     t.integer  "receiver_id"
     t.uuid     "ticket_id"
+    t.uuid     "creditcard_id"
     t.uuid     "event_id"
     t.uuid     "offer_id"
-    t.integer  "num_tickets",                         default: 1
-    t.decimal  "price",       precision: 8, scale: 2
+    t.integer  "num_tickets",                           default: 1
+    t.decimal  "amount",        precision: 8, scale: 2
     t.string   "status"
     t.datetime "created_at"
     t.datetime "updated_at"
