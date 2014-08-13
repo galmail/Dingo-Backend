@@ -7,11 +7,30 @@ class Api::V1::PaymentsController < Api::BaseController
   def store_credit_card
     card_params = params.permit(:type,:number,:expire_month,:expire_year,:cvv2,:first_name,:last_name)
     @credit_card = PayPal::SDK::REST::CreditCard.new(card_params)
-    
     if @credit_card.create
       logger.info "CreditCard[#{@credit_card.id}] created successfully"
-      current_user.update_attributes({credit_card_id: @credit_card.id})
-      render :json => {success: true, credit_card_id: @credit_card.id}
+      if params[:first_name].present?
+        params[:first_name] = URI.unescape(params[:first_name])
+      else
+        params[:first_name] = ""
+      end
+      if params[:last_name].present?
+        params[:last_name] = URI.unescape(params[:last_name])
+      else
+        params[:last_name] = ""
+      end
+      name_on_card = "#{params[:first_name]} #{params[:last_name]}"
+      card_number = params[:number]
+      card = Creditcard.new({
+        :user_id => current_user.id,
+        :paypal_card_id => @credit_card.id,
+        :name_on_card => name_on_card,
+        :card_type => params[:type],
+        :last_4_digits => card_number[card_number.length-4..card_number.length]
+      })
+      if card.save
+        render :json => {success: true, credit_card_id: @credit_card.id}
+      end
     else
       logger.error "Error while creating CreditCard:"
       logger.error @credit_card.error.inspect
@@ -23,7 +42,7 @@ class Api::V1::PaymentsController < Api::BaseController
   # Verify User's Credit Card
   def verify_credit_card
     begin
-      @credit_card = PayPal::SDK::REST::CreditCard.find(current_user.credit_card_id)
+      @credit_card = PayPal::SDK::REST::CreditCard.find(current_user.creditcards.first.paypal_card_id)
       logger.info "Got CreditCard[#{@credit_card.id}]"
       render :json => {success: true, credit_card_id: @credit_card.id}
     rescue ResourceNotFound => err
@@ -34,7 +53,7 @@ class Api::V1::PaymentsController < Api::BaseController
   
   def authorize_payment
     params.permit(:ticket_id,:num_tickets,:offer_id)
-    @credit_card = PayPal::SDK::REST::CreditCard.find(current_user.credit_card_id)
+    @credit_card = PayPal::SDK::REST::CreditCard.find(current_user.creditcards.first.paypal_card_id)
     if params.has_key?(:ticket_id)
       @ticket = Ticket.find(params[:ticket_id])
       @ticket_name = "Ticket to #{@ticket.event.name}"
