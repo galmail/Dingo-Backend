@@ -7,6 +7,6 @@ class AddCategoryToEvents < ActiveRecord::Migration
   end
   
   def down
-    remove_column :events, :category_id
+    remove_column :events, :category_id, :uuid
   end
 end

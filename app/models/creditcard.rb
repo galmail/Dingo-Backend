@@ -2,7 +2,7 @@
 #
 # Table name: creditcards
 #
-#  id             :integer          not null, primary key
+#  id             :uuid             not null, primary key
 #  user_id        :integer
 #  paypal_card_id :string(255)
 #  name_on_card   :string(255)

@@ -1,6 +1,6 @@
 class CreateCreditcards < ActiveRecord::Migration
   def change
-    create_table :creditcards do |t|
+    create_table :creditcards, id: :uuid do |t|
       t.references  :user
       t.string      :paypal_card_id
       t.string      :name_on_card

@@ -8,10 +8,10 @@ class AddInfoToUsers < ActiveRecord::Migration
   end
   
   def self.down
-    remove_column :users, :name
-    remove_column :users, :date_of_birth
-    remove_column :users, :city
-    remove_column :users, :photo_url
+    remove_column :users, :name, :string
+    remove_column :users, :date_of_birth, :date
+    remove_column :users, :city, :string
+    remove_column :users, :photo_url, :string
   end
   
 end

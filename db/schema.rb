@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140813150050) do
+ActiveRecord::Schema.define(version: 20140813163506) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -60,7 +60,7 @@ ActiveRecord::Schema.define(version: 20140813150050) do
     t.datetime "photo_updated_at"
   end
 
-  create_table "creditcards", force: true do |t|
+  create_table "creditcards", id: :uuid, default: "uuid_generate_v4()", force: true do |t|
     t.integer  "user_id"
     t.string   "paypal_card_id"
     t.string   "name_on_card"
@@ -160,6 +160,19 @@ ActiveRecord::Schema.define(version: 20140813150050) do
   end
 
   add_index "tickets", ["event_id"], name: "index_tickets_on_event_id", using: :btree
+
+  create_table "transactions", id: :uuid, default: "uuid_generate_v4()", force: true do |t|
+    t.integer  "sender_id"
+    t.integer  "receiver_id"
+    t.uuid     "ticket_id"
+    t.uuid     "event_id"
+    t.uuid     "offer_id"
+    t.integer  "num_tickets",                         default: 1
+    t.decimal  "price",       precision: 8, scale: 2
+    t.string   "status"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "users", force: true do |t|
     t.string   "email",                  default: "",    null: false
