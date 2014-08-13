@@ -30,6 +30,9 @@ class RegistrationsController < Devise::RegistrationsController
   end
   
   def user_params
+    params[:name] = URI.unescape(params[:name]) if params[:name].present?
+    params[:surname] = URI.unescape(params[:surname]) if params[:surname].present?
+    params[:city] = URI.unescape(params[:city]) if params[:city].present?
     params.permit(:email,:password,:name,:surname,:photo_url,:date_of_birth,:city)
   end
   

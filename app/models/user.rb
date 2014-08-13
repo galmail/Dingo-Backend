@@ -20,7 +20,6 @@
 #  date_of_birth          :date
 #  city                   :string(255)
 #  photo_url              :string(255)
-#  credit_card_id         :string(255)
 #  surname                :string(255)
 #
 
@@ -28,6 +27,7 @@ class User < ActiveRecord::Base
   acts_as_token_authenticatable
   has_many  :devices
   has_many  :tickets
+  has_many  :creditcards
   
   #devise :database_authenticatable, :registerable, :recoverable, :rememberable, :trackable, :validatable
   devise :database_authenticatable, :registerable,
