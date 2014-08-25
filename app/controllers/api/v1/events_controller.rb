@@ -31,6 +31,16 @@ class Api::V1::EventsController < Api::BaseController
         conditions << "#{get_city(params[:location])}"
       end
       
+      # search_events_by_date
+      if params.has_key?(:start_date)
+        query << and_query(query) << "date >= ?"
+        conditions << "#{params[:start_date]}"
+      end
+      if params.has_key?(:end_date)
+        query << and_query(query) << "date <= ?"
+        conditions << "#{params[:end_date]}"
+      end
+      
       @events = Event.where(filters).where(conditions.insert(0,query)).order('date ASC').limit(100)
       
     end

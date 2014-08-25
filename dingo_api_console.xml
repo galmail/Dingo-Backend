@@ -157,6 +157,24 @@
             </method>
         </resource>
         
+        <!-- search_events -->
+        <resource path="/api/v1/events?category_ids[]=03487377-4146-4067-a048-04859710b8c8">
+            <param name="Content-Type" required="true" type="xsd:string" style="header" default="application/json"></param>
+            <param name="Accept" required="true" type="xsd:string" style="header" default="application/json"></param>
+            <param name="name" required="false" type="xsd:string" style="query" default=""></param>
+            <param name="start_date" required="false" type="xsd:string" style="query" default=""></param>
+            <param name="end_date" required="false" type="xsd:string" style="query" default=""></param>
+            <param name="location" required="false" type="xsd:string" style="query" default="latitude,longitude"></param>
+            <param name="city" required="false" type="xsd:string" style="query" default="London"></param>
+            <method id="search_events" name="GET" apigee:displayName="Search Events">
+                <apigee:tags>
+                    <apigee:tag primary="true">Events</apigee:tag>
+                </apigee:tags>
+                <apigee:authentication required="true"/>
+                <doc apigee:url="http://api.mydomain.com/doc/my-method">search_events</doc>
+            </method>
+        </resource>
+        
         <!-- create_event -->
         <resource path="/api/v1/events">
             <param name="Content-Type" required="true" type="xsd:string" style="header" default="application/json"></param>
