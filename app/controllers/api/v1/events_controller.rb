@@ -38,7 +38,7 @@ class Api::V1::EventsController < Api::BaseController
       end
       if params.has_key?(:end_date)
         query << and_query(query) << "date <= ?"
-        conditions << "#{params[:end_date]}".to_date
+        conditions << ("#{params[:end_date]}".to_date + 1.day)
       end
       
       @events = Event.where(filters).where(conditions.insert(0,query)).order('date ASC').limit(100)
