@@ -37,7 +37,7 @@ class Api::V1::EventsController < Api::BaseController
         conditions << "#{params[:start_date]}".to_date
       end
       if params.has_key?(:end_date)
-        query << and_query(query) << "date <= ?"
+        query << and_query(query) << "date < ?"
         conditions << ("#{params[:end_date]}".to_date + 1.day)
       end
       

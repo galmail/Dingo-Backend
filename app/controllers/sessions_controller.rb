@@ -5,12 +5,14 @@ class SessionsController < Devise::RegistrationsController
   
   respond_to :json
   
+  # login method
   def new
     verify_params
     myuser = User.find_for_authentication({:email => params[:email]})
     if (myuser.valid_password? params[:password] or myuser.authentication_token==params[:auth_token]) and (!myuser.banned?)
       render :json => {
         :success => true,
+        :id => myuser.id,
         :name => myuser.name,
         :surname => myuser.surname,
         :email => params[:email],
