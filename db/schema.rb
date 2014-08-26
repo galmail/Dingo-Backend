@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140813222839) do
+ActiveRecord::Schema.define(version: 20140826152529) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -92,6 +92,7 @@ ActiveRecord::Schema.define(version: 20140813222839) do
     t.datetime "updated_at"
     t.string   "ip"
     t.string   "location"
+    t.boolean  "banned",        default: false
   end
 
   add_index "devices", ["user_id"], name: "index_devices_on_user_id", using: :btree

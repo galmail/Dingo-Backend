@@ -7,8 +7,6 @@ class Api::V1::DevicesController < Api::BaseController
       device = Device.new(device_params)
       device.user = current_user
       
-      
-      
       device = Device.find_or_initialize_by(uid: params[:uid])
       device.user = current_user
       if device.update(device_params)

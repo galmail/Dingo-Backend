@@ -26,9 +26,9 @@
 
 class User < ActiveRecord::Base
   acts_as_token_authenticatable
-  has_many  :devices
-  has_many  :tickets
-  has_many  :creditcards
+  has_many  :devices, :dependent => :delete_all
+  has_many  :tickets, :dependent => :delete_all
+  has_many  :creditcards, :dependent => :delete_all
   
   #devise :database_authenticatable, :registerable, :recoverable, :rememberable, :trackable, :validatable
   devise :database_authenticatable, :registerable,
@@ -42,6 +42,10 @@ class User < ActiveRecord::Base
     if self.banned and !self.authentication_token.include?('_banned')
       banned_auth_token = self.authentication_token[0..self.authentication_token.length-7] << '_banned'
       self.update_attribute(:authentication_token, banned_auth_token)
+      # also ban his devices
+      self.devices.each { |device|
+        device.update_attribute(:banned,true)
+      }
     end
   end
          
