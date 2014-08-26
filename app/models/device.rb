@@ -19,6 +19,15 @@
 
 class Device < ActiveRecord::Base
   belongs_to  :user
-  validates :user_id, :uid, presence: true
-  validates :uid, uniqueness: true
+  validates   :user_id, :uid, presence: true
+  validates   :uid, uniqueness: true
+  
+  after_save :validate_device
+  
+  def validate_device
+    if self.banned and !self.user.banned
+      self.user.update_attribute(:banned,true)
+    end
+  end
+  
 end

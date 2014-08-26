@@ -46,6 +46,14 @@ class User < ActiveRecord::Base
       self.devices.each { |device|
         device.update_attribute(:banned,true)
       }
+    elsif !self.banned and self.authentication_token.include?('_banned')
+      # unban user
+      unbanned_auth_token = self.authentication_token[0..self.authentication_token.length-7] << rand(36**7).to_s(36)
+      self.update_attribute(:authentication_token, unbanned_auth_token)
+      # also unban his devices
+      self.devices.each { |device|
+        device.update_attribute(:banned,false)
+      }
     end
   end
          
