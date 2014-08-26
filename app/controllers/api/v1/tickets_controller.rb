@@ -11,8 +11,8 @@ class Api::V1::TicketsController < Api::BaseController
       end
       
       # get_tickets_by_user
-      if params.has_key?(:auth_token)
-        filters[:user_id] = User.where(authentication_token: params[:auth_token])
+      if params.has_key?(:user_token)
+        filters[:user_id] = User.where(authentication_token: params[:user_token]).first.id
       end
       
       @tickets = Ticket.where(filters).where(conditions).order('price ASC').limit(100)
