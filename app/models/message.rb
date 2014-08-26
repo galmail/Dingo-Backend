@@ -15,8 +15,10 @@ class Message < ActiveRecord::Base
   belongs_to  :receiver, :class_name => 'User'
   
   def notify
-    device_token = User.find(self.receiver_id).devices.first.uid
-    APNS.send_notification(device_token, self.content)
+    msg = "#{self.sender.name}: #{self.content}"
+    User.find(self.receiver_id).devices.each { |device|
+      APNS.send_notification(device.uid, msg)
+    }
   end
   
 end

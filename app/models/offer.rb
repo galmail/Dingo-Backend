@@ -21,13 +21,22 @@ class Offer < ActiveRecord::Base
   belongs_to  :ticket
   
   def notify
-    device_token = User.find(self.receiver_id).devices.first.uid
-    APNS.send_notification(device_token, self.price)
+    msg = "#{self.sender.name} offers you #{self.price} for #{self.num_tickets} ticket to #{self.ticket.event.name}"
+    User.find(self.receiver_id).devices.each { |device|
+      APNS.send_notification(device.uid, msg)
+    }
   end
   
   def notify_back
-    device_token = User.find(self.sender_id).devices.first.uid
-    APNS.send_notification(device_token, self.price)
+    accepted_msg = "Congrats! #{self.receiver.name} has accepted your offer"
+    rejected_msg = "#{self.receiver.name} has declined your offer"
+    User.find(self.sender_id).devices.each { |device|
+      if self.accepted
+        APNS.send_notification(device.uid, accepted_msg)
+      elsif self.rejected
+        APNS.send_notification(device.uid, rejected_msg)
+      end
+    }
   end
   
 end
