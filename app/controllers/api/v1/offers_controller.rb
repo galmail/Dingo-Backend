@@ -6,15 +6,13 @@ class Api::V1::OffersController < Api::BaseController
     conditions = []
     filters = {}
     
-    if !params.has_key?(:user_token) or (params.has_key?(:user_token) and params[:user_token]==current_user.authentication_token)
-      puts "debugging AAAAAAAAA"
+    if !params.has_key?(:auth_token)
       query << and_query(query) << "(sender_id = ? OR receiver_id = ?)"
       conditions << current_user.id
       conditions << current_user.id
-    elsif params.has_key?(:user_token)
-      puts "debugging BBBBBBBB"
+    elsif params.has_key?(:auth_token)
       query << and_query(query) << "(sender_id = ? OR receiver_id = ?)"
-      user = User.find_for_authentication({:authentication_token => params[:user_token]})
+      user = User.find_for_authentication({:authentication_token => params[:auth_token]})
       conditions << user.id
       conditions << user.id
     end
@@ -27,7 +25,7 @@ class Api::V1::OffersController < Api::BaseController
       filters[:receiver_id] = params[:receiver_id]
     end
 
-    @offers = Offer.where(filters).where(conditions).order('created_at DESC').limit(100)
+    @offers = Offer.where(filters).where(conditions.insert(0,query)).order('created_at DESC').limit(100)
   end
 
   # Send Offer
