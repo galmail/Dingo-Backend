@@ -7,12 +7,16 @@ class Api::V1::OffersController < Api::BaseController
     filters = {}
     
     if !params.has_key?(:user_token) or (params.has_key?(:user_token) and params[:user_token]==current_user.authentication_token)
+      puts "debugging AAAAAAAAA"
       query << and_query(query) << "(sender_id = ? OR receiver_id = ?)"
       conditions << current_user.id
       conditions << current_user.id
     elsif params.has_key?(:user_token)
+      puts "debugging BBBBBBBB"
       query << and_query(query) << "(sender_id = ? OR receiver_id = ?)"
-      conditions << User.find_for_authentication({:authentication_token => params[:user_token]})
+      user = User.find_for_authentication({:authentication_token => params[:user_token]})
+      conditions << user.id
+      conditions << user.id
     end
 
     if params.has_key?(:sender_id)
