@@ -13,6 +13,7 @@ json.tickets @tickets do |ticket|
   json.number_of_tickets ticket.number_of_tickets
   json.face_value_per_ticket ticket.face_value_per_ticket
   json.ticket_type ticket.ticket_type
+  json.number_of_offers ticket.offers.count
   json.photo1_thumb ticket.photo1(:thumb) if ticket.photo1.present?
   json.photo1_large ticket.photo1(:large) if ticket.photo1.present?
   json.photo2_thumb ticket.photo1(:thumb) if ticket.photo2.present?
