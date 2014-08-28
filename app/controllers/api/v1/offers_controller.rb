@@ -4,6 +4,7 @@ class Api::V1::OffersController < Api::BaseController
   def index
     query = ""
     conditions = []
+    filters = {}
     
     if !params.has_key?(:user_token) or (params.has_key?(:user_token) and params[:user_token]==current_user.authentication_token)
       query << and_query(query) << "(sender_id = ? OR receiver_id = ?)"
