@@ -40,7 +40,7 @@ class Api::V1::TicketsController < Api::BaseController
     # Update Ticket
     def update
       params.require(:id)
-      ticket_params = params.permit(:price, :seat_type, :ticket_type, :description, :photo1, :photo2, :photo3, :delivery_options, :payment_options, :number_of_tickets, :face_value_per_ticket)
+      ticket_params = params.permit(:price, :seat_type, :ticket_type, :description, :photo1, :photo2, :photo3, :delivery_options, :payment_options, :number_of_tickets, :face_value_per_ticket, :available)
       
       params[:photo1].content_type=params[:photo1].content_type.split(";")[0].strip if params[:photo1].present?
       params[:photo2].content_type=params[:photo2].content_type.split(";")[0].strip if params[:photo2].present?

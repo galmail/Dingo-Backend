@@ -237,6 +237,7 @@
             <param name="payment_options" required="false" type="xsd:string" style="query" default=""></param>
             <param name="number_of_tickets" required="false" type="xsd:integer" style="query" default=""></param>
             <param name="face_value_per_ticket" required="false" type="xsd:double" style="query" default=""></param>
+            <param name="available" required="false" type="xsd:boolean" style="query" default="true"></param>
             
             <method id="update_ticket" name="PUT" apigee:displayName="Update Ticket">
                 <apigee:tags>
