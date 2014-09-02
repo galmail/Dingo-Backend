@@ -267,7 +267,7 @@
         <resource path="/api/v1/tickets">
             <param name="Content-Type" required="true" type="xsd:string" style="header" default="application/json"></param>
             <param name="Accept" required="true" type="xsd:string" style="header" default="application/json"></param>
-            <param name="user_token" required="true" type="xsd:string" style="query" default=""></param>
+            <param name="auth_token" required="true" type="xsd:string" style="query" default=""></param>
             <method id="get_tickets_by_user" name="GET" apigee:displayName="Get Tickets By User">
                 <apigee:tags>
                     <apigee:tag primary="true">Tickets</apigee:tag>
