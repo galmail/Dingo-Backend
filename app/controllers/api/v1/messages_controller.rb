@@ -3,6 +3,7 @@ class Api::V1::MessagesController < Api::BaseController
   def index
     query = ""
     conditions = []
+    filters = {}
 
     if params.has_key?(:sender_id)
       filters[:sender_id] = params[:sender_id]
@@ -25,7 +26,7 @@ class Api::V1::MessagesController < Api::BaseController
       conditions << "%#{params[:content]}%"
     end
 
-    @messages = Message.where(filters).where(conditions).order('created_at DESC').limit(100)
+    @messages = Message.where(filters).where(conditions.insert(0,query)).order('created_at DESC').limit(100)
   end
 
   # Send Message
