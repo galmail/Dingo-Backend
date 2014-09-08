@@ -8,10 +8,10 @@ test: &default
   mode: ENV['PAYPAL_MODE']
 
   # Credentials for Classic APIs
-  app_id: APP-80W284485P519543T
-  username: jb-us-seller_api1.paypal.com
-  password: WX4WTU3S8MY44S7F
-  signature: AFcWxV21C7fd0v3bYYYRCpSSRl31A7yDhhsPUU2XhtMoZXsWHFxu-RWy
+  app_id: ENV['PAYPAL_APP_ID']
+  username: ENV['PAYPAL_USERNAME']
+  password: ENV['PAYPAL_PASSWORD']
+  signature: ENV['PAYPAL_SIGNATURE']
   # # With Certificate
   # cert_path: "config/cert_key.pem"
   sandbox_email_address: Platform.sdk.seller@gmail.com
