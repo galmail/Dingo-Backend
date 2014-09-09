@@ -16,7 +16,10 @@ class SessionsController < Devise::RegistrationsController
         :name => myuser.name,
         :surname => myuser.surname,
         :email => params[:email],
-        :auth_token => myuser.authentication_token
+        :auth_token => myuser.authentication_token,
+        :allow_dingo_emails => myuser.allow_dingo_emails,
+        :allow_push_notifications => myuser.allow_push_notifications,
+        :fb_id => myuser.fb_id
       }
     else
       render :json => { :success => false }, status: :unauthorized
