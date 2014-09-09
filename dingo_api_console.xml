@@ -18,6 +18,9 @@
             <param name="date_of_birth" required="false" type="xsd:date" style="query"></param>
             <param name="city" required="false" type="xsd:date" style="query"></param>
             <param name="photo_url" required="false" type="xsd:string" style="query"></param>
+            <param name="allow_dingo_emails" required="false" type="xsd:boolean" style="query"></param>
+            <param name="allow_push_notifications" required="false" type="xsd:boolean" style="query"></param>
+            <param name="fb_id" required="false" type="xsd:string" style="query"></param>
             <param name="device_uid" required="false" type="xsd:string" style="query"></param>
             <param name="device_brand" required="false" type="xsd:string" style="query"></param>
             <param name="device_model" required="false" type="xsd:string" style="query"></param>
@@ -332,7 +335,7 @@
         <resource path="/api/v1/offers">
             <param name="Content-Type" required="true" type="xsd:string" style="header" default="application/json"></param>
             <param name="Accept" required="true" type="xsd:string" style="header" default="application/json"></param>
-            <param name="ticket_id" required=true type="xsd:string" style="query" default=""></param>
+            <param name="ticket_id" required="true" type="xsd:string" style="query" default=""></param>
             <param name="receiver_id" required="true" type="xsd:string" style="query" default=""></param>
             <param name="num_tickets" required="true" type="xsd:integer" style="query" default="1"></param>
             <param name="price" required="true" type="xsd:double" style="query" default=""></param>

@@ -33,7 +33,7 @@ class RegistrationsController < Devise::RegistrationsController
     params[:name] = URI.unescape(params[:name]) if params[:name].present?
     params[:surname] = URI.unescape(params[:surname]) if params[:surname].present?
     params[:city] = URI.unescape(params[:city]) if params[:city].present?
-    params.permit(:email,:password,:name,:surname,:photo_url,:date_of_birth,:city)
+    params.permit(:email,:password,:name,:surname,:photo_url,:date_of_birth,:city,:allow_push_notifications,:allow_dingo_emails,:fb_id)
   end
   
   def device_params
