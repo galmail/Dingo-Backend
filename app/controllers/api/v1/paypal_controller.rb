@@ -6,5 +6,4 @@ class Api::V1::PaypalController < ApplicationController
     render :json => params.as_json
   end
   
-  
 end

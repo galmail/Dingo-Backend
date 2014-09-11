@@ -45,6 +45,7 @@ Rails.application.routes.draw do
         post  'store_credit_card'
         get   'verify_credit_card'
         post  'authorize_payment'
+        post  'buy_ticket'
       end
       
       match "/paypal" => "paypal#index", via: [:get, :post]

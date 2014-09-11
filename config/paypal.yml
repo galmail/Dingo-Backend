@@ -14,7 +14,7 @@ test: &default
   signature: ENV['PAYPAL_SIGNATURE']
   # # With Certificate
   # cert_path: "config/cert_key.pem"
-  sandbox_email_address: Platform.sdk.seller@gmail.com
+  #sandbox_email_address: Platform.sdk.seller@gmail.com
 
   # # IP Address
   # ip_address: 127.0.0.1
