@@ -47,7 +47,7 @@ class Api::V1::TicketsController < Api::BaseController
       params[:photo3].content_type=params[:photo3].content_type.split(";")[0].strip if params[:photo3].present?
       
       ticket = Ticket.find(params[:id])
-      ticket.update_all(ticket_params)
+      ticket.update_attributes(ticket_params)
       render :json => ticket.as_json, status: :ok
     end
     
