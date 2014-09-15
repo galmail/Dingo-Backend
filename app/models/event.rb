@@ -34,16 +34,18 @@ class Event < ActiveRecord::Base
   
   def min_price
     price = 0
-    if self.tickets.length>0
-      price = self.tickets.min_by { |ticket| ticket.price if ticket.available }.price
+    current_tickets = self.tickets.select { |ticket| ticket.available? }
+    if current_tickets.length>0
+      price = self.tickets.min_by{ |ticket| ticket.price }.price
     end
     price.to_s
   end
   
   def available_tickets
     total = 0
-    if self.tickets.length>0
-      total = self.tickets.inject(0) { |sum,ticket| sum + ticket.number_of_tickets if ticket.available }
+    current_tickets = self.tickets.select { |ticket| ticket.available? }
+    if current_tickets.length>0
+      total = current_tickets.inject(0) { |sum,ticket| sum + ticket.number_of_tickets }
     end
     total.to_s
   end
