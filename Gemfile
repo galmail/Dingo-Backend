@@ -62,6 +62,7 @@ gem 'geocoder'
 gem 'pushmeup'
 
 gem 'figaro'
+gem 'settingslogic'
 
 gem 'paypal-sdk-rest'
 gem 'paypal-sdk-adaptivepayments'

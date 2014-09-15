@@ -40,15 +40,19 @@ Rails.application.routes.draw do
       resources :messages, defaults: {format: :json}
       resources :offers, defaults: {format: :json}
       resources :devices, defaults: {format: :json}
+      resources :orders, defaults: {format: :json}
       
       namespace :payments do
         post  'store_credit_card'
         get   'verify_credit_card'
         post  'authorize_payment'
-        post  'buy_ticket'
       end
       
-      match "/paypal" => "paypal#index", via: [:get, :post]
+      namespace :paypal do
+        get  'success'
+        get  'cancel'
+        get  'notification'
+      end
       
     end
   end
