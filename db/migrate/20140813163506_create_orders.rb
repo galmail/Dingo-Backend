@@ -1,6 +1,6 @@
-class CreateTransactions < ActiveRecord::Migration
+class CreateOrders < ActiveRecord::Migration
   def change
-    create_table :transactions, id: :uuid do |t|
+    create_table :orders, id: :uuid do |t|
       t.references  :sender
       t.references  :receiver
       t.uuid        :ticket_id

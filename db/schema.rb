@@ -140,6 +140,20 @@ ActiveRecord::Schema.define(version: 20140909160245) do
     t.datetime "updated_at"
   end
 
+  create_table "orders", id: :uuid, default: "uuid_generate_v4()", force: true do |t|
+    t.integer  "sender_id"
+    t.integer  "receiver_id"
+    t.uuid     "ticket_id"
+    t.uuid     "creditcard_id"
+    t.uuid     "event_id"
+    t.uuid     "offer_id"
+    t.integer  "num_tickets",                           default: 1
+    t.decimal  "amount",        precision: 8, scale: 2
+    t.string   "status"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
   create_table "tickets", id: :uuid, default: "uuid_generate_v4()", force: true do |t|
     t.integer  "user_id"
     t.uuid     "event_id"
@@ -169,20 +183,6 @@ ActiveRecord::Schema.define(version: 20140909160245) do
   end
 
   add_index "tickets", ["event_id"], name: "index_tickets_on_event_id", using: :btree
-
-  create_table "transactions", id: :uuid, default: "uuid_generate_v4()", force: true do |t|
-    t.integer  "sender_id"
-    t.integer  "receiver_id"
-    t.uuid     "ticket_id"
-    t.uuid     "creditcard_id"
-    t.uuid     "event_id"
-    t.uuid     "offer_id"
-    t.integer  "num_tickets",                           default: 1
-    t.decimal  "amount",        precision: 8, scale: 2
-    t.string   "status"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
 
   create_table "users", force: true do |t|
     t.string   "email",                    default: "",    null: false

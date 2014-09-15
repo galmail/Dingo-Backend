@@ -1,6 +1,6 @@
 # == Schema Information
 #
-# Table name: transactions
+# Table name: orders
 #
 #  id            :uuid             not null, primary key
 #  sender_id     :integer
@@ -16,7 +16,7 @@
 #  updated_at    :datetime
 #
 
-class Transaction < ActiveRecord::Base
+class Order < ActiveRecord::Base
   
   belongs_to  :sender, :class_name => 'User'
   belongs_to  :receiver, :class_name => 'User'
@@ -27,39 +27,39 @@ class Transaction < ActiveRecord::Base
   #TODO Not implemented yet
   def release_payment
     
-    # Step 1: Set the transaction status as "successful".
+    # Step 1: Set the order status as "successful".
     # Step 2: Send money to seller and the commision to dingo.
-    # Step 3: Notify Dingo by email about the transaction.
-    # Step 4: Notify the buyer and the seller by email about the transaction.
+    # Step 3: Notify Dingo by email about the order.
+    # Step 4: Notify the buyer and the seller by email about the order.
     
   end
   
   #TODO Not implemented yet
   def abort_payment
     
-    # Step 1: Set the transaction status as "failed".
+    # Step 1: Set the order status as "failed".
     # Step 2: Set the reason of failure: eg. ticket already sold on other website, fake ticket, not delivered on time.
     # Step 3: Send money back to the buyer.
-    # Step 4: Notify Dingo by email about the transaction.
-    # Step 5: Notify the buyer and the seller by email about the transaction.
+    # Step 4: Notify Dingo by email about the order.
+    # Step 5: Notify the buyer and the seller by email about the order.
     
   end
   
   #TODO Not implemented yet
   def open_dispute
     
-    # Step 1: Set the transaction status as "dispute".
+    # Step 1: Set the order status as "dispute".
     # Step 2: Get explanation from both buyer and seller.
-    # Step 3: Send Paypal the disputed transaction.
-    # Step 4: Notify Dingo by email about the transaction.
-    # Step 5: Notify the buyer and the seller by email about the transaction.
+    # Step 3: Send Paypal the disputed order.
+    # Step 4: Notify Dingo by email about the order.
+    # Step 5: Notify the buyer and the seller by email about the order.
     
   end
   
   #TODO Not implemented yet
   def close_dispute
     
-    # Step 1: Set the transaction status as "resolved".
+    # Step 1: Set the order status as "resolved".
     # Step 2: Either release or abort the payment.
     
   end

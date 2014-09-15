@@ -79,7 +79,7 @@ class Api::V1::PaymentsController < Api::BaseController
       # :payer => {
         # :payment_method => "credit_card",
         # :funding_instruments => []},
-      # :transactions => [{
+      # :orders => [{
         # :item_list => {
           # :items => [{
             # :name => @ticket_name,
@@ -99,7 +99,7 @@ class Api::V1::PaymentsController < Api::BaseController
     # # Create Payment and return the status(true or false)
     # if @payment.create
       # @payment.id     # Payment Id
-      # #TODO save transaction
+      # #TODO save order
       # #TODO update offer
       # #TODO update available tickets
 #       
