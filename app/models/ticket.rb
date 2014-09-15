@@ -39,9 +39,11 @@ class Ticket < ActiveRecord::Base
   has_attached_file    :photo2, :styles => { :thumb => "200x200#", :large => "400x400#" }
   has_attached_file    :photo3, :styles => { :thumb => "200x200#", :large => "400x400#" }
   
-  validates_attachment :photo1, content_type: { content_type: ["image/jpg", "image/jpeg", "image/png"] }
-  validates_attachment :photo2, content_type: { content_type: ["image/jpg", "image/jpeg", "image/png"] }
-  validates_attachment :photo3, content_type: { content_type: ["image/jpg", "image/jpeg", "image/png"] }
+  validates_attachment  :photo1, content_type: { content_type: ["image/jpg", "image/jpeg", "image/png"] }
+  validates_attachment  :photo2, content_type: { content_type: ["image/jpg", "image/jpeg", "image/png"] }
+  validates_attachment  :photo3, content_type: { content_type: ["image/jpg", "image/jpeg", "image/png"] }
+  validates_presence_of :user_id
+  validates_presence_of :event_id
   
   after_save  :alert_buyers
   

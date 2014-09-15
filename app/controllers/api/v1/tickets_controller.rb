@@ -2,7 +2,7 @@ class Api::V1::TicketsController < Api::BaseController
     
     # Get Tickets
     def index
-      filters = {}
+      filters = { available: true }
       conditions = []
       
       # get_tickets_by_event
