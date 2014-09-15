@@ -79,34 +79,11 @@ class Api::V1::OrdersController < Api::BaseController
     # Access response
     if @pay_response.success? && @pay_response.paymentExecStatus == "CREATED"
       current_order.paypal_key = @pay_response.payKey
-      current_order.status = "AUTHORISED"
+      current_order.status = "PENDING"
       current_order.save
-      
-      # sending push notifications to both users (buyer and seller) 
-      message_to_buyer = Message.new({
-        :sender_id => Settings.DINGO_USER_ID,
-        :receiver_id => current_order.sender_id,
-        :content => 'Congrats! You have purchased a ticket. Please contact seller for collection.'
-      })
-      message_to_seller = Message.new({
-        :sender_id => Settings.DINGO_USER_ID,
-        :receiver_id => current_order.receiver_id,
-        :content => 'Congrats! You have selled a ticket. Please contact buyer for collection.'
-      })
-      if message_to_buyer.save and message_to_seller.save
-        message_to_buyer.notify
-        message_to_seller.notify
-      end
-      
-      #TODO send emails to both buyer and seller with the order info.
-      
-      #TODO send email to Dingo Admin about the order.
-      
-      #TODO mark ticket as sold and update the ticket's event
-      
       render :json => {success: true, redirect_url: @api.payment_url(@pay_response)}
     else
-      current_order.status = "PENDING"
+      current_order.status = "NOT_CREATED"
       current_order.save
       render :json => {success: false, error: @pay_response.error}, status: :unprocessable_entity
     end

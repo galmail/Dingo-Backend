@@ -30,7 +30,7 @@ class Order < ActiveRecord::Base
   attr_accessor :status
   
   def status=(value)
-    valid_status = ['PENDING','AUTHORISED','COMPLETED','REFUNDED','CANCELED'] 
+    valid_status = ['NOT_CREATED','PENDING','AUTHORISED','COMPLETED','REFUNDED','CANCELED'] 
     if valid_status.include?(value)
       @status = value
     end
