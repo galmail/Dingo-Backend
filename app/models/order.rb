@@ -27,13 +27,11 @@ class Order < ActiveRecord::Base
   belongs_to  :offer
   belongs_to  :event
   
-  attr_accessor :status
+  before_save :check_status
   
-  def status=(value)
-    valid_status = ['NOT_CREATED','PENDING','AUTHORISED','COMPLETED','REFUNDED','CANCELED'] 
-    if valid_status.include?(value)
-      @status = value
-    end
+  def check_status
+    valid_status = ['NOT_CREATED','PENDING','AUTHORISED','COMPLETED','REFUNDED','CANCELED','DISPUTE'] 
+    valid_status.include?(self.status)
   end
   
   def release_payment
@@ -50,6 +48,7 @@ class Order < ActiveRecord::Base
   end
   
   def refund_payment
+    @api = PayPal::SDK::AdaptivePayments::API.new
     @refund = @api.build_refund({
       :currencyCode => "GBP",
       :payKey => self.paypal_key,
@@ -71,8 +70,10 @@ class Order < ActiveRecord::Base
     return @refund_response
   end
   
-  #TODO Not implemented yet
+  #TODO Not Ready yet
   def open_dispute
+    self.status = "DISPUTE"
+    self.save
     # Step 1: Set the order status as "dispute".
     # Step 2: Get explanation from both buyer and seller.
     # Step 3: Send Paypal the disputed order.

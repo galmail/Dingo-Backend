@@ -13,20 +13,20 @@ task :clean_events => :environment do
   puts "****** Finished Clean Events Task ******"
 end
 
-desc "This task release payment to seller on all pending transaction after 48h"
-task :release_pending_transactions => :environment do
-  puts "****** Starting Release Pending Transactions Task ******"
+desc "This task release payment to seller on all authorised orders after 48h"
+task :release_authorised_orders => :environment do
+  puts "****** Starting Release Authorised Orders Task ******"
   
-  puts "Check for pending transactions on past events after 48h."
-  pending_transactions = Transaction.joins(:event).where(["transactions.status = ? AND events.date < ?", :pending, DateTime.now - 48.hours])
-  if pending_transactions.length>0
-    puts "Found #{pending_transactions.length} transactions. Releasing payments for these transactions.."
-    pending_transactions.each { |transaction|
-      puts "Releasing payment for transaction ID: #{transaction.id}"
-      transaction.release_payment
+  puts "Check for authorised orders on past events after 48h."
+  pending_orders = Order.joins(:event).where(["orders.status = ? AND events.date < ?", 'AUTHORISED' , DateTime.now - 48.hours])
+  if pending_orders.length>0
+    puts "Found #{pending_orders.length} orders. Releasing payments for these orders.."
+    pending_orders.each { |order|
+      puts "Releasing payment for order ID: #{order.id}"
+      order.release_payment
     }
-    puts "Done. The payments of the pending transactions have been released."
+    puts "Done. The payments of the authorised orders have been released."
   end
   
-  puts "****** Finished Release Pending Transactions Task ******"
+  puts "****** Finished Release Authorised Orders Task ******"
 end
