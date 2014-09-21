@@ -34,6 +34,7 @@ class Ticket < ActiveRecord::Base
   belongs_to  :user
   belongs_to  :event
   has_many    :offers
+  has_many    :messages
   
   has_attached_file    :photo1, :styles => { :thumb => "200x200#", :large => "400x400#" }
   has_attached_file    :photo2, :styles => { :thumb => "200x200#", :large => "400x400#" }

@@ -306,6 +306,8 @@
             <param name="Accept" required="true" type="xsd:string" style="header" default="application/json"></param>
             <param name="receiver_id" required="true" type="xsd:string" style="query" default=""></param>
             <param name="content" required="true" type="xsd:string" style="query" default=""></param>
+            <param name="ticket_id" required="false" type="xsd:string" style="query" default=""></param>
+            <param name="new_offer" required="false" type="xsd:boolean" style="query" default="false"></param>
             <method id="send_message" name="POST" apigee:displayName="Send Message">
                 <apigee:tags>
                     <apigee:tag primary="true">Messages</apigee:tag>

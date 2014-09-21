@@ -3,7 +3,7 @@ class Api::V1::MessagesController < Api::BaseController
   def index
     query = ""
     conditions = []
-    filters = {}
+    filters = { visible: true }
 
     if params.has_key?(:sender_id)
       filters[:sender_id] = params[:sender_id]
