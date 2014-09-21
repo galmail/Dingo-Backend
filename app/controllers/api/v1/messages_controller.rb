@@ -33,7 +33,7 @@ class Api::V1::MessagesController < Api::BaseController
   def create
     params.require(:receiver_id)
     params.require(:content)
-    message_params = params.permit(:receiver_id, :content)
+    message_params = params.permit(:receiver_id, :content, :ticket_id, :new_offer)
 
     message = Message.new(message_params)
     message.sender = current_user
