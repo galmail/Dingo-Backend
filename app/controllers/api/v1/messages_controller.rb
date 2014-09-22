@@ -47,16 +47,6 @@ class Api::V1::MessagesController < Api::BaseController
 
   private
 
-  # Sending message via push to device: https://github.com/NicosKaralis/pushmeup
-  def send_message(msg)
-    puts "Sending message: #{msg.content} to receiver_id #{msg.receiver_id}"
-    
-    #APNS.send_notifications(User.find(msg.receiver_id).devices.map { |device|
-      #APNS::Notification.new(device.uid, msg.content)
-      #APNS::Notification.new(device.uid, :alert => msg.content, :badge => 1, :sound => 'default')
-    #})
-  end
-
   def and_query(query)
     if query.length>0
       return " AND "

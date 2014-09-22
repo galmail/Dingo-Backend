@@ -21,9 +21,13 @@ class Message < ActiveRecord::Base
   
   def notify
     msg = "#{self.sender.name}: #{self.content}"
+    if self.from_dingo
+      msg = "#{self.content}"
+    end
     User.find(self.receiver_id).devices.each { |device|
       APNS.send_notification(device.uid, msg)
     }
+    return true
   end
   
 end

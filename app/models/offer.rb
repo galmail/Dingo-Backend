@@ -22,21 +22,41 @@ class Offer < ActiveRecord::Base
   
   def notify
     msg = "#{self.sender.name} offers you #{self.price} for #{self.num_tickets} ticket to #{self.ticket.event.name}"
-    User.find(self.receiver_id).devices.each { |device|
-      APNS.send_notification(device.uid, msg)
-    }
+    message = Message.new({
+      :sender_id => self.sender.id,
+      :receiver_id => self.receiver.id,
+      :ticket_id => self.ticket.id,
+      :content => msg,
+      :from_dingo => true,
+      :new_offer => true
+    })
+    if message.save
+      return message.notify
+    else
+      return false
+    end
   end
   
   def notify_back
-    accepted_msg = "Congrats! #{self.receiver.name} has accepted your offer"
-    rejected_msg = "#{self.receiver.name} has declined your offer"
-    User.find(self.sender_id).devices.each { |device|
-      if self.accepted
-        APNS.send_notification(device.uid, accepted_msg)
-      elsif self.rejected
-        APNS.send_notification(device.uid, rejected_msg)
-      end
-    }
+    msg = ""
+    if self.accepted
+      msg = "Congrats! #{self.receiver.name} has accepted your offer"
+    elsif self.rejected
+      msg = "#{self.receiver.name} has declined your offer"
+    end
+    message = Message.new({
+      :sender_id => self.receiver.id,
+      :receiver_id => self.sender.id,
+      :ticket_id => self.ticket.id,
+      :content => msg,
+      :from_dingo => true,
+      :new_offer => false
+    })
+    if message.save
+      return message.notify
+    else
+      return false
+    end
   end
   
 end
