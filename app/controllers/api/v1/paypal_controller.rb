@@ -14,13 +14,15 @@ class Api::V1::PaypalController < ApplicationController
     
     # sending push notifications to both users (buyer and seller) 
     message_to_buyer = Message.new({
-      :sender_id => Settings.DINGO_USER_ID,
+      :sender_id => current_order.receiver_id,
       :receiver_id => current_order.sender_id,
+      :from_dingo => true,
       :content => 'Congrats! You have purchased a ticket. Please contact seller for collection.'
     })
     message_to_seller = Message.new({
-      :sender_id => Settings.DINGO_USER_ID,
+      :sender_id => current_order.sender_id,
       :receiver_id => current_order.receiver_id,
+      :from_dingo => true,
       :content => 'Congrats! You have selled a ticket. Please contact buyer for collection.'
     })
     if message_to_buyer.save and message_to_seller.save
