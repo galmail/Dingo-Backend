@@ -350,17 +350,17 @@
             </method>
         </resource>
         
-        <!-- accept_offer -->
+        <!-- reply_offer -->
         <resource path="/api/v1/offers/:id">
             <param name="Content-Type" required="true" type="xsd:string" style="header" default="application/json"></param>
             <param name="Accept" required="true" type="xsd:string" style="header" default="application/json"></param>
-            <param name="accept" required="true" type="xsd:boolean" style="query" default="true"></param>
-            <method id="accept_offer" name="PUT" apigee:displayName="Accept Offer">
+            <param name="accept_offer" required="true" type="xsd:boolean" style="query" default="true"></param>
+            <method id="reply_offer" name="PUT" apigee:displayName="Reply Offer">
                 <apigee:tags>
                     <apigee:tag primary="true">Offers</apigee:tag>
                 </apigee:tags>
                 <apigee:authentication required="true"/>
-                <doc apigee:url="http://api.mydomain.com/doc/my-method">accept_offer</doc>
+                <doc apigee:url="http://api.mydomain.com/doc/my-method">reply_offer</doc>
             </method>
         </resource>
         

@@ -49,11 +49,11 @@ class Api::V1::OffersController < Api::BaseController
   # Accept/Reject Offer
   def update
     params.require(:id)
-    params.require(:accept)
-    offer_params = params.permit(:id, :accept)
+    params.require(:accept_offer)
+    offer_params = params.permit(:id, :accept_offer)
     offer = Offer.find(params[:id])
-    offer.accepted = params[:accept]
-    offer.rejected = !params[:accept]
+    offer.accepted = params[:accept_offer]
+    offer.rejected = !params[:accept_offer]
     if offer.save
       offer.notify_back
       render :json=> offer.as_json, status: :updated
