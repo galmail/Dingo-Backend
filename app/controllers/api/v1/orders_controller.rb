@@ -49,10 +49,10 @@ class Api::V1::OrdersController < Api::BaseController
     
     @api = PayPal::SDK::AdaptivePayments.new
     
-    payment_type = "DIGITALGOODS"
-    if current_order.ticket.ticket_type == "paper"
-      payment_type = "GOODS"
-    end
+    # payment_type = "DIGITALGOODS"
+    # if current_order.ticket.ticket_type == "paper"
+      # payment_type = "GOODS"
+    # end
     
     # Build request object
     @pay = @api.build_pay({
@@ -67,13 +67,13 @@ class Api::V1::OrdersController < Api::BaseController
         :receiver => [
           {
             :primary => true,
-            :paymentType => "SERVICE",
+            #:paymentType => "SERVICE",
             :amount => current_order.amount,
             :email => "dingo@dingoapp.co.uk"
           },
           {
             :primary => false,
-            :paymentType => payment_type,
+            #:paymentType => payment_type,
             :amount => current_order.sellers_profit,
             :email => current_order.receiver.email
           }
