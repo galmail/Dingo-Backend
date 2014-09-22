@@ -4,16 +4,19 @@ class Api::V1::OrdersController < Api::BaseController
   # This method is called when a buyer wishes to buy a ticket
   def create
     
-    params.permit(:ticket_id,:credit_card_id,:offer_id,:num_tickets,:amount)
+    params.permit(:order_id,:ticket_id,:credit_card_id,:offer_id,:num_tickets,:amount)
     
-    if(!params.has_key?(:ticket_id) && !params.has_key?(:offer_id))
-      render :json => {success: false, error: 'no ticket_id or offer_id provided.'}, status: :unprocessable_entity
+    if(!params.has_key?(:order_id) && !params.has_key?(:ticket_id) && !params.has_key?(:offer_id))
+      render :json => {success: false, error: 'please provide an order_id, ticket_id or offer_id.'}, status: :unprocessable_entity
       return false
     end
     
     current_ticket = nil
     
-    if params.has_key?(:ticket_id)
+    
+    if params.has_key?(:order_id)
+      current_ticket = Order.find(params[:order_id]).ticket
+    elsif params.has_key?(:ticket_id)
       current_ticket = Ticket.find(params[:ticket_id])
     elsif params.has_key?(:offer_id)
       current_ticket = Offer.find(params[:offer_id]).ticket
@@ -24,19 +27,24 @@ class Api::V1::OrdersController < Api::BaseController
     num_tickets = params[:num_tickets]
     amount = params[:amount]
     
-    # 1. Create an Order
-    current_order = Order.new({
-      :sender_id => current_user.id,
-      :receiver_id => current_ticket.user_id,
-      :ticket_id => current_ticket.id,
-      :credit_card_id => credit_card_id,
-      :event_id => current_ticket.event_id,
-      :offer_id => offer_id,
-      :num_tickets => num_tickets,
-      :amount => amount
-    })
+    # 1. Create an Order if not already created
+    current_order = nil
+    if params.has_key?(:order_id)
+      current_order = Order.find(params[:order_id])
+    else
+      current_order = Order.new({
+        :sender_id => current_user.id,
+        :receiver_id => current_ticket.user_id,
+        :ticket_id => current_ticket.id,
+        :credit_card_id => credit_card_id,
+        :event_id => current_ticket.event_id,
+        :offer_id => offer_id,
+        :num_tickets => num_tickets,
+        :amount => amount
+      })
+      current_order.save
+    end
     
-    current_order.save
     #TODO validate order before we continue
     
     @api = PayPal::SDK::AdaptivePayments.new
