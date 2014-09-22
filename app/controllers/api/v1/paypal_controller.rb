@@ -34,8 +34,7 @@ class Api::V1::PaypalController < ApplicationController
     
     #TODO send email to Dingo Admin about the order.
     
-    #TODO mark ticket as sold and update the ticket's event
-    
+    current_order.ticket.sold!
     render :text => "Payment Successful! Order ID: #{params[:order_id]}"
   end
   

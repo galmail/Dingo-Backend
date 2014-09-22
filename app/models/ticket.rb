@@ -56,4 +56,9 @@ class Ticket < ActiveRecord::Base
     end
   end
   
+  def sold!
+    self.available = false
+    self.save
+  end
+  
 end
