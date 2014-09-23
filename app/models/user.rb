@@ -33,7 +33,13 @@ class User < ActiveRecord::Base
   has_many  :tickets, :dependent => :delete_all
   has_many  :creditcards, :dependent => :delete_all
   
-  #devise :database_authenticatable, :registerable, :recoverable, :rememberable, :trackable, :validatable
+  has_and_belongs_to_many(:blocked_users,
+    :class_name => 'User',
+    :join_table => "user_blockings",
+    :foreign_key => "blocking_user_id",
+    :association_foreign_key => "blocked_user_id")
+  
+  
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable #:lockable
          

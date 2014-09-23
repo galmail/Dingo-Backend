@@ -33,7 +33,10 @@ Rails.application.routes.draw do
   devise_for :users, :controllers => {:registrations => "registrations", :sessions => "sessions"}
   namespace :api do
     namespace :v1 do
-      resources :users, defaults: {format: :json}
+      resources :users, defaults: {format: :json} do
+        post  'block'
+        post  'report'
+      end
       resources :tickets, defaults: {format: :json}
       resources :events, defaults: {format: :json}
       resources :categories, defaults: {format: :json}

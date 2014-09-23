@@ -78,6 +78,33 @@
                 <doc apigee:url="http://api.mydomain.com/doc/my-method">update_profile</doc>
             </method>
         </resource>
+        
+        <!-- block_user -->
+        <resource path="/api/v1/users/:user_id/block">
+            <param name="Content-Type" required="true" type="xsd:string" style="header" default="application/json"></param>
+            <param name="Accept" required="true" type="xsd:string" style="header" default="application/json"></param>
+            <param name="block" required="true" type="xsd:boolean" style="query" default="true"></param>
+            <method id="block_user" name="POST" apigee:displayName="Block User">
+                <apigee:tags>
+                    <apigee:tag primary="true">Users</apigee:tag>
+                </apigee:tags>
+                <apigee:authentication required="true"/>
+                <doc apigee:url="http://api.mydomain.com/doc/my-method">block_user</doc>
+            </method>
+        </resource>
+        
+        <!-- report_user -->
+        <resource path="/api/v1/users/:user_id/report">
+            <param name="Content-Type" required="true" type="xsd:string" style="header" default="application/json"></param>
+            <param name="Accept" required="true" type="xsd:string" style="header" default="application/json"></param>
+            <method id="report_user" name="POST" apigee:displayName="Report User">
+                <apigee:tags>
+                    <apigee:tag primary="true">Users</apigee:tag>
+                </apigee:tags>
+                <apigee:authentication required="true"/>
+                <doc apigee:url="http://api.mydomain.com/doc/my-method">report_user</doc>
+            </method>
+        </resource>
 
 <!-- ##################### CATEGORIES ##################### -->        
         

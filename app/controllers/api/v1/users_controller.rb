@@ -12,5 +12,21 @@ class Api::V1::UsersController < Api::BaseController
     render :json => current_user.as_json
   end
   
+  # Method to allow a user block another user
+  def block
+    params.require(:user_id)
+    params.require(:block)
+    if params[:block]
+      current_user.blocked_users.push(User.find(params[:user_id]))
+    else
+      current_user.blocked_users.delete(User.find(params[:user_id]))
+    end
+  end
+  
+  def report
+    #TODO method not implemented yet
+    # should just send an email to Dingo Admin reporting the user
+  end
+  
   
 end
