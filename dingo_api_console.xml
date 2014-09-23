@@ -205,6 +205,24 @@
             </method>
         </resource>
         
+<!-- ##################### ALERTS ##################### -->        
+        
+        <!-- set_alert -->
+        <resource path="/api/v1/alerts">
+            <param name="Content-Type" required="true" type="xsd:string" style="header" default="application/json"></param>
+            <param name="Accept" required="true" type="xsd:string" style="header" default="application/json"></param>
+            <param name="event_id" required="true" type="xsd:string" style="query" default=""></param>
+            <param name="on" required="true" type="xsd:boolean" style="query" default="true"></param>
+            <param name="price" required="true" type="xsd:double" style="query" default="0.0"></param>
+            <method id="set_alert" name="POST" apigee:displayName="Set Alert">
+                <apigee:tags>
+                    <apigee:tag primary="true">Alerts</apigee:tag>
+                </apigee:tags>
+                <apigee:authentication required="true"/>
+                <doc apigee:url="http://api.mydomain.com/doc/my-method">set_alert</doc>
+            </method>
+        </resource>
+        
 <!-- ##################### TICKETS ##################### -->
         
         <!-- create_ticket -->
