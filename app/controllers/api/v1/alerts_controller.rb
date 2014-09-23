@@ -5,7 +5,9 @@ class Api::V1::AlertsController < Api::BaseController
     end
     
     def create
-      params.require(:event_id,:on,:price)
+      params.require(:event_id)
+      params.require(:price)
+      params.require(:on)
       return set_alert(params[:event_id],params[:on],params[:price])
     end
     
