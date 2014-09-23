@@ -21,11 +21,13 @@ class Api::V1::UsersController < Api::BaseController
     else
       current_user.blocked_users.delete(User.find(params[:user_id]))
     end
+    render :json => current_user.as_json
   end
   
   def report
     #TODO method not implemented yet
     # should just send an email to Dingo Admin reporting the user
+    render :json => current_user.as_json
   end
   
   
