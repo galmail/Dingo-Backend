@@ -1,5 +1,9 @@
 class Api::V1::AlertsController < Api::BaseController
     
+    def index
+      @alerts = Alert.where(:user_id => current_user.id, :on => true)
+    end
+    
     def create
       params.require(:event_id,:on,:price)
       return set_alert(params[:event_id],params[:on],params[:price])

@@ -41,6 +41,7 @@ Rails.application.routes.draw do
       resources :offers, defaults: {format: :json}
       resources :devices, defaults: {format: :json}
       resources :orders, defaults: {format: :json}
+      resources :alerts, defaults: {format: :json}
       
       namespace :payments do
         post  'store_credit_card'

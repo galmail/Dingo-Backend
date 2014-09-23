@@ -223,6 +223,19 @@
             </method>
         </resource>
         
+        <!-- get_alerts -->
+        <resource path="/api/v1/alerts">
+            <param name="Content-Type" required="true" type="xsd:string" style="header" default="application/json"></param>
+            <param name="Accept" required="true" type="xsd:string" style="header" default="application/json"></param>
+            <method id="get_alerts" name="GET" apigee:displayName="Get Alerts">
+                <apigee:tags>
+                    <apigee:tag primary="true">Alerts</apigee:tag>
+                </apigee:tags>
+                <apigee:authentication required="true"/>
+                <doc apigee:url="http://api.mydomain.com/doc/my-method">get_alerts</doc>
+            </method>
+        </resource>
+        
 <!-- ##################### TICKETS ##################### -->
         
         <!-- create_ticket -->
