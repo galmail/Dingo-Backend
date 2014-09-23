@@ -15,9 +15,17 @@ class Alert < ActiveRecord::Base
   belongs_to  :user
   belongs_to  :event
   
-  # TODO Not implemented yet
   def notify_user
-    
+    # send user push notification
+    msg = "New tickets for #{self.event.name} are now selling for #{self.event.min_price}"
+    Message.new({
+      :sender_id => self.user.id,
+      :receiver_id => self.user.id,
+      :content => msg,
+      :from_dingo => true
+    })
+    message.save
+    message.notify
   end
   
 end
