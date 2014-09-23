@@ -8,6 +8,7 @@
 #  price      :decimal(8, 2)
 #  created_at :datetime
 #  updated_at :datetime
+#  on         :boolean          default(TRUE)
 #
 
 class Alert < ActiveRecord::Base

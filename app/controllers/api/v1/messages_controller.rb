@@ -34,6 +34,9 @@ class Api::V1::MessagesController < Api::BaseController
     params.require(:receiver_id)
     params.require(:content)
     message_params = params.permit(:receiver_id, :content, :ticket_id, :new_offer)
+    
+    
+    puts "TICKET_ID = #{message_params[:ticket_id]}"
 
     message = Message.new(message_params)
     message.sender = current_user

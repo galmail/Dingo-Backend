@@ -11,7 +11,7 @@
 #  from_dingo  :boolean          default(FALSE)
 #  new_offer   :boolean          default(FALSE)
 #  visible     :boolean          default(TRUE)
-#  ticket_id   :integer
+#  ticket_id   :uuid
 #
 
 class Message < ActiveRecord::Base

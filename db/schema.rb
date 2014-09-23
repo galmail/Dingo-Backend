@@ -130,7 +130,7 @@ ActiveRecord::Schema.define(version: 20140923134416) do
     t.boolean  "from_dingo",  default: false
     t.boolean  "new_offer",   default: false
     t.boolean  "visible",     default: true
-    t.integer  "ticket_id"
+    t.uuid     "ticket_id"
   end
 
   add_index "messages", ["ticket_id"], name: "index_messages_on_ticket_id", using: :btree
