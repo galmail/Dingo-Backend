@@ -22,7 +22,7 @@ class Api::V1::OrdersController < Api::BaseController
       current_ticket = Offer.find(params[:offer_id]).ticket
     end
     
-    credit_card_id = params[:credit_card_id]
+    #credit_card_id = params[:credit_card_id]
     offer_id = params[:offer_id]
     num_tickets = params[:num_tickets]
     amount = params[:amount]
@@ -36,7 +36,7 @@ class Api::V1::OrdersController < Api::BaseController
         :sender_id => current_user.id,
         :receiver_id => current_ticket.user_id,
         :ticket_id => current_ticket.id,
-        :credit_card_id => credit_card_id,
+        #:credit_card_id => credit_card_id,
         :event_id => current_ticket.event_id,
         :offer_id => offer_id,
         :num_tickets => num_tickets,
