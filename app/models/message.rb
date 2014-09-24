@@ -19,6 +19,11 @@ class Message < ActiveRecord::Base
   belongs_to  :receiver, :class_name => 'User'
   belongs_to  :ticket
   
+  validates_presence_of :sender_id
+  validates_presence_of :receiver_id
+  validates_presence_of :content
+  
+  
   def notify
     msg = "#{self.sender.name}: #{self.content}"
     if self.from_dingo
@@ -28,6 +33,14 @@ class Message < ActiveRecord::Base
       APNS.send_notification(device.uid, msg)
     }
     return true
+  end
+  
+  def sender_photo
+    if self.from_dingo
+      Settings.DINGO_LOGO
+    else
+      self.sender.photo_url
+    end
   end
   
 end
