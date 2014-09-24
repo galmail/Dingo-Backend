@@ -18,14 +18,17 @@ class Alert < ActiveRecord::Base
   def notify_user
     # send user push notification
     msg = "New tickets for #{self.event.name} are now selling for #{self.event.min_price}"
-    Message.new({
+    message = Message.new({
       :sender_id => self.user.id,
       :receiver_id => self.user.id,
       :content => msg,
       :from_dingo => true
     })
-    message.save
-    message.notify
+    if message.save
+      return message.notify
+    else
+      return false
+    end
   end
   
 end
