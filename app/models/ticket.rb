@@ -48,6 +48,10 @@ class Ticket < ActiveRecord::Base
   
   after_save  :alert_buyers
   
+  def name
+    "Ticket for #{self.event.name}"
+  end
+  
   def alert_buyers
     # Get all alerts where event is this and this ticket price is less than alert's price
     alerts = Alert.where(["event_id = ? AND ? <= price",self.event_id, self.price])

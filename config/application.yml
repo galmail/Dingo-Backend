@@ -1,0 +1,61 @@
+# Add application configuration variables here, as shown below.
+
+# PUSHER_APP_ID: "2954"
+# PUSHER_KEY: 7381a978f7dd7f9a1117
+# PUSHER_SECRET: abdc3b896a0ffb85d373
+# STRIPE_API_KEY: EdAvEPVEC3LuaTg5Q3z6WbDVqZlcBQ8Z
+# STRIPE_PUBLIC_KEY: pk_BRgD57O8fHja9HxduJUszhef6jCyS
+
+defaults: &defaults
+  # Settings
+  DINGO_LOGO: http://dingoapp.co.uk/images/HeaderLogo.png
+  
+  # Amazon S3
+  AWS_BUCKET: dingoapp-test
+  AWS_KEY: AKIAIW4PW5CMS4TEGVIA
+  AWS_SECRET: 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
+  # Apple Push Notifications
+  APN_HOST: gateway.push.apple.com
+  APN_PORT: 2195
+  APN_PEM_FILE: app/assets/certificates/DingoAPNProdKey.pem
+  APN_PASSWORD: Dingo123
+  # Paypal API
+  PAYPAL_MODE: sandbox
+  # Paypal Rest API Credentials
+  PAYPAL_ENDPOINT: api.sandbox.paypal.com
+  PAYPAL_CLIENTID: AWdYAhAitDP7Y1AFRQ6h68YlNcBiMcBgg1Grc-rfMrAqAIG_gHWSupG6E9A_
+  PAYPAL_SECRET: EJJFbhA6igUr5gUL5BHuXIks0lBCIZBlvx9NiLQ0QGmV7t2HILnehGmV_0v5
+  # Paypal Classic API Credentials
+  PAYPAL_APP_ID: APP-80W284485P519543T
+  PAYPAL_USERNAME: phil-facilitator_api1.dingoapp.co.uk
+  PAYPAL_PASSWORD: 1405585596
+  PAYPAL_SIGNATURE: ASD0y8Fzvt3Gmspmqmq2CJmwwoIfA56HtZ-HEYSq12aMXnhatYMp4ngi
+  
+  # Email Config
+  #SENDGRID_USERNAME: app27239716@heroku.com
+  #SENDGRID_PASSWORD: sb2voc1w
+  
+development:
+  <<: *defaults
+  
+test:
+  <<: *defaults
+  
+production:
+  <<: *defaults
+  # Amazon S3
+  AWS_BUCKET: dingoapp-prod
+  AWS_KEY: AKIAIW4PW5CMS4TEGVIA
+  AWS_SECRET: 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
+  # Apple Push Notifications
+
+  # Paypal API
+  PAYPAL_MODE: live
+  PAYPAL_ENDPOINT: api.paypal.com
+  
+  # Paypal Classic API Credentials
+  PAYPAL_APP_ID: APP-2XC46381VX587041T
+  PAYPAL_USERNAME: phil_api1.dingoapp.co.uk
+  PAYPAL_PASSWORD: XYLCNNEHXX5UCP58
+  PAYPAL_SIGNATURE: ATKWSwvWzKAEiFaECQxYOi4PQtfxALHX82vnYz4aahCwwLZXdW70kOqR
+
