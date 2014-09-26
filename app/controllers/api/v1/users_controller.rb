@@ -24,9 +24,13 @@ class Api::V1::UsersController < Api::BaseController
     render :json => current_user.as_json
   end
   
+  # This method allow a user to report another user
   def report
-    #TODO method not implemented yet
-    # should just send an email to Dingo Admin reporting the user
+    params.require(:user_id)
+    # Report user to Dingo
+    UserNotifier.report_user_to_dingo(current_user,User.find(params[:user_id])).deliver
+    # Confirm to notifier, the user has been reported
+    UserNotifier.confirm_reported_user_to_notifier(current_user,User.find(params[:user_id])).deliver
     render :json => current_user.as_json
   end
   

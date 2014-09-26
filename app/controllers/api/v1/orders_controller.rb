@@ -69,7 +69,7 @@ class Api::V1::OrdersController < Api::BaseController
             :primary => true,
             #:paymentType => "SERVICE",
             :amount => current_order.amount,
-            :email => "dingo@dingoapp.co.uk"
+            :email => Settings.DINGO_EMAIL
           },
           {
             :primary => false,

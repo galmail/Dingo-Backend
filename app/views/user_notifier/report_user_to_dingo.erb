@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta content='text/html; charset=UTF-8' http-equiv='Content-Type' />
+  </head>
+  <body>
+    <h1>A user has reported another user!</h1>
+    <p>
+    	<div>Reported user:</div>
+    	<ul>
+    		<li>ID: <%= @reported_user.id %></li>
+    		<li>Full Name: <%= @reported_user.name %>  <%= @reported_user.surname %></li>
+    		<li>Email: <%= @reported_user.email %></li>
+    	</ul>
+    </p>
+    <p>
+    	<div>Reported by:</div>
+    	<ul>
+    		<li>ID: <%= @notifier_user.id %></li>
+    		<li>Full Name: <%= @notifier_user.name %>  <%= @notifier_user.surname %></li>
+    		<li>Email: <%= @notifier_user.email %></li>
+    	</ul>
+    </p>
+  </body>
+</html>

@@ -8,6 +8,7 @@
 
 defaults: &defaults
   # Settings
+  DINGO_EMAIL: dingo@dingoapp.co.uk
   DINGO_LOGO: http://dingoapp.co.uk/images/HeaderLogo.png
   
   # Amazon S3
