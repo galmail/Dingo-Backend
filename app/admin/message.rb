@@ -4,7 +4,7 @@ ActiveAdmin.register Message do
   # See permitted parameters documentation:
   # https://github.com/gregbell/active_admin/blob/master/docs/2-resource-customization.md#setting-up-strong-parameters
   #
-  permit_params :sender_id, :receiver_id, :ticket_id, :content, :from_dingo, :new_offer, :visible
+  permit_params :sender_id, :receiver_id, :ticket_id, :offer_id, :content, :from_dingo, :new_offer, :visible
   #
   # or
   #

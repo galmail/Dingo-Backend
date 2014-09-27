@@ -12,12 +12,14 @@
 #  new_offer   :boolean          default(FALSE)
 #  visible     :boolean          default(TRUE)
 #  ticket_id   :uuid
+#  offer_id    :uuid
 #
 
 class Message < ActiveRecord::Base
   belongs_to  :sender, :class_name => 'User'
   belongs_to  :receiver, :class_name => 'User'
   belongs_to  :ticket
+  belongs_to  :offer
   
   validates_presence_of :sender_id
   validates_presence_of :receiver_id

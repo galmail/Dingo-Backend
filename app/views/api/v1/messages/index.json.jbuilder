@@ -7,6 +7,7 @@ json.messages @messages do |msg|
   json.receiver_id msg.receiver_id
   json.content msg.content
   json.ticket_id msg.ticket_id
+  json.offer_id msg.offer_id
   json.from_dingo msg.from_dingo
   json.new_offer msg.new_offer
   json.datetime msg.created_at

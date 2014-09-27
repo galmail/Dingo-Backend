@@ -26,6 +26,7 @@ class Offer < ActiveRecord::Base
       :sender_id => self.sender.id,
       :receiver_id => self.receiver.id,
       :ticket_id => self.ticket.id,
+      :offer_id => self.id,
       :content => msg,
       :from_dingo => true,
       :new_offer => true
@@ -48,6 +49,7 @@ class Offer < ActiveRecord::Base
       :sender_id => self.receiver.id,
       :receiver_id => self.sender.id,
       :ticket_id => self.ticket.id,
+      :offer_id => self.id,
       :content => msg,
       :from_dingo => true,
       :new_offer => false
