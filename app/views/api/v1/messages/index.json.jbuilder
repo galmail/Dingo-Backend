@@ -4,7 +4,9 @@ json.messages @messages do |msg|
   json.sender_id msg.sender.id
   json.sender_name msg.sender.name
   json.sender_avatar msg.sender_photo
-  json.receiver_id msg.receiver_id
+  json.receiver_id msg.receiver.id
+  json.receiver_name msg.receiver.name
+  json.receiver_avatar msg.receiver.photo_url
   json.content msg.content
   json.ticket_id msg.ticket_id
   json.offer_id msg.offer_id

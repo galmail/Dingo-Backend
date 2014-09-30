@@ -2,13 +2,14 @@
 #
 # Table name: alerts
 #
-#  id         :uuid             not null, primary key
-#  user_id    :integer
-#  event_id   :uuid
-#  price      :decimal(8, 2)
-#  created_at :datetime
-#  updated_at :datetime
-#  on         :boolean          default(TRUE)
+#  id          :uuid             not null, primary key
+#  user_id     :integer
+#  event_id    :uuid
+#  price       :decimal(8, 2)
+#  created_at  :datetime
+#  updated_at  :datetime
+#  on          :boolean          default(TRUE)
+#  description :string(255)
 #
 
 class Alert < ActiveRecord::Base
