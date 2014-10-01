@@ -241,6 +241,7 @@
             <param name="event_id" required="true" type="xsd:string" style="query" default=""></param>
             <param name="on" required="true" type="xsd:boolean" style="query" default="true"></param>
             <param name="price" required="true" type="xsd:double" style="query" default="0.0"></param>
+            <param name="description" required="false" type="xsd:string" style="query"></param>
             <method id="set_alert" name="POST" apigee:displayName="Set Alert">
                 <apigee:tags>
                     <apigee:tag primary="true">Alerts</apigee:tag>

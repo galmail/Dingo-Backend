@@ -23,7 +23,7 @@ class Api::V1::PaypalController < ApplicationController
       :sender_id => current_order.sender_id,
       :receiver_id => current_order.receiver_id,
       :from_dingo => true,
-      :content => 'Congrats! You have selled a ticket. Please contact buyer for collection.'
+      :content => "Congratulations, #{current_order.sender.name} has bought your ticket(s). Please arrange delivery."
     })
     if message_to_buyer.save and message_to_seller.save
       message_to_buyer.notify
