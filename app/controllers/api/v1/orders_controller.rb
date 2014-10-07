@@ -4,7 +4,7 @@ class Api::V1::OrdersController < Api::BaseController
   # This method is called when a buyer wishes to buy a ticket
   def create
     
-    params.permit(:order_id,:ticket_id,:credit_card_id,:offer_id,:num_tickets,:amount)
+    params.permit(:order_id,:ticket_id,:credit_card_id,:offer_id,:num_tickets,:amount,:order_paid)
     
     if(!params.has_key?(:order_id) && !params.has_key?(:ticket_id) && !params.has_key?(:offer_id))
       render :json => {success: false, error: 'please provide an order_id, ticket_id or offer_id.'}, status: :unprocessable_entity
@@ -47,48 +47,30 @@ class Api::V1::OrdersController < Api::BaseController
     
     #TODO validate order before we continue
     
-    @api = PayPal::SDK::AdaptivePayments.new
-    
-    # Build request object
-    @pay = @api.build_pay({
-      :actionType => "PAY_PRIMARY",
-      :feesPayer => "PRIMARYRECEIVER",
-      :currencyCode => "GBP",
-      :reverseAllParallelPaymentsOnError => true,
-      :returnUrl => "http://dingoapp.herokuapp.com/api/v1/paypal/success?order_id=#{current_order.id}",
-      :cancelUrl => "http://dingoapp.herokuapp.com/api/v1/paypal/cancel?order_id=#{current_order.id}",
-      :ipnNotificationUrl => "http://dingoapp.herokuapp.com/api/v1/paypal/notification?order_id=#{current_order.id}",
-      :receiverList => {
-        :receiver => [
-          {
-            :primary => true,
-            :amount => current_order.amount,
-            :email => Settings.DINGO_EMAIL
-          },
-          {
-            :primary => false,
-            :amount => current_order.sellers_profit,
-            :email => current_order.receiver.email
-          }
-        ]
-      }
-    })
-    
-    # Make API call & get response
-    @pay_response = @api.pay(@pay)
-    
-    # Access response
-    if @pay_response.success? && @pay_response.paymentExecStatus == "CREATED"
-      current_order.paypal_key = @pay_response.payKey
-      current_order.status = "PENDING"
-      current_order.save
-      render :json => {success: true, redirect_url: @api.payment_url(@pay_response)}
+    if !params.has_key?(:order_paid)
+      @pay_response = current_order.pay
+      # Access response
+      if @pay_response.success? && @pay_response.paymentExecStatus == "CREATED"
+        current_order.paypal_key = @pay_response.payKey
+        current_order.status = "PENDING"
+        current_order.save
+        @api = PayPal::SDK::AdaptivePayments.new
+        render :json => {success: true, redirect_url: @api.payment_url(@pay_response)}
+      else
+        current_order.status = "NOT_CREATED"
+        current_order.save
+        render :json => {success: false, error: @pay_response.error}, status: :unprocessable_entity
+      end
     else
-      current_order.status = "NOT_CREATED"
-      current_order.save
-      render :json => {success: false, error: @pay_response.error}, status: :unprocessable_entity
+      if params[:order_paid]
+        current_order.status = "AUTHORISED"
+        current_order.save
+      else
+        current_order.status = 'CANCELED'
+        current_order.save
+      end
+      render :json=> current_order.as_json, status: :created
     end
-    
   end
   
   # Confirm Order

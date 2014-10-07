@@ -455,6 +455,7 @@
             <param name="Content-Type" required="true" type="xsd:string" style="header" default="application/json"></param>
             <param name="Accept" required="true" type="xsd:string" style="header" default="application/json"></param>
             
+            <param name="order_paid" required="false" type="xsd:boolean" style="query"></param>
             <param name="order_id" required="false" type="xsd:string" style="query" default=""></param>
             <param name="ticket_id" required="false" type="xsd:string" style="query" default=""></param>
             <param name="offer_id" required="false" type="xsd:string" style="query" default=""></param>
