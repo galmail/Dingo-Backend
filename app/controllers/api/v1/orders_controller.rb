@@ -4,7 +4,7 @@ class Api::V1::OrdersController < Api::BaseController
   # This method is called when a buyer wishes to buy a ticket
   def create
     
-    params.permit(:order_id,:ticket_id,:credit_card_id,:offer_id,:num_tickets,:amount,:order_paid)
+    params.permit(:order_id,:ticket_id,:credit_card_id,:offer_id,:num_tickets,:amount,:order_paid,:paypal_key)
     
     if(!params.has_key?(:order_id) && !params.has_key?(:ticket_id) && !params.has_key?(:offer_id))
       render :json => {success: false, error: 'please provide an order_id, ticket_id or offer_id.'}, status: :unprocessable_entity
@@ -62,6 +62,7 @@ class Api::V1::OrdersController < Api::BaseController
         render :json => {success: false, error: @pay_response.error}, status: :unprocessable_entity
       end
     else
+      current_order.paypal_key = params[:paypal_key]
       if params[:order_paid]
         current_order.status = "AUTHORISED"
         current_order.save
