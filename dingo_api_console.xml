@@ -377,6 +377,19 @@
             </method>
         </resource>
         
+        <!-- mark_message_as_read -->
+        <resource path="/api/v1/messages/:id">
+            <param name="Content-Type" required="true" type="xsd:string" style="header" default="application/json"></param>
+            <param name="Accept" required="true" type="xsd:string" style="header" default="application/json"></param>
+            <method id="mark_message_as_read" name="PUT" apigee:displayName="Mark Message as Read">
+                <apigee:tags>
+                    <apigee:tag primary="true">Messages</apigee:tag>
+                </apigee:tags>
+                <apigee:authentication required="true"/>
+                <doc apigee:url="http://api.mydomain.com/doc/my-method">mark_message_as_read</doc>
+            </method>
+        </resource>
+        
 <!-- ##################### OFFERS ##################### -->        
 
         <!-- get_offers_by_user -->

@@ -35,9 +35,6 @@ class Api::V1::MessagesController < Api::BaseController
     params.require(:content)
     message_params = params.permit(:receiver_id, :content, :ticket_id, :new_offer, :read)
     #TODO check if user is blocked
-    
-    
-    
     message = Message.new(message_params)
     message.sender = current_user
     if message.save
@@ -46,6 +43,15 @@ class Api::V1::MessagesController < Api::BaseController
     else
       render :json=> message.errors, status: :unprocessable_entity
     end
+  end
+  
+  # Mark Message as Read
+  def update
+    params.require(:id)
+    msg = Message.find(params[:id])
+    msg.read = true
+    msg.save
+    render :json => msg.as_json, status: :ok
   end
 
   private
