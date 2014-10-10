@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140930210702) do
+ActiveRecord::Schema.define(version: 20141010144931) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -133,6 +133,7 @@ ActiveRecord::Schema.define(version: 20140930210702) do
     t.boolean  "visible",     default: true
     t.uuid     "ticket_id"
     t.uuid     "offer_id"
+    t.boolean  "read",        default: false
   end
 
   add_index "messages", ["offer_id"], name: "index_messages_on_offer_id", using: :btree

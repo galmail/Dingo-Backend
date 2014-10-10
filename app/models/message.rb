@@ -13,6 +13,7 @@
 #  visible     :boolean          default(TRUE)
 #  ticket_id   :uuid
 #  offer_id    :uuid
+#  read        :boolean          default(FALSE)
 #
 
 class Message < ActiveRecord::Base

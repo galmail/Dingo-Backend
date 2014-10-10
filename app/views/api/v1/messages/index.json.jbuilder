@@ -1,6 +1,7 @@
 json.ignore_nil!
 json.messages @messages do |msg|
   json.id msg.id
+  json.read msg.read
   json.sender_id msg.sender.id
   json.sender_name msg.sender.name
   json.sender_avatar msg.sender_photo
