@@ -49,7 +49,7 @@ class Ticket < ActiveRecord::Base
   after_save  :alert_buyers
   
   def name
-    "Ticket for #{self.event.name}"
+    "Ticket for #{self.event.name}" unless self.event.nil?
   end
   
   def alert_buyers
