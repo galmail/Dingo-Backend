@@ -9,7 +9,7 @@
 defaults: &defaults
   # Settings
   DINGO_EMAIL: dingo@dingoapp.co.uk
-  DINGO_LOGO: http://dingoapp.co.uk/images/HeaderLogo.png
+  DINGO_LOGO: http://dingoapp.bitnamiapp.com/web/wp-content/uploads/2013/04/App-Logo3-80x80.png
   
   # Amazon S3
   AWS_BUCKET: dingoapp-test
