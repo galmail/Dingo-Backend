@@ -25,12 +25,14 @@
 #  allow_dingo_emails       :boolean          default(TRUE)
 #  allow_push_notifications :boolean          default(TRUE)
 #  fb_id                    :string(255)
+#  paypal_account           :string(255)
 #
 
 class User < ActiveRecord::Base
   acts_as_token_authenticatable
   has_many  :devices, :dependent => :delete_all
   has_many  :tickets, :dependent => :delete_all
+  has_many  :messages, :dependent => :delete_all
   has_many  :creditcards, :dependent => :delete_all
   
   has_and_belongs_to_many(:blocked_users,
