@@ -22,8 +22,8 @@ class Message < ActiveRecord::Base
   belongs_to  :ticket
   belongs_to  :offer
   
-  validates_presence_of :sender_id
-  validates_presence_of :receiver_id
+  validates_presence_of :sender
+  validates_presence_of :receiver
   validates_presence_of :content
   
   
