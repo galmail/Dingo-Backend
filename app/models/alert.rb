@@ -16,6 +16,9 @@ class Alert < ActiveRecord::Base
   belongs_to  :user
   belongs_to  :event
   
+  validates_presence_of :user
+  validates_presence_of :event
+  
   def notify_user
     # send user push notification
     msg = "New tickets for #{self.event.name} are now selling for #{self.event.min_price}"
