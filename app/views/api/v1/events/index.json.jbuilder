@@ -13,4 +13,5 @@ json.events @events do |event|
   json.min_price event.min_price
   json.available_tickets event.available_tickets
   json.thumb event.photo(:thumb) if event.photo.present?
+  json.test event.test
 end
