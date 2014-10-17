@@ -20,6 +20,7 @@
 #  city               :string(255)
 #  created_by_id      :integer
 #  end_date           :datetime
+#  test               :boolean          default(FALSE)
 #
 
 class Event < ActiveRecord::Base
