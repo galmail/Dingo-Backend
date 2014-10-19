@@ -29,10 +29,11 @@ class Api::V1::PaypalController < ApplicationController
       message_to_buyer.notify
       message_to_seller.notify
     end
-    
     #TODO send emails to both buyer and seller with the order info.
     
     #TODO send email to Dingo Admin about the order.
+    
+    
     
     current_order.ticket.sold!
     render :text => "Payment Successful! Order ID: #{params[:order_id]}"

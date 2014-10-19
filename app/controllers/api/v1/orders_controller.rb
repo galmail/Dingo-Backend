@@ -42,10 +42,11 @@ class Api::V1::OrdersController < Api::BaseController
         :num_tickets => num_tickets,
         :amount => amount
       })
-      current_order.save
+      if !current_order.save
+        render :json => {success: false, error: 'order has not been created correctly.'}, status: :unprocessable_entity
+        return false
+      end
     end
-    
-    #TODO validate order before we continue
     
     if !params.has_key?(:order_paid)
       @pay_response = current_order.pay

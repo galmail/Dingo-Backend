@@ -52,7 +52,6 @@ class Api::V1::PaymentsController < Api::BaseController
   end
   
   # Method not in use
-  
   def authorize_payment
     params.permit(:ticket_id,:num_tickets,:offer_id)
     @credit_card = PayPal::SDK::REST::CreditCard.find(current_user.creditcards.first.paypal_card_id)
@@ -99,16 +98,10 @@ class Api::V1::PaymentsController < Api::BaseController
     # Create Payment and return the status(true or false)
     if @payment.create
       @payment.id     # Payment Id
-      #TODO save order
-      #TODO update offer
-      #TODO update available tickets
-      
       render :json => {success: true, payment: @payment}
     else
       render :json => {success: false, error: @payment.error}, status: :unprocessable_entity
     end
-  end
-  
-  
+  end  
   
 end

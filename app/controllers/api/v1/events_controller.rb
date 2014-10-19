@@ -16,6 +16,11 @@ class Api::V1::EventsController < Api::BaseController
         filters[:featured] = params[:featured]
       end
       
+      # get_inactive_events
+      if params[:any]
+        filters.delete(:active)
+      end
+      
       # search_events_by_name
       if params.has_key?(:name)
         query << and_query(query) << "name ILIKE ?"

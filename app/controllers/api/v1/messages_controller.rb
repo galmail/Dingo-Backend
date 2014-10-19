@@ -33,8 +33,13 @@ class Api::V1::MessagesController < Api::BaseController
   def create
     params.require(:receiver_id)
     params.require(:content)
+    
+    if User.find_by_id(params[:receiver_id]).blocked_users.include?(current_user)
+      render :json=> {error: 'The user has blocked you.'}, status: :forbidden
+      return false
+    end
+    
     message_params = params.permit(:receiver_id, :content, :ticket_id, :new_offer, :read)
-    #TODO check if user is blocked
     message = Message.new(message_params)
     message.sender = current_user
     if message.save

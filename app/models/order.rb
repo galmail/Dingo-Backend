@@ -27,6 +27,11 @@ class Order < ActiveRecord::Base
   belongs_to  :offer
   belongs_to  :event
   
+  validates_presence_of :sender
+  validates_presence_of :receiver
+  validates_presence_of :ticket
+  validates_presence_of :event
+  
   before_save :check_status
   
   def check_status
@@ -34,82 +39,81 @@ class Order < ActiveRecord::Base
     valid_status.include?(self.status)
   end
   
+  # This method is now deprecated
   def pay
-    @api = PayPal::SDK::AdaptivePayments.new
-    @payment = @api.build_pay({
-      :actionType => "PAY_PRIMARY",
-      :feesPayer => "PRIMARYRECEIVER",
-      :currencyCode => "GBP",
-      :reverseAllParallelPaymentsOnError => true,
-      :returnUrl => "http://dingoapp.herokuapp.com/api/v1/paypal/success?order_id=#{self.id}",
-      :cancelUrl => "http://dingoapp.herokuapp.com/api/v1/paypal/cancel?order_id=#{self.id}",
-      :ipnNotificationUrl => "http://dingoapp.herokuapp.com/api/v1/paypal/notification?order_id=#{self.id}",
-      :receiverList => {
-        :receiver => [
-          {
-            :primary => true,
-            :amount => self.amount,
-            :email => Settings.DINGO_EMAIL
-          },
-          {
-            :primary => false,
-            :amount => self.sellers_profit,
-            :email => self.receiver.email
-          }
-        ]
-      }
-    })
-    @api.pay(@payment)
+    return false
+    # @api = PayPal::SDK::AdaptivePayments.new
+    # @payment = @api.build_pay({
+      # :actionType => "PAY_PRIMARY",
+      # :feesPayer => "PRIMARYRECEIVER",
+      # :currencyCode => "GBP",
+      # :reverseAllParallelPaymentsOnError => true,
+      # :returnUrl => "http://dingoapp.herokuapp.com/api/v1/paypal/success?order_id=#{self.id}",
+      # :cancelUrl => "http://dingoapp.herokuapp.com/api/v1/paypal/cancel?order_id=#{self.id}",
+      # :ipnNotificationUrl => "http://dingoapp.herokuapp.com/api/v1/paypal/notification?order_id=#{self.id}",
+      # :receiverList => {
+        # :receiver => [
+          # {
+            # :primary => true,
+            # :amount => self.amount,
+            # :email => Settings.DINGO_EMAIL
+          # },
+          # {
+            # :primary => false,
+            # :amount => self.sellers_profit,
+            # :email => self.receiver.email
+          # }
+        # ]
+      # }
+    # })
+    # @api.pay(@payment)
   end
   
+  # This method is now deprecated
   def release_payment
-    @api = PayPal::SDK::AdaptivePayments::API.new
-    @execute_payment = @api.build_execute_payment({:payKey => self.paypal_key})
-    @execute_payment_response = @api.execute_payment(@execute_payment)
-    if @execute_payment_response.success?
-      self.status = "COMPLETED"
-      self.save
-      #TODO send push notifications and emails to both buyer and seller
-      #TODO send email to Dingo Admin
-    end
-    return @execute_payment_response
+    return false
+    # @api = PayPal::SDK::AdaptivePayments::API.new
+    # @execute_payment = @api.build_execute_payment({:payKey => self.paypal_key})
+    # @execute_payment_response = @api.execute_payment(@execute_payment)
+    # if @execute_payment_response.success?
+      # self.status = "COMPLETED"
+      # self.save
+    # end
+    # return @execute_payment_response
   end
   
+  # This method is now deprecated
   def refund_payment
-    @api = PayPal::SDK::AdaptivePayments::API.new
-    @refund = @api.build_refund({
-      :currencyCode => "GBP",
-      :payKey => self.paypal_key,
-      :receiverList => {
-        :receiver => [{
-          :amount => self.amount,
-          :email => self.sender.email
-        }]
-      }
-    })
-    @refund_response = @api.refund(@refund)
-    if @refund_response.success?
-      self.status = "REFUNDED"
-      #TODO Set the reason of failure: eg. ticket already sold on other website, fake ticket, not delivered on time.
-      self.save
-      #TODO Notify Dingo by email about the order.
-      #TODO Notify the buyer and the seller by push notification and email about the order.
-    end
-    return @refund_response
+    return false
+    # @api = PayPal::SDK::AdaptivePayments::API.new
+    # @refund = @api.build_refund({
+      # :currencyCode => "GBP",
+      # :payKey => self.paypal_key,
+      # :receiverList => {
+        # :receiver => [{
+          # :amount => self.amount,
+          # :email => self.sender.email
+        # }]
+      # }
+    # })
+    # @refund_response = @api.refund(@refund)
+    # if @refund_response.success?
+      # self.status = "REFUNDED"
+      # self.save
+    # end
+    # return @refund_response
   end
   
-  #TODO Not Ready yet
   def open_dispute
     self.status = "DISPUTE"
     self.save
-    # Step 1: Set the order status as "dispute".
-    # Step 2: Get explanation from both buyer and seller.
-    # Step 3: Send Paypal the disputed order.
-    # Step 4: Notify Dingo by email about the order.
-    # Step 5: Notify the buyer and the seller by email about the order.
+    # Step 1: Notify Dingo by email about the order's dispute.
+    OrderNotifier.report_dispute_to_dingo(self).deliver
+    # Step 2: Notify the buyer and the seller by email about the order's dispute.
+    OrderNotifier.notify_dispute_to_user(self,self.sender).deliver
+    OrderNotifier.notify_dispute_to_user(self,self.receiver).deliver
   end
   
-  #TODO Not implemented yet
   def close_dispute
     # Step 1: Set the order status as "resolved".
     # Step 2: Either release or abort the payment.
