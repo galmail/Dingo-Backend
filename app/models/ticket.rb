@@ -43,6 +43,7 @@ class Ticket < ActiveRecord::Base
   validates_attachment  :photo1, content_type: { content_type: ["image/jpg", "image/jpeg", "image/png"] }
   validates_attachment  :photo2, content_type: { content_type: ["image/jpg", "image/jpeg", "image/png"] }
   validates_attachment  :photo3, content_type: { content_type: ["image/jpg", "image/jpeg", "image/png"] }
+  
   validates_presence_of :user
   validates_presence_of :event
   

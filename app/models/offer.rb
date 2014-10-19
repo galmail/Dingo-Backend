@@ -20,6 +20,10 @@ class Offer < ActiveRecord::Base
   belongs_to  :receiver, :class_name => 'User'
   belongs_to  :ticket
   
+  validates_presence_of :sender
+  validates_presence_of :receiver
+  validates_presence_of :ticket
+  
   def notify
     msg_to_seller = "#{self.sender.name} has requested to buy #{self.num_tickets} tickets for £#{self.price_per_ticket} per ticket. Total amount is £#{self.price}."
     message_to_seller = Message.new({

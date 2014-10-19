@@ -34,6 +34,11 @@ class User < ActiveRecord::Base
   has_many  :tickets, :dependent => :delete_all
   has_many  :creditcards, :dependent => :delete_all
   
+  validates_presence_of :email
+  validates_uniqueness_of :email
+  validates_presence_of :name
+  validates_presence_of :encrypted_password
+  
   has_and_belongs_to_many(:blocked_users,
     :class_name => 'User',
     :join_table => "user_blockings",

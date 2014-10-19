@@ -19,8 +19,9 @@
 
 class Device < ActiveRecord::Base
   belongs_to  :user
-  validates   :user_id, :uid, presence: true
-  validates   :uid, uniqueness: true
+  validates_presence_of :user
+  validates_presence_of :uid
+  validates_uniqueness_of :uid
   
   after_save :validate_device
   

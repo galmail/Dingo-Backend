@@ -18,6 +18,7 @@ class Alert < ActiveRecord::Base
   
   validates_presence_of :user
   validates_presence_of :event
+  validates_presence_of :price
   
   def notify_user
     # send user push notification

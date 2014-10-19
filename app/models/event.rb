@@ -31,7 +31,11 @@ class Event < ActiveRecord::Base
   belongs_to  :category
   has_many    :tickets
   belongs_to  :created_by, :class_name => 'User'
-  validates   :category_id, :presence => true
+  
+  validates_presence_of :name
+  validates_presence_of :category
+  validates_presence_of :date
+  validates_attachment_presence :photo
   
   def min_price
     price = 0
