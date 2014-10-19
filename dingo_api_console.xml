@@ -66,6 +66,7 @@
             <param name="date_of_birth" required="false" type="xsd:date" style="query"></param>
             <param name="city" required="false" type="xsd:date" style="query"></param>
             <param name="photo_url" required="false" type="xsd:string" style="query"></param>
+            <param name="fb_id" required="false" type="xsd:string" style="query"></param>
             <param name="paypal_account" required="false" type="xsd:string" style="query"></param>
             
             <param name="allow_dingo_emails" required="false" type="xsd:boolean" style="query"></param>
