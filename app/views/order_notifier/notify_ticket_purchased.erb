@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta content='text/html; charset=UTF-8' http-equiv='Content-Type' />
+  </head>
+  <body>
+    <p>
+    	Dear <%= @buyer.name%>,<br/>
+    	<br/>
+    	Congratulations!! You have got your ticket to <%= @order.event.name %><br/>
+    	<br/>
+    	Your Order ID is: <%= @order.id %><br/>
+    	<p>
+    	Remember, just in case you don't get your ticket on time or you see some problems with your ticket,
+    	please send us an email with your Order ID and the details so we can help you solve the problem. 
+    	</p>
+    	<br/>
+    	Best Regards,<br/>
+    	<br/>
+    	Dingo Team<br/>
+    </p>
+  </body>
+</html>

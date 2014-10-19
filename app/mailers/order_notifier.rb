@@ -18,7 +18,21 @@ class OrderNotifier < ActionMailer::Base
     mail(:from => self.dingo_email,:to => the_user.email,:subject => 'Order Dispute Initiated')
   end
   
+  def notify_ticket_purchased(the_order)
+    @order = the_order
+    @buyer = the_order.sender
+    mail(:from => self.dingo_email,:to => @buyer.email,:subject => 'Congrats you got your ticket!')
+  end
   
+  def notify_ticket_sold(the_order)
+    @order = the_order
+    @seller = the_order.receiver
+    mail(:from => self.dingo_email,:to => @seller.email,:subject => 'Congrats you have sold your ticket!')
+  end
   
+  def notify_successful_transaction(the_order)
+    @order = the_order
+    mail(:from => self.dingo_email,:to => Settings.DINGO_EMAIL,:subject => 'New Order!')
+  end
   
 end

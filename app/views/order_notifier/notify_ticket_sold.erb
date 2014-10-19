@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta content='text/html; charset=UTF-8' http-equiv='Content-Type' />
+  </head>
+  <body>
+    <p>
+    	Dear <%= @seller.name%>,<br/>
+    	<br/>
+    	Congratulations!! You have sold your <%= @order.event.name %> ticket!<br/>
+    	<br/>
+    	The Order ID is: <%= @order.id %><br/>
+    	<p>
+    	Please remember to get in touch with the buyer to arrange collection.<br/>
+    	Dingo will release the payment exactly 48h after the event.<br/>
+    	If you have any questions, please contact our support team indicating your order ID.<br/>
+    	</p>
+    	<br/>
+    	Best Regards,<br/>
+    	<br/>
+    	Dingo Team<br/>
+    </p>
+  </body>
+</html>

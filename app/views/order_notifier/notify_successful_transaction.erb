@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta content='text/html; charset=UTF-8' http-equiv='Content-Type' />
+  </head>
+  <body>
+    <p>
+    	<br/>
+    	Great news!! We received a successful transaction of <%=@order.amount%>!!<br/>
+    	<br/>
+    	The Order ID is: <%= @order.id %><br/>
+    	The Event is: <%= @order.event.name %><br/>
+    	The Order amount is: <%= @order.amount %><br/>
+    	Dingo's Commision: <%=@order.dingo_commision%><br/>
+    </p>
+  </body>
+</html>
