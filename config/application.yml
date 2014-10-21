@@ -16,9 +16,9 @@ defaults: &defaults
   AWS_KEY: AKIAIW4PW5CMS4TEGVIA
   AWS_SECRET: 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
   # Apple Push Notifications
-  APN_HOST: gateway.push.apple.com
+  APN_HOST: gateway.sandbox.push.apple.com
   APN_PORT: 2195
-  APN_PEM_FILE: app/assets/certificates/DingoAPNProdKey.pem
+  APN_PEM_FILE: app/assets/certificates/apnDev.pem
   APN_PASSWORD: Dingo123
   # Paypal API
   PAYPAL_MODE: sandbox
@@ -48,7 +48,12 @@ production:
   AWS_BUCKET: dingoapp-prod
   AWS_KEY: AKIAIW4PW5CMS4TEGVIA
   AWS_SECRET: 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
+  
   # Apple Push Notifications
+  APN_HOST: gateway.push.apple.com
+  APN_PORT: 2195
+  APN_PEM_FILE: app/assets/certificates/apnProd.pem
+  APN_PASSWORD: Dingo123
 
   # Paypal API
   PAYPAL_MODE: live
