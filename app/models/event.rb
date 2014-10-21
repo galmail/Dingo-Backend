@@ -51,13 +51,8 @@ class Event < ActiveRecord::Base
     current_tickets = self.tickets.select { |ticket| ticket.available? }
     if current_tickets.length>0
       total = current_tickets.inject(0) { |sum,ticket| sum + ticket.number_of_tickets }
-    else
-      if self.active
-        self.active = false
-        self.save
-      end
     end
-    total.to_s
+    return total
   end
 
 end

@@ -47,10 +47,17 @@ class Ticket < ActiveRecord::Base
   validates_presence_of :user
   validates_presence_of :event
   
-  after_save  :alert_buyers
+  after_save  :alert_buyers, :activate_event
   
   def name
     "Ticket for #{self.event.name}" unless self.event.nil?
+  end
+  
+  def activate_event
+    if self.available and !self.event.active
+      self.event.active = true
+      self.event.save
+    end
   end
   
   def alert_buyers
@@ -64,6 +71,10 @@ class Ticket < ActiveRecord::Base
   def sold!
     self.available = false
     self.save
+    if self.event.available_tickets==0
+      self.event.active = false
+      self.event.save
+    end
   end
   
 end
