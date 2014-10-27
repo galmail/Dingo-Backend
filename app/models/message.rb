@@ -33,7 +33,13 @@ class Message < ActiveRecord::Base
       msg = "#{self.content}"
     end
     User.find(self.receiver_id).devices.each { |device|
-      APNS.send_notification(device.uid, msg)
+      #APNS.send_notification(device.uid, msg)
+      APNS.send_notification(device.uid, :alert => msg, :badge => 1, :sound => 'default', :other => {
+        :ticket_id => self.ticket_id,
+        :offer_id => self.offer_id,
+        :from_dingo => self.from_dingo,
+        :new_offer => self.new_offer
+      })
     }
     return true
   end
