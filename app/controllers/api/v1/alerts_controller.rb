@@ -1,7 +1,7 @@
 class Api::V1::AlertsController < Api::BaseController
     
     def index
-      @alerts = Alert.where(:user_id => current_user.id, :on => true)
+      @alerts = Alert.where(:user_id => current_user.id, :active => true)
     end
     
     def create
@@ -14,12 +14,12 @@ class Api::V1::AlertsController < Api::BaseController
     private
     
     # Set an alert
-    def set_alert(event_id,on,price,description)
+    def set_alert(event_id,active,price,description)
       # check if alert already exist
       current_alert = Alert.where(:event_id => event_id, :user_id => current_user.id).first
       if !current_alert.nil?
         current_alert.price = price
-        current_alert.on = on
+        current_alert.active = active
         current_alert.description = description
       else
         current_alert = Alert.new({
