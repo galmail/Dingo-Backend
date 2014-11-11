@@ -62,7 +62,10 @@ class Ticket < ActiveRecord::Base
   
   def alert_buyers
     # Get all alerts where event is this and this ticket price is less than alert's price
+    puts "alerting buyers"
     alerts = Alert.where(["event_id = ? AND ? <= price AND active=?",self.event_id, self.price, true])
+    puts "eventID: #{self.event_id}"
+    puts "alerts found: #{alerts.length}"
     if alerts.length>0
       alerts.each { |alert| alert.notify_user }
     end
