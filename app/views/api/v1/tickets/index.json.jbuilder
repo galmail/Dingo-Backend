@@ -6,7 +6,7 @@ json.tickets @tickets do |ticket|
   json.user_name ticket.user.name
   json.user_email ticket.user.email
   json.user_photo ticket.user.photo_url
-  json.user_facebook_id ticket.user.photo_url.fb_id
+  json.user_facebook_id ticket.user.fb_id
   json.price ticket.price
   json.seat_type ticket.seat_type
   json.description ticket.description
