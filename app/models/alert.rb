@@ -20,9 +20,9 @@ class Alert < ActiveRecord::Base
   validates_presence_of :event
   validates_presence_of :price
   
-  def notify_user
+  def notify_user(price)
     # send user push notification
-    msg = "New tickets for #{self.event.name} are now selling for #{self.event.min_price}"
+    msg = "New tickets for #{self.event.name} are now selling for £#{price.round(2)}"
     message = Message.new({
       :sender_id => self.user.id,
       :receiver_id => self.user.id,
