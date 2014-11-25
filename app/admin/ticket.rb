@@ -4,6 +4,7 @@ ActiveAdmin.register Ticket do
   
   index do
     column :id
+    column :created_at
     column :price
     column :seat_type
     column :ticket_type
