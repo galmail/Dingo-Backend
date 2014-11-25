@@ -9,7 +9,14 @@ ActiveAdmin.register Ticket do
     column :seat_type
     column :ticket_type
     column :description
-    column :event_id
+    #column :event_id
+    
+    column "Event" do |ticket|
+     event = Event.find(ticket.event_id)
+     link_to event.name, admin_event_path(ticket.event_id)
+   end
+    
+    
     column :user_id
     column :number_of_tickets
     column :available
