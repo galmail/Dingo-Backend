@@ -18,8 +18,8 @@ json.tickets @tickets do |ticket|
   json.number_of_offers ticket.offers.count
   json.photo1_thumb ticket.photo1(:thumb) if ticket.photo1.present?
   json.photo1_large ticket.photo1(:large) if ticket.photo1.present?
-  json.photo2_thumb ticket.photo1(:thumb) if ticket.photo2.present?
-  json.photo2_large ticket.photo1(:large) if ticket.photo2.present?
-  json.photo3_thumb ticket.photo1(:thumb) if ticket.photo3.present?
-  json.photo3_large ticket.photo1(:large) if ticket.photo3.present?
+  json.photo2_thumb ticket.photo2(:thumb) if ticket.photo2.present?
+  json.photo2_large ticket.photo2(:large) if ticket.photo2.present?
+  json.photo3_thumb ticket.photo3(:thumb) if ticket.photo3.present?
+  json.photo3_large ticket.photo3(:large) if ticket.photo3.present?
 end
