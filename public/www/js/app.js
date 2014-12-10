@@ -41,7 +41,7 @@ dingo.run(function($ionicPlatform) {
    else {
     fbAppId = '672126826238840';
    }
-   FacebookProvider.init(fbAppId);
+   //FacebookProvider.init(fbAppId);
 })
 
 .config(function($stateProvider, $urlRouterProvider) {
@@ -50,18 +50,8 @@ dingo.run(function($ionicPlatform) {
   .state('app', {
     url: "/app",
     abstract: true,
-    templateUrl: "js/templates/_menu.html",
-    controller: 'AuthCtrl'
-  })
-
-  .state('app.login', {
-    url: "/login",
-    views: {
-      'menuContent' :{
-        templateUrl: "js/templates/login.html",
-        controller: 'AuthCtrl'
-      }
-    }
+    templateUrl: "js/templates/_menu.html"
+    //controller: 'AuthCtrl'
   })
 
   .state('app.home', {
@@ -74,6 +64,15 @@ dingo.run(function($ionicPlatform) {
     }
   })
 
+  .state('app.login', {
+    url: "/login",
+    views: {
+      'menuContent' :{
+        templateUrl: "js/templates/login.html"
+      }
+    }
+  })
+
   .state('app.settings', {
     url: "/settings",
     views: {
@@ -82,6 +81,7 @@ dingo.run(function($ionicPlatform) {
       }
     }
   })
+
   .state('app.about', {
     url: "/about",
     views: {
