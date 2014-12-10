@@ -2,6 +2,25 @@
 
 .d-side-menu {
 	
+	////// TOP BAR //////
+
+	.dingo-top-bar {
+		color: #444;
+		background-color: #398FAB;
+
+		.title {
+			color: #fff;
+			background-image: url('../img/login_screen/dingo_logo@2x.png');
+			background-repeat: no-repeat;
+			background-size: 21px;
+			background-position: 90px 10px;
+		}
+
+		.dingo-icon {
+			color: #fff;
+		}
+
+	}
 	
 }
 

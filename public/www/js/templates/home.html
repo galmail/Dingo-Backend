@@ -1,18 +1,21 @@
-<ion-view class="d-home" title="Main Screen">
+<ion-view class="d-home" title="">
 
   <ion-nav-buttons side="left">
-    <button menu-toggle="left" class="button button-icon icon ion-navicon"></button>
+    <button menu-toggle="left" class="button button-icon icon ion-navicon dingo-icon"></button>
   </ion-nav-buttons>
 
 
   <ion-tabs class="tabs-positive tabs-icon-top">
     
-    <ion-tab title="Home" icon-on="ion-ios7-filing-outline" icon-off="ion-ios7-filing-outline">
+    <ion-tab title="Home" icon-on="dingo-icon-home" icon-off="dingo-icon-home">
       
-      <ion-header-bar class="bar-positive">
+      <!-- <ion-header-bar class="bar-positive">
         <button menu-toggle="left" class="button button-icon icon ion-navicon"></button>
         <h1 class="title">Events Screen</h1>
-      </ion-header-bar>
+      </ion-header-bar> -->
+
+
+
       <ion-content has-tabs="true" on-refresh="onRefresh()">
         <ion-refresher></ion-refresher>
         <ion-list scroll="false" on-refresh="onRefresh()"
@@ -34,19 +37,19 @@
 
     </ion-tab>
 
-    <ion-tab title="Sell Tickets" icon-on="ion-ios7-filing-outline" icon-off="ion-ios7-filing-outline">
+    <ion-tab title="Sell Tickets" icon-on="dingo-icon-sell-ticket" icon-off="dingo-icon-sell-ticket">
       <ion-content has-tabs="true">
         Sell Ticket Screen
       </ion-content>
     </ion-tab>
 
-    <ion-tab title="Messages" icon-on="ion-ios7-filing-outline" icon-off="ion-ios7-filing-outline">
+    <ion-tab title="Messages" icon-on="dingo-icon-messages" icon-off="dingo-icon-messages">
       <ion-content has-tabs="true">
         Messages Screen
       </ion-content>
     </ion-tab>
 
-    <ion-tab title="Search" icon-on="ion-ios7-filing-outline" icon-off="ion-ios7-filing-outline">
+    <ion-tab title="Search" icon-on="dingo-icon-search" icon-off="dingo-icon-search">
       <ion-content has-tabs="true">
         Search Screen
       </ion-content>
