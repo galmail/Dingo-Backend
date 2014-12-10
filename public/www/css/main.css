@@ -7819,7 +7819,7 @@ $ios-transition-box-shadow-end: -200px 0px 200px rgba(0,0,0,0.15), -5px 0px 5px 
 /* Home Style */
 /* Login Style */
 .d-login {
-  background: url('/img/login_screen/blueBG@2x.png') no-repeat;
+  background: url('../img/login_screen/blueBG@2x.png') no-repeat;
   background-size: cover; }
   .d-login .logo {
     text-align: center;
