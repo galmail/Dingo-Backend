@@ -1,14 +1,30 @@
 <ion-side-menus class="d-side-menu">
 
   <ion-side-menu-content drag-content="false">
+    
     <ion-nav-bar class="dingo-top-bar bar-stable nav-title-slide-ios7">
       <ion-nav-back-button class="button-clear">
         <i class="icon ion-ios7-arrow-back"></i> Back
       </ion-nav-back-button>
     </ion-nav-bar>
-    <ion-nav-view name="menuContent" animation="slide-left-right">
 
-    </ion-nav-view>
+    <ion-view class="d-home" title="">
+      <ion-tabs class="tabs-positive tabs-icon-top">
+        <ion-tab title="Events" icon="dingo-icon-home" href="#/home/events">
+          <ion-nav-view name="events-tab"></ion-nav-view>
+        </ion-tab>
+        <ion-tab title="Sell Tickets" icon="dingo-icon-sell-ticket" href="#/home/sell-ticket">
+          <ion-nav-view name="sell-ticket-tab"></ion-nav-view>
+        </ion-tab>
+        <ion-tab title="Messages" icon="dingo-icon-messages" href="#/home/messages">
+          <ion-nav-view name="messages-tab"></ion-nav-view>
+        </ion-tab>
+        <ion-tab title="Search" icon="dingo-icon-search" href="#/home/search">
+          <ion-nav-view name="search-tab"></ion-nav-view>
+        </ion-tab>
+      </ion-tabs>
+    </ion-view>
+
   </ion-side-menu-content>
 
   <ion-side-menu side="left">
@@ -37,13 +53,9 @@
           <i class="icon ion-android-information"></i>
           About Screen
         </ion-item>
-        
-        <!-- <ion-item menu-close nav-clear class="item item-icon-left" ng-click="">
-          <i class="icon ion-log-out"></i>
-          Logout
-        </ion-item> -->
-
       </ion-list>
     </ion-content>
   </ion-side-menu>
 </ion-side-menus>
+
+

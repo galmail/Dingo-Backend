@@ -18,28 +18,32 @@
 			background-image: url('../img/home_screen/home_icon@2x.png');
 			background-repeat: no-repeat;
 			background-size: 28px;
-			background-position: 26px 3px;
+			width: 28px;
+			background-position-y: 2px;
 		}
 
 		&.dingo-icon-sell-ticket {
 			background-image: url('../img/home_screen/list_tickets_icon@2x.png');
 			background-repeat: no-repeat;
 			background-size: 46px;
-			background-position: 15px 0px;
+			width: 46px;
+			background-position-y: 0px;
 		}
 
 		&.dingo-icon-messages {
 			background-image: url('../img/home_screen/messages_icon@2x.png');
 			background-repeat: no-repeat;
 			background-size: 30px;
-			background-position: 25px 5px;
+			width: 30px;
+			background-position-y: 4px;
 		}
 
 		&.dingo-icon-search {
 			background-image: url('../img/home_screen/search_icon@2x.png');
 			background-repeat: no-repeat;
 			background-size: 23px;
-			background-position: 27px 5px;
+			width: 23px;
+			background-position-y: 4px;
 		}
 
 	}

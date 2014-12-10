@@ -6,16 +6,8 @@
 
 
   <ion-tabs class="tabs-positive tabs-icon-top">
-    
-    <ion-tab title="Home" icon-on="dingo-icon-home" icon-off="dingo-icon-home">
-      
-      <!-- <ion-header-bar class="bar-positive">
-        <button menu-toggle="left" class="button button-icon icon ion-navicon"></button>
-        <h1 class="title">Events Screen</h1>
-      </ion-header-bar> -->
 
-
-
+    <!-- <ion-tab title="Home" icon-on="dingo-icon-home" icon-off="dingo-icon-home">
       <ion-content has-tabs="true" on-refresh="onRefresh()">
         <ion-refresher></ion-refresher>
         <ion-list scroll="false" on-refresh="onRefresh()"
@@ -34,16 +26,29 @@
           </ion-item>
         </ion-list>
       </ion-content>
+    </ion-tab> -->
 
+    <ion-tab title="Events" icon="dingo-icon-home" href="#/app/events">
+      <ion-nav-view name="events-tab"></ion-nav-view>
     </ion-tab>
 
-    <ion-tab title="Sell Tickets" icon-on="dingo-icon-sell-ticket" icon-off="dingo-icon-sell-ticket">
+    <ion-tab title="Sell Tickets" icon="dingo-icon-sell-ticket" href="#/app/sell-ticket">
+      <ion-nav-view name="sell-ticket-tab"></ion-nav-view>
+    </ion-tab>
+
+
+
+    <!-- <ion-tab title="Sell Tickets" icon-on="dingo-icon-sell-ticket" icon-off="dingo-icon-sell-ticket">
       <ion-content has-tabs="true">
         Sell Ticket Screen
       </ion-content>
-    </ion-tab>
+    </ion-tab> -->
 
-    <ion-tab title="Messages" icon-on="dingo-icon-messages" icon-off="dingo-icon-messages">
+
+
+
+
+    <!-- <ion-tab title="Messages" icon-on="dingo-icon-messages" icon-off="dingo-icon-messages">
       <ion-content has-tabs="true">
         Messages Screen
       </ion-content>
@@ -53,7 +58,7 @@
       <ion-content has-tabs="true">
         Search Screen
       </ion-content>
-    </ion-tab>
+    </ion-tab> -->
 
   </ion-tabs>
 

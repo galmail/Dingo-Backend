@@ -1,0 +1,105 @@
+/* Events Style */
+
+.d-events {
+
+	#categories_container {
+		overflow-y: hidden;
+		overflow-x: scroll;
+
+		.categories {
+			width: 500px;
+			overflow: hidden;
+
+			.category {
+				padding-left: 10px;
+				float: left;
+				width: 160px;
+				height: 142px;
+				border: 0;
+				label.checkbox {
+					height: 100%;
+					top: inherit;
+					bottom: 13px;
+					input {
+						position: absolute;
+						bottom: 2px;
+						right: -3px;
+					}
+				}
+				img {
+					position: absolute;
+					height: 113px;
+				}
+				.category-name {
+					position: absolute;
+					color: white;
+					bottom: 15px;
+					left: 15px;
+				}
+			}
+		}
+	}
+
+	#events_container {
+		.events-date {
+			color: #fff;
+			background-color: #398FAB;
+			margin-bottom: 5px;
+			padding: 2px;
+		}
+		.event {
+			height: 80px;
+			& > div {
+				height: 80px;
+			}
+			.event-pic {
+				position: absolute;
+				left: 0;
+			}
+			.event-info {
+				position: absolute;
+				left: 0;
+				margin-left: 80px;
+				width: 52%;
+				.event-title {
+					font-weight: bold;
+					font-size: 16px;
+				}
+				.event-address {
+					position: absolute;
+					bottom: 23px;
+					font-size: 10px;
+				}
+				.event-time {
+					position: absolute;
+					bottom: 8px;
+					font-size: 10px;
+					color: gray;
+				}
+			}
+			.event-price {
+				position: absolute;
+				right: 0;
+
+				.event-price-from {
+					font-size: 12px;
+				}
+				.event-price-per-ticket {
+					font-size: 10px;
+					color: gray;
+				}
+				.event-price-available-tickets {
+					font-size: 8px;
+					color: gray;
+				}
+
+
+
+
+			}
+		}
+	}
+
+	
+
+}

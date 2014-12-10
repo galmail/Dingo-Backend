@@ -7824,8 +7824,11 @@ $ios-transition-box-shadow-end: -200px 0px 200px rgba(0,0,0,0.15), -5px 0px 5px 
     background-image: url('../img/login_screen/dingo_logo@2x.png');
     background-repeat: no-repeat;
     background-size: 21px;
-    background-position: 90px 10px; }
-  .d-side-menu .dingo-top-bar .dingo-icon {
+    background-position: 90px 10px;
+    width: 200px;
+    margin-left: auto;
+    margin-right: auto; }
+  .d-side-menu .dingo-top-bar .icon.ion-navicon {
     color: #fff; }
 
 /* Home Style */
@@ -7836,22 +7839,26 @@ $ios-transition-box-shadow-end: -200px 0px 200px rgba(0,0,0,0.15), -5px 0px 5px 
   background-image: url('../img/home_screen/home_icon@2x.png');
   background-repeat: no-repeat;
   background-size: 28px;
-  background-position: 26px 3px; }
+  width: 28px;
+  background-position-y: 2px; }
 .d-home .icon.dingo-icon-sell-ticket {
   background-image: url('../img/home_screen/list_tickets_icon@2x.png');
   background-repeat: no-repeat;
   background-size: 46px;
-  background-position: 15px 0px; }
+  width: 46px;
+  background-position-y: 0px; }
 .d-home .icon.dingo-icon-messages {
   background-image: url('../img/home_screen/messages_icon@2x.png');
   background-repeat: no-repeat;
   background-size: 30px;
-  background-position: 25px 5px; }
+  width: 30px;
+  background-position-y: 4px; }
 .d-home .icon.dingo-icon-search {
   background-image: url('../img/home_screen/search_icon@2x.png');
   background-repeat: no-repeat;
   background-size: 23px;
-  background-position: 27px 5px; }
+  width: 23px;
+  background-position-y: 4px; }
 
 /* Login Style */
 .d-login {
@@ -7885,3 +7892,73 @@ $ios-transition-box-shadow-end: -200px 0px 200px rgba(0,0,0,0.15), -5px 0px 5px 
     margin-top: 20px; }
     .d-login .guest img {
       height: 35px; }
+
+/* Events Style */
+.d-events #categories_container {
+  overflow-y: hidden;
+  overflow-x: scroll; }
+  .d-events #categories_container .categories {
+    width: 500px;
+    overflow: hidden; }
+    .d-events #categories_container .categories .category {
+      padding-left: 10px;
+      float: left;
+      width: 160px;
+      height: 142px;
+      border: 0; }
+      .d-events #categories_container .categories .category label.checkbox {
+        height: 100%;
+        top: inherit;
+        bottom: 13px; }
+        .d-events #categories_container .categories .category label.checkbox input {
+          position: absolute;
+          bottom: 2px;
+          right: -3px; }
+      .d-events #categories_container .categories .category img {
+        position: absolute;
+        height: 113px; }
+      .d-events #categories_container .categories .category .category-name {
+        position: absolute;
+        color: white;
+        bottom: 15px;
+        left: 15px; }
+.d-events #events_container .events-date {
+  color: #fff;
+  background-color: #398FAB;
+  margin-bottom: 5px;
+  padding: 2px; }
+.d-events #events_container .event {
+  height: 80px; }
+  .d-events #events_container .event > div {
+    height: 80px; }
+  .d-events #events_container .event .event-pic {
+    position: absolute;
+    left: 0; }
+  .d-events #events_container .event .event-info {
+    position: absolute;
+    left: 0;
+    margin-left: 80px;
+    width: 52%; }
+    .d-events #events_container .event .event-info .event-title {
+      font-weight: bold;
+      font-size: 16px; }
+    .d-events #events_container .event .event-info .event-address {
+      position: absolute;
+      bottom: 23px;
+      font-size: 10px; }
+    .d-events #events_container .event .event-info .event-time {
+      position: absolute;
+      bottom: 8px;
+      font-size: 10px;
+      color: gray; }
+  .d-events #events_container .event .event-price {
+    position: absolute;
+    right: 0; }
+    .d-events #events_container .event .event-price .event-price-from {
+      font-size: 12px; }
+    .d-events #events_container .event .event-price .event-price-per-ticket {
+      font-size: 10px;
+      color: gray; }
+    .d-events #events_container .event .event-price .event-price-available-tickets {
+      font-size: 8px;
+      color: gray; }

@@ -54,15 +54,7 @@ dingo.run(function($ionicPlatform) {
     //controller: 'AuthCtrl'
   })
 
-  .state('app.home', {
-    url: "/home",
-    views: {
-      'menuContent' :{
-        templateUrl: "js/templates/home.html",
-        controller: 'HomeCtrl'
-      }
-    }
-  })
+  ////////////////// MENU URLs ///////////////////
 
   .state('app.login', {
     url: "/login",
@@ -89,10 +81,57 @@ dingo.run(function($ionicPlatform) {
         templateUrl: "js/templates/about.html"
       }
     }
-  });
+  })
+
+  ////////////////// HOME URLs ///////////////////
+
+  .state('home', {
+    url: "/home",
+    abstract: true,
+    templateUrl: "js/templates/_home.html"
+    //controller: 'HomeCtrl'
+  })
+
+  .state('home.events', {
+    url: "/events",
+    views: {
+      'events-tab': {
+        templateUrl: "js/templates/events.html"
+      }
+    }
+  })
+
+  .state('home.sellTicket', {
+    url: "/sell-ticket",
+    views: {
+      'sell-ticket-tab': {
+        templateUrl: "js/templates/sellTicket.html"
+      }
+    }
+  })
+
+  .state('home.messages', {
+    url: "/messages",
+    views: {
+      'messages-tab': {
+        templateUrl: "js/templates/messages.html"
+      }
+    }
+  })
+
+  .state('home.search', {
+    url: "/search",
+    views: {
+      'search-tab': {
+        templateUrl: "js/templates/search.html"
+      }
+    }
+  })
+
+  ;
 
   // if none of the above states are matched, use this as the fallback
-  $urlRouterProvider.otherwise('/app/home');
+  $urlRouterProvider.otherwise('/home/events');
 
 });
 
