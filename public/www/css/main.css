@@ -7931,6 +7931,7 @@ $ios-transition-box-shadow-end: -200px 0px 200px rgba(0,0,0,0.15), -5px 0px 5px 
   margin-bottom: 5px;
   padding: 2px; }
 .d-events #events_container .event {
+  padding: 0;
   margin-bottom: 10px; }
   .d-events #events_container .event > div {
     height: 70px; }
