@@ -11,18 +11,20 @@
 			overflow: hidden;
 
 			.category {
-				padding-left: 10px;
+				padding: 0;
+				margin-right: 5px;
 				float: left;
 				width: 160px;
-				height: 142px;
+				height: 122px;
 				border: 0;
 				label.checkbox {
 					height: 100%;
 					top: inherit;
-					bottom: 13px;
+					bottom: 0;
 					input {
 						position: absolute;
-						bottom: 2px;
+						bottom: 0;
+						margin-bottom: 12px;
 						right: -3px;
 					}
 				}
@@ -33,8 +35,9 @@
 				.category-name {
 					position: absolute;
 					color: white;
-					bottom: 15px;
-					left: 15px;
+					bottom: 0;
+					margin-bottom: 15px;
+					left: 5px;
 				}
 			}
 		}
@@ -48,38 +51,33 @@
 			padding: 2px;
 		}
 		.event {
-			height: 80px;
+			//height: 80px;
+			margin-bottom: 10px;
 			& > div {
-				height: 80px;
+				height: 70px;
 			}
 			.event-pic {
-				position: absolute;
-				left: 0;
+				width: 70px;
+
 			}
 			.event-info {
-				position: absolute;
-				left: 0;
-				margin-left: 80px;
-				width: 52%;
 				.event-title {
 					font-weight: bold;
 					font-size: 16px;
+					padding: 0 5px;
 				}
 				.event-address {
-					position: absolute;
-					bottom: 23px;
+					padding: 0 5px;
 					font-size: 10px;
 				}
 				.event-time {
-					position: absolute;
-					bottom: 8px;
+					padding: 0 5px;
 					font-size: 10px;
 					color: gray;
 				}
 			}
 			.event-price {
-				position: absolute;
-				right: 0;
+				//width: 60px;
 
 				.event-price-from {
 					font-size: 12px;
