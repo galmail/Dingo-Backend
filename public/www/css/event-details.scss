@@ -1,0 +1,31 @@
+/* Event Details Style */
+
+.d-event-details {
+
+	#event_container {
+		background-size: cover;
+		background-repeat: no-repeat;
+		height: 150px;
+		margin-bottom: 10px;
+		.event-photo {
+			padding: 35px 10px;
+			img {
+				border: 1px solid white;
+				border-radius: 35px;
+			}
+		}
+		.event-info {
+			color: #fff;
+			.event-title {
+				font-size: 22px;
+				line-height: 28px;
+				padding: 12px 0;
+			}
+		}
+	}
+
+	.tickets {
+
+	}
+
+}

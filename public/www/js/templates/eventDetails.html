@@ -1,0 +1,39 @@
+<ion-view class="d-event-details" view-title="Event Details">
+  <!-- <ion-nav-buttons side="left">
+    <button menu-toggle="left" class="button button-icon icon ion-navicon"></button>
+  </ion-nav-buttons> -->
+  <ion-content class="padding">
+    
+
+  	<div id="event_container" class="row" style="background-image: url('img/categories/concerts@2x.png');">
+  		<div class="event-photo">
+  			<img src="http://s3-us-west-2.amazonaws.com/dingoapp-test/events/photos/057/899/f5-/tiny_pic/Xmas-K.jpg?1416413614" />
+  		</div>
+  		<div class="event-info col">
+  			<div class="event-title">Xmas Jumper Night</div>
+  			<div class="event-address">19 Downham Road, N15BF</div>
+				<div class="event-time">18:30</div>
+  		</div>
+  	</div>
+
+  	<ul class="list tickets">
+    	<li class="item row" ng-repeat="ticket in tickets">
+    		<img ng-src="{{ticket.photo}}"/>
+    		<div class="col">{{ ticket.name }}</div>
+    		<div class="ticket-price col col-25">
+					<div class="ticket-price">€15</div>
+					<div class="ticket-price-per-ticket">per ticket</div>
+					<div class="ticket-price-available-tickets">2</div>
+				</div>
+    	</li>
+		</ul>
+
+
+  </ion-content>
+</ion-view>
+
+
+
+
+
+

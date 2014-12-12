@@ -3,8 +3,8 @@
 .d-events {
 
 	#categories_container {
-		overflow-y: hidden;
-		overflow-x: scroll;
+		// overflow-y: hidden;
+		// overflow-x: scroll;
 
 		.categories {
 			width: 500px;
@@ -53,6 +53,8 @@
 		.event {
 			padding: 0;
 			margin-bottom: 10px;
+			color: inherit;
+			text-decoration: inherit;
 			& > div {
 				height: 70px;
 			}

@@ -51,7 +51,7 @@ dingo.run(function($ionicPlatform) {
     url: "/app",
     abstract: true,
     templateUrl: "js/templates/_menu.html"
-    //controller: 'AuthCtrl'
+    //controller: 'HomeCtrl'
   })
 
   ////////////////// MENU URLs ///////////////////
@@ -88,15 +88,26 @@ dingo.run(function($ionicPlatform) {
   .state('home', {
     url: "/home",
     abstract: true,
-    templateUrl: "js/templates/_home.html"
-    //controller: 'HomeCtrl'
+    templateUrl: "js/templates/_home.html",
+    controller: 'HomeCtrl'
   })
 
   .state('home.events', {
     url: "/events",
     views: {
       'events-tab': {
-        templateUrl: "js/templates/events.html"
+        templateUrl: "js/templates/events.html",
+        controller: 'EventsCtrl'
+      }
+    }
+  })
+
+  .state('home.eventDetails', {
+    url: "/event-details",
+    views: {
+      'events-tab': {
+        templateUrl: "js/templates/eventDetails.html",
+        controller: 'EventDetailsCtrl'
       }
     }
   })

@@ -7830,6 +7830,8 @@ $ios-transition-box-shadow-end: -200px 0px 200px rgba(0,0,0,0.15), -5px 0px 5px 
     margin-right: auto; }
   .d-side-menu .dingo-top-bar .icon.ion-navicon {
     color: #fff; }
+  .d-side-menu .dingo-top-bar .button.back-button {
+    color: #fff; }
 
 /* Home Style */
 .d-home .tabs-positive > .tabs {
@@ -7894,37 +7896,34 @@ $ios-transition-box-shadow-end: -200px 0px 200px rgba(0,0,0,0.15), -5px 0px 5px 
       height: 35px; }
 
 /* Events Style */
-.d-events #categories_container {
-  overflow-y: hidden;
-  overflow-x: scroll; }
-  .d-events #categories_container .categories {
-    width: 500px;
-    overflow: hidden; }
-    .d-events #categories_container .categories .category {
-      padding: 0;
-      margin-right: 5px;
-      float: left;
-      width: 160px;
-      height: 122px;
-      border: 0; }
-      .d-events #categories_container .categories .category label.checkbox {
-        height: 100%;
-        top: inherit;
-        bottom: 0; }
-        .d-events #categories_container .categories .category label.checkbox input {
-          position: absolute;
-          bottom: 0;
-          margin-bottom: 12px;
-          right: -3px; }
-      .d-events #categories_container .categories .category img {
+.d-events #categories_container .categories {
+  width: 500px;
+  overflow: hidden; }
+  .d-events #categories_container .categories .category {
+    padding: 0;
+    margin-right: 5px;
+    float: left;
+    width: 160px;
+    height: 122px;
+    border: 0; }
+    .d-events #categories_container .categories .category label.checkbox {
+      height: 100%;
+      top: inherit;
+      bottom: 0; }
+      .d-events #categories_container .categories .category label.checkbox input {
         position: absolute;
-        height: 113px; }
-      .d-events #categories_container .categories .category .category-name {
-        position: absolute;
-        color: white;
         bottom: 0;
-        margin-bottom: 15px;
-        left: 5px; }
+        margin-bottom: 12px;
+        right: -3px; }
+    .d-events #categories_container .categories .category img {
+      position: absolute;
+      height: 113px; }
+    .d-events #categories_container .categories .category .category-name {
+      position: absolute;
+      color: white;
+      bottom: 0;
+      margin-bottom: 15px;
+      left: 5px; }
 .d-events #events_container .events-date {
   color: #fff;
   background-color: #398FAB;
@@ -7932,7 +7931,9 @@ $ios-transition-box-shadow-end: -200px 0px 200px rgba(0,0,0,0.15), -5px 0px 5px 
   padding: 2px; }
 .d-events #events_container .event {
   padding: 0;
-  margin-bottom: 10px; }
+  margin-bottom: 10px;
+  color: inherit;
+  text-decoration: inherit; }
   .d-events #events_container .event > div {
     height: 70px; }
   .d-events #events_container .event .event-pic {
@@ -7956,3 +7957,21 @@ $ios-transition-box-shadow-end: -200px 0px 200px rgba(0,0,0,0.15), -5px 0px 5px 
   .d-events #events_container .event .event-price .event-price-available-tickets {
     font-size: 8px;
     color: gray; }
+
+/* Event Details Style */
+.d-event-details #event_container {
+  background-size: cover;
+  background-repeat: no-repeat;
+  height: 150px;
+  margin-bottom: 10px; }
+  .d-event-details #event_container .event-photo {
+    padding: 35px 10px; }
+    .d-event-details #event_container .event-photo img {
+      border: 1px solid white;
+      border-radius: 35px; }
+  .d-event-details #event_container .event-info {
+    color: #fff; }
+    .d-event-details #event_container .event-info .event-title {
+      font-size: 22px;
+      line-height: 28px;
+      padding: 12px 0; }
