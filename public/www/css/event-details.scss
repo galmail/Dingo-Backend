@@ -26,6 +26,31 @@
 
 	.tickets {
 
+		.ticket {
+			border: none;
+			margin-bottom: 10px;
+			&.ion-chevron-right:before {
+				margin-top: 20px;
+				position: absolute;
+				right: 0;
+			}
+			.ticket-price {
+				//width: 60px;
+				.ticket-price-from {
+					font-size: 12px;
+				}
+				.ticket-price-per-ticket {
+					font-size: 10px;
+					color: gray;
+				}
+				.ticket-price-available-tickets {
+					font-size: 8px;
+					color: gray;
+				}
+			}
+
+		}
+
 	}
 
 }

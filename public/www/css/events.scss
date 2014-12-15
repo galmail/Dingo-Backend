@@ -55,6 +55,11 @@
 			margin-bottom: 10px;
 			color: inherit;
 			text-decoration: inherit;
+			&.ion-chevron-right:before {
+				margin-top: 20px;
+				position: absolute;
+				right: 0;
+			}
 			& > div {
 				height: 70px;
 			}

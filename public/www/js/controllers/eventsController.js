@@ -10,6 +10,7 @@ dingo.controllers.controller('EventsCtrl', function($scope) {
 
 	for(var i=0;i<5;i++){
 		$scope.eventsA.push({
+			id: i+1,
 			name: 'Xmas Jumper Night',
 			photo: 'http://s3-us-west-2.amazonaws.com/dingoapp-test/events/photos/057/899/f5-/tiny_pic/Xmas-K.jpg?1416413614',
 			address: '19 Downham Road, N15BF',
@@ -21,6 +22,7 @@ dingo.controllers.controller('EventsCtrl', function($scope) {
 
 	for(var i=0;i<10;i++){
 		$scope.eventsB.push({
+			id: i+1,
 			name: 'Xmas Jumper Night',
 			photo: 'http://s3-us-west-2.amazonaws.com/dingoapp-test/events/photos/057/899/f5-/tiny_pic/Xmas-K.jpg?1416413614',
 			address: '19 Downham Road, N15BF',

@@ -42,7 +42,7 @@
 
   		<div class="events-date">Tuesday 2nd December</div>
 			
-			<a ng-repeat="event in eventsA" class="event row" ng-href="#/home/event-details">
+			<a ng-repeat="event in eventsA" class="event row icon-right ion-chevron-right" ng-href="#/home/event-details/{{event.id}}">
 				<div class="event-pic">
 					<img ng-src="{{event.photo}}" />
 				</div>

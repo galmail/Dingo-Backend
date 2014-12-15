@@ -7934,6 +7934,10 @@ $ios-transition-box-shadow-end: -200px 0px 200px rgba(0,0,0,0.15), -5px 0px 5px 
   margin-bottom: 10px;
   color: inherit;
   text-decoration: inherit; }
+  .d-events #events_container .event.ion-chevron-right:before {
+    margin-top: 20px;
+    position: absolute;
+    right: 0; }
   .d-events #events_container .event > div {
     height: 70px; }
   .d-events #events_container .event .event-pic {
@@ -7972,6 +7976,39 @@ $ios-transition-box-shadow-end: -200px 0px 200px rgba(0,0,0,0.15), -5px 0px 5px 
   .d-event-details #event_container .event-info {
     color: #fff; }
     .d-event-details #event_container .event-info .event-title {
+      font-size: 22px;
+      line-height: 28px;
+      padding: 12px 0; }
+.d-event-details .tickets .ticket {
+  border: none;
+  margin-bottom: 10px; }
+  .d-event-details .tickets .ticket.ion-chevron-right:before {
+    margin-top: 20px;
+    position: absolute;
+    right: 0; }
+  .d-event-details .tickets .ticket .ticket-price .ticket-price-from {
+    font-size: 12px; }
+  .d-event-details .tickets .ticket .ticket-price .ticket-price-per-ticket {
+    font-size: 10px;
+    color: gray; }
+  .d-event-details .tickets .ticket .ticket-price .ticket-price-available-tickets {
+    font-size: 8px;
+    color: gray; }
+
+/* Ticket Details Style */
+.d-ticket-details #ticket_container {
+  background-size: cover;
+  background-repeat: no-repeat;
+  height: 150px;
+  margin-bottom: 10px; }
+  .d-ticket-details #ticket_container .event-photo {
+    padding: 35px 10px; }
+    .d-ticket-details #ticket_container .event-photo img {
+      border: 1px solid white;
+      border-radius: 35px; }
+  .d-ticket-details #ticket_container .event-info {
+    color: #fff; }
+    .d-ticket-details #ticket_container .event-info .event-title {
       font-size: 22px;
       line-height: 28px;
       padding: 12px 0; }
