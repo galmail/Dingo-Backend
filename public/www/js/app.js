@@ -129,7 +129,8 @@ dingo.run(function($ionicPlatform) {
     url: "/sell-ticket",
     views: {
       'sell-ticket-tab': {
-        templateUrl: "js/templates/sellTicket.html"
+        templateUrl: "js/templates/sellTicket.html",
+        controller: 'SellTicketCtrl'
       }
     }
   })

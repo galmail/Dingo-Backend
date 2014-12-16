@@ -8012,3 +8012,29 @@ $ios-transition-box-shadow-end: -200px 0px 200px rgba(0,0,0,0.15), -5px 0px 5px 
       font-size: 22px;
       line-height: 28px;
       padding: 12px 0; }
+.d-ticket-details .ticket-info .item-input {
+  border-right: 0;
+  border-left: 0; }
+  .d-ticket-details .ticket-info .item-input:first-child {
+    border-top: 0; }
+  .d-ticket-details .ticket-info .item-input .input-label {
+    font-size: 14px;
+    width: 150px; }
+  .d-ticket-details .ticket-info .item-input input {
+    background-color: inherit; }
+.d-ticket-details .ticket-actions .photo {
+  width: 120px;
+  border-radius: 10px; }
+.d-ticket-details .ticket-actions .button {
+  margin-top: 0px;
+  min-height: 0px;
+  line-height: 30px; }
+  .d-ticket-details .ticket-actions .button.buy-button {
+    font-weight: bold;
+    border: 3px solid; }
+
+/* Sell Ticket Style */
+.d-sell-ticket .event-name .events-list .item {
+  font-weight: bold;
+  background-color: lightgray;
+  border-bottom: 2px solid white; }

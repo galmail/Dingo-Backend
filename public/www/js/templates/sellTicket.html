@@ -3,7 +3,136 @@
     <button menu-toggle="left" class="button button-icon icon ion-navicon"></button>
   </ion-nav-buttons>
   <ion-content class="padding">
-    Sell Ticket Screen
+    
+
+  	<div class="list">
+
+		  <div class="item item-divider">
+		    Event Details
+		  </div>
+
+		  <div class="event-name">
+			  <label class="item item-input">
+			    <span class="input-label">Event Name:</span>
+			    <input type="search" ng-model="selectedEvent.name" ng-change="filterEvent()" />
+			  </label>
+			  <ul class="list events-list">
+			  	<li ng-show="showEvent(event)" ng-click="selectEvent(event)" ng-repeat="event in events" class="item">{{ event.name }}</li>
+			  </ul>
+		  </div>
+
+		  <label class="item item-input">
+		    <span class="input-label">Location:</span>
+		    <input type="text" ng-model="selectedEvent.location" ng-disabled="selectedEvent.selected" />
+		  </label>
+
+		  <label class="item item-input">
+		    <span class="input-label">From:</span>
+		    <input type="datetime" ng-model="selectedEvent.from" ng-disabled="selectedEvent.selected" />
+		  </label>
+
+		  <label class="item item-input">
+		    <span class="input-label">To:</span>
+		    <input type="datetime" ng-model="selectedEvent.to" ng-disabled="selectedEvent.selected" />
+		  </label>
+
+		  <div class="item item-divider">
+		    Ticket Details
+		  </div>
+
+		  <label class="item item-input">
+		    <span class="input-label">Price per ticket:</span>
+		    <input type="number" />
+		  </label>
+
+		  <label class="item item-input">
+		    <span class="input-label">Face Value per ticket:</span>
+		    <input type="number" />
+		  </label>
+
+		  <label class="item item-input">
+		    <span class="input-label">Number of tickets:</span>
+		    <input type="number" value="1" min="1" max="10" />
+		  </label>
+
+		  <label class="item item-input item-select">
+		    <div class="input-label">
+		      Type of ticket:
+		    </div>
+		    <select>
+		      <option selected>e-Ticket</option>
+		      <option>Paper</option>
+		    </select>
+		  </label>
+
+		  <label class="item item-input item-stacked-label">
+		    <span class="input-label">Comments:</span>
+		    <textarea rows="2" placeholder="Add any additional comments about the tickets or collection">
+		    </textarea>
+		  </label>
+
+		  <div class="item item-divider">
+		    How do you want to be paid?
+		  </div>
+
+		  <li class="item item-toggle">
+		     Cash in Person
+		     <label class="toggle toggle-positive">
+		       <input type="checkbox" name="payment" />
+		       <div class="track">
+		         <div class="handle"></div>
+		       </div>
+		     </label>
+		  </li>
+
+		  <li class="item item-toggle">
+		     Paypal
+		     <label class="toggle toggle-positive">
+		       <input type="checkbox" name="payment" checked/>
+		       <div class="track">
+		         <div class="handle"></div>
+		       </div>
+		     </label>
+		  </li>
+
+		  <div class="item item-divider">
+		    Delivery method(s):
+		  </div>
+
+		  <li class="item item-toggle">
+		     In Person
+		     <label class="toggle toggle-balanced">
+		       <input type="checkbox" name="delivery" checked/>
+		       <div class="track">
+		         <div class="handle"></div>
+		       </div>
+		     </label>
+		  </li>
+
+		  <li class="item item-toggle">
+		     Electronic
+		     <label class="toggle toggle-balanced">
+		       <input type="checkbox" name="delivery" checked/>
+		       <div class="track">
+		         <div class="handle"></div>
+		       </div>
+		     </label>
+		  </li>
+
+		  <li class="item item-toggle">
+		     Post
+		     <label class="toggle toggle-balanced">
+		       <input type="checkbox" name="delivery" checked/>
+		       <div class="track">
+		         <div class="handle"></div>
+		       </div>
+		     </label>
+		  </li>
+
+	  </div>
+
+  	<button class="button button-full button-positive">Preview</button>
+
   </ion-content>
 </ion-view>
 

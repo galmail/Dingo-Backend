@@ -24,6 +24,40 @@
 		}
 	}
 
+	.ticket-info {
+		.item-input {
+			border-right: 0;
+			border-left: 0;
+			&:first-child {
+				border-top: 0;
+			}
+			.input-label {
+				font-size: 14px;
+				width: 150px;
+			}
+			input {
+				background-color: inherit;
+			}
+		}
+	}
+
+	.ticket-actions {
+		.photo {
+			width: 120px;
+			border-radius: 10px;
+		}
+		.button {
+			margin-top: 0px;
+			min-height: 0px;
+			line-height: 30px;
+			&.buy-button {
+				font-weight: bold;
+				border: 3px solid;
+			}
+		}
+		
+	}
+
 
 
 
