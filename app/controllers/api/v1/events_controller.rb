@@ -60,8 +60,10 @@ class Api::V1::EventsController < Api::BaseController
       params[:photo].content_type=params[:photo].content_type.split(";")[0].strip if params[:photo].present?
       
       event = Event.new(event_params)
-      event.created_by=current_user
+      event.active = false
+      event.created_by = current_user
       if event.save
+        EventNotifier.report_new_event_to_dingo(event).deliver
         render :json=> event.as_json, status: :created
       else
         render :json=> event.errors, status: :unprocessable_entity

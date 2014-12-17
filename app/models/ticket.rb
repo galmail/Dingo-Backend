@@ -54,7 +54,7 @@ class Ticket < ActiveRecord::Base
   end
   
   def activate_event
-    if self.available and !self.event.active
+    if self.available and !self.event.active and self.event.created_by.nil?
       self.event.active = true
       self.event.save
     end

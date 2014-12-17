@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta content='text/html; charset=UTF-8' http-equiv='Content-Type' />
+  </head>
+  <body>
+    <p>
+    	<b>Dear Dingos,</b><br/>
+    	<br/>
+    	There is a user selling a ticket for a new event.<br/>
+    	<br/>
+    	Please verify it, these are the details:<br/>
+    </p>
+    <p>
+    	<div>Event details:</div>
+    	<ul>
+    		<li>ID: <%= @event.id %></li>
+    		<li>Event: <%= @event.name %></li>
+    		<li>Created By: <%= @event.created_by.name %></li>
+    	</ul>
+    </p>
+    <p>
+    	Don't forget to:
+    	<ol>
+    		<li>Check the all the event details are correct</li>
+    		<li>Select a Category for this event</li>
+    		<li>Activate the event and get back to the user</li>
+    	</ol>
+    </p>
+  </body>
+</html>
