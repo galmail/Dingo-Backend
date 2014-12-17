@@ -41,7 +41,7 @@ class Event < ActiveRecord::Base
     price = 0
     current_tickets = self.tickets.select { |ticket| ticket.available? }
     if current_tickets.length>0
-      price = self.tickets.min_by{ |ticket| ticket.price }.price
+      price = current_tickets.min_by{ |ticket| ticket.price }.price
     end
     price.to_s
   end
