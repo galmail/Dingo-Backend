@@ -20,7 +20,6 @@ class Api::V1::TicketsController < Api::BaseController
     
     # Create Ticket
     def create
-      puts params.inspect
       
       params.require(:event_id)
       params.require(:price)
