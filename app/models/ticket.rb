@@ -47,17 +47,17 @@ class Ticket < ActiveRecord::Base
   validates_presence_of :user
   validates_presence_of :event
   
-  after_save  :activate_event, :alert_buyers
+  after_save  :alert_buyers, :update_event
   
   def name
     "Ticket for #{self.event.name}" unless self.event.nil?
   end
   
-  def activate_event
-    if self.available and self.event.active
-      self.event.for_sale = true
-      self.event.save
-    end
+  def update_event
+    self.event.min_price = self.event.calculate_min_price
+    self.event.available_tickets = self.event.calculate_available_tickets
+    self.event.for_sale = (self.event.available_tickets > 0)
+    self.event.save
   end
   
   def alert_buyers
@@ -68,13 +68,12 @@ class Ticket < ActiveRecord::Base
     end
   end
   
-  def sold!
-    self.available = false
-    self.save
-    if self.event.available_tickets==0
-      self.event.for_sale = false
-      self.event.save
+  def sold!(num_tickets)
+    self.number_of_tickets -= num_tickets
+    if self.number_of_tickets==0
+      self.available = false
     end
+    self.save
   end
   
 end

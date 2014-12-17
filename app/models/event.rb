@@ -22,6 +22,8 @@
 #  end_date           :datetime
 #  test               :boolean          default(FALSE)
 #  for_sale           :boolean          default(FALSE)
+#  min_price          :decimal(8, 2)    default(0.0)
+#  available_tickets  :integer          default(0)
 #
 
 class Event < ActiveRecord::Base
@@ -38,7 +40,8 @@ class Event < ActiveRecord::Base
   validates_presence_of :date
   validates_attachment_presence :photo
   
-  def min_price
+  
+  def calculate_min_price
     price = 0
     current_tickets = self.tickets.select { |ticket| ticket.available? }
     if current_tickets.length>0
@@ -47,7 +50,8 @@ class Event < ActiveRecord::Base
     price.to_s
   end
   
-  def available_tickets
+  
+  def calculate_available_tickets
     total = 0
     current_tickets = self.tickets.select { |ticket| ticket.available? }
     if current_tickets.length>0

@@ -29,7 +29,7 @@ class Api::V1::PaypalController < ApplicationController
       message_to_buyer.notify
       message_to_seller.notify
     end
-    current_order.ticket.sold!
+    current_order.ticket.sold!(current_order.num_tickets)
     OrderNotifier.notify_ticket_purchased(current_order).deliver
     OrderNotifier.notify_ticket_sold(current_order).deliver
     OrderNotifier.notify_successful_transaction(current_order).deliver
