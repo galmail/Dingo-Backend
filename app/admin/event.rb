@@ -11,6 +11,7 @@ ActiveAdmin.register Event do
     column :address
     column :city
     column :active
+    column :for_sale
     column :featured
     column :photo do |ad|
       image_tag(ad.photo.url(:tiny_pic))

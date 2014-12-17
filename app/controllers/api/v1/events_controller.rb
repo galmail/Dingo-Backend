@@ -2,7 +2,7 @@ class Api::V1::EventsController < Api::BaseController
     
     # Get Events
     def index
-      filters = { active: true }
+      filters = { active: true, for_sale: true }
       query = ""
       conditions = []
       
@@ -18,7 +18,7 @@ class Api::V1::EventsController < Api::BaseController
       
       # get_inactive_events
       if params[:any]
-        filters.delete(:active)
+        filters.delete(:for_sale)
       end
       
       # search_events_by_name

@@ -21,6 +21,7 @@
 #  created_by_id      :integer
 #  end_date           :datetime
 #  test               :boolean          default(FALSE)
+#  for_sale           :boolean          default(FALSE)
 #
 
 class Event < ActiveRecord::Base
