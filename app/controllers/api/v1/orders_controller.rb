@@ -4,19 +4,16 @@ class Api::V1::OrdersController < Api::BaseController
   # This method is called when a buyer wishes to buy a ticket
   def create
     
-    params.permit(:order_id,:ticket_id,:credit_card_id,:offer_id,:num_tickets,:amount,:order_paid,:paypal_key)
+    params.permit(:ticket_id,:offer_id,:num_tickets,:amount,:order_paid,:paypal_key)
     
-    if(!params.has_key?(:order_id) && !params.has_key?(:ticket_id) && !params.has_key?(:offer_id))
-      render :json => {success: false, error: 'please provide an order_id, ticket_id or offer_id.'}, status: :unprocessable_entity
+    if(!params.has_key?(:ticket_id) && !params.has_key?(:offer_id))
+      render :json => {success: false, error: 'please provide a ticket_id or offer_id.'}, status: :unprocessable_entity
       return false
     end
     
     current_ticket = nil
     
-    
-    if params.has_key?(:order_id)
-      current_ticket = Order.find(params[:order_id]).ticket
-    elsif params.has_key?(:ticket_id)
+    if params.has_key?(:ticket_id)
       current_ticket = Ticket.find(params[:ticket_id])
     elsif params.has_key?(:offer_id)
       current_ticket = Offer.find(params[:offer_id]).ticket
@@ -27,52 +24,48 @@ class Api::V1::OrdersController < Api::BaseController
     num_tickets = params[:num_tickets]
     amount = params[:amount]
     
-    # 1. Create an Order if not already created
-    current_order = nil
-    if params.has_key?(:order_id)
-      current_order = Order.find(params[:order_id])
+    current_order = Order.new({
+      :sender_id => current_user.id,
+      :receiver_id => current_ticket.user_id,
+      :ticket_id => current_ticket.id,
+      :event_id => current_ticket.event_id,
+      :offer_id => offer_id,
+      :num_tickets => num_tickets,
+      :amount => amount,
+      :status => 'PENDING'
+    })
+    if !current_order.save
+      render :json => {success: false, error: 'order has not been created correctly.'}, status: :unprocessable_entity
     else
-      current_order = Order.new({
-        :sender_id => current_user.id,
-        :receiver_id => current_ticket.user_id,
-        :ticket_id => current_ticket.id,
-        #:credit_card_id => credit_card_id,
-        :event_id => current_ticket.event_id,
-        :offer_id => offer_id,
-        :num_tickets => num_tickets,
-        :amount => amount
-      })
-      if !current_order.save
-        render :json => {success: false, error: 'order has not been created correctly.'}, status: :unprocessable_entity
-        return false
-      end
-    end
-    
-    if !params.has_key?(:order_paid)
-      @pay_response = current_order.pay
-      # Access response
-      if @pay_response.success? && @pay_response.paymentExecStatus == "CREATED"
-        current_order.paypal_key = @pay_response.payKey
-        current_order.status = "PENDING"
-        current_order.save
-        @api = PayPal::SDK::AdaptivePayments.new
-        render :json => {success: true, redirect_url: @api.payment_url(@pay_response)}
-      else
-        current_order.status = "NOT_CREATED"
-        current_order.save
-        render :json => {success: false, error: @pay_response.error}, status: :unprocessable_entity
-      end
-    else
-      current_order.paypal_key = params[:paypal_key]
-      if params[:order_paid]
-        current_order.status = "AUTHORISED"
-        current_order.save
-      else
-        current_order.status = 'CANCELED'
-        current_order.save
-      end
       render :json=> current_order.as_json, status: :created
     end
+    
+    
+    # if !params.has_key?(:order_paid)
+      # @pay_response = current_order.pay
+      # # Access response
+      # if @pay_response.success? && @pay_response.paymentExecStatus == "CREATED"
+        # current_order.paypal_key = @pay_response.payKey
+        # current_order.status = "PENDING"
+        # current_order.save
+        # @api = PayPal::SDK::AdaptivePayments.new
+        # render :json => {success: true, redirect_url: @api.payment_url(@pay_response)}
+      # else
+        # current_order.status = "NOT_CREATED"
+        # current_order.save
+        # render :json => {success: false, error: @pay_response.error}, status: :unprocessable_entity
+      # end
+    # else
+      # current_order.paypal_key = params[:paypal_key]
+      # if params[:order_paid]
+        # current_order.status = "AUTHORISED"
+        # current_order.save
+      # else
+        # current_order.status = "CANCELED"
+        # current_order.save
+      # end
+      # render :json=> current_order.as_json, status: :created
+    # end
   end
   
   # Confirm Order

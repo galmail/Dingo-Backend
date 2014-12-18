@@ -5,19 +5,29 @@ ActiveAdmin.register Ticket do
   index do
     column :id
     column :created_at
+    column "Event" do |ticket|
+      event = Event.find(ticket.event_id)
+      link_to event.name, admin_event_path(ticket.event_id)
+    end
+    column :user
     column :price
-    column :seat_type
+    column :ticket_type
+    column :number_of_tickets
+    column :available
+    actions
+  end
+  
+  show do
+    column :id
+    column :created_at
+    column "Event" do |ticket|
+      event = Event.find(ticket.event_id)
+      link_to event.name, admin_event_path(ticket.event_id)
+    end
+    column :user
+    column :price
     column :ticket_type
     column :description
-    #column :event_id
-    
-    column "Event" do |ticket|
-     event = Event.find(ticket.event_id)
-     link_to event.name, admin_event_path(ticket.event_id)
-   end
-    
-    
-    column :user_id
     column :number_of_tickets
     column :available
     column :photo1 do |ad|
@@ -29,7 +39,6 @@ ActiveAdmin.register Ticket do
     column :photo3 do |ad|
       image_tag(ad.photo3.url(:thumb))
     end
-    actions
   end
   
   # See permitted parameters documentation:

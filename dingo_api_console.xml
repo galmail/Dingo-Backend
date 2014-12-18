@@ -525,6 +525,39 @@
         
 <!-- ##################### PAYMENTS ##################### -->
 
+		<!-- transaction_approved -->
+        <resource path="/api/v1/paypal/success">
+            <param name="Content-Type" required="true" type="xsd:string" style="header" default="application/json"></param>
+            <param name="Accept" required="true" type="xsd:string" style="header" default="application/json"></param>
+            
+            <param name="order_id" required="true" type="xsd:string" style="query" default=""></param>
+            
+            <method id="transaction_approved" name="POST" apigee:displayName="Transaction Approved">
+                <apigee:tags>
+                    <apigee:tag primary="true">Payments</apigee:tag>
+                </apigee:tags>
+                <apigee:authentication required="true"/>
+                <doc apigee:url="http://api.mydomain.com/doc/my-method">transaction_approved</doc>
+            </method>
+        </resource>
+        
+        <!-- transaction_cancelled -->
+        <resource path="/api/v1/paypal/cancel">
+            <param name="Content-Type" required="true" type="xsd:string" style="header" default="application/json"></param>
+            <param name="Accept" required="true" type="xsd:string" style="header" default="application/json"></param>
+            
+            <param name="order_id" required="true" type="xsd:string" style="query" default=""></param>
+            
+            <method id="transaction_cancelled" name="POST" apigee:displayName="Transaction Cancelled">
+                <apigee:tags>
+                    <apigee:tag primary="true">Payments</apigee:tag>
+                </apigee:tags>
+                <apigee:authentication required="true"/>
+                <doc apigee:url="http://api.mydomain.com/doc/my-method">transaction_cancelled</doc>
+            </method>
+        </resource>
+        
+
         <!-- store_credit_card -->
         <!--
         <resource path="/api/v1/payments/store_credit_card">
