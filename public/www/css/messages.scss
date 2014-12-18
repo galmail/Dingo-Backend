@@ -1,0 +1,139 @@
+/* Messages Style */
+
+.d-messages {
+
+	#chat {
+		background-color: #eee;
+		//margin: 20px auto 0;
+		//width: 400px;
+
+		#header-chat {
+			background-color: #555;
+			color: white;
+			padding: 10px;
+			text-align: center;
+			text-shadow: 1px 1px 3px rgba(0,0,0,0.6);
+		}
+
+		.chat-box {
+			height: 300px;
+			margin-bottom: 10px;
+		}
+
+		#mensajes {
+			padding: 10px;
+			height: 100px;
+			//width: 400px;
+			//overflow: hidden;
+			//overflow-y: scroll;
+			
+			.mensaje-amigo {
+				margin-bottom: 10px;
+				img {
+					display: inline-block;
+					vertical-align: top;
+					border-radius: 5px;
+					width: 50px;
+				}
+
+				.contenido {
+					background-color: #3990BF;
+					border-radius: 5px;
+					color: white;
+					display: inline-block;
+					font-size: 13px;
+					padding: 10px;
+					vertical-align: top;
+					max-width: 210px;
+				}
+
+				.flecha-derecha {
+					display: inline-block;
+					margin-left: -6px;
+					margin-top: 10px;
+					width: 0; 
+					height: 0; 
+					border-top: 0px solid transparent;
+					border-bottom: 15px solid transparent;
+					border-left: 15px solid #3990BF;
+				}
+
+				.fecha {
+					color: #777;
+					font-style: italic;
+					font-size: 13px;
+					text-align: left;
+					margin-top: 10px;
+				}
+			}
+			
+			.mensaje-autor {
+				margin-bottom: 10px;
+				
+				img {
+					display: inline-block;
+					vertical-align: top;
+					border-radius: 5px;
+					width: 50px;
+				}
+				
+				.contenido {
+					background-color: white;
+					border-radius: 5px;
+					box-shadow: 2px 2px 3px rgba(0,0,0,0.3);
+					display: inline-block;
+					font-size: 13px;
+					padding: 10px;
+					vertical-align: top;
+					max-width: 210px;
+				}
+				
+				.fecha {
+					color: #777;
+					font-style: italic;
+					font-size: 13px;
+					text-align: right;
+					margin-right: 35px;
+					margin-top: 10px;
+				}
+				
+				.flecha-izquierda {
+					display: inline-block;
+					margin-right: -6px;
+					margin-top: 10px;
+					width: 0; 
+					height: 0; 
+					border-top: 0px solid transparent;
+					border-bottom: 15px solid transparent;
+					border-right: 15px solid white;
+				}
+			}
+		}
+
+		#caja-mensaje{
+			background-color: #A8DCF7;
+			margin: 0 auto;
+			padding: 5px 10px;
+			//width: 400px;
+			input{
+				border: solid 1px #4193BF;
+				outline: none;
+				padding: 10px;
+				//width: 200px;
+			}
+			button{
+				border: 0;
+				background-color: #4193BF;
+				color: white;
+				font-size: 16px;
+				padding: 8px;
+				width: 50px;
+			}
+		}
+
+	}
+	
+
+
+
+}

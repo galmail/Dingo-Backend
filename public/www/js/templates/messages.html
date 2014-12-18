@@ -2,8 +2,67 @@
   <ion-nav-buttons side="left">
     <button menu-toggle="left" class="button button-icon icon ion-navicon"></button>
   </ion-nav-buttons>
-  <ion-content class="padding">
-    Messages Screen
+  <ion-content class="padding" scroll="false">
+ 
+		<div id="chat">
+			
+			<div id="header-chat">
+				The Chat Header
+			</div>
+			
+			<ion-scroll class="chat-box" direction="y">
+			<div id="mensajes">
+
+				<div class="mensaje-autor">
+					<img src="http://lorempixel.com/50/50/cats/?_=a" alt="" class="foto" />
+					<div class="flecha-izquierda"></div>
+					<div class="contenido">
+						Sprang wow indescribably ahead more sordid at cooperatively more one nightingale.
+					</div>
+				</div>
+
+				<div class="mensaje-amigo">
+					<div class="contenido">
+						Lucidly oh squinted and ordered irrespective yikes wailed invoked.
+					</div>
+					<div class="flecha-derecha"></div>
+					<img src="http://lorempixel.com/50/50/cats/?_=b" alt="" class="foto" />
+				</div>
+
+				<div class="mensaje-autor">
+					<img src="http://lorempixel.com/50/50/cats/?_=a" alt="" class="foto" />
+					<div class="flecha-izquierda"></div>
+					<div class="contenido">
+						As and vehemently.
+					</div>
+				</div>
+
+				<div class="mensaje-autor">
+					<img src="http://lorempixel.com/50/50/cats/?_=a" alt="" class="foto" />
+					<div class="flecha-izquierda"></div>
+					<div class="contenido">
+						Much licentiously whale far charming the and far one.
+					</div>
+				</div>
+
+				<div class="mensaje-amigo">
+					<div class="contenido">
+						Mastodon but much one regardless egret falcon and some sniffled wow wolverine prim.
+					</div>
+					<div class="flecha-derecha"></div>
+					<img src="http://lorempixel.com/50/50/cats/?_=b" alt="" class="foto" />
+				</div>
+
+			</div>
+			</ion-scroll>
+
+			<div id="caja-mensaje">
+				<input type="text" placeholder="Type Message...">
+				<!-- <button>&#8594; </button> -->
+			</div>
+
+		</div>
+
   </ion-content>
 </ion-view>
 

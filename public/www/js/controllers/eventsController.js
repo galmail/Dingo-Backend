@@ -3,7 +3,10 @@
  *
  */
 
-dingo.controllers.controller('EventsCtrl', function($scope) {
+dingo.controllers.controller('EventsCtrl', function($scope, Category) {
+
+	$scope.category_width = 164;
+	$scope.categories = [];
 
 	$scope.eventsA = [];
 	$scope.eventsB = [];
@@ -31,5 +34,17 @@ dingo.controllers.controller('EventsCtrl', function($scope) {
 			num_tickets_available: 2
 		});
 	};
+
+
+	// run on init
+	(function(){
+		console.log('Running Events Controller...');
+		Category.loadAll(function(categories){
+			$scope.categories = categories;
+			$scope.categories_width = ($scope.category_width * categories.length) - 5;
+		});
+	})();
+
+
 
 });

@@ -7,30 +7,18 @@
 
   	<div id="categories_container">
 
-	  	<ion-scroll zooming="false" direction="x" has-bouncing="false">
+	  	<ion-scroll zooming="false" direction="x" has-bouncing="true">
 
-	  		<ul class="list categories">
-		    	<li class="item item-checkbox category">
-			      <img src="img/categories/concerts@2x.png" />
+	  		<ul class="list categories" style="width:{{ categories_width }}px;">
+		    	
+		    	<li ng-repeat="category in categories" class="item item-checkbox category">
+			      <img ng-src="{{category.pic_url}}" />
 			      <label class="checkbox">
 			      	<input type="checkbox">
 			      </label>
-			      <div class="category-name">Concerts</div>
+			      <div class="category-name">{{ category.name }}</div>
 				  </li>
-				  <li class="item item-checkbox category">
-			      <img src="img/categories/sport@2x.png" />
-			      <label class="checkbox">
-			      	<input type="checkbox">
-			      </label>
-			      <div class="category-name">Sports</div>
-				  </li>
-				  <li class="item item-checkbox category">
-			      <img src="img/categories/theatre@2x.png" />
-			      <label class="checkbox">
-			      	<input type="checkbox">
-			      </label>
-			      <div class="category-name">Theatre</div>
-				  </li>
+
 		    </ul>
 
 		  </ion-scroll>
@@ -60,7 +48,7 @@
 
 			<div class="events-date">Thursday 4th December</div>
 			
-			<a ng-repeat="event in eventsB" class="event row" ng-href="#/home/event-details">
+			<a ng-repeat="event in eventsB" class="event row icon-right ion-chevron-right" ng-href="#/home/event-details/{{event.id}}">
 				<div class="event-pic">
 					<img ng-src="{{event.photo}}" />
 				</div>

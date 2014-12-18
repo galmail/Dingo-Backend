@@ -3,11 +3,8 @@
 .d-events {
 
 	#categories_container {
-		// overflow-y: hidden;
-		// overflow-x: scroll;
 
 		.categories {
-			width: 500px;
 			overflow: hidden;
 
 			.category {
@@ -17,6 +14,9 @@
 				width: 160px;
 				height: 122px;
 				border: 0;
+				&:last-child {
+					margin-right: 0;
+				}
 				label.checkbox {
 					height: 100%;
 					top: inherit;

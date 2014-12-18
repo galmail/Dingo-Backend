@@ -7897,7 +7897,6 @@ $ios-transition-box-shadow-end: -200px 0px 200px rgba(0,0,0,0.15), -5px 0px 5px 
 
 /* Events Style */
 .d-events #categories_container .categories {
-  width: 500px;
   overflow: hidden; }
   .d-events #categories_container .categories .category {
     padding: 0;
@@ -7906,6 +7905,8 @@ $ios-transition-box-shadow-end: -200px 0px 200px rgba(0,0,0,0.15), -5px 0px 5px 
     width: 160px;
     height: 122px;
     border: 0; }
+    .d-events #categories_container .categories .category:last-child {
+      margin-right: 0; }
     .d-events #categories_container .categories .category label.checkbox {
       height: 100%;
       top: inherit;
@@ -8038,3 +8039,97 @@ $ios-transition-box-shadow-end: -200px 0px 200px rgba(0,0,0,0.15), -5px 0px 5px 
   font-weight: bold;
   background-color: lightgray;
   border-bottom: 2px solid white; }
+
+/* Messages Style */
+.d-messages #chat {
+  background-color: #eee; }
+  .d-messages #chat #header-chat {
+    background-color: #555;
+    color: white;
+    padding: 10px;
+    text-align: center;
+    text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.6); }
+  .d-messages #chat .chat-box {
+    height: 300px;
+    margin-bottom: 10px; }
+  .d-messages #chat #mensajes {
+    padding: 10px;
+    height: 100px; }
+    .d-messages #chat #mensajes .mensaje-amigo {
+      margin-bottom: 10px; }
+      .d-messages #chat #mensajes .mensaje-amigo img {
+        display: inline-block;
+        vertical-align: top;
+        border-radius: 5px;
+        width: 50px; }
+      .d-messages #chat #mensajes .mensaje-amigo .contenido {
+        background-color: #3990BF;
+        border-radius: 5px;
+        color: white;
+        display: inline-block;
+        font-size: 13px;
+        padding: 10px;
+        vertical-align: top;
+        max-width: 210px; }
+      .d-messages #chat #mensajes .mensaje-amigo .flecha-derecha {
+        display: inline-block;
+        margin-left: -6px;
+        margin-top: 10px;
+        width: 0;
+        height: 0;
+        border-top: 0px solid transparent;
+        border-bottom: 15px solid transparent;
+        border-left: 15px solid #3990BF; }
+      .d-messages #chat #mensajes .mensaje-amigo .fecha {
+        color: #777;
+        font-style: italic;
+        font-size: 13px;
+        text-align: left;
+        margin-top: 10px; }
+    .d-messages #chat #mensajes .mensaje-autor {
+      margin-bottom: 10px; }
+      .d-messages #chat #mensajes .mensaje-autor img {
+        display: inline-block;
+        vertical-align: top;
+        border-radius: 5px;
+        width: 50px; }
+      .d-messages #chat #mensajes .mensaje-autor .contenido {
+        background-color: white;
+        border-radius: 5px;
+        box-shadow: 2px 2px 3px rgba(0, 0, 0, 0.3);
+        display: inline-block;
+        font-size: 13px;
+        padding: 10px;
+        vertical-align: top;
+        max-width: 210px; }
+      .d-messages #chat #mensajes .mensaje-autor .fecha {
+        color: #777;
+        font-style: italic;
+        font-size: 13px;
+        text-align: right;
+        margin-right: 35px;
+        margin-top: 10px; }
+      .d-messages #chat #mensajes .mensaje-autor .flecha-izquierda {
+        display: inline-block;
+        margin-right: -6px;
+        margin-top: 10px;
+        width: 0;
+        height: 0;
+        border-top: 0px solid transparent;
+        border-bottom: 15px solid transparent;
+        border-right: 15px solid white; }
+  .d-messages #chat #caja-mensaje {
+    background-color: #A8DCF7;
+    margin: 0 auto;
+    padding: 5px 10px; }
+    .d-messages #chat #caja-mensaje input {
+      border: solid 1px #4193BF;
+      outline: none;
+      padding: 10px; }
+    .d-messages #chat #caja-mensaje button {
+      border: 0;
+      background-color: #4193BF;
+      color: white;
+      font-size: 16px;
+      padding: 8px;
+      width: 50px; }
