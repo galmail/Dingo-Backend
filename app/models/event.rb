@@ -38,8 +38,7 @@ class Event < ActiveRecord::Base
   validates_presence_of :name
   validates_presence_of :category
   validates_presence_of :date
-  validates_attachment_presence :photo
-  
+  #validates_attachment_presence :photo
   
   def calculate_min_price
     price = 0

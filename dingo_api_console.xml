@@ -218,10 +218,10 @@
         <resource path="/api/v1/events">
             <param name="Content-Type" required="true" type="xsd:string" style="header" default="application/json"></param>
             <param name="Accept" required="true" type="xsd:string" style="header" default="application/json"></param>
+            <param name="name" required="true" type="xsd:string" style="query" default=""></param>
             <param name="category_id" required="true" type="xsd:string" style="query" default=""></param>
             <param name="date" required="true" type="xsd:datetime" style="query" default=""></param>
-            <param name="end_date" required="true" type="xsd:datetime" style="query" default=""></param>
-            <param name="name" required="true" type="xsd:string" style="query" default=""></param>
+            <param name="end_date" required="false" type="xsd:datetime" style="query" default=""></param>            
             <param name="description" required="false" type="xsd:string" style="query" default=""></param>
             <param name="address" required="false" type="xsd:string" style="query" default=""></param>
             <param name="postcode" required="false" type="xsd:string" style="query" default=""></param>
