@@ -18,26 +18,28 @@ ActiveAdmin.register Ticket do
   end
   
   show do
-    column :id
-    column :created_at
-    column "Event" do |ticket|
-      event = Event.find(ticket.event_id)
-      link_to event.name, admin_event_path(ticket.event_id)
-    end
-    column :user
-    column :price
-    column :ticket_type
-    column :description
-    column :number_of_tickets
-    column :available
-    column :photo1 do |ad|
-      image_tag(ad.photo1.url(:thumb))
-    end
-    column :photo2 do |ad|
-      image_tag(ad.photo2.url(:thumb))
-    end
-    column :photo3 do |ad|
-      image_tag(ad.photo3.url(:thumb))
+    attributes_table do
+      row :id
+      row :created_at
+      row "Event" do |ticket|
+        event = Event.find(ticket.event_id)
+        link_to event.name, admin_event_path(ticket.event_id)
+      end
+      row :user
+      row :price
+      row :ticket_type
+      row :description
+      row :number_of_tickets
+      row :available
+      row :photo1 do |ad|
+        image_tag(ad.photo1.url(:thumb))
+      end
+      row :photo2 do |ad|
+        image_tag(ad.photo2.url(:thumb))
+      end
+      row :photo3 do |ad|
+        image_tag(ad.photo3.url(:thumb))
+      end
     end
   end
   
