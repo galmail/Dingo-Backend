@@ -55,8 +55,8 @@ class Api::V1::EventsController < Api::BaseController
     # Create Event
     def create
       params.require(:name)
-      params.require(:date)
-      params.require(:category_id)
+      #params.require(:date)
+      #params.require(:category_id)
       event_params = params.permit(:name, :description, :date, :end_date, :category_id, :address, :postcode, :city, :photo)
       
       params[:photo].content_type=params[:photo].content_type.split(";")[0].strip if params[:photo].present?
@@ -64,7 +64,7 @@ class Api::V1::EventsController < Api::BaseController
       event = Event.new(event_params)
       event.active = false
       event.created_by = current_user
-      if event.save
+      if event.save(:validate => false)
         EventNotifier.report_new_event_to_dingo(event).deliver
         render :json=> event.as_json, status: :created
       else
