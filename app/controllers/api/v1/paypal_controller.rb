@@ -1,4 +1,4 @@
-class Api::V1::PaypalController < ApplicationController
+class Api::V1::PaypalController < Api::BaseController
   
   # Paypal handlers
   def index
