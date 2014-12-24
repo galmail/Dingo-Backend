@@ -33,7 +33,9 @@ class Api::V1::PaypalController < Api::BaseController
     OrderNotifier.notify_ticket_purchased(current_order).deliver
     OrderNotifier.notify_ticket_sold(current_order).deliver
     OrderNotifier.notify_successful_transaction(current_order).deliver
-    render :text => "Payment Successful! Order ID: #{params[:order_id]}"
+    
+    render :json=> current_order.as_json, status: :ok
+    #render :text => "Payment Successful! Order ID: #{params[:order_id]}"
   end
   
   def cancel
@@ -43,12 +45,15 @@ class Api::V1::PaypalController < Api::BaseController
     current_order.status = 'CANCELED'
     current_order.save
     
-    render :text => "Payment Canceled. Order ID: #{params[:order_id]}"
+    render :json=> current_order.as_json, status: :ok
+    #render :text => "Payment Canceled. Order ID: #{params[:order_id]}"
   end
   
   def notification
     puts "PAYPAL_NOTIFICATION with ORDER_ID: #{params[:order_id]}"
-    render :text => "Notification Received. Order ID: #{params[:order_id]}"
+    
+    render :json=> Order.find(params[:order_id]).as_json, status: :ok
+    #render :text => "Notification Received. Order ID: #{params[:order_id]}"
   end
   
 end
