@@ -53,9 +53,9 @@ Rails.application.routes.draw do
       end
       
       namespace :paypal do
-        get  'success'
-        get  'cancel'
-        get  'notification'
+        post  'success'
+        post  'cancel'
+        post  'notification'
       end
       
     end
