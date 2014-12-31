@@ -1,23 +1,110 @@
 <!DOCTYPE html>
-<html>
-  <head>
-    <meta content='text/html; charset=UTF-8' http-equiv='Content-Type' />
-  </head>
-  <body>
-    <p>
-    	Dear <%= @buyer.name%>,<br/>
-    	<br/>
-    	Congratulations!! You have got your ticket to <%= @order.event.name %><br/>
-    	<br/>
-    	Your Order ID is: <%= @order.id %><br/>
-    	<p>
-    	Remember, just in case you don't get your ticket on time or you see some problems with your ticket,
-    	please send us an email with your Order ID and the details so we can help you solve the problem. 
-    	</p>
-    	<br/>
-    	Best Regards,<br/>
-    	<br/>
-    	Dingo Team<br/>
-    </p>
-  </body>
+<html lang="en">
+<head>
+    <title>Confirmation email</title>
+    
+</head>
+<body style="background-color: #FCFCFC; font-family:Verdana, Geneva, sans-serif; font-size:22px">
+ 
+
+ 
+<div align="center" style="background-color: #FCFCFC">  
+    <div style="width:700px; font-family:Verdana, Geneva, sans-serif; font-size:22px">
+
+        <div align="center">
+            <p style="font-size:42px; padding-top: 20px"><b>Hi <%= @buyer.name%>,</b></p>
+            <p style="font-size:22px;">Congratulations! You're going to see <%= @order.event.name %>!</p>
+        </div>
+                
+        <div align="center" style="padding-bottom:45px; padding-top: 20px; font-family:Verdana, Geneva, sans-serif;">
+            
+            
+            <style type="text/css">
+.tg td{border-style:solid;border-width: 0px;}
+
+</style>
+                
+            <table class="tg" cellspacing="0" style="border-width:0px;" height="999" width="572" background="https://s3-us-west-2.amazonaws.com/dingoapp-prod/Email+images/Invoicev2.jpg">
+              <tr>
+                <td colspan="9" align="center" style="font-size: 35px; height: 185px; padding-bottom: 35px" valign="bottom" ><b>£<%= @order.amount.round(2) %></b></td>
+              </tr> 
+              <tr>
+                <td style="width: 70px; height: 48px"></td>
+                <td colspan="2"><b>Breakdown</b></td>
+              </tr>
+              <tr>
+                <td></td>
+                <td style="width: 45px;"></td>
+                <td style="width: 212px; height: 48px">Event name:</td>
+                <td colspan="4" style="padding-left: 38px"><%= @order.event.name %></td>
+              </tr>
+              <tr>
+                <td style="height: 48px"></td>
+                <td></td>
+                <td>Number of tickets:</td>
+                <td colspan="4" style="padding-left: 38px"><%= @order.num_tickets %></td>
+              </tr>
+              <tr>
+                <td style="height: 48px"></td>
+                <td></td>
+                <td>Price per ticket:</td>
+                <td colspan="4" style="padding-left: 38px">£<%= (@order.amount / @order.num_tickets).round(2) %></td>
+              </tr>
+              <tr>
+                <td style="height: 48px"></td>
+                <td></td>
+                <td>Dingo fee (10%):</td>
+                <td colspan="4" style="padding-left: 38px">£<%= (@order.amount * 0.10).round(2) %></td>
+              </tr>
+              <tr>
+                <td style="height: 48px"></td>
+                <td></td>
+                <td style="padding-bottom: 0px"><b>Total:</b></td>
+                <td colspan="4" style="padding-left: 38px"><b>£<%= (@order.amount * 1.10).round(2) %></b></td>
+              </tr>
+              <tr>
+                <td style="height: 150px"></td>
+                <td></td>
+                <td valign="top" style="padding-left: 35px; padding-top: 30px"><div><img style="border-radius: 108px; border:3px solid grey;" src="http://graph.facebook.com/v2.0/10152616072979198/picture?redirect=1&height=200&type=normal&width=200" height="108" width="108"></div></td>
+                <td colspan="4" valign="top" style="padding-top: 20px"><p><b>Seller Name:</b></p><p style="font-size: 25px"><%= @seller.name%></p></td>
+              </tr>
+              <tr>
+                <td colspan="9" style="font-size: 18px; text-align: center; padding-top: 20px" valign="top" >Please arrange ticket delivery with the seller.<p>Remember to use Dingo's in-app chat.</p></td>
+              </tr>
+              <tr>
+                <td colspan="9" style="font-size: 12px; color: grey; text-align: center; padding-bottom: 20px" valign="bottom" >Order ID: <%= @order.id%></td>
+              </tr>  
+            </table>
+            
+        </div>
+            
+        <div align="center">
+            <p style="padding-bottom:15px; font-size:22px"><b>Dingo Support</b></p>
+            <p style="padding-bottom:35px; font-size:22px;">Dingo will hold your money for two days after the event before making a transfer to the seller. We do this to protect you from fraud and fake tickets.</p>
+            <p style="padding-bottom:35px; font-size:22px">If there is a problem with your ticket(s), you must get in contact with us <u>WITHIN 48 HOURS</u> after the event. Challenges made after this time cannot be heard.</p>
+            <hr >
+            <p style="padding-bottom:35px; padding-top: 20px; font-size:22px">If you have any questions or feedback, or want to challenge the transaction, please get in touch by email: <a href="mailto:info@dingoapp.co.uk">info@dingoapp.co.uk</a>.</p>
+            <p style="padding-bottom:35px; font-size:22px">Remember to follow us on Twitter to see some of the latest tickets on sale <a href="https://twitter.com/Dingotickets" target="_blank">@dingotickets</a>.</p>
+            <p style="padding-bottom:35px; font-size:22px">Thanks for using our service.</p>
+            <p style="padding-bottom:35px; font-size:22px">Dingo</p>            
+        </div>
+
+        <div align="center" style="padding-bottom:35px"><a href="http://store.apple.com/uk" target="_blank"><img src="https://s3-us-west-2.amazonaws.com/dingoapp-prod/Email+images/appstoreicon.jpg"></a> </div>
+
+        <table>
+            <tr>
+                <td><div align="center"><a href="https://www.facebook.com/dingoapp" target="_blank"><img height="50px" width="50px" src="https://s3-us-west-2.amazonaws.com/dingoapp-prod/Email+images/Facebook+Square.jpg"></a> </div></td>
+                <td><div align="center"><a href="https://twitter.com/Dingotickets" target="_blank"><img height="50px" width="50px" src="https://s3-us-west-2.amazonaws.com/dingoapp-prod/Email+images/Twitter+square.jpg"></a> </div></td>
+            </tr>
+        </table>   
+
+        
+    </div>
+</div>  
+</body>
 </html>
+
+
+
+
+

@@ -21,12 +21,14 @@ class OrderNotifier < ActionMailer::Base
   def notify_ticket_purchased(the_order)
     @order = the_order
     @buyer = the_order.sender
+    @seller = the_order.receiver
     mail(:from => self.dingo_email,:to => @buyer.email,:subject => 'Congrats you got your ticket!')
   end
   
   def notify_ticket_sold(the_order)
     @order = the_order
     @seller = the_order.receiver
+    @buyer = the_order.sender
     mail(:from => self.dingo_email,:to => @seller.email,:subject => 'Congrats you have sold your ticket!')
   end
   
