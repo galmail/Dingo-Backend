@@ -26,7 +26,7 @@
                 
             <table class="tg" cellspacing="0" style="border-width:0px;" height="999" width="572" background="https://s3-us-west-2.amazonaws.com/dingoapp-prod/Email+images/Invoicev2.jpg">
               <tr>
-                <td colspan="9" align="center" style="font-size: 35px; height: 185px; padding-bottom: 35px" valign="bottom" ><b>£<%= @order.amount.round(2) %></b></td>
+                <td colspan="9" align="center" style="font-size: 35px; height: 185px; padding-bottom: 35px" valign="bottom" ><b>£<%= number_with_precision(@order.buyers_amount, :precision => 2) %></b></td>
               </tr> 
               <tr>
                 <td style="width: 70px; height: 48px"></td>
@@ -48,19 +48,19 @@
                 <td style="height: 48px"></td>
                 <td></td>
                 <td>Price per ticket:</td>
-                <td colspan="4" style="padding-left: 38px">£<%= (@order.amount / @order.num_tickets).round(2) %></td>
+                <td colspan="4" style="padding-left: 38px">£<%= number_with_precision((@order.amount / @order.num_tickets), :precision => 2) %></td>
               </tr>
               <tr>
                 <td style="height: 48px"></td>
                 <td></td>
                 <td>Dingo fee (10%):</td>
-                <td colspan="4" style="padding-left: 38px">£<%= (@order.amount * 0.10).round(2) %></td>
+                <td colspan="4" style="padding-left: 38px">£<%= number_with_precision((@order.amount * 0.10), :precision => 2) %></td>
               </tr>
               <tr>
                 <td style="height: 48px"></td>
                 <td></td>
                 <td style="padding-bottom: 0px"><b>Total:</b></td>
-                <td colspan="4" style="padding-left: 38px"><b>£<%= (@order.amount * 1.10).round(2) %></b></td>
+                <td colspan="4" style="padding-left: 38px"><b>£<%= number_with_precision(@order.buyers_amount, :precision => 2) %></b></td>
               </tr>
               <tr>
                 <td style="height: 150px"></td>

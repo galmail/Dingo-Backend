@@ -119,6 +119,11 @@ class Order < ActiveRecord::Base
     # Step 2: Either release or abort the payment.
   end
   
+  def buyers_amount
+    return (self.amount * 1.10)
+  end
+  
+  
   def sellers_profit
     return (self.amount * 0.90)
   end
