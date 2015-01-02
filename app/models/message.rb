@@ -35,6 +35,7 @@ class Message < ActiveRecord::Base
     User.find(self.receiver_id).devices.each { |device|
       #APNS.send_notification(device.uid, msg)
       APNS.send_notification(device.uid, :alert => msg, :badge => 1, :sound => 'default', :other => {
+        :sender_id => self.sender_id,
         :ticket_id => self.ticket_id,
         :offer_id => self.offer_id,
         :from_dingo => self.from_dingo,
