@@ -55,27 +55,41 @@ class Offer < ActiveRecord::Base
     end
   end
   
-  def notify_back
-    msg = ""
+  def notify_accept_or_reject
+    msg_to_buyer = ""
+    msg_to_seller = ""
     if self.accepted
-      msg = "Congrats! #{self.receiver.name} has accepted your offer. Please pay here."
+      msg_to_seller = "Offer accepted, we will let you know when payment has been received."
+      msg_to_buyer = "Congrats! #{self.receiver.name} has accepted your offer."
     elsif self.rejected
-      msg = "#{self.receiver.name} has declined your offer"
+      msg_to_seller = "Offer has been rejected."
+      msg_to_buyer = "#{self.receiver.name} has rejected your offer."
     end
-    message = Message.new({
+    message_to_buyer = Message.new({
       :sender_id => self.receiver.id,
       :receiver_id => self.sender.id,
       :ticket_id => self.ticket.id,
       :offer_id => self.id,
-      :content => msg,
+      :content => msg_to_buyer,
       :from_dingo => true,
       :new_offer => false
     })
-    if message.save
-      return message.notify
-    else
-      return false
-    end
+    message_to_buyer.save
+    message_to_buyer.notify
+    
+    message_to_seller = Message.new({
+      :sender_id => self.sender.id,
+      :receiver_id => self.receiver.id,
+      :ticket_id => self.ticket.id,
+      :offer_id => self.id,
+      :content => msg_to_seller,
+      :from_dingo => true,
+      :new_offer => false
+    })
+    message_to_seller.save
+    message_to_seller.notify
+    
+    return true
   end
   
   def price_per_ticket
