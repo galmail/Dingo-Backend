@@ -39,7 +39,7 @@ class Message < ActiveRecord::Base
       id_part2 = self.sender.id
       id_part1 = self.receiver.id
     end
-    self.conversation_id = "#{self.ticket.id}-#{id_part1}-#{id_part2}"
+    self.conversation_id = "#{self.ticket_id}-#{id_part1}-#{id_part2}"
   end
   
   def notify
@@ -51,6 +51,7 @@ class Message < ActiveRecord::Base
       #APNS.send_notification(device.uid, msg)
       APNS.send_notification(device.uid, :alert => msg, :badge => 1, :sound => 'default', :other => {
         :sender_id => self.sender_id,
+        :sender_fb_id => self.sender.fb_id,
         :ticket_id => self.ticket_id,
         :offer_id => self.offer_id,
         :from_dingo => self.from_dingo,
