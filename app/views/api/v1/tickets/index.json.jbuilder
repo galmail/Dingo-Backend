@@ -8,6 +8,7 @@ json.tickets @tickets do |ticket|
   json.user_photo ticket.user.photo_url
   json.user_facebook_id ticket.user.fb_id
   json.price ticket.price
+  json.available ticket.available
   json.seat_type ticket.seat_type
   json.description ticket.description
   json.delivery_options ticket.delivery_options
