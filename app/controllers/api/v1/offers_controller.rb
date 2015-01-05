@@ -57,12 +57,12 @@ class Api::V1::OffersController < Api::BaseController
     puts "offer id: #{offer.id}"
     offer.accepted = params[:accept_offer]
     puts "offer accepted: #{offer.accepted}"
-    offer.rejected = !params[:accept_offer]
+    offer.rejected = (params[:accept_offer]==false)
     puts "offer rejected: #{offer.rejected}"
     if offer.save
       puts "offer saved!!"
       offer.notify_back
-      render :json=> offer.as_json, status: :updated
+      render :json=> offer.as_json, status: :ok
     else
       render :json=> offer.errors, status: :unprocessable_entity
     end
