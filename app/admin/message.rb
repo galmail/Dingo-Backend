@@ -10,9 +10,15 @@ ActiveAdmin.register Message do
   preserve_default_filters!
   filter :conversation_id
   
-  
-  
-  
+  form do |f|
+    f.inputs "Message Inputs" do
+      f.input :sender
+      f.input :receiver
+      f.input :content  
+    end
+    f.actions
+  end
+   
   #
   # or
   #
