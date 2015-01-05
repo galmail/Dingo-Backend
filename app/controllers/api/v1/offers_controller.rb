@@ -50,7 +50,9 @@ class Api::V1::OffersController < Api::BaseController
   def update
     params.require(:id)
     params.require(:accept_offer)
-    offer_params = params.permit(:id, :accept_offer)
+    puts "param_id: #{params[:id]}"
+    puts "param_accept: #{params[:accept_offer]}"  
+    #offer_params = params.permit(:id, :accept_offer)
     offer = Offer.find(params[:id])
     offer.accepted = params[:accept_offer]
     offer.rejected = !params[:accept_offer]
