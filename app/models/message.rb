@@ -27,7 +27,16 @@ class Message < ActiveRecord::Base
   validates_presence_of :content
   
   def conversation_id
-    return "#{self.ticket.id}-#{self.sender.id}-#{self.receiver.id}"
+    id_part1 = 0
+    id_part2 = 0
+    if self.sender.id < self.receiver.id
+      id_part1 = self.sender.id
+      id_part2 = self.receiver.id
+    else
+      id_part2 = self.sender.id
+      id_part1 = self.receiver.id
+    end
+    return "#{self.ticket.id}-#{id_part1}-#{id_part2}"
   end
   
   def notify
