@@ -26,6 +26,9 @@ class Message < ActiveRecord::Base
   validates_presence_of :receiver
   validates_presence_of :content
   
+  def conversation_id
+    return "#{self.ticket.id}-#{self.sender.id}-#{self.receiver.id}"
+  end
   
   def notify
     msg = "#{self.sender.name}: #{self.content}"
