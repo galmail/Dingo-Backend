@@ -2,18 +2,19 @@
 #
 # Table name: messages
 #
-#  id          :uuid             not null, primary key
-#  sender_id   :integer
-#  receiver_id :integer
-#  content     :string(255)
-#  created_at  :datetime
-#  updated_at  :datetime
-#  from_dingo  :boolean          default(FALSE)
-#  new_offer   :boolean          default(FALSE)
-#  visible     :boolean          default(TRUE)
-#  ticket_id   :uuid
-#  offer_id    :uuid
-#  read        :boolean          default(FALSE)
+#  id              :uuid             not null, primary key
+#  sender_id       :integer
+#  receiver_id     :integer
+#  content         :string(255)
+#  created_at      :datetime
+#  updated_at      :datetime
+#  from_dingo      :boolean          default(FALSE)
+#  new_offer       :boolean          default(FALSE)
+#  visible         :boolean          default(TRUE)
+#  ticket_id       :uuid
+#  offer_id        :uuid
+#  read            :boolean          default(FALSE)
+#  conversation_id :string(255)
 #
 
 class Message < ActiveRecord::Base
@@ -26,7 +27,9 @@ class Message < ActiveRecord::Base
   validates_presence_of :receiver
   validates_presence_of :content
   
-  def conversation_id
+  before_save  :save_conversation_id
+  
+  def save_conversation_id
     id_part1 = 0
     id_part2 = 0
     if self.sender.id < self.receiver.id
@@ -36,7 +39,7 @@ class Message < ActiveRecord::Base
       id_part2 = self.sender.id
       id_part1 = self.receiver.id
     end
-    return "#{self.ticket.id}-#{id_part1}-#{id_part2}"
+    self.conversation_id = "#{self.ticket.id}-#{id_part1}-#{id_part2}"
   end
   
   def notify
