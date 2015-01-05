@@ -54,9 +54,13 @@ class Api::V1::OffersController < Api::BaseController
     puts "param_accept: #{params[:accept_offer]}"  
     #offer_params = params.permit(:id, :accept_offer)
     offer = Offer.find(params[:id])
+    puts "offer id: #{offer.id}"
     offer.accepted = params[:accept_offer]
+    puts "offer accepted: #{offer.accepted}"
     offer.rejected = !params[:accept_offer]
+    puts "offer rejected: #{offer.rejected}"
     if offer.save
+      puts "offer saved!!"
       offer.notify_back
       render :json=> offer.as_json, status: :updated
     else
