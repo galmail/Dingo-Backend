@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150105133244) do
+ActiveRecord::Schema.define(version: 20150106124429) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -121,10 +121,12 @@ ActiveRecord::Schema.define(version: 20150105133244) do
     t.boolean  "for_sale",                                   default: false
     t.decimal  "min_price",          precision: 8, scale: 2, default: 0.0
     t.integer  "available_tickets",                          default: 0
+    t.uuid     "venue_id"
   end
 
   add_index "events", ["category_id"], name: "index_events_on_category_id", using: :btree
   add_index "events", ["date"], name: "index_events_on_date", using: :btree
+  add_index "events", ["venue_id"], name: "index_events_on_venue_id", using: :btree
 
   create_table "messages", id: :uuid, default: "uuid_generate_v4()", force: true do |t|
     t.integer  "sender_id"
@@ -237,5 +239,14 @@ ActiveRecord::Schema.define(version: 20150105133244) do
   add_index "users", ["authentication_token"], name: "index_users_on_authentication_token", using: :btree
   add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree
   add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
+
+  create_table "venues", id: :uuid, default: "uuid_generate_v4()", force: true do |t|
+    t.string   "name"
+    t.string   "city"
+    t.string   "address"
+    t.string   "layout_map_url"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
 end

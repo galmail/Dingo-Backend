@@ -24,6 +24,7 @@
 #  for_sale           :boolean          default(FALSE)
 #  min_price          :decimal(8, 2)    default(0.0)
 #  available_tickets  :integer          default(0)
+#  venue_id           :uuid
 #
 
 class Event < ActiveRecord::Base
@@ -31,6 +32,7 @@ class Event < ActiveRecord::Base
   has_attached_file    :photo, :styles => { :medium => "300x300#", :thumb => "200x200#", :tiny_pic => "70x70#" }
   validates_attachment :photo, content_type: { content_type: ["image/jpg", "image/jpeg", "image/png"] }
 
+  belongs_to  :venue
   belongs_to  :category
   has_many    :tickets
   belongs_to  :created_by, :class_name => 'User'
