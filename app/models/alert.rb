@@ -24,7 +24,7 @@ class Alert < ActiveRecord::Base
     # send user push notification
     msg = "New tickets for #{self.event.name} are now selling for £#{price}"
     message = Message.new({
-      :sender_id => self.user.id,
+      :sender_id => Settings.DINGO_USER_ID,
       :receiver_id => self.user.id,
       :content => msg,
       :from_dingo => true
