@@ -19,7 +19,7 @@ defaults: &defaults
   # Apple Push Notifications
   APN_HOST: gateway.push.apple.com
   APN_PORT: 2195
-  APN_PEM_FILE: app/assets/certificates/cert.pem
+  APN_PEM_FILE: app/assets/certificates/certDev.pem
   APN_PASSWORD: Dingo123
   # Paypal API
   PAYPAL_MODE: sandbox
