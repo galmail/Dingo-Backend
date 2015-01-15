@@ -22,7 +22,7 @@ class Alert < ActiveRecord::Base
   
   def notify_user(price)
     # send user push notification
-    msg = "New tickets for #{self.event.name} are now selling for £#{price}"
+    msg = "Dingo:New tickets for #{self.event.name} are now selling for £#{price}"
     message = Message.new({
       :sender_id => Settings.DINGO_USER_ID,
       :receiver_id => self.user.id,
