@@ -33,16 +33,18 @@ dingo.run(function($ionicPlatform) {
   ]);
 })
 
-.config(function(FacebookProvider) {
-   var fbAppId = '';
-   if(window.location.href.indexOf('localhost')>0){
-    fbAppId = '854877257866349';
-   }
-   else {
-    fbAppId = '672126826238840';
-   }
-   //FacebookProvider.init(fbAppId);
-})
+// .config(function(FacebookProvider) {
+//    var fbAppId = '';
+//    if(window.location.href.indexOf('localhost')>0){
+//     fbAppId = '854877257866349';
+//    }
+//    else {
+//     fbAppId = '672126826238840';
+//    }
+//    FacebookProvider.init(fbAppId);
+// })
+
+
 
 .config(function($stateProvider, $urlRouterProvider) {
   $stateProvider
@@ -60,7 +62,8 @@ dingo.run(function($ionicPlatform) {
     url: "/login",
     views: {
       'menuContent' :{
-        templateUrl: "js/templates/login.html"
+        templateUrl: "js/templates/login.html",
+        controller: 'AuthCtrl'
       }
     }
   })

@@ -17,9 +17,9 @@ defaults: &defaults
   AWS_KEY: AKIAIW4PW5CMS4TEGVIA
   AWS_SECRET: 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
   # Apple Push Notifications
-  APN_HOST: gateway.sandbox.push.apple.com
+  APN_HOST: gateway.push.apple.com   #gateway.sandbox.push.apple.com
   APN_PORT: 2195
-  APN_PEM_FILE: app/assets/certificates/certDev.pem
+  APN_PEM_FILE: app/assets/certificates/certProd.pem #certDev.pem
   APN_PASSWORD: Dingo123
   # Paypal API
   PAYPAL_MODE: sandbox

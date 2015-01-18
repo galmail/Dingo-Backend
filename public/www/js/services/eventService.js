@@ -8,7 +8,13 @@ dingo.services.factory('Event', function($http, Util) {
   //var events = [];
   
   return {
-  	
+
+    loadAll: function(callback){
+      $http.get('/api/v1/events').success(function(res){
+        callback(res.events);
+      });
+    },
+
     searchByName: function(eventName,callback){
   		
       var myEvents = [

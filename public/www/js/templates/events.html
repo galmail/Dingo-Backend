@@ -37,9 +37,9 @@
 
   		<div class="events-date">Tuesday 2nd December</div>
 			
-			<a ng-repeat="event in eventsA" class="event row icon-right ion-chevron-right" ng-href="#/home/event-details/{{event.id}}">
+			<a ng-repeat="event in events" class="event row icon-right ion-chevron-right" ng-href="#/home/event-details/{{event.id}}">
 				<div class="event-pic">
-					<img ng-src="{{event.photo}}" />
+					<img style="height:70px;" ng-src="{{event.thumb}}" />
 				</div>
 				<div class="event-info col">
 					<div class="event-title row">{{ event.name }}</div>
@@ -49,11 +49,17 @@
 				<div class="event-price col col-25">
 					<div class="event-price-from row">from €{{ event.min_price }}</div>
 					<div class="event-price-per-ticket row">per ticket</div>
-					<div class="event-price-available-tickets row">{{ event.num_tickets_available }}</div>
+					<div class="event-price-available-tickets row">{{ event.available_tickets }}</div>
 				</div>
 			</a>
 
-			<div class="events-date">Thursday 4th December</div>
+			
+
+
+
+
+
+			<!-- <div class="events-date">Thursday 4th December</div>
 			
 			<a ng-repeat="event in eventsB" class="event row icon-right ion-chevron-right" ng-href="#/home/event-details/{{event.id}}">
 				<div class="event-pic">
@@ -69,7 +75,9 @@
 					<div class="event-price-per-ticket row">per ticket</div>
 					<div class="event-price-available-tickets row">{{ event.num_tickets_available }}</div>
 				</div>
-			</a>
+			</a> -->
+
+
   		
 
   		
