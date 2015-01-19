@@ -42,6 +42,7 @@ class Api::V1::TicketsController < Api::BaseController
     # Update Ticket
     def update
       params.require(:id)
+      
       ticket_params = params.permit(:price, :seat_type, :ticket_type, :description, :photo1, :photo2, :photo3, :delivery_options, :payment_options, :number_of_tickets, :face_value_per_ticket, :available)
       
       params[:photo1].content_type=params[:photo1].content_type.split(";")[0].strip if params[:photo1].present?
@@ -49,7 +50,14 @@ class Api::V1::TicketsController < Api::BaseController
       params[:photo3].content_type=params[:photo3].content_type.split(";")[0].strip if params[:photo3].present?
       
       ticket = Ticket.find(params[:id])
+      
+      set_alert = false
+      if params[:price] && ticket.price.to_f != params[:price].to_f
+        set_alert = true
+      end
+      
       ticket.update_attributes(ticket_params)
+      ticket.alert_buyers if set_alert
       render :json => ticket.as_json, status: :ok
     end
     

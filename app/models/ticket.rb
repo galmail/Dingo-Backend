@@ -47,7 +47,8 @@ class Ticket < ActiveRecord::Base
   validates_presence_of :user
   validates_presence_of :event
   
-  after_save  :alert_buyers, :update_event
+  after_create  :alert_buyers
+  after_save    :update_event
   
   def name
     "Ticket for #{self.event.name}" unless self.event.nil?
