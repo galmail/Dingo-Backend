@@ -10,7 +10,22 @@ dingo.services.factory('User', function($http, Util) {
   return {
   	
     getInfo: function(){ return data; },
-  	setInfo: function(newdata){ data = newdata; },
+  	
+    setInfo: function(newdata){ data = newdata; },
+
+    saveCredentials: function(email,token){
+      localStorage.setItem('email',email);
+      localStorage.setItem('token',token);
+    },
+
+    isLogged: function(){
+      return (localStorage.getItem('email')!=null && localStorage.getItem('token')!=null);
+    },
+
+    logout: function(){
+      delete(localStorage.email);
+      delete(localStorage.token);
+    },
   	
     login: function(callback){
   		var self = this;
@@ -27,6 +42,7 @@ dingo.services.factory('User', function($http, Util) {
           'X-User-Email': res.email,
           'X-User-Token': res.auth_token
         };
+        self.saveCredentials(res.email,res.auth_token);
   			callback(true);
   		}).error(function(){
   			console.log('login error');

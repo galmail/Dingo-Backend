@@ -1,6 +1,6 @@
 // Dingo Mobile Web App
 
-var dingo = angular.module('dingo',['ionic','facebook','dingo.controllers','dingo.services','dingo.directives']);
+var dingo = angular.module('dingo',['ionic','dingo.controllers','dingo.services','dingo.directives']);
 dingo.controllers = angular.module('dingo.controllers', []);
 dingo.services = angular.module('dingo.services', []);
 dingo.directives = angular.module('dingo.directives', []);
