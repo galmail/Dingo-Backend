@@ -67,3 +67,6 @@ gem 'settingslogic'
 gem 'paypal-sdk-rest'
 gem 'paypal-sdk-adaptivepayments'
 
+gem 'rollbar', '~> 1.3.1' #tracking errors with rollbar
+
+

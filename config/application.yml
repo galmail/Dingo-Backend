@@ -12,6 +12,9 @@ defaults: &defaults
   DINGO_LOGO: http://dingoapp.bitnamiapp.com/web/wp-content/uploads/2013/04/App-Logo3-80x80.png
   DINGO_USER_ID: 32
   
+  # Rollbar Error Tracking
+  ROLLBAR_ACCESS_TOKEN: 6914d1d95667456dbfcf13129c5b88f6
+  
   # Amazon S3
   AWS_BUCKET: dingoapp-test
   AWS_KEY: AKIAIW4PW5CMS4TEGVIA
