@@ -4,11 +4,27 @@ class Api::V1::TicketsController < Api::BaseController
     def index
       filters = { available: true }
       conditions = []
+      extra_tickets = []
+      
+      # get_tickets_by_id
+      if params.has_key?(:id)
+        filters[:id] = params[:id]
+        filters.delete(:available)
+      end
       
       # get_tickets_by_event
       if params.has_key?(:event_id)
         filters[:event_id] = params[:event_id]
       end
+      
+      # get_my_tickets
+      if params[:mine]
+        filters.delete(:available)
+        filters[:user_id] = current_user.id
+        # ticket purchased
+        extra_tickets.concat(Order.joins(:ticket).where(:sender_id => 28).map { |order| order.ticket })
+      end
+      
       
       # get_tickets_by_user
       if params.has_key?(:auth_token)
@@ -17,6 +33,7 @@ class Api::V1::TicketsController < Api::BaseController
       end
       
       @tickets = Ticket.where(filters).where(conditions).order('price ASC').limit(100)
+      @tickets.concat(extra_tickets)
     end
     
     # Create Ticket

@@ -285,7 +285,6 @@
             <param name="number_of_tickets" required="false" type="xsd:integer" style="query" default=""></param>
             <param name="face_value_per_ticket" required="false" type="xsd:double" style="query" default=""></param>
             
-            
             <method id="create_ticket" name="POST" apigee:displayName="Create Ticket">
                 <apigee:tags>
                     <apigee:tag primary="true">Tickets</apigee:tag>
@@ -344,6 +343,34 @@
                 </apigee:tags>
                 <apigee:authentication required="true"/>
                 <doc apigee:url="http://api.mydomain.com/doc/my-method">get_tickets_by_user</doc>
+            </method>
+        </resource>
+        
+        <!-- get_tickets_by_id -->
+        <resource path="/api/v1/tickets">
+            <param name="Content-Type" required="true" type="xsd:string" style="header" default="application/json"></param>
+            <param name="Accept" required="true" type="xsd:string" style="header" default="application/json"></param>
+            <param name="id" required="true" type="xsd:string" style="query" default=""></param>
+            <method id="get_tickets_by_id" name="GET" apigee:displayName="Get Tickets By Id">
+                <apigee:tags>
+                    <apigee:tag primary="true">Tickets</apigee:tag>
+                </apigee:tags>
+                <apigee:authentication required="true"/>
+                <doc apigee:url="http://api.mydomain.com/doc/my-method">get_tickets_by_id</doc>
+            </method>
+        </resource>
+        
+        <!-- get_my_tickets -->
+        <resource path="/api/v1/tickets">
+            <param name="Content-Type" required="true" type="xsd:string" style="header" default="application/json"></param>
+            <param name="Accept" required="true" type="xsd:string" style="header" default="application/json"></param>
+            <param name="mine" required="true" type="xsd:boolean" style="query" default="true"></param>
+            <method id="get_my_tickets" name="GET" apigee:displayName="Get My Tickets">
+                <apigee:tags>
+                    <apigee:tag primary="true">Tickets</apigee:tag>
+                </apigee:tags>
+                <apigee:authentication required="true"/>
+                <doc apigee:url="http://api.mydomain.com/doc/my-method">get_my_tickets</doc>
             </method>
         </resource>
         
