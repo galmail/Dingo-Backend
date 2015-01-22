@@ -1,6 +1,6 @@
 ActiveAdmin.register Event do
   config.filters = false
-  permit_params :name, :description, :photo, :created_by_id, :date, :end_date, :category_id, :active, :address, :postcode, :city, :featured, :test
+  permit_params :name, :description, :photo, :created_by_id, :date, :end_date, :category_id, :active, :address, :postcode, :city, :featured, :test, :primary_ticket_seller_url
   
   index do
     column :id
@@ -32,6 +32,7 @@ ActiveAdmin.register Event do
       f.input :active, :required => true
       f.input :featured, :required => true
       f.input :description
+      f.input :primary_ticket_seller_url
       f.input :photo, :required => false, :as => :file
     end
     f.actions
@@ -51,6 +52,7 @@ ActiveAdmin.register Event do
       row :city
       row :active
       row :featured
+      row :primary_ticket_seller_url
       row :photo do
         image_tag(ad.photo.url(:thumb))
       end

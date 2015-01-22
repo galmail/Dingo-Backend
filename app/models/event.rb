@@ -2,29 +2,30 @@
 #
 # Table name: events
 #
-#  id                 :uuid             not null, primary key
-#  name               :string(255)
-#  description        :string(255)
-#  created_at         :datetime
-#  updated_at         :datetime
-#  category_id        :uuid
-#  photo_file_name    :string(255)
-#  photo_content_type :string(255)
-#  photo_file_size    :integer
-#  photo_updated_at   :datetime
-#  date               :datetime
-#  active             :boolean          default(TRUE)
-#  address            :string(255)
-#  postcode           :string(255)
-#  featured           :boolean          default(FALSE)
-#  city               :string(255)
-#  created_by_id      :integer
-#  end_date           :datetime
-#  test               :boolean          default(FALSE)
-#  for_sale           :boolean          default(FALSE)
-#  min_price          :decimal(8, 2)    default(0.0)
-#  available_tickets  :integer          default(0)
-#  venue_id           :uuid
+#  id                        :uuid             not null, primary key
+#  name                      :string(255)
+#  description               :string(255)
+#  created_at                :datetime
+#  updated_at                :datetime
+#  category_id               :uuid
+#  photo_file_name           :string(255)
+#  photo_content_type        :string(255)
+#  photo_file_size           :integer
+#  photo_updated_at          :datetime
+#  date                      :datetime
+#  active                    :boolean          default(TRUE)
+#  address                   :string(255)
+#  postcode                  :string(255)
+#  featured                  :boolean          default(FALSE)
+#  city                      :string(255)
+#  created_by_id             :integer
+#  end_date                  :datetime
+#  test                      :boolean          default(FALSE)
+#  for_sale                  :boolean          default(FALSE)
+#  min_price                 :decimal(8, 2)    default(0.0)
+#  available_tickets         :integer          default(0)
+#  venue_id                  :uuid
+#  primary_ticket_seller_url :string(255)
 #
 
 class Event < ActiveRecord::Base
