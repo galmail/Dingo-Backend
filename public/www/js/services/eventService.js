@@ -5,13 +5,26 @@
 
 dingo.services.factory('Event', function($http, Util) {
   
-  //var events = [];
-  
   return {
 
     loadAll: function(callback){
       $http.get('/api/v1/events').success(function(res){
-        callback(res.events);
+        // parse event date and time
+        var events = res.events;
+        angular.forEach(events, function(event) {
+          var d = new Date(event.date);
+          event.parsed_date = d.toDateString();
+          event.parsed_time = d.toTimeString();
+        });
+        callback(events);
+      });
+    },
+
+    getById: function(eventId,callback){
+      $http.get('/api/v1/events?id='+eventId).success(function(res){
+        var event = res.events[0];
+        event.parsed_time = new Date(event.date).toTimeString();
+        callback(event);
       });
     },
 

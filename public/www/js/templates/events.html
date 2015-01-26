@@ -19,7 +19,7 @@
 	  		<ul class="list categories" style="width:{{ categories_width }}px;">
 		    	
 		    	<li ng-repeat="category in categories" class="item item-checkbox category">
-			      <img ng-src="{{category.pic_url}}" />
+			      <img ng-src="{{category.thumb}}" />
 			      <label class="checkbox">
 			      	<input type="checkbox">
 			      </label>
@@ -35,23 +35,24 @@
 
   	<div id="events_container">
 
-  		<div class="events-date">Tuesday 2nd December</div>
-			
-			<a ng-repeat="event in events" class="event row icon-right ion-chevron-right" ng-href="#/home/event-details/{{event.id}}">
-				<div class="event-pic">
-					<img style="height:70px;" ng-src="{{event.thumb}}" />
-				</div>
-				<div class="event-info col">
-					<div class="event-title row">{{ event.name }}</div>
-					<div class="event-address row">{{ event.address }}</div>
-					<div class="event-time row">{{ event.time }}</div>
-				</div>
-				<div class="event-price col col-25">
-					<div class="event-price-from row">from €{{ event.min_price }}</div>
-					<div class="event-price-per-ticket row">per ticket</div>
-					<div class="event-price-available-tickets row">{{ event.available_tickets }}</div>
-				</div>
-			</a>
+			<div ng-repeat="event in events" class="event">
+			<div class="events-date">{{event.parsed_date}}</div>
+				<a class="row icon-right ion-chevron-right" ng-href="#/home/event-details/{{event.id}}">
+					<div class="event-pic">
+						<img style="height:70px;" ng-src="{{event.thumb}}" />
+					</div>
+					<div class="event-info col">
+						<div class="event-title row">{{ event.name }}</div>
+						<div class="event-address row">{{ event.address }}</div>
+						<div class="event-time row">{{ event.parsed_time }}</div>
+					</div>
+					<div class="event-price col col-25">
+						<div class="event-price-from row">from £{{ event.min_price }}</div>
+						<div class="event-price-per-ticket row">per ticket</div>
+						<div class="event-price-available-tickets row">{{ event.available_tickets }}</div>
+					</div>
+				</a>
+			</div>
 
 			
 

@@ -19,6 +19,25 @@ dingo.run(function($ionicPlatform) {
   });
 })
 
+.config(function ($httpProvider) {
+
+  $httpProvider.interceptors.push(function ($q) {
+       return {
+           'request': function(config){
+              if (window.cordova){
+                if((config.url.indexOf('/api')>=0) || (config.url.indexOf('/users/')>=0)){
+                  config.url = 'http://dingoapp.herokuapp.com' + config.url;
+                  //alert('calling: ' + config.url);
+                }
+              }
+              return config || $q.when(config);
+           }
+       }
+   });
+})
+
+
+
 .config(function($sceDelegateProvider) {
   $sceDelegateProvider.resourceUrlWhitelist([
     // Allow same origin resource loads.

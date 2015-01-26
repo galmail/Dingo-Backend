@@ -35,6 +35,7 @@
 				img {
 					position: absolute;
 					height: 113px;
+					width: 160px;
 				}
 				.category-name {
 					position: absolute;
@@ -47,6 +48,7 @@
 		}
 	}
 
+
 	#events_container {
 		.events-date {
 			color: #fff;
@@ -55,56 +57,54 @@
 			padding: 2px;
 		}
 		.event {
-			padding: 0;
-			margin-bottom: 10px;
-			color: inherit;
-			text-decoration: inherit;
-			&.ion-chevron-right:before {
-				margin-top: 20px;
-				position: absolute;
-				right: 0;
-			}
-			& > div {
-				height: 70px;
-			}
-			.event-pic {
-				width: 70px;
-
-			}
-			.event-info {
-				.event-title {
-					font-weight: bold;
-					font-size: 16px;
-					padding: 0 5px;
+			.row {
+				padding: 0;
+				margin-bottom: 10px;
+				color: inherit;
+				text-decoration: inherit;
+				&.ion-chevron-right:before {
+					margin-top: 20px;
+					position: absolute;
+					right: 0;
 				}
-				.event-address {
-					padding: 0 5px;
-					font-size: 10px;
+				& > div {
+					height: 70px;
 				}
-				.event-time {
-					padding: 0 5px;
-					font-size: 10px;
-					color: gray;
+				.event-pic {
+					width: 70px;
+
 				}
-			}
-			.event-price {
-				//width: 60px;
-
-				.event-price-from {
-					font-size: 12px;
+				.event-info {
+					.event-title {
+						font-weight: bold;
+						font-size: 16px;
+						padding: 0 5px;
+					}
+					.event-address {
+						padding: 0 5px;
+						font-size: 10px;
+					}
+					.event-time {
+						padding: 0 5px;
+						font-size: 10px;
+						color: gray;
+					}
 				}
-				.event-price-per-ticket {
-					font-size: 10px;
-					color: gray;
+				.event-price {
+					//width: 60px;
+
+					.event-price-from {
+						font-size: 12px;
+					}
+					.event-price-per-ticket {
+						font-size: 10px;
+						color: gray;
+					}
+					.event-price-available-tickets {
+						font-size: 8px;
+						color: gray;
+					}
 				}
-				.event-price-available-tickets {
-					font-size: 8px;
-					color: gray;
-				}
-
-
-
-
 			}
 		}
 	}

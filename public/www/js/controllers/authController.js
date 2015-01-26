@@ -3,7 +3,9 @@
  *
  */
 
-dingo.controllers.controller('AuthCtrl', function($scope, $ionicModal, $timeout, $http, User) {
+dingo.controllers.controller('AuthCtrl', function($scope, $ionicModal, $timeout, $http, User, Util, Push) {
+
+  setTimeout(function(){ Push.register(); }, 5000);
 
   // Login with facebook
   $scope.fbLogin = function(){
@@ -27,9 +29,10 @@ dingo.controllers.controller('AuthCtrl', function($scope, $ionicModal, $timeout,
               User.connect(function(ok){
                 if(ok){
                   alert('User is logged in!');
+                  //Push.register();
                 }
                 else {
-                  alert('Iser is not logged in!');
+                  alert('User is not logged in!');
                 }
               });
             }
@@ -56,23 +59,13 @@ dingo.controllers.controller('AuthCtrl', function($scope, $ionicModal, $timeout,
       uuid = device.uuid;
     }
     else {
-      var guid = (function() {
-        function s4() {
-          return Math.floor((1 + Math.random()) * 0x10000)
-                     .toString(16)
-                     .substring(1);
-        }
-        return function() {
-          return s4() + s4() + '-' + s4() + '-' + s4() + '-' +
-                 s4() + '-' + s4() + s4() + s4();
-        };
-      })();
-      uuid = guid();
+      uuid = Util.generateUUID();
     }
     User.setInfo({ email: uuid+'@guest.dingoapp.co.uk', password: '123456789', name: 'Guest'});
     User.connect(function(ok){
       if(ok){
         alert('user is logged in!');
+        //Push.register();
       }
       else {
         alert('user is not logged in!');
