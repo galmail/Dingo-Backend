@@ -49,7 +49,7 @@ class Message < ActiveRecord::Base
     end
     User.find(self.receiver_id).devices.each { |device|
       #APNS.send_notification(device.uid, msg)
-      APNS.send_notification(device.uid, :alert => msg, :badge => 1, :sound => 'default', :other => {
+      APNS.send_notification(device.uid, :alert => msg, :badge => self.receiver.num_unread_messages, :sound => 'default', :other => {
         :sender_id => self.sender_id,
         :sender_fb_id => self.sender.fb_id,
         :ticket_id => self.ticket_id,

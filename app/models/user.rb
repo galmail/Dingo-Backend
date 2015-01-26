@@ -71,5 +71,10 @@ class User < ActiveRecord::Base
       }
     end
   end
+  
+  # get number of unread messages
+  def num_unread_messages
+    return Message.where({:receiver_id => self.id, :read => false}).count
+  end
          
 end
