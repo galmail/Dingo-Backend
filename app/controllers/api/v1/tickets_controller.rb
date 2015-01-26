@@ -22,7 +22,7 @@ class Api::V1::TicketsController < Api::BaseController
         filters.delete(:available)
         filters[:user_id] = current_user.id
         # ticket purchased
-        extra_tickets.concat(Order.joins(:ticket).where(:sender_id => 28).map { |order| order.ticket })
+        extra_tickets.concat(Order.joins(:ticket).where(:sender_id => current_user.id).map { |order| order.ticket })
       end
       
       
