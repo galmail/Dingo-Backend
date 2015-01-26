@@ -200,7 +200,7 @@
         <resource path="/api/v1/events">
             <param name="Content-Type" required="true" type="xsd:string" style="header" default="application/json"></param>
             <param name="Accept" required="true" type="xsd:string" style="header" default="application/json"></param>
-            <param name="id" required="true" type="xsd:string" style="query" default="true"></param>
+            <param name="id" required="true" type="xsd:string" style="query" default=""></param>
             <method id="get_event_details" name="GET" apigee:displayName="Get Event Details">
                 <apigee:tags>
                     <apigee:tag primary="true">Events</apigee:tag>
