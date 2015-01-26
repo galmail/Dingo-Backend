@@ -196,6 +196,20 @@
             </method>
         </resource>
         
+        <!-- get_event_details -->
+        <resource path="/api/v1/events">
+            <param name="Content-Type" required="true" type="xsd:string" style="header" default="application/json"></param>
+            <param name="Accept" required="true" type="xsd:string" style="header" default="application/json"></param>
+            <param name="id" required="true" type="xsd:string" style="query" default="true"></param>
+            <method id="get_event_details" name="GET" apigee:displayName="Get Event Details">
+                <apigee:tags>
+                    <apigee:tag primary="true">Events</apigee:tag>
+                </apigee:tags>
+                <apigee:authentication required="true"/>
+                <doc apigee:url="http://api.mydomain.com/doc/my-method">get_event_details</doc>
+            </method>
+        </resource>
+        
         <!-- search_events -->
         <resource path="/api/v1/events?category_ids[]=03487377-4146-4067-a048-04859710b8c8">
             <param name="Content-Type" required="true" type="xsd:string" style="header" default="application/json"></param>

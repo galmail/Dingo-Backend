@@ -23,6 +23,12 @@ class Api::V1::EventsController < Api::BaseController
         order_by_field = 'name ASC'
       end
       
+      # get_event_details
+      if params.has_key?(:id)
+        filters.delete(:for_sale)
+        filters[:id] = params[:id]
+      end
+      
       # search_events_by_name
       if params.has_key?(:name)
         query << and_query(query) << "name ILIKE ?"
