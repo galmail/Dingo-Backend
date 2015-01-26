@@ -12,6 +12,13 @@ dingo.services.factory('Ticket', function($http, Util) {
         var tickets = res.tickets;
         callback(tickets);
       });
+    },
+
+    getById: function(ticketId,callback){
+      $http.get('/api/v1/tickets?id='+ticketId).success(function(res){
+        var ticket = res.tickets[0];
+        callback(ticket);
+      });
     }
 
   };

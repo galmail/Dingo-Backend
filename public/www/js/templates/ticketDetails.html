@@ -3,46 +3,46 @@
 
   	<div id="ticket_container" class="row" style="background-image: url('img/categories/concerts@2x.png');">
   		<div class="event-photo">
-  			<img src="http://s3-us-west-2.amazonaws.com/dingoapp-test/events/photos/057/899/f5-/tiny_pic/Xmas-K.jpg?1416413614" />
+  			<img ng-src="{{event.thumb}}" />
   		</div>
   		<div class="event-info col">
-  			<div class="event-title">Xmas Jumper Night</div>
-  			<div class="event-address">19 Downham Road, N15BF</div>
-				<div class="event-time">18:30</div>
+  			<div class="event-title">{{event.name}}</div>
+        <div class="event-address">{{event.address}}</div>
+        <div class="event-time">{{event.parsed_time}}</div>
   		</div>
   	</div>
 
      
     <div class="list ticket-info">
       <label class="item item-input">
+        <span class="input-label">Price per Ticket:</span>
+        <input type="text" value="£{{ticket.price}}" disabled="true"/>
+      </label>
+      <label class="item item-input">
         <span class="input-label">Number of Tickets:</span>
-        <input type="text" value="2" disabled="true"/>
+        <input type="text" value="{{ticket.number_of_tickets}}" disabled="true"/>
       </label>
       <label class="item item-input">
         <span class="input-label">Face value per ticket:</span>
-        <input type="text" value="14" disabled="true"/>
+        <input type="text" value="£{{ticket.face_value_per_ticket}}" disabled="true"/>
       </label>
       <label class="item item-input">
         <span class="input-label">Ticket Type:</span>
-        <input type="text" value="e-Ticket" disabled="true"/>
+        <input type="text" value="{{ticket.ticket_type}}" disabled="true"/>
       </label>
       <label class="item item-input">
         <span class="input-label">Payment:</span>
-        <input type="text" value="Cash in person" disabled="true"/>
+        <input type="text" value="{{ticket.payment_options}}" disabled="true"/>
       </label>
       <label class="item item-input">
         <span class="input-label">Delivery:</span>
-        <input type="text" value="In Person" disabled="true"/>
-      </label>
-      <label class="item item-input">
-        <span class="input-label">Comments:</span>
-        <input type="text" value="" disabled="true"/>
+        <input type="text" value="{{ticket.delivery_options}}" disabled="true"/>
       </label>
     </div>
 
     <div class="row ticket-actions">
       <div class="col">
-        <img class="photo" src="https://fbcdn-profile-a.akamaihd.net/hprofile-ak-xpf1/v/t1.0-1/c34.34.429.429/s160x160/377527_10150595092823453_1205056058_n.jpg?oh=b9b2e0255b385326b319deb5e8724b19&oe=550E1B40&__gda__=1430356877_430feaf20e83be5e74fb20c755272dcd" />
+        <img class="photo" ng-src="{{ticket.user_photo}}" />
       </div>
       <div class="col">
         <button class="button button-outline button-positive button-block buy-button">Buy</button>
@@ -50,9 +50,6 @@
         <button class="button button-outline button-positive button-block">New Offer</button>
       </div>
     </div>
-
-
-
 
   </ion-content>
 </ion-view>

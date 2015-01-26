@@ -8012,7 +8012,8 @@ $ios-transition-box-shadow-end: -200px 0px 200px rgba(0,0,0,0.15), -5px 0px 5px 
     padding: 35px 10px; }
     .d-ticket-details #ticket_container .event-photo img {
       border: 1px solid white;
-      border-radius: 35px; }
+      border-radius: 35px;
+      height: 75px; }
   .d-ticket-details #ticket_container .event-info {
     color: #fff; }
     .d-ticket-details #ticket_container .event-info .event-title {

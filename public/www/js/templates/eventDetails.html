@@ -15,7 +15,7 @@
   	</div>
 
   	<ul class="list tickets">
-    	<li class="ticket item row icon-right ion-chevron-right" ng-repeat="ticket in tickets" ng-click="go('/home/ticket-details/' + ticket.id)">
+    	<li class="ticket item row icon-right ion-chevron-right" ng-repeat="ticket in tickets" ng-click="go('/home/ticket-details/' + event.id + '/' + ticket.id)">
         <img class="ticket-photo" ng-src="{{ticket.user_photo}}"/>
     		<div class="col">{{ticket.user_name}}</div>
     		<div class="ticket-price col col-25">

@@ -136,7 +136,7 @@ dingo.run(function($ionicPlatform) {
 
 
   .state('home.ticketDetails', {
-    url: "/ticket-details/:ticketId",
+    url: "/ticket-details/:eventId/:ticketId",
     views: {
       'events-tab': {
         templateUrl: "js/templates/ticketDetails.html",
