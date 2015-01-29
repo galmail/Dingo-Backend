@@ -43,6 +43,8 @@ class Event < ActiveRecord::Base
   validates_presence_of :date
   validates_attachment_presence :photo
   
+  after_save  :check_for_primary_market_tickets
+  
   def calculate_min_price
     price = 0
     current_tickets = self.tickets.select { |ticket| ticket.available? }
@@ -60,6 +62,16 @@ class Event < ActiveRecord::Base
       total = current_tickets.inject(0) { |sum,ticket| sum + ticket.number_of_tickets }
     end
     return total
+  end
+  
+  def check_for_primary_market_tickets
+    if !self.primary_ticket_seller_url.nil? and self.primary_ticket_seller_url.length>0 and !self.for_sale
+      self.for_sale = true
+      self.save
+    elsif (self.primary_ticket_seller_url.nil? or self.primary_ticket_seller_url.length==0) and self.for_sale and self.calculate_available_tickets==0     
+      self.for_sale = false
+      self.save
+    end
   end
 
 end
