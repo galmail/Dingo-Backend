@@ -1,6 +1,6 @@
 ActiveAdmin.register User do
   config.filters = false
-  permit_params :email, :password, :name, :surname, :date_of_birth, :city, :photo_url, :allow_dingo_emails, :allow_push_notifications, :fb_id, :banned, :paypal_account
+  permit_params :email, :password, :name, :surname, :date_of_birth, :city, :photo_url, :allow_dingo_emails, :allow_push_notifications, :fb_id, :banned, :paypal_account, :promo, :promo_used
   
   index do
     column :email
@@ -30,6 +30,11 @@ ActiveAdmin.register User do
     f.inputs "Preferences" do
       f.input :allow_dingo_emails
       f.input :allow_push_notifications
+    end
+    
+    f.inputs "Promotions" do
+      f.input :promo
+      f.input :promo_used
     end
     
     f.inputs "Manage User" do

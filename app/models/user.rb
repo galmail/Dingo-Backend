@@ -26,6 +26,8 @@
 #  allow_push_notifications :boolean          default(TRUE)
 #  fb_id                    :string(255)
 #  paypal_account           :string(255)
+#  promo                    :string(255)
+#  promo_used               :boolean          default(FALSE)
 #
 
 class User < ActiveRecord::Base

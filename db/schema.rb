@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150130112736) do
+ActiveRecord::Schema.define(version: 20150130114520) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -186,6 +186,7 @@ ActiveRecord::Schema.define(version: 20150130112736) do
     t.integer  "discount",             default: 0
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "code"
   end
 
   create_table "tickets", id: :uuid, default: "uuid_generate_v4()", force: true do |t|
@@ -247,6 +248,8 @@ ActiveRecord::Schema.define(version: 20150130112736) do
     t.boolean  "allow_push_notifications", default: true
     t.string   "fb_id"
     t.string   "paypal_account"
+    t.string   "promo"
+    t.boolean  "promo_used",               default: false
   end
 
   add_index "users", ["authentication_token"], name: "index_users_on_authentication_token", using: :btree
