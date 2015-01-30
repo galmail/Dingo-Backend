@@ -15,4 +15,17 @@
 #
 
 class Promo < ActiveRecord::Base
+  
+  def calculate_discount(amount)
+    discount = 0
+    if self.commission_free
+      discount += amount*0.1
+    end
+    if self.discount>0
+      discount += self.discount
+    end
+    return discount
+  end
+  
+  
 end

@@ -565,6 +565,23 @@
             </method>
         </resource>
         
+<!-- ##################### PROMOS ##################### -->
+
+		<!-- get_promo_discount -->
+        <resource path="/api/v1/promos/get_discount">
+            <param name="Content-Type" required="true" type="xsd:string" style="header" default="application/json"></param>
+            <param name="Accept" required="true" type="xsd:string" style="header" default="application/json"></param>
+            <param name="amount" required="true" type="xsd:double" style="query" default=""></param>
+            
+            <method id="get_promo_discount" name="GET" apigee:displayName="Get Promo Discount">
+                <apigee:tags>
+                    <apigee:tag primary="true">Promos</apigee:tag>
+                </apigee:tags>
+                <apigee:authentication required="true"/>
+                <doc apigee:url="http://api.mydomain.com/doc/my-method">get_promo_discount</doc>
+            </method>
+        </resource>
+        
 <!-- ##################### PAYMENTS ##################### -->
 
 		<!-- transaction_approved -->
