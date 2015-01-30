@@ -24,7 +24,7 @@ class Promo < ActiveRecord::Base
     if self.discount>0
       discount += self.discount
     end
-    return discount
+    return discount.round(2)
   end
   
   
