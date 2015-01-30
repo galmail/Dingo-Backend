@@ -14,5 +14,6 @@ json.events @events do |event|
   json.available_tickets event.available_tickets
   json.thumb event.photo(:thumb) if event.photo.present?
   json.primary_ticket_seller_url event.primary_ticket_seller_url
+  json.for_sale event.for_sale
   json.test event.test
 end
