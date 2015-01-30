@@ -74,6 +74,14 @@ class User < ActiveRecord::Base
     end
   end
   
+  def validate_promo(promo)
+    p = Promo.where(:code => promo, :active => true)
+    return false if p.length==0 or self.promo==promo
+    self.promo = promo
+    self.promo_used = false
+    return self.save
+  end
+  
   # get number of unread messages
   def num_unread_messages
     return Message.where({:receiver_id => self.id, :read => false}).count
