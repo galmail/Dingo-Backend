@@ -520,6 +520,7 @@
             <param name="order_id" required="false" type="xsd:string" style="query" default=""></param>
             <param name="ticket_id" required="false" type="xsd:string" style="query" default=""></param>
             <param name="offer_id" required="false" type="xsd:string" style="query" default=""></param>
+            <param name="promo_id" required="false" type="xsd:string" style="query" default=""></param>
             <param name="credit_card_id" required="false" type="xsd:string" style="query" default=""></param>
             <param name="num_tickets" required="true" type="xsd:integer" style="query" default=""></param>
             <param name="amount" required="true" type="xsd:double" style="query" default=""></param>

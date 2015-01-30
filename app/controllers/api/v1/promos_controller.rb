@@ -7,7 +7,7 @@ class Api::V1::PromosController < Api::BaseController
       if promos.length>0 and !current_user.promo_used
         discount = promos.first.calculate_discount(params[:amount].to_f)
       end
-      render :json => { :discount => discount }
+      render :json => { :promo_id => promos.first.id, :discount => discount }
     end
     
 end

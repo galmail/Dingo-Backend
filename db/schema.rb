@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150130151849) do
+ActiveRecord::Schema.define(version: 20150130160104) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -174,6 +174,7 @@ ActiveRecord::Schema.define(version: 20150130151849) do
     t.string   "paypal_key"
     t.text     "buyers_note"
     t.string   "delivery_options"
+    t.uuid     "promo_id"
   end
 
   create_table "promos", id: :uuid, default: "uuid_generate_v4()", force: true do |t|

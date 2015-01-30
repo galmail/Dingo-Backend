@@ -17,6 +17,7 @@
 #  paypal_key       :string(255)
 #  buyers_note      :text
 #  delivery_options :string(255)
+#  promo_id         :uuid
 #
 
 class Order < ActiveRecord::Base
@@ -26,6 +27,7 @@ class Order < ActiveRecord::Base
   belongs_to  :ticket
   belongs_to  :offer
   belongs_to  :event
+  belongs_to  :promo
   
   validates_presence_of :sender
   validates_presence_of :receiver
@@ -33,10 +35,18 @@ class Order < ActiveRecord::Base
   validates_presence_of :event
   
   before_save :check_status
+  after_save  :apply_promo
   
   def check_status
     valid_status = ['NOT_CREATED','PENDING','AUTHORISED','COMPLETED','REFUNDED','CANCELED','DISPUTE'] 
     valid_status.include?(self.status)
+  end
+  
+  def apply_promo
+    if !self.promo.nil? and self.status=='AUTHORISED'
+      self.sender.promo_used = true
+      self.sender.save
+    end
   end
   
   # This method is now deprecated

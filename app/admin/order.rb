@@ -1,7 +1,7 @@
 ActiveAdmin.register Order do
 
   
-  permit_params :sender_id, :receiver_id, :ticket_id, :num_tickets, :amount, :status, :buyers_note, :delivery_options
+  permit_params :sender_id, :receiver_id, :ticket_id, :promo_id, :num_tickets, :amount, :status, :buyers_note, :delivery_options
   
   # See permitted parameters documentation:
   # https://github.com/gregbell/active_admin/blob/master/docs/2-resource-customization.md#setting-up-strong-parameters
