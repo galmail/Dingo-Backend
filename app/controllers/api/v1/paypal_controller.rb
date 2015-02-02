@@ -27,10 +27,10 @@ class Api::V1::PaypalController < Api::BaseController
       :from_dingo => true,
       :content => "Congratulations, #{current_order.sender.name} has bought your ticket(s). Please arrange delivery."
     })
-    if message_to_buyer.save and message_to_seller.save
-      message_to_buyer.notify
-      message_to_seller.notify
-    end
+    
+    message_to_buyer.save
+    message_to_seller.save
+    
     current_order.ticket.sold!(current_order.num_tickets)
     OrderNotifier.notify_ticket_purchased(current_order).deliver
     OrderNotifier.notify_ticket_sold(current_order).deliver

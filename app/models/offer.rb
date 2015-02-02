@@ -24,7 +24,11 @@ class Offer < ActiveRecord::Base
   validates_presence_of :receiver
   validates_presence_of :ticket
   
+  after_save  :notify
+  
   def notify
+    return self.notify_accept_or_reject if self.accepted or self.rejected
+      
     msg_to_seller = "#{self.sender.name} has requested to buy #{self.num_tickets} tickets for £#{self.price_per_ticket} per ticket. Total amount is £#{self.price}."
     message_to_seller = Message.new({
       :sender_id => self.sender.id,
@@ -47,8 +51,6 @@ class Offer < ActiveRecord::Base
     })
     
     if message_to_seller.save and message_to_buyer.save
-      message_to_seller.notify
-      message_to_buyer.notify
       return true
     else
       return false
@@ -75,7 +77,6 @@ class Offer < ActiveRecord::Base
       :new_offer => false
     })
     message_to_buyer.save
-    message_to_buyer.notify
     
     message_to_seller = Message.new({
       :sender_id => self.sender.id,
@@ -87,7 +88,6 @@ class Offer < ActiveRecord::Base
       :new_offer => false
     })
     message_to_seller.save
-    message_to_seller.notify
     
     return true
   end

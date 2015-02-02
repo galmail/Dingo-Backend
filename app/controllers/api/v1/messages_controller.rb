@@ -43,7 +43,6 @@ class Api::V1::MessagesController < Api::BaseController
     message = Message.new(message_params)
     message.sender = current_user
     if message.save
-      message.notify
       render :json=> message.as_json, status: :created
     else
       render :json=> message.errors, status: :unprocessable_entity

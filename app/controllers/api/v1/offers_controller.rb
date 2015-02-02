@@ -39,7 +39,6 @@ class Api::V1::OffersController < Api::BaseController
     offer = Offer.new(offer_params)
     offer.sender = current_user
     if offer.save
-      offer.notify
       render :json=> offer.as_json, status: :created
     else
       render :json=> offer.errors, status: :unprocessable_entity
@@ -54,7 +53,6 @@ class Api::V1::OffersController < Api::BaseController
     offer.accepted = params[:accept_offer]
     offer.rejected = !offer.accepted
     if offer.save
-      offer.notify_accept_or_reject
       render :json=> offer.as_json, status: :ok
     else
       render :json=> offer.errors, status: :unprocessable_entity

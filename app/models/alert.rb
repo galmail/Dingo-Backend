@@ -30,7 +30,7 @@ class Alert < ActiveRecord::Base
       :from_dingo => true
     })
     if message.save
-      return message.notify
+      return true
     else
       return false
     end

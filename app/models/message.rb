@@ -28,6 +28,7 @@ class Message < ActiveRecord::Base
   validates_presence_of :content
   
   before_save  :save_conversation_id
+  after_save   :notify
   
   def save_conversation_id
     id_part1 = 0
