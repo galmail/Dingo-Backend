@@ -25,7 +25,7 @@ class Api::V1::PaypalController < Api::BaseController
       :receiver_id => current_order.receiver_id,
       :ticket_id => current_order.ticket_id,
       :from_dingo => true,
-      :content => "Congratulations, #{current_order.sender.name} has bought your ticket(s). Please arrange delivery."
+      :content => "Congrats! #{current_order.sender.name} has bought your ticket(s). Please arrange delivery."
     })
     
     message_to_buyer.save
