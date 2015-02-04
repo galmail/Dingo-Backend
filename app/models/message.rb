@@ -49,15 +49,31 @@ class Message < ActiveRecord::Base
       msg = "#{self.content}"
     end
     User.find(self.receiver_id).devices.each { |device|
-      #APNS.send_notification(device.uid, msg)
-      APNS.send_notification(device.uid, :alert => msg, :badge => self.receiver.num_unread_messages, :sound => 'default', :other => {
-        :sender_id => self.sender_id,
-        :sender_fb_id => self.sender.fb_id,
-        :ticket_id => self.ticket_id,
-        :offer_id => self.offer_id,
-        :from_dingo => self.from_dingo,
-        :new_offer => self.new_offer
-      })
+      if device.model.downcase.index('iphone')
+        APNS.send_notification(device.uid, :alert => msg, :badge => self.receiver.num_unread_messages, :sound => 'default', :other => {
+          :sender_id => self.sender_id,
+          :sender_fb_id => self.sender.fb_id,
+          :ticket_id => self.ticket_id,
+          :offer_id => self.offer_id,
+          :from_dingo => self.from_dingo,
+          :new_offer => self.new_offer
+        })
+      elsif device.model.downcase.index('android')
+        data = {
+          :alert => msg,
+          :badge => self.receiver.num_unread_messages,
+          :sound => 'default',
+          :other => {
+            :sender_id => self.sender_id,
+            :sender_fb_id => self.sender.fb_id,
+            :ticket_id => self.ticket_id,
+            :offer_id => self.offer_id,
+            :from_dingo => self.from_dingo,
+            :new_offer => self.new_offer
+          }
+        }
+        GCM.send_notification(device.uid,data)
+      end
     }
     return true
   end

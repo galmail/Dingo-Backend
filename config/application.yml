@@ -24,6 +24,10 @@ defaults: &defaults
   APN_PORT: 2195
   APN_PEM_FILE: app/assets/certificates/certProd.pem #certDev.pem
   APN_PASSWORD: Dingo123
+  # Android Push Notifications
+  GCM_HOST: https://android.googleapis.com/gcm/send
+  GCM_FORMAT: json
+  GCM_KEY: AIzaSyCYXJZ9YKTrGIzbZD2ueDW_tbWKI_6Hv0c
   # Paypal API
   PAYPAL_MODE: sandbox
   # Paypal Rest API Credentials
