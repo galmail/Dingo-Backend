@@ -49,7 +49,7 @@ class Message < ActiveRecord::Base
       msg = "#{self.content}"
     end
     User.find(self.receiver_id).devices.each { |device|
-      if device.model.downcase.index('iphone')
+      if device.brand.downcase.index('apple')
         APNS.send_notification(device.uid, :alert => msg, :badge => self.receiver.num_unread_messages, :sound => 'default', :other => {
           :sender_id => self.sender_id,
           :sender_fb_id => self.sender.fb_id,
@@ -58,7 +58,7 @@ class Message < ActiveRecord::Base
           :from_dingo => self.from_dingo,
           :new_offer => self.new_offer
         })
-      elsif device.model.downcase.index('android')
+      elsif device.brand.downcase.index('android')
         data = {
           :alert => msg,
           :badge => self.receiver.num_unread_messages,
