@@ -9,5 +9,5 @@ APNS.pass=ENV["APN_PASSWORD"]
 # Android Push Notifications Settings
 
 GCM.host=ENV["GCM_HOST"]
-GCM.format=ENV["GCM_FORMAT"]
+GCM.format=:json
 GCM.key=ENV["GCM_KEY"]

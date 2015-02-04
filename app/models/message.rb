@@ -72,7 +72,7 @@ class Message < ActiveRecord::Base
             :new_offer => self.new_offer
           }
         }
-        GCM.send_notification(device.uid,data)
+        GCM.send_notification([device.uid],data)
       end
     }
     return true
