@@ -49,19 +49,21 @@ class Message < ActiveRecord::Base
       msg = "#{self.content}"
     end
     
-    msg = msg[0,20] << '...' unless msg.length < 20
+    msg = msg[0,30] << '...' unless msg.length < 30
     
     User.find(self.receiver_id).devices.each { |device|
       if device.brand.downcase.index('apple')
         #puts "Sending Apple Push to #{self.receiver.name} with msg: #{msg}"
-        APNS.send_notification(device.uid, :alert => msg, :badge => self.receiver.num_unread_messages, :sound => 'default', :other => {
-          :sender_id => self.sender_id,
-          :sender_fb_id => self.sender.fb_id,
-          :ticket_id => self.ticket_id,
-          :offer_id => self.offer_id,
-          :from_dingo => self.from_dingo,
-          :new_offer => self.new_offer
-        })
+        APNS.send_notification(device.uid, :alert => msg, :badge => self.receiver.num_unread_messages, :sound => 'default'
+        # :other => {
+          # :sender_id => self.sender_id,
+          # :sender_fb_id => self.sender.fb_id,
+          # :ticket_id => self.ticket_id,
+          # :offer_id => self.offer_id,
+          # :from_dingo => self.from_dingo,
+          # :new_offer => self.new_offer
+        # }
+        )
       elsif device.brand.downcase.index('android')
         #puts "Sending Android Push to #{self.receiver.name} with msg: #{msg}"
         data = {
@@ -73,8 +75,8 @@ class Message < ActiveRecord::Base
             :sender_fb_id => self.sender.fb_id,
             :ticket_id => self.ticket_id,
             :offer_id => self.offer_id,
-            :from_dingo => self.from_dingo,
-            :new_offer => self.new_offer
+            :new_offer => self.new_offer,
+            :from_dingo => self.from_dingo
           }
         }
         GCM.send_notification([device.uid],data)
