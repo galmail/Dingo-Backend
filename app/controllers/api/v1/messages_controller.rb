@@ -39,7 +39,7 @@ class Api::V1::MessagesController < Api::BaseController
       return false
     end
     
-    message_params = params.permit(:receiver_id, :content, :ticket_id, :new_offer, :read)
+    message_params = params.permit(:receiver_id, :content, :ticket_id, :new_offer, :read, :from_dingo)
     message = Message.new(message_params)
     message.sender = current_user
     if message.save
