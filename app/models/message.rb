@@ -49,7 +49,7 @@ class Message < ActiveRecord::Base
       msg = "#{self.content}"
     end
     
-    msg = msg[0,10] << '...' unless msg.length < 10
+    msg = msg[0,20] << '...' unless msg.length < 20
     
     User.find(self.receiver_id).devices.each { |device|
       if device.brand.downcase.index('apple')
