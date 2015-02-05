@@ -417,6 +417,8 @@
             <param name="new_offer" required="false" type="xsd:boolean" style="query" default="false"></param>
             <param name="read" required="false" type="xsd:boolean" style="query" default="false"></param>
             <param name="from_dingo" required="false" type="xsd:boolean" style="query" default="false"></param>
+            <param name="visible" required="false" type="xsd:boolean" style="query" default=""></param>
+            
             <method id="send_message" name="POST" apigee:displayName="Send Message">
                 <apigee:tags>
                     <apigee:tag primary="true">Messages</apigee:tag>
