@@ -61,6 +61,7 @@
             <param name="Content-Type" required="true" type="xsd:string" style="header" default="application/json"></param>
             <param name="Accept" required="true" type="xsd:string" style="header" default="application/json"></param>
             
+            <param name="email" required="false" type="xsd:string" style="query"></param>
             <param name="name" required="false" type="xsd:string" style="query"></param>
             <param name="surname" required="false" type="xsd:string" style="query"></param>
             <param name="date_of_birth" required="false" type="xsd:date" style="query"></param>
