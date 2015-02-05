@@ -48,9 +48,12 @@ class Message < ActiveRecord::Base
     if self.from_dingo
       msg = "#{self.content}"
     end
+    
+    msg = msg[0,10] << '...' unless msg.length < 10
+    
     User.find(self.receiver_id).devices.each { |device|
       if device.brand.downcase.index('apple')
-        puts "Sending Apple Push to #{self.receiver.name} with msg: #{msg}"
+        #puts "Sending Apple Push to #{self.receiver.name} with msg: #{msg}"
         APNS.send_notification(device.uid, :alert => msg, :badge => self.receiver.num_unread_messages, :sound => 'default', :other => {
           :sender_id => self.sender_id,
           :sender_fb_id => self.sender.fb_id,
@@ -60,7 +63,7 @@ class Message < ActiveRecord::Base
           :new_offer => self.new_offer
         })
       elsif device.brand.downcase.index('android')
-        puts "Sending Android Push to #{self.receiver.name} with msg: #{msg}"
+        #puts "Sending Android Push to #{self.receiver.name} with msg: #{msg}"
         data = {
           :alert => msg,
           :badge => self.receiver.num_unread_messages,
