@@ -69,15 +69,15 @@ class Message < ActiveRecord::Base
         data = {
           :alert => msg,
           :badge => self.receiver.num_unread_messages,
-          :sound => 'default',
-          :other => {
-            :sender_id => self.sender_id,
-            :sender_fb_id => self.sender.fb_id,
-            :ticket_id => self.ticket_id,
-            :offer_id => self.offer_id,
-            :new_offer => self.new_offer,
-            :from_dingo => self.from_dingo
-          }
+          :sound => 'default'
+          # :other => {
+            # :sender_id => self.sender_id,
+            # :sender_fb_id => self.sender.fb_id,
+            # :ticket_id => self.ticket_id,
+            # :offer_id => self.offer_id,
+            # :new_offer => self.new_offer,
+            # :from_dingo => self.from_dingo
+          # }
         }
         GCM.send_notification([device.uid],data)
       end
