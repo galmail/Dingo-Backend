@@ -26,7 +26,7 @@ class Api::V1::TicketsController < Api::BaseController
         # ticket purchased or sold
         extra_tickets = Order.where(['sender_id = ? OR receiver_id = ?',current_user.id,current_user.id]).map { |order|
           ticket = order.ticket
-          ticket.number_of_tickets = order.num_tickets
+          ticket.number_of_tickets_sold = order.num_tickets
           ticket
         }
       end

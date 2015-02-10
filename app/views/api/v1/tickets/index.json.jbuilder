@@ -14,6 +14,7 @@ json.tickets @tickets do |ticket|
   json.delivery_options ticket.delivery_options
   json.payment_options ticket.payment_options
   json.number_of_tickets ticket.number_of_tickets
+  json.number_of_tickets_sold ticket.number_of_tickets_sold
   json.face_value_per_ticket ticket.face_value_per_ticket
   json.ticket_type ticket.ticket_type
   json.number_of_offers ticket.offers.count
