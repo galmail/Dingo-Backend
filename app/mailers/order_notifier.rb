@@ -37,4 +37,9 @@ class OrderNotifier < ActionMailer::Base
     mail(:from => self.dingo_email,:to => Settings.DINGO_EMAIL,:subject => 'New Order!')
   end
   
+  def notify_pending_payment_release(the_order)
+    @order = the_order
+    mail(:from => self.dingo_email,:to => Settings.DINGO_EMAIL,:subject => 'Pending Payment to Seller!')
+  end
+  
 end

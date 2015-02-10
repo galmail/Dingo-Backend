@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta content='text/html; charset=UTF-8' http-equiv='Content-Type' />
+  </head>
+  <body>
+    <h1>Pending Payment to Seller!</h1>
+    <p>
+    	<div>Order <a href="http://dingoapp.herokuapp.com/admin/orders/<%=@order.id%>">details</a>:</div>
+    	<ul>
+    		<li>Order ID: <%= @order.id %></li>
+    		<li>Seller's Name: <%= @order.receiver.name %></li>
+    		<li>Seller's Paypal Email: <%= @order.receiver.email %></li>
+    		<li>Amount: <%= @order.amount %></li>
+    		<li>Description: <%= @order.num_tickets %> ticket(s) to <%= @order.event.name %></li>
+    	</ul>
+    </p>
+  </body>
+</html>

@@ -13,8 +13,9 @@ task :clean_events => :environment do
   puts "****** Finished Clean Events Task ******"
 end
 
-desc "This task release payment to seller on all authorised orders after 48h"
-task :release_authorised_orders => :environment do
+
+desc "This task notify admin about the pending payment to sellers on all authorised orders after 48h"
+task :notify_pending_orders => :environment do
   puts "****** Starting Release Authorised Orders Task ******"
   
   puts "Check for authorised orders on past events after 48h."

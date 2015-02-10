@@ -52,66 +52,28 @@ class Order < ActiveRecord::Base
   # This method is now deprecated
   def pay
     return false
-    # @api = PayPal::SDK::AdaptivePayments.new
-    # @payment = @api.build_pay({
-      # :actionType => "PAY_PRIMARY",
-      # :feesPayer => "PRIMARYRECEIVER",
-      # :currencyCode => "GBP",
-      # :reverseAllParallelPaymentsOnError => true,
-      # :returnUrl => "http://dingoapp.herokuapp.com/api/v1/paypal/success?order_id=#{self.id}",
-      # :cancelUrl => "http://dingoapp.herokuapp.com/api/v1/paypal/cancel?order_id=#{self.id}",
-      # :ipnNotificationUrl => "http://dingoapp.herokuapp.com/api/v1/paypal/notification?order_id=#{self.id}",
-      # :receiverList => {
-        # :receiver => [
-          # {
-            # :primary => true,
-            # :amount => self.amount,
-            # :email => Settings.DINGO_EMAIL
-          # },
-          # {
-            # :primary => false,
-            # :amount => self.sellers_profit,
-            # :email => self.receiver.email
-          # }
-        # ]
-      # }
-    # })
-    # @api.pay(@payment)
   end
   
   # This method is now deprecated
-  def release_payment
+  def release_payment(mark_released)
+    if mark_released
+      self.status = 'COMPLETED'
+      self.save
+      return true
+    end
+    
+    if self.status == 'AUTHORISED'
+      # just notify admin for now
+      OrderNotifier.notify_pending_payment_release(self).deliver
+      return true
+    end
+    
     return false
-    # @api = PayPal::SDK::AdaptivePayments::API.new
-    # @execute_payment = @api.build_execute_payment({:payKey => self.paypal_key})
-    # @execute_payment_response = @api.execute_payment(@execute_payment)
-    # if @execute_payment_response.success?
-      # self.status = "COMPLETED"
-      # self.save
-    # end
-    # return @execute_payment_response
   end
   
   # This method is now deprecated
   def refund_payment
     return false
-    # @api = PayPal::SDK::AdaptivePayments::API.new
-    # @refund = @api.build_refund({
-      # :currencyCode => "GBP",
-      # :payKey => self.paypal_key,
-      # :receiverList => {
-        # :receiver => [{
-          # :amount => self.amount,
-          # :email => self.sender.email
-        # }]
-      # }
-    # })
-    # @refund_response = @api.refund(@refund)
-    # if @refund_response.success?
-      # self.status = "REFUNDED"
-      # self.save
-    # end
-    # return @refund_response
   end
   
   def open_dispute

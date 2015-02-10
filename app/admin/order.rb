@@ -25,23 +25,20 @@ ActiveAdmin.register Order do
   
   member_action :release do
     order = Order.find(params[:id])
-    result = order.release_payment
-    if result.success?
-      flash[:notice] = "The payment was released to the seller!"
-    else
-      flash[:error] = result.error[0].message
-    end
+    result = order.release_payment(true)
+    flash[:notice] = "The order status is now completed!"
     redirect_to :action => :show
   end
   
   member_action :refund do
     order = Order.find(params[:id])
-    result = order.refund_payment
-    if result.success?
-      flash[:notice] = "The payment was refunded back to the buyer!"
-    else
-      flash[:error] = result.error[0].message
-    end
+    flash[:error] = "Not implemented yet"
+    # result = order.refund_payment
+    # if result.success?
+      # flash[:notice] = "The payment was refunded back to the buyer!"
+    # else
+      # flash[:error] = result.error[0].message
+    # end
     redirect_to :action => :show
   end
   
