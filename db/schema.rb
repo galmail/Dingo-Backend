@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150130160104) do
+ActiveRecord::Schema.define(version: 20150210141211) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -192,7 +192,7 @@ ActiveRecord::Schema.define(version: 20150130160104) do
   create_table "tickets", id: :uuid, default: "uuid_generate_v4()", force: true do |t|
     t.integer  "user_id"
     t.uuid     "event_id"
-    t.decimal  "price",                 precision: 8, scale: 2
+    t.decimal  "price",                  precision: 8, scale: 2
     t.string   "seat_type"
     t.string   "description"
     t.datetime "created_at"
@@ -211,10 +211,11 @@ ActiveRecord::Schema.define(version: 20150130160104) do
     t.datetime "photo3_updated_at"
     t.string   "delivery_options"
     t.string   "payment_options"
-    t.integer  "number_of_tickets",                             default: 1
-    t.decimal  "face_value_per_ticket", precision: 8, scale: 2
-    t.boolean  "available",                                     default: true
+    t.integer  "number_of_tickets",                              default: 1
+    t.decimal  "face_value_per_ticket",  precision: 8, scale: 2
+    t.boolean  "available",                                      default: true
     t.string   "ticket_type"
+    t.integer  "number_of_tickets_sold",                         default: 0
   end
 
   add_index "tickets", ["event_id"], name: "index_tickets_on_event_id", using: :btree

@@ -22,13 +22,8 @@ class Api::V1::TicketsController < Api::BaseController
         filters.delete(:available)
         # tickets that are still on sale
         filters[:user_id] = current_user.id
-        
         # ticket purchased or sold
-        extra_tickets = Order.where(['sender_id = ? OR receiver_id = ?',current_user.id,current_user.id]).map { |order|
-          ticket = order.ticket
-          ticket.number_of_tickets_sold = order.num_tickets
-          ticket
-        }
+        extra_tickets = Order.where(['sender_id = ? OR receiver_id = ?',current_user.id,current_user.id]).map { |order| order.ticket }
       end
       
       

@@ -71,6 +71,7 @@ class Ticket < ActiveRecord::Base
   
   def sold!(num_tickets)
     self.number_of_tickets -= num_tickets
+    self.number_of_tickets_sold += num_tickets
     if self.number_of_tickets==0
       self.available = false
     end
