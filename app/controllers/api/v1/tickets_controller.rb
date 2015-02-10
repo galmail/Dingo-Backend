@@ -20,9 +20,15 @@ class Api::V1::TicketsController < Api::BaseController
       # get_my_tickets
       if params[:mine]
         filters.delete(:available)
+        # tickets that are still on sale
         filters[:user_id] = current_user.id
-        # ticket purchased
-        extra_tickets.concat(Order.joins(:ticket).where(:sender_id => current_user.id).map { |order| order.ticket })
+        
+        # ticket purchased or sold
+        extra_tickets = Order.where(['sender_id = ? OR receiver_id = ?',current_user.id,current_user.id]).map { |order|
+          ticket = order.ticket
+          ticket.number_of_tickets = order.num_tickets
+          ticket
+        }
       end
       
       
