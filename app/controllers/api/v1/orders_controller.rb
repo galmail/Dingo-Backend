@@ -76,12 +76,12 @@ class Api::V1::OrdersController < Api::BaseController
     
     result = {}
     if params[:release]
-      result = current_order.release_payment
+      result = current_order.release_payment(false)
     elsif params[:refund]
       result = current_order.refund_payment
     end
     
-    if result.success?
+    if result
       render :json => {success: true, order_id: current_order.id}
     else
       render :json => {success: false, error: result.error}, status: :unprocessable_entity

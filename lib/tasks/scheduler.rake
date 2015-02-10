@@ -24,7 +24,7 @@ task :notify_pending_orders => :environment do
     puts "Found #{pending_orders.length} orders. Releasing payments for these orders.."
     pending_orders.each { |order|
       puts "Releasing payment for order ID: #{order.id}"
-      order.release_payment
+      order.release_payment(false)
     }
     puts "Done. The payments of the authorised orders have been released."
   end
