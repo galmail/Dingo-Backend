@@ -28,6 +28,7 @@
 #  paypal_account           :string(255)
 #  promo                    :string(255)
 #  promo_used               :boolean          default(FALSE)
+#  notification_email       :string(255)
 #
 
 class User < ActiveRecord::Base
@@ -85,6 +86,14 @@ class User < ActiveRecord::Base
   # get number of unread messages
   def num_unread_messages
     return Message.where({:receiver_id => self.id, :read => false}).count
+  end
+  
+  def inbox_email
+    if self.notification_email.nil? or self.notification_email.length==0
+      return self.email
+    else
+      return self.notification_email
+    end
   end
          
 end

@@ -10,7 +10,7 @@
     	<ul>
     		<li>Order ID: <%= @order.id %></li>
     		<li>Seller's Name: <%= @order.receiver.name %></li>
-    		<li>Seller's Paypal Email: <%= @order.receiver.email %></li>
+    		<li>Seller's Paypal Email: <%= @order.receiver.inbox_email %></li>
     		<li>Amount: <%= @order.amount %></li>
     		<li>Description: <%= @order.num_tickets %> ticket(s) to <%= @order.event.name %></li>
     	</ul>

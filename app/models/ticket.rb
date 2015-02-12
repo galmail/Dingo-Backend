@@ -2,32 +2,33 @@
 #
 # Table name: tickets
 #
-#  id                    :uuid             not null, primary key
-#  user_id               :integer
-#  event_id              :uuid
-#  price                 :decimal(8, 2)
-#  seat_type             :string(255)
-#  description           :string(255)
-#  created_at            :datetime
-#  updated_at            :datetime
-#  photo1_file_name      :string(255)
-#  photo1_content_type   :string(255)
-#  photo1_file_size      :integer
-#  photo1_updated_at     :datetime
-#  photo2_file_name      :string(255)
-#  photo2_content_type   :string(255)
-#  photo2_file_size      :integer
-#  photo2_updated_at     :datetime
-#  photo3_file_name      :string(255)
-#  photo3_content_type   :string(255)
-#  photo3_file_size      :integer
-#  photo3_updated_at     :datetime
-#  delivery_options      :string(255)
-#  payment_options       :string(255)
-#  number_of_tickets     :integer          default(1)
-#  face_value_per_ticket :decimal(8, 2)
-#  available             :boolean          default(TRUE)
-#  ticket_type           :string(255)
+#  id                     :uuid             not null, primary key
+#  user_id                :integer
+#  event_id               :uuid
+#  price                  :decimal(8, 2)
+#  seat_type              :string(255)
+#  description            :string(255)
+#  created_at             :datetime
+#  updated_at             :datetime
+#  photo1_file_name       :string(255)
+#  photo1_content_type    :string(255)
+#  photo1_file_size       :integer
+#  photo1_updated_at      :datetime
+#  photo2_file_name       :string(255)
+#  photo2_content_type    :string(255)
+#  photo2_file_size       :integer
+#  photo2_updated_at      :datetime
+#  photo3_file_name       :string(255)
+#  photo3_content_type    :string(255)
+#  photo3_file_size       :integer
+#  photo3_updated_at      :datetime
+#  delivery_options       :string(255)
+#  payment_options        :string(255)
+#  number_of_tickets      :integer          default(1)
+#  face_value_per_ticket  :decimal(8, 2)
+#  available              :boolean          default(TRUE)
+#  ticket_type            :string(255)
+#  number_of_tickets_sold :integer          default(0)
 #
 
 class Ticket < ActiveRecord::Base

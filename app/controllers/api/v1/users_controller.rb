@@ -7,6 +7,7 @@ class Api::V1::UsersController < Api::BaseController
       user_data[:fb_id] = nil
     end
     current_user.update_attributes(user_data)
+    current_user.email = current_user.inbox_email
     render :json => current_user.as_json
   end
   
@@ -41,7 +42,8 @@ class Api::V1::UsersController < Api::BaseController
     if params[:promo].present?
       current_user.validate_promo(params[:promo])
     end
-    params.permit(:email,:password,:name,:surname,:photo_url,:date_of_birth,:city,:allow_push_notifications,:allow_dingo_emails,:fb_id,:paypal_account)
+    params[:notification_email] = URI.unescape(params[:email]) if params[:email].present?
+    params.permit(:notification_email,:password,:name,:surname,:photo_url,:date_of_birth,:city,:allow_push_notifications,:allow_dingo_emails,:fb_id,:paypal_account)
   end
   
 end

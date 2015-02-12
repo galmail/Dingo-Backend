@@ -4,7 +4,7 @@ json.tickets @tickets do |ticket|
   json.event_id ticket.event_id
   json.user_id ticket.user_id
   json.user_name ticket.user.name
-  json.user_email ticket.user.email
+  json.user_email ticket.user.inbox_email
   json.user_photo ticket.user.photo_url
   json.user_facebook_id ticket.user.fb_id
   json.price ticket.price

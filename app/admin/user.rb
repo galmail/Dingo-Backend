@@ -1,9 +1,10 @@
 ActiveAdmin.register User do
   config.filters = false
-  permit_params :email, :password, :name, :surname, :date_of_birth, :city, :photo_url, :allow_dingo_emails, :allow_push_notifications, :fb_id, :banned, :paypal_account, :promo, :promo_used
+  permit_params :email, :password, :notification_email, :name, :surname, :date_of_birth, :city, :photo_url, :allow_dingo_emails, :allow_push_notifications, :fb_id, :banned, :paypal_account, :promo, :promo_used
   
   index do
     column :email
+    column :notification_email
     column :created_at
     column :authentication_token
     actions

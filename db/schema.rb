@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150210141211) do
+ActiveRecord::Schema.define(version: 20150212140248) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -251,6 +251,7 @@ ActiveRecord::Schema.define(version: 20150210141211) do
     t.string   "paypal_account"
     t.string   "promo"
     t.boolean  "promo_used",               default: false
+    t.string   "notification_email"
   end
 
   add_index "users", ["authentication_token"], name: "index_users_on_authentication_token", using: :btree
