@@ -7,7 +7,6 @@ class Api::V1::UsersController < Api::BaseController
       user_data[:fb_id] = nil
     end
     current_user.update_attributes(user_data)
-    current_user.email = current_user.inbox_email
     render :json => current_user.as_json
   end
   
