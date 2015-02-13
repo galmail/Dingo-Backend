@@ -42,4 +42,9 @@ class OrderNotifier < ActionMailer::Base
     mail(:from => self.dingo_email,:to => Settings.DINGO_EMAIL,:subject => 'Pending Payment to Seller!')
   end
   
+  def notify_seller_payment_released(the_order)
+    @order = the_order
+    mail(:from => self.dingo_email,:to => the_order.receiver.inbox_email,:subject => 'We have transfered you the money')
+  end
+  
 end

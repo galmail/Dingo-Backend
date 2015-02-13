@@ -59,6 +59,7 @@ class Order < ActiveRecord::Base
     if mark_released
       self.status = 'COMPLETED'
       self.save
+      OrderNotifier.notify_seller_payment_released(self).deliver
       return true
     end
     
