@@ -41,8 +41,8 @@ class Api::V1::UsersController < Api::BaseController
     if params[:promo].present?
       current_user.validate_promo(params[:promo])
     end
-    params[:notification_email] = URI.unescape(params[:email]) if params[:email].present?
-    params.permit(:notification_email,:password,:name,:surname,:photo_url,:date_of_birth,:city,:allow_push_notifications,:allow_dingo_emails,:fb_id,:paypal_account)
+    #params[:notification_email] = URI.unescape(params[:email]) if params[:email].present?
+    params.permit(:email,:notification_email,:password,:name,:surname,:photo_url,:date_of_birth,:city,:allow_push_notifications,:allow_dingo_emails,:fb_id,:paypal_account)
   end
   
 end
