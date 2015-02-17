@@ -18,8 +18,8 @@ desc "This task notify admin about the pending payment to sellers on all authori
 task :notify_pending_orders => :environment do
   puts "****** Starting Release Authorised Orders Task ******"
   
-  puts "Check for authorised orders on past events after 48h."
-  pending_orders = Order.joins(:event).where(["orders.status = ? AND events.date < ?", 'AUTHORISED' , DateTime.now - 48.hours])
+  puts "Check for authorised orders on past events after 40h."
+  pending_orders = Order.joins(:event).where(["orders.status = ? AND events.date < ?", 'AUTHORISED' , DateTime.now - 40.hours])
   if pending_orders.length>0
     puts "Found #{pending_orders.length} orders. Releasing payments for these orders.."
     pending_orders.each { |order|

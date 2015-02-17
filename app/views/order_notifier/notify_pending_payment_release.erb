@@ -9,6 +9,7 @@
     	<div>Order <a href="http://dingoapp.herokuapp.com/admin/orders/<%=@order.id%>">details</a>:</div>
     	<ul>
     		<li>Order ID: <%= @order.id %></li>
+    		<li>Payment to be paid by: <%= @order.event.date + 48.hours %></li>
     		<li>Seller's Name: <%= @order.receiver.name %></li>
     		<li>Seller's Paypal Email: <%= @order.receiver.inbox_email %></li>
     		<li>Amount: <%= @order.amount %></li>

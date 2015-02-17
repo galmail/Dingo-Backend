@@ -96,17 +96,12 @@ class Order < ActiveRecord::Base
     return (self.amount * 1.10)
   end
   
-  
-  def sellers_profit
-    return (self.amount * 0.90)
-  end
-  
-  def dingos_profit
-    return (self.amount * 0.10)
+  def total_commission
+    return self.buyers_amount - self.amount
   end
   
   def dingo_commision
-    return (self.amount * 0.10) - self.paypal_commision 
+    return self.total_commission - self.paypal_commision 
   end
   
   def paypal_commision

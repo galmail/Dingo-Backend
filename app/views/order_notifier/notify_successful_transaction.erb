@@ -4,14 +4,21 @@
     <meta content='text/html; charset=UTF-8' http-equiv='Content-Type' />
   </head>
   <body>
-    <p>
-    	<br/>
-    	Great news!! We received a successful transaction of <%=@order.amount%>!!<br/>
-    	<br/>
-    	The Order ID is: <%= @order.id %><br/>
-    	The Event is: <%= @order.event.name %><br/>
-    	The Order amount is: <%= @order.amount %><br/>
-    	Dingo's Commision: <%=@order.dingo_commision%><br/>
-    </p>
+	<h2>Successful Transaction!</h2>
+	<p>
+		<ul>
+			<li>Order ID: <%= @order.id %></li>
+			<li>Event Name: <%= @order.event.name %></li>
+		</ul>
+		<ul>
+			<li>Tickets Total: <%= @order.amount %></li>
+			<li>Commission Paid: <%= @order.total_commission %></li>
+			<li>Order Total (inc fees): <%= @order.buyers_amount %></li>
+		</ul>
+		<ul>
+			<li>Paypal Commission: <%= @order.paypal_commision %></li>
+			<li>Dingo Commission: <%= @order.dingo_commision %></li>
+		</ul>
+	</p>
   </body>
 </html>
