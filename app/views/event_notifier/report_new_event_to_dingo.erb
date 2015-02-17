@@ -4,28 +4,15 @@
     <meta content='text/html; charset=UTF-8' http-equiv='Content-Type' />
   </head>
   <body>
+  	<h2>A new event has been created!</h2>
     <p>
-    	<b>Dear Dingos,</b><br/>
-    	<br/>
-    	There is a user selling a ticket for a new event.<br/>
-    	<br/>
-    	Please verify it, these are the details:<br/>
-    </p>
-    <p>
-    	<div>Event details:</div>
+    	<div>Event <a href="http://dingoapp.herokuapp.com/admin/events/<%=@event.id%>">details</a>:</div>
     	<ul>
     		<li>ID: <%= @event.id %></li>
-    		<li>Event: <%= @event.name %></li>
+    		<li>Event Name: <%= @event.name %></li>
+    		<li>Date: <%= @event.date %></li>
     		<li>Created By: <%= @event.created_by.name %></li>
     	</ul>
-    </p>
-    <p>
-    	Don't forget to:
-    	<ol>
-    		<li>Check the all the event details are correct</li>
-    		<li>Select a Category for this event</li>
-    		<li>Activate the event and get back to the user</li>
-    	</ol>
     </p>
   </body>
 </html>
