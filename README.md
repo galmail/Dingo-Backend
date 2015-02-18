@@ -1,7 +1,17 @@
 # Dingo Backend #
 
+Two Environments: Production and Staging
 
-It runs on Heroku at: http://dingoapp.herokuapp.com
+Production runs at: http://dingoapp.herokuapp.com
+Staging runs at: http://dingoapp-staging.herokuapp.com
+
+To push the code to production:
+
+git push heroku master
+
+To push the code to staging:
+
+git push dingoapp-staging master
 
 Check the APIs at: http://dingoapp.herokuapp.com/api
 
