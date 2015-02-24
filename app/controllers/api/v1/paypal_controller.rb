@@ -18,14 +18,19 @@ class Api::V1::PaypalController < Api::BaseController
       :receiver_id => current_order.sender_id,
       :ticket_id => current_order.ticket_id,
       :from_dingo => true,
-      :content => 'Congrats! You have purchased a ticket. Please contact seller for collection.'
+      :content => 'Hi, this is Dingo... Congratulations, you have bought your ticket(s)! You are now in a chat with the seller. Please arrange delivery of your ticket(s) using this chat screen.'
+      #:content => 'Congrats! You have purchased a ticket. Please contact seller for collection.'
+      
+      
+      
     })
     message_to_seller = Message.new({
       :sender_id => current_order.sender_id,
       :receiver_id => current_order.receiver_id,
       :ticket_id => current_order.ticket_id,
       :from_dingo => true,
-      :content => "Congrats! #{current_order.sender.name} has bought your ticket(s). Please arrange delivery."
+      :content => "Hi, this is Dingo… Congratulations, #{current_order.sender.name} has bought your ticket(s). You are now in a chat with the buyer. Please arrange delivery of the ticket(s) using this chat screen."
+      #:content => "Congrats! #{current_order.sender.name} has bought your ticket(s). Please arrange delivery."
     })
     
     message_to_buyer.save
