@@ -1,21 +1,36 @@
-<!DOCTYPE html>
+<!doctype html>
+
 <html lang="en">
 <head>
-    <title>We have transfered you the money</title>
+    <title>Your money is available!</title>
 </head>
 <body style="background-color: #FCFCFC; font-family:Verdana, Geneva, sans-serif; font-size:22px">
-<div align="center" style="background-color: #FCFCFC">
+    <div style="width:700px; margin:0 auto;">
 
-Hello,
+        <div align="center" style="font-size:42px; font-family:Verdana, Geneva, sans-serif; padding-top: 22px; padding-bottom: 42px"><b>Hi <%= @seller.name%>,</b></div>
 
-We have transfered you the money directly to your Paypal Account.
+        <div align="center" style="font-size:22px; font-family:Verdana, Geneva, sans-serif; padding-bottom: 42px">Congratulations, your money is now available!</div>
 
-If you haven't received it yet, please contact us on support@dingoapp.co.uk indicating the order ID: @order.id
+        <div align="center" style="padding-bottom: 42px"><img src="https://s3-us-west-2.amazonaws.com/dingoapp-prod/Email+images/money.gif" alt="money"></div>
 
-Cheers,
+        <div align="center" style="font-size:22px; font-family:Verdana, Geneva, sans-serif; padding-bottom: 42px">If you logged into PayPal within the app, your money will be in your account.</div>
+        
+        <div align="center" style="font-size:22px; font-family:Verdana, Geneva, sans-serif; padding-bottom: 42px">If not, you will receive an email from PayPal explaining how to access your money.</div>
 
-Dingo Team	
-	
-</div>
+        <div align="center" style="font-size:22px; font-family:Verdana, Geneva, sans-serif; padding-bottom: 42px">Thanks for using Dingo, we hope it was a great experience.</div>
+        
+        <div align="center" style="font-size:22px; font-family:Verdana, Geneva, sans-serif; padding-bottom: 42px">Team Dingo</div>
+        
+        <div align="center" style="font-size:16px; font-family:Verdana, Geneva, sans-serif; padding-bottom: 42px">If you have any issues, complaints or feedback please get in touch at <a href="mailto:info@dingoapp.co.uk">info@dingoapp.co.uk</a>.</div>
+        
+        <div align="center" style="padding-bottom: 42px"><a href="http://store.apple.com/uk" target="_blank"><img src="https://s3-us-west-2.amazonaws.com/dingoapp-prod/Email+images/appstoreicon.jpg"></a> </div>
+    
+            <table align="center">
+            <tr>
+                <td><div align="center"><a href="https://www.facebook.com/dingoapp" target="_blank"><img height="50px" width="50px" src="https://s3-us-west-2.amazonaws.com/dingoapp-prod/Email+images/Facebook+Square.jpg"></a> </div></td>
+                <td><div align="center"><a href="https://twitter.com/Dingotickets" target="_blank"><img height="50px" width="50px" src="https://s3-us-west-2.amazonaws.com/dingoapp-prod/Email+images/Twitter+square.jpg"></a> </div></td>
+            </tr>
+        </table> 
+    </div>
 </body>
 </html>
