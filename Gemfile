@@ -70,3 +70,6 @@ gem 'paypal-sdk-adaptivepayments'
 gem 'rollbar', '~> 1.3.1' #tracking errors with rollbar
 
 gem 'newrelic_rpm' #monitoring server calls
+
+gem 'stripe', :git => 'https://github.com/stripe/stripe-ruby'
+

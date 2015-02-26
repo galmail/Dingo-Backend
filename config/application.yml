@@ -38,6 +38,9 @@ defaults: &defaults
   PAYPAL_USERNAME: phil-facilitator_api1.dingoapp.co.uk
   PAYPAL_PASSWORD: 1405585596
   PAYPAL_SIGNATURE: ASD0y8Fzvt3Gmspmqmq2CJmwwoIfA56HtZ-HEYSq12aMXnhatYMp4ngi
+  # Stripe API
+  STRIPE_SECRET_KEY: sk_test_l52VRoZ9wt1zp8lwx0VFXtHB
+  STRIPE_PUBLISHABLE_KEY: pk_test_ptXSH4M37Xpqqjp1FhUzQ0Bb
   
   # Email Config
   #SENDGRID_USERNAME: app27239716@heroku.com
@@ -59,7 +62,7 @@ production:
   # Apple Push Notifications
   APN_HOST: gateway.push.apple.com
   APN_PORT: 2195
-  APN_PEM_FILE: app/assets/certificates/apnProd.pem
+  APN_PEM_FILE: app/assets/certificates/certProd.pem
   APN_PASSWORD: Dingo123
 
   # Paypal API
@@ -71,4 +74,8 @@ production:
   PAYPAL_USERNAME: phil_api1.dingoapp.co.uk
   PAYPAL_PASSWORD: XYLCNNEHXX5UCP58
   PAYPAL_SIGNATURE: ATKWSwvWzKAEiFaECQxYOi4PQtfxALHX82vnYz4aahCwwLZXdW70kOqR
+  
+  # Stripe API
+  STRIPE_SECRET_KEY: sk_live_yTqjF3zMUXny1joKKGFOO7WT
+  STRIPE_PUBLISHABLE_KEY: pk_live_kOWyV8C9MDHI7Fb5ZByPTVjw
 

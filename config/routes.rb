@@ -58,6 +58,10 @@ Rails.application.routes.draw do
         post  'notification'
       end
       
+      namespace :stripe do
+        post  'pay'
+      end
+      
       namespace :promos do
         get   'get_discount'
       end

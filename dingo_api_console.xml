@@ -623,7 +623,40 @@
             </method>
         </resource>
         
+<!-- ##################### STRIPE ##################### -->
 
+		<!-- stripe_payment -->
+        <resource path="/api/v1/stripe/pay">
+            <param name="Content-Type" required="true" type="xsd:string" style="header" default="application/json"></param>
+            <param name="Accept" required="true" type="xsd:string" style="header" default="application/json"></param>
+            
+            <param name="token" required="true" type="xsd:string" style="query" default=""></param>
+            <param name="currency" required="true" type="xsd:string" style="query" default="gbp"></param>
+            <param name="amount" required="true" type="xsd:integer" style="query" default="1000"></param>
+            <param name="description" required="true" type="xsd:string" style="query" default="ticket sold"></param>
+            
+            <method id="stripe_payment" name="POST" apigee:displayName="Stripe Payment">
+                <apigee:tags>
+                    <apigee:tag primary="true">Payments</apigee:tag>
+                </apigee:tags>
+                <apigee:authentication required="true"/>
+                <doc apigee:url="http://api.mydomain.com/doc/my-method">stripe_payment</doc>
+            </method>
+        </resource>
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
         <!-- store_credit_card -->
         <!--
         <resource path="/api/v1/payments/store_credit_card">

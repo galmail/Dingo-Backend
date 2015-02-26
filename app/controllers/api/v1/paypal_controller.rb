@@ -20,9 +20,6 @@ class Api::V1::PaypalController < Api::BaseController
       :from_dingo => true,
       :content => 'Hi, this is Dingo... Congratulations, you have bought your ticket(s)! You are now in a chat with the seller. Please arrange delivery of your ticket(s) using this chat screen.'
       #:content => 'Congrats! You have purchased a ticket. Please contact seller for collection.'
-      
-      
-      
     })
     message_to_seller = Message.new({
       :sender_id => current_order.sender_id,
