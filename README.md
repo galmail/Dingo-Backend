@@ -37,4 +37,4 @@ To comment model attributes do: annotate --exclude tests,fixtures,factories
 ## Setting Environment Variables ##
 
 set them in config/application.yml
-rake figaro:heroku
+rake figaro:heroku[dingoapp]

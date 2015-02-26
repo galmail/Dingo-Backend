@@ -13,7 +13,7 @@ defaults: &defaults
   DINGO_USER_ID: 32
   
   # Rollbar Error Tracking
-  ROLLBAR_ACCESS_TOKEN: 6914d1d95667456dbfcf13129c5b88f6
+  #ROLLBAR_ACCESS_TOKEN: 6914d1d95667456dbfcf13129c5b88f6
   
   # Amazon S3
   AWS_BUCKET: dingoapp-test
@@ -39,7 +39,7 @@ defaults: &defaults
   PAYPAL_PASSWORD: 1405585596
   PAYPAL_SIGNATURE: ASD0y8Fzvt3Gmspmqmq2CJmwwoIfA56HtZ-HEYSq12aMXnhatYMp4ngi
   # Stripe API
-  STRIPE_SECRET_KEY: sk_test_l52VRoZ9wt1zp8lwx0VFXtHB
+  STRIPE_SECRET_KEY: sk_test_oOtIVbTqQwYv4akcaF44jY4I
   STRIPE_PUBLISHABLE_KEY: pk_test_ptXSH4M37Xpqqjp1FhUzQ0Bb
   
   # Email Config
@@ -76,6 +76,6 @@ production:
   PAYPAL_SIGNATURE: ATKWSwvWzKAEiFaECQxYOi4PQtfxALHX82vnYz4aahCwwLZXdW70kOqR
   
   # Stripe API
-  STRIPE_SECRET_KEY: sk_live_yTqjF3zMUXny1joKKGFOO7WT
+  STRIPE_SECRET_KEY: sk_live_B9Hy26fXoyBjWFj010RWOCtO
   STRIPE_PUBLISHABLE_KEY: pk_live_kOWyV8C9MDHI7Fb5ZByPTVjw
 
