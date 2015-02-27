@@ -2,7 +2,7 @@ class Api::V1::StripeController < Api::BaseController
   
   def pay
     payment = params.permit(:live, :token, :currency, :amount, :description)
-    if params.has_key?(:live) and params[:live]!=false
+    if params[:live].to_b
       Stripe.api_key = Settings.STRIPE_LIVE_SECRET_KEY
     else
       Stripe.api_key = Settings.STRIPE_TEST_SECRET_KEY

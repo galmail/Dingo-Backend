@@ -73,3 +73,4 @@ gem 'newrelic_rpm' #monitoring server calls
 
 gem 'stripe', :git => 'https://github.com/stripe/stripe-ruby'
 
+gem 'wannabe_bool'
