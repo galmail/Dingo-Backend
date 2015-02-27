@@ -630,6 +630,7 @@
             <param name="Content-Type" required="true" type="xsd:string" style="header" default="application/json"></param>
             <param name="Accept" required="true" type="xsd:string" style="header" default="application/json"></param>
             
+            <param name="live" required="true" type="xsd:boolean" style="query" default="false"></param>
             <param name="token" required="true" type="xsd:string" style="query" default=""></param>
             <param name="currency" required="true" type="xsd:string" style="query" default="gbp"></param>
             <param name="amount" required="true" type="xsd:integer" style="query" default="1000"></param>
