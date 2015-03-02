@@ -10,7 +10,7 @@ defaults: &defaults
   # Settings
   DINGO_EMAIL: dingo@dingoapp.co.uk
   DINGO_LOGO: http://dingoapp.bitnamiapp.com/web/wp-content/uploads/2013/04/App-Logo3-80x80.png
-  DINGO_USER_ID: 32
+  DINGO_USER_ID: "32"
   
   # Rollbar Error Tracking
   #ROLLBAR_ACCESS_TOKEN: 6914d1d95667456dbfcf13129c5b88f6
@@ -21,7 +21,7 @@ defaults: &defaults
   AWS_SECRET: SkaSzpYTuGejDMxrs5iKPa/6ADYent6cYGILLbd6
   # Apple Push Notifications
   APN_HOST: gateway.push.apple.com   #gateway.sandbox.push.apple.com
-  APN_PORT: 2195
+  APN_PORT: "2195"
   APN_PEM_FILE: app/assets/certificates/certProd.pem #certDev.pem
   APN_PASSWORD: Dingo123
   # Android Push Notifications
@@ -36,7 +36,7 @@ defaults: &defaults
   # Paypal Classic API Credentials
   PAYPAL_APP_ID: APP-80W284485P519543T
   PAYPAL_USERNAME: phil-facilitator_api1.dingoapp.co.uk
-  PAYPAL_PASSWORD: 1405585596
+  PAYPAL_PASSWORD: "1405585596"
   PAYPAL_SIGNATURE: ASD0y8Fzvt3Gmspmqmq2CJmwwoIfA56HtZ-HEYSq12aMXnhatYMp4ngi
   # Stripe API
   STRIPE_TEST_SECRET_KEY: sk_test_oOtIVbTqQwYv4akcaF44jY4I
@@ -61,7 +61,7 @@ production:
   
   # Apple Push Notifications
   APN_HOST: gateway.push.apple.com
-  APN_PORT: 2195
+  APN_PORT: "2195"
   APN_PEM_FILE: app/assets/certificates/certProd.pem
   APN_PASSWORD: Dingo123
 
