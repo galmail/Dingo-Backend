@@ -1,7 +1,7 @@
 source 'https://rubygems.org'
-ruby "2.1.1"
+ruby "2.2.0"
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
-gem 'rails', '4.1.4'
+gem 'rails', '4.2.0'
 # Use postgresql as the database for Active Record
 gem 'pg'
 # Use SCSS for stylesheets
@@ -15,7 +15,7 @@ gem 'coffee-rails', '~> 4.0.0'
 
 # Use jquery as the JavaScript library
 #gem 'jquery-rails'
-gem 'jquery-ui-rails', '~> 4.2.1'
+gem 'jquery-ui-rails', '~> 5.0'
 
 
 # Turbolinks makes following links in your web application faster. Read more: https://github.com/rails/turbolinks
@@ -38,14 +38,16 @@ gem 'unicorn'
 # gem 'capistrano-rails', group: :development
 
 # Use debugger
-gem 'debugger', group: [:development, :test]
+#gem 'debugger', group: [:development, :test]
+gem "byebug", group: [:development, :test]
 
 # logging to heroku in production
 gem 'rails_12factor', group: :production
 
 #gem 'rails-api'
 
-gem 'activeadmin', github: 'gregbell/active_admin'
+#gem 'activeadmin', github: 'gregbell/active_admin'
+gem 'activeadmin', github: 'activeadmin'
 
 gem 'devise'
 
