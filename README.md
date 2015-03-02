@@ -5,6 +5,8 @@ Two Environments: Production and Staging
 Production runs at: http://dingoapp.herokuapp.com
 Staging runs at: http://dingoapp-staging.herokuapp.com
 
+Staging now runs on cedar-14 stack
+
 To push the code to production:
 
 git push heroku master
