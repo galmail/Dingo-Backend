@@ -2,11 +2,14 @@ class Api::V1::StripeController < Api::BaseController
   
   def pay
     payment = params.permit(:live, :token, :currency, :amount, :description)
-    if params[:live].to_b
-      Stripe.api_key = Settings.STRIPE_LIVE_SECRET_KEY
-    else
-      Stripe.api_key = Settings.STRIPE_TEST_SECRET_KEY
-    end
+    
+    Stripe.api_key = Settings.STRIPE_LIVE_SECRET_KEY
+    
+    # if params[:live].to_b
+      # Stripe.api_key = Settings.STRIPE_LIVE_SECRET_KEY
+    # else
+      # Stripe.api_key = Settings.STRIPE_TEST_SECRET_KEY
+    # end
     
     # Create the charge on Stripe's servers - this will charge the user's card
     stripe_error = nil
