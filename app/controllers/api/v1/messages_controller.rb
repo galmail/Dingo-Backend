@@ -26,7 +26,7 @@ class Api::V1::MessagesController < Api::BaseController
       conditions << "%#{params[:content]}%"
     end
 
-    @messages = Message.where(filters).where(conditions.insert(0,query)).order('created_at DESC').limit(100)
+    @messages = Message.where(filters).where(conditions.insert(0,query)).order('created_at DESC').limit(Settings.MESSAGES_LIMIT.to_i)
   end
 
   # Send Message

@@ -25,7 +25,7 @@ class Api::V1::OffersController < Api::BaseController
       filters[:receiver_id] = params[:receiver_id]
     end
 
-    @offers = Offer.where(filters).where(conditions.insert(0,query)).order('created_at DESC').limit(100)
+    @offers = Offer.where(filters).where(conditions.insert(0,query)).order('created_at DESC').limit(Settings.OFFERS_LIMIT.to_i)
   end
 
   # Send Offer

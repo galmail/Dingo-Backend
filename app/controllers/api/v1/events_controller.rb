@@ -54,7 +54,7 @@ class Api::V1::EventsController < Api::BaseController
         conditions << ("#{params[:end_date]}".to_date + 1.day)
       end
       
-      @events = Event.where(filters).where(conditions.insert(0,query)).order(order_by_field).limit(100)
+      @events = Event.where(filters).where(conditions.insert(0,query)).order(order_by_field).limit(Settings.EVENTS_LIMIT.to_i)
       
     end
     

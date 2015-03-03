@@ -33,7 +33,7 @@ class Api::V1::TicketsController < Api::BaseController
         #filters.delete(:available)
       end
       
-      @tickets = Ticket.where(filters).where(conditions).order('price ASC').limit(100)
+      @tickets = Ticket.where(filters).where(conditions).order('price ASC').limit(Settings.TICKETS_LIMIT.to_i)
       @tickets.concat(extra_tickets)
     end
     
