@@ -26,7 +26,7 @@ class Api::V1::PaypalController < Api::BaseController
       :receiver_id => current_order.receiver_id,
       :ticket_id => current_order.ticket_id,
       :from_dingo => true,
-      :content => "Hi, this is Dingo… Congratulations, #{current_order.sender.name} has bought your ticket(s). You are now in a chat with the buyer. Please arrange delivery of the ticket(s) using this chat screen."
+      :content => "Hi, this is Dingo… Congratulations, your ticket(s) have been sold! You are now in a chat with the buyer, #{current_order.sender.name}. Please arrange delivery of the ticket(s) using this chat screen."
       #:content => "Congrats! #{current_order.sender.name} has bought your ticket(s). Please arrange delivery."
     })
     
