@@ -289,7 +289,7 @@ DEPENDENCIES
   figaro
   geocoder
   jbuilder (~> 2.0)
-  jquery-ui-rails (~> 5.0)
+  jquery-ui-rails
   newrelic_rpm
   paperclip
   paypal-sdk-adaptivepayments
