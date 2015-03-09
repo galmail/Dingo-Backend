@@ -12,7 +12,7 @@ class Api::V1::UsersController < Api::BaseController
     
     current_user.update_attributes(user_data)
     
-    if !user_data[:fb_id].nil? and current_user.email.include?('guest.dingoapp.co.uk')
+    if !params[:fb_id].nil? and cloned_user.email.include?('guest.dingoapp.co.uk')
       cloned_user.save
     end
     
