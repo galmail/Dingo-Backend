@@ -7,16 +7,14 @@ class Api::V1::UsersController < Api::BaseController
       user_data[:fb_id] = nil
     end
     # clone guest user
-    cloned_user = current_user.clone
+    cloned_user = current_user.dup
+    cloned_user.password = "11111111111"
     
     current_user.update_attributes(user_data)
     
-    cloned_user.save
-    
-    # if !user_data[:fb_id].nil? and current_user.email.include?('guest.dingoapp.co.uk')
-      # u = User.new({:email=>current_email,:password=>'11111111111',:authentication_token=>current_token})
-      # u.save
-    # end
+    if !user_data[:fb_id].nil? and current_user.email.include?('guest.dingoapp.co.uk')
+      cloned_user.save
+    end
     
     render :json => current_user.as_json
   end
