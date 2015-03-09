@@ -6,7 +6,18 @@ class Api::V1::UsersController < Api::BaseController
     if params[:disconnect_fb_account]
       user_data[:fb_id] = nil
     end
+    # clone guest user
+    cloned_user = current_user.clone
+    
     current_user.update_attributes(user_data)
+    
+    cloned_user.save
+    
+    # if !user_data[:fb_id].nil? and current_user.email.include?('guest.dingoapp.co.uk')
+      # u = User.new({:email=>current_email,:password=>'11111111111',:authentication_token=>current_token})
+      # u.save
+    # end
+    
     render :json => current_user.as_json
   end
   
