@@ -8,7 +8,7 @@ class Api::V1::UsersController < Api::BaseController
     end
     # clone guest user
     cloned_user = current_user.dup
-    cloned_user.password = "11111111111"
+    cloned_user.password = 'uid' + cloned_user.email.split('@')[0]
     
     current_user.update_attributes(user_data)
     
