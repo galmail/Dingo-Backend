@@ -13,7 +13,7 @@ class Api::V1::UsersController < Api::BaseController
     current_user.update_attributes(user_data)
     
     if !params[:fb_id].nil? and cloned_user.email.include?('guest.dingoapp.co.uk')
-      cloned_user.save
+      #cloned_user.save
     end
     
     render :json => current_user.as_json
