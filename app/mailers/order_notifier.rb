@@ -44,7 +44,7 @@ class OrderNotifier < ActionMailer::Base
   
   def notify_seller_payment_released(the_order)
     @order = the_order
-    mail(:from => self.dingo_email,:to => the_order.receiver.inbox_email,:subject => 'We have transfered you the money')
+    mail(:from => self.dingo_email,:to => the_order.receiver.inbox_email,:subject => 'Another day another dollar...')
   end
   
 end

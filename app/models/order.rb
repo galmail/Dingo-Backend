@@ -54,12 +54,20 @@ class Order < ActiveRecord::Base
     return false
   end
   
-  # This method is now deprecated
   def release_payment(mark_released)
     if mark_released
       self.status = 'COMPLETED'
       self.save
       OrderNotifier.notify_seller_payment_released(self).deliver
+      # send push notification as well
+      msg = "Dingo:Goods news - your money has been released! Check your emails for more info."
+      message = Message.new({
+        :sender_id => Settings.DINGO_USER_ID,
+        :receiver_id => self.receiver.id,
+        :content => msg,
+        :from_dingo => true
+      })
+      message.save
       return true
     end
     
