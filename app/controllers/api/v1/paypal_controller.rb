@@ -26,12 +26,19 @@ class Api::V1::PaypalController < Api::BaseController
       :receiver_id => current_order.receiver_id,
       :ticket_id => current_order.ticket_id,
       :from_dingo => true,
-      :content => "Hi, this is Dingo… Congratulations, your ticket(s) have been sold! You are now in a chat with the buyer, #{current_order.sender.name}. Please arrange delivery of the ticket(s) using this chat screen. Please also make sure you log into PayPal within the Sell Tickets page within 48 hours."
-      #:content => "Congrats! #{current_order.sender.name} has bought your ticket(s). Please arrange delivery."
+      :content => "Hi, this is Dingo… Congratulations, your ticket(s) have been sold! You are now in a chat with the buyer, #{current_order.sender.name}. Please arrange delivery of the ticket(s) using this chat screen."
+    })
+    message2_to_seller = Message.new({
+      :sender_id => current_order.sender_id,
+      :receiver_id => current_order.receiver_id,
+      :ticket_id => current_order.ticket_id,
+      :from_dingo => true,
+      :content => "Please also make sure you log into PayPal within the Sell Tickets page within 48 hours."
     })
     
     message_to_buyer.save
     message_to_seller.save
+    message2_to_seller.save
     
     current_order.ticket.sold!(current_order.num_tickets)
     OrderNotifier.notify_ticket_purchased(current_order).deliver
