@@ -597,6 +597,7 @@
             <param name="Accept" required="true" type="xsd:string" style="header" default="application/json"></param>
             
             <param name="order_id" required="true" type="xsd:string" style="query" default=""></param>
+            <param name="paypal_key" required="false" type="xsd:string" style="query" default=""></param>
             
             <method id="transaction_approved" name="POST" apigee:displayName="Transaction Approved">
                 <apigee:tags>
@@ -613,6 +614,7 @@
             <param name="Accept" required="true" type="xsd:string" style="header" default="application/json"></param>
             
             <param name="order_id" required="true" type="xsd:string" style="query" default=""></param>
+            <param name="paypal_key" required="false" type="xsd:string" style="query" default=""></param>
             
             <method id="transaction_cancelled" name="POST" apigee:displayName="Transaction Cancelled">
                 <apigee:tags>

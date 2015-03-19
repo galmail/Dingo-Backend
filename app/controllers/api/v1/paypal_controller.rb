@@ -10,6 +10,7 @@ class Api::V1::PaypalController < Api::BaseController
     puts "PAYPAL_SUCCESS with ORDER_ID: #{params[:order_id]}"
     current_order = Order.find(params[:order_id])
     current_order.status = 'AUTHORISED'
+    current_order.paypal_key = params[:paypal_key]
     current_order.save
     
     # sending push notifications to both users (buyer and seller) 
@@ -54,6 +55,7 @@ class Api::V1::PaypalController < Api::BaseController
     
     current_order = Order.find(params[:order_id])
     current_order.status = 'CANCELED'
+    current_order.paypal_key = params[:paypal_key]
     current_order.save
     
     render :json=> current_order.as_json, status: :ok
