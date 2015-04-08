@@ -1,5 +1,5 @@
 ActiveAdmin.register Event do
-  config.filters = false
+  #config.filters = false
   permit_params :name, :description, :photo, :created_by_id, :date, :end_date, :category_id, :active, :address, :postcode, :city, :featured, :test, :primary_ticket_seller_url
   
   index do
