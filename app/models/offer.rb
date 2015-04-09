@@ -6,10 +6,10 @@
 #  sender_id   :integer
 #  receiver_id :integer
 #  ticket_id   :uuid
-#  num_tickets :integer          default(1)
+#  num_tickets :integer          default("1")
 #  price       :decimal(8, 2)
-#  accepted    :boolean          default(FALSE)
-#  rejected    :boolean          default(FALSE)
+#  accepted    :boolean          default("false")
+#  rejected    :boolean          default("false")
 #  created_at  :datetime
 #  updated_at  :datetime
 #

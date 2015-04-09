@@ -14,7 +14,7 @@
 #  updated_at    :datetime
 #  ip            :string(255)
 #  location      :string(255)
-#  banned        :boolean          default(FALSE)
+#  banned        :boolean          default("false")
 #
 
 class Device < ActiveRecord::Base

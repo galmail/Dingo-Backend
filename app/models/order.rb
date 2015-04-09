@@ -9,7 +9,7 @@
 #  creditcard_id    :uuid
 #  event_id         :uuid
 #  offer_id         :uuid
-#  num_tickets      :integer          default(1)
+#  num_tickets      :integer          default("1")
 #  amount           :decimal(8, 2)
 #  status           :string(255)
 #  created_at       :datetime

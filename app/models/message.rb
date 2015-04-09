@@ -8,12 +8,12 @@
 #  content         :string(255)
 #  created_at      :datetime
 #  updated_at      :datetime
-#  from_dingo      :boolean          default(FALSE)
-#  new_offer       :boolean          default(FALSE)
-#  visible         :boolean          default(TRUE)
+#  from_dingo      :boolean          default("false")
+#  new_offer       :boolean          default("false")
+#  visible         :boolean          default("true")
 #  ticket_id       :uuid
 #  offer_id        :uuid
-#  read            :boolean          default(FALSE)
+#  read            :boolean          default("false")
 #  conversation_id :string(255)
 #
 

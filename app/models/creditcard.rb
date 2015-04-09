@@ -9,7 +9,7 @@
 #  card_type      :string(255)
 #  issuer         :string(255)
 #  last_4_digits  :integer
-#  active         :boolean          default(TRUE)
+#  active         :boolean          default("true")
 #  created_at     :datetime
 #  updated_at     :datetime
 #

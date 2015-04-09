@@ -13,19 +13,20 @@
 #  photo_file_size           :integer
 #  photo_updated_at          :datetime
 #  date                      :datetime
-#  active                    :boolean          default(TRUE)
+#  active                    :boolean          default("true")
 #  address                   :string(255)
 #  postcode                  :string(255)
-#  featured                  :boolean          default(FALSE)
+#  featured                  :boolean          default("false")
 #  city                      :string(255)
 #  created_by_id             :integer
 #  end_date                  :datetime
-#  test                      :boolean          default(FALSE)
-#  for_sale                  :boolean          default(FALSE)
-#  min_price                 :decimal(8, 2)    default(0.0)
-#  available_tickets         :integer          default(0)
+#  test                      :boolean          default("false")
+#  for_sale                  :boolean          default("false")
+#  min_price                 :decimal(8, 2)    default("0")
+#  available_tickets         :integer          default("0")
 #  venue_id                  :uuid
 #  primary_ticket_seller_url :string(255)
+#  info_url                  :string
 #
 
 class Event < ActiveRecord::Base

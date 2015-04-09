@@ -6,9 +6,9 @@
 #  name            :string(255)
 #  description     :string(255)
 #  expiry_date     :datetime
-#  active          :boolean          default(TRUE)
-#  commission_free :boolean          default(FALSE)
-#  discount        :integer          default(0)
+#  active          :boolean          default("true")
+#  commission_free :boolean          default("false")
+#  discount        :integer          default("0")
 #  created_at      :datetime
 #  updated_at      :datetime
 #  code            :string(255)
