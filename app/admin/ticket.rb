@@ -1,5 +1,5 @@
 ActiveAdmin.register Ticket do
-  config.filters = false
+  config.filters = true
   permit_params :price, :seat_type, :ticket_type, :description, :photo1, :photo2, :photo3, :event_id, :user_id, :delivery_options, :payment_options, :number_of_tickets, :face_value_per_ticket, :available
   
   index do
