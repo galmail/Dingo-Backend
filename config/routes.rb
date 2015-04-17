@@ -40,6 +40,7 @@ Rails.application.routes.draw do
       resources :tickets, defaults: {format: :json}
       resources :events, defaults: {format: :json}
       resources :categories, defaults: {format: :json}
+      get '/messages/peers', to: 'messages#peers'
       resources :messages, defaults: {format: :json}
       resources :offers, defaults: {format: :json}
       resources :devices, defaults: {format: :json}

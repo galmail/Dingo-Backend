@@ -57,7 +57,13 @@ class Api::V1::MessagesController < Api::BaseController
     msg.save
     render :json => msg.as_json, status: :ok
   end
-
+  
+  # Get Peers
+  def peers
+    users = User.joins('INNER JOIN messages ON messages.sender_id = users.id OR messages.receiver_id = users.id').where('messages.sender_id = ? OR messages.receiver_id = ?',current_user.id,current_user.id).where.not(id: current_user.id)
+    render :json => users.as_json, status: :ok
+  end
+  
   private
 
   def and_query(query)
