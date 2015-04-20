@@ -62,10 +62,17 @@ class Api::V1::MessagesController < Api::BaseController
     render :json => msg.as_json, status: :ok
   end
   
-  # Get Peers
   def peers
-    users = User.joins('INNER JOIN messages ON messages.sender_id = users.id OR messages.receiver_id = users.id').where('messages.sender_id = ? OR messages.receiver_id = ?',current_user.id,current_user.id).where.not(id: current_user.id).distinct
-    render :json => users.as_json, status: :ok
+    conversations = []
+    filters = { visible: true }
+    query = "(sender_id = ? OR receiver_id = ?)"
+    conditions = [current_user.id,current_user.id]
+    messages = Message.where(filters).where(conditions.insert(0,query)).select(:conversation_id).distinct
+    messages.each { |msg|
+      peer = msg.get_peer(current_user.id)
+      conversations << { :id => msg.conversation_id, :user_name => peer.name, :user_pic => peer.photo_url, :event_name => msg.get_event_name }
+    }
+    render :json => conversations.as_json, status: :ok
   end
   
   private
