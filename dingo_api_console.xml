@@ -397,13 +397,26 @@
         <resource path="/api/v1/messages">
             <param name="Content-Type" required="true" type="xsd:string" style="header" default="application/json"></param>
             <param name="Accept" required="true" type="xsd:string" style="header" default="application/json"></param>
-            <param name="conversations" required="true" type="xsd:boolean" style="query" default="true"></param>
-            <method id="get_conversations" name="GET" apigee:displayName="Get User's Conversations">
+            <param name="conversation_id" required="false" type="xsd:string" style="query" default=""></param>
+            <method id="get_conversations" name="GET" apigee:displayName="Get All User's Conversations">
                 <apigee:tags>
                     <apigee:tag primary="true">Messages</apigee:tag>
                 </apigee:tags>
                 <apigee:authentication required="true"/>
                 <doc apigee:url="http://api.mydomain.com/doc/my-method">get_conversations</doc>
+            </method>
+        </resource>
+        
+        <!-- get_peers -->
+        <resource path="/api/v1/messages/peers">
+            <param name="Content-Type" required="true" type="xsd:string" style="header" default="application/json"></param>
+            <param name="Accept" required="true" type="xsd:string" style="header" default="application/json"></param>
+            <method id="get_peers" name="GET" apigee:displayName="Get Peers">
+                <apigee:tags>
+                    <apigee:tag primary="true">Messages</apigee:tag>
+                </apigee:tags>
+                <apigee:authentication required="true"/>
+                <doc apigee:url="http://api.mydomain.com/doc/my-method">get_peers</doc>
             </method>
         </resource>
         
