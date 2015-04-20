@@ -94,7 +94,11 @@ class Message < ActiveRecord::Base
   end
   
   def get_event_name
-    return self.ticket.event.name
+    if self.ticket
+      return self.ticket.event.name
+    else
+      return ''
+    end
   end
   
   def get_peer(current_user_id)
