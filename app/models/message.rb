@@ -98,7 +98,7 @@ class Message < ActiveRecord::Base
   end
   
   def get_peer(current_user_id)
-    if self.sender.id == current_user_id
+    if self.sender_id == current_user_id
       return self.receiver
     else
       return self.sender
