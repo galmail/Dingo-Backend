@@ -34,7 +34,7 @@ class Api::V1::PaypalController < Api::BaseController
       :receiver_id => current_order.receiver_id,
       :ticket_id => current_order.ticket_id,
       :from_dingo => true,
-      :content => "Please also make sure you log into PayPal within the Sell Tickets page within 48 hours."
+      :content => "Your funds will be available 48 hours after the event takes place. Please make sure you log into PayPal in the \"Sell Tickets\" page before then."
     })
     
     message_to_buyer.save
