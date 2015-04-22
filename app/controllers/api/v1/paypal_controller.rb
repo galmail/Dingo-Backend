@@ -19,8 +19,14 @@ class Api::V1::PaypalController < Api::BaseController
       :receiver_id => current_order.sender_id,
       :ticket_id => current_order.ticket_id,
       :from_dingo => true,
-      :content => 'Hi, this is Dingo... Congratulations, you have bought your ticket(s)! You are now in a chat with the seller. Please arrange delivery of your ticket(s) using this chat screen.'
-      #:content => 'Congrats! You have purchased a ticket. Please contact seller for collection.'
+      :content => "Hi, this is Dingo... Congratulations, you have bought your ticket(s)! You are now in a chat with the seller. Please arrange delivery of your ticket(s) using this chat screen."
+    })
+    message2_to_buyer = Message.new({
+      :sender_id => current_order.receiver_id,
+      :receiver_id => current_order.sender_id,
+      :ticket_id => current_order.ticket_id,
+      :from_dingo => true,
+      :content => "Your money will be held by Dingo, we will transfer it to #{current_order.receiver.name} 48 hours after the event takes place. If there are any issues you must get in contact with us before the transfer is made."
     })
     message_to_seller = Message.new({
       :sender_id => current_order.sender_id,
@@ -34,10 +40,11 @@ class Api::V1::PaypalController < Api::BaseController
       :receiver_id => current_order.receiver_id,
       :ticket_id => current_order.ticket_id,
       :from_dingo => true,
-      :content => "Your funds will be available 48 hours after the event takes place. Please make sure you log into PayPal in the \"Sell Tickets\" page before then."
+      :content => "#{current_order.sender.name} has paid and Dingo will transfer you the money 48 hours after the event takes place. If you haven’t already, please click the \"Sign in with PayPal\" button in the Sell Tickets page so we can register your PayPal details."
     })
     
     message_to_buyer.save
+    message2_to_buyer.save
     message_to_seller.save
     message2_to_seller.save
     
