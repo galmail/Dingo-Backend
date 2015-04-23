@@ -70,7 +70,7 @@ class Api::V1::MessagesController < Api::BaseController
     messages = Message.where(filters).where(conditions.insert(0,query)).select(:conversation_id,:sender_id,:receiver_id,:ticket_id).distinct(:conversation_id)
     messages.each { |msg|
       peer = msg.get_peer(current_user.id)
-      conversations << { :id => msg.conversation_id, :user_name => peer.name, :user_pic => peer.photo_url, :event_name => msg.get_event_name }
+      conversations << { :id => msg.conversation_id, :user_id => peer.id, :user_name => peer.name, :user_pic => peer.photo_url, :event_name => msg.get_event_name }
     }
     render :json => conversations.as_json, status: :ok
   end
