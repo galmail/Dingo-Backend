@@ -78,6 +78,12 @@ class Api::V1::MessagesController < Api::BaseController
     render :json => conversations.as_json, status: :ok
   end
   
+  def mark_all_as_read
+    params.require(:conversation_id)
+    Message.where(:conversation_id => params[:conversation_id]).update_all(:read => true)
+    render :json => { :num_unread_messages => current_user.num_unread_messages }, status: :ok
+  end
+  
   private
 
   def and_query(query)

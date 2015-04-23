@@ -41,6 +41,7 @@ Rails.application.routes.draw do
       resources :events, defaults: {format: :json}
       resources :categories, defaults: {format: :json}
       get '/messages/peers', to: 'messages#peers'
+      post '/messages/mark_all_as_read', to: 'messages#mark_all_as_read'
       resources :messages, defaults: {format: :json}
       resources :offers, defaults: {format: :json}
       resources :devices, defaults: {format: :json}
