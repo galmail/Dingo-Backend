@@ -20,7 +20,8 @@ class SessionsController < Devise::RegistrationsController
         :allow_dingo_emails => myuser.allow_dingo_emails,
         :allow_push_notifications => myuser.allow_push_notifications,
         :fb_id => myuser.fb_id,
-        :paypal_account => myuser.paypal_account
+        :paypal_account => myuser.paypal_account,
+        :num_unread_messages => myuser.num_unread_messages
       }
     else
       render :json => { :success => false }, status: :unauthorized

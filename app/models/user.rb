@@ -33,10 +33,10 @@
 
 class User < ActiveRecord::Base
   acts_as_token_authenticatable
-  has_many  :messages, :dependent => :delete_all
+  #has_many  :messages, :dependent => :delete_all
   has_many  :devices, :dependent => :delete_all
   has_many  :tickets, :dependent => :delete_all
-  has_many  :creditcards, :dependent => :delete_all
+  #has_many  :creditcards, :dependent => :delete_all
   
   validates_presence_of :email
   validates_uniqueness_of :email
