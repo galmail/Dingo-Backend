@@ -1,11 +1,11 @@
 // Dingo Mobile Web App
 
-var dingo = angular.module('dingo',['ionic','dingo.controllers','dingo.services','dingo.directives']);
+var dingo = angular.module('dingo',['ionic','facebook','dingo.controllers','dingo.services','dingo.directives']);
 dingo.controllers = angular.module('dingo.controllers', []);
 dingo.services = angular.module('dingo.services', []);
 dingo.directives = angular.module('dingo.directives', []);
 
-dingo.run(function($ionicPlatform) {
+dingo.run(function($ionicPlatform,Payment) {
   $ionicPlatform.ready(function() {
     // Hide the accessory bar by default (remove this to show the accessory bar above the keyboard
     // for form inputs)
@@ -16,6 +16,18 @@ dingo.run(function($ionicPlatform) {
       // org.apache.cordova.statusbar required
       StatusBar.styleDefault();
     }
+
+    // start to initialize PayPalMobile library
+    Payment.init();
+
+    // get app version
+    if(window.cordova && window.device){
+      cordova.getAppVersion(function(version){
+        console.log('app version is: ' + version);
+        window.device.appVersion = version;
+      });
+    }
+
   });
 })
 
@@ -26,7 +38,7 @@ dingo.run(function($ionicPlatform) {
            'request': function(config){
               if (window.cordova){
                 if((config.url.indexOf('/api')>=0) || (config.url.indexOf('/users/')>=0)){
-                  config.url = 'http://dingoapp.herokuapp.com' + config.url;
+                  config.url = 'http://dingoapp-staging.herokuapp.com' + config.url;
                   //alert('calling: ' + config.url);
                 }
               }
@@ -52,18 +64,16 @@ dingo.run(function($ionicPlatform) {
   ]);
 })
 
-// .config(function(FacebookProvider) {
-//    var fbAppId = '';
-//    if(window.location.href.indexOf('localhost')>0){
-//     fbAppId = '854877257866349';
-//    }
-//    else {
-//     fbAppId = '672126826238840';
-//    }
-//    FacebookProvider.init(fbAppId);
-// })
-
-
+.config(function(FacebookProvider) {
+   var fbAppId = '';
+   if(window.location.href.indexOf('localhost')>0){
+    fbAppId = '854877257866349';
+   }
+   else {
+    fbAppId = '672126826238840';
+   }
+   FacebookProvider.init(fbAppId);
+})
 
 .config(function($stateProvider, $urlRouterProvider) {
   $stateProvider
@@ -71,8 +81,8 @@ dingo.run(function($ionicPlatform) {
   .state('app', {
     url: "/app",
     abstract: true,
-    templateUrl: "js/templates/_menu.html"
-    //controller: 'HomeCtrl'
+    templateUrl: "js/templates/_menu.html",
+    controller: 'HomeCtrl'
   })
 
   ////////////////// MENU URLs ///////////////////
@@ -91,7 +101,38 @@ dingo.run(function($ionicPlatform) {
     url: "/settings",
     views: {
       'menuContent' :{
-        templateUrl: "js/templates/settings.html"
+        templateUrl: "js/templates/settings.html",
+        controller: 'SettingsCtrl'
+      }
+    }
+  })
+
+  .state('app.mytickets', {
+    url: "/mytickets",
+    views: {
+      'menuContent' :{
+        templateUrl: "js/templates/mytickets.html",
+        controller: 'MyTicketsCtrl'
+      }
+    }
+  })
+
+  .state('app.myticketsList', {
+    url: "/mytickets/:ticketsType",
+    views: {
+      'menuContent' :{
+        templateUrl: "js/templates/myticketslist.html",
+        controller: 'MyTicketsCtrl'
+      }
+    }
+  })
+
+  .state('app.faq', {
+    url: "/faq",
+    views: {
+      'menuContent' :{
+        templateUrl: "js/templates/faqs.html",
+        controller: 'FAQsCtrl'
       }
     }
   })
@@ -101,6 +142,24 @@ dingo.run(function($ionicPlatform) {
     views: {
       'menuContent' :{
         templateUrl: "js/templates/about.html"
+      }
+    }
+  })
+
+  .state('app.tandcs', {
+    url: "/tandcs",
+    views: {
+      'menuContent' :{
+        templateUrl: "js/templates/tandcs.html"
+      }
+    }
+  })
+
+  .state('app.privacypolicy', {
+    url: "/privacypolicy",
+    views: {
+      'menuContent' :{
+        templateUrl: "js/templates/privacypolicy.html"
       }
     }
   })
@@ -146,7 +205,6 @@ dingo.run(function($ionicPlatform) {
   })
 
 
-
   .state('home.sellTicket', {
     url: "/sell-ticket",
     views: {
@@ -157,11 +215,32 @@ dingo.run(function($ionicPlatform) {
     }
   })
 
+  .state('home.sellTicketPreview', {
+    url: "/sell-ticket-preview",
+    views: {
+      'sell-ticket-tab': {
+        templateUrl: "js/templates/sellTicketPreview.html",
+        controller: 'SellTicketCtrl'
+      }
+    }
+  })
+
   .state('home.messages', {
     url: "/messages",
     views: {
       'messages-tab': {
-        templateUrl: "js/templates/messages.html"
+        templateUrl: "js/templates/messages.html", //MessagesCtrl
+        controller: 'MessagesCtrl'
+      }
+    }
+  })
+
+  .state('home.messagesChat', {
+    url: "/messages/:conversationId",
+    views: {
+      'messages-tab': {
+        templateUrl: "js/templates/messagesChat.html",
+        controller: 'MessagesCtrl'
       }
     }
   })
@@ -174,7 +253,6 @@ dingo.run(function($ionicPlatform) {
       }
     }
   })
-
   ;
 
   // if none of the above states are matched, use this as the fallback

@@ -1,6 +1,7 @@
 /* Events Style */
 
 .d-events {
+	background-color: #ECEBE8;
 
 	.bar-search {
 		padding: 0;
@@ -15,8 +16,8 @@
 				padding: 0;
 				margin-right: 5px;
 				float: left;
-				width: 160px;
-				height: 122px;
+				width: 49%;
+				height: 113px;
 				border: 0;
 				&:last-child {
 					margin-right: 0;
@@ -34,8 +35,8 @@
 				}
 				img {
 					position: absolute;
-					height: 113px;
-					width: 160px;
+					height: 100%;
+					width: 100%;
 				}
 				.category-name {
 					position: absolute;
@@ -77,16 +78,16 @@
 				.event-info {
 					.event-title {
 						font-weight: bold;
-						font-size: 16px;
+						font-size: 18px;
 						padding: 0 5px;
 					}
 					.event-address {
 						padding: 0 5px;
-						font-size: 10px;
+						font-size: 14px;
 					}
 					.event-time {
 						padding: 0 5px;
-						font-size: 10px;
+						font-size: 12px;
 						color: gray;
 					}
 				}
@@ -94,14 +95,14 @@
 					//width: 60px;
 
 					.event-price-from {
-						font-size: 12px;
+						font-size: 16px;
 					}
 					.event-price-per-ticket {
-						font-size: 10px;
+						font-size: 14px;
 						color: gray;
 					}
 					.event-price-available-tickets {
-						font-size: 8px;
+						font-size: 14px;
 						color: gray;
 					}
 				}

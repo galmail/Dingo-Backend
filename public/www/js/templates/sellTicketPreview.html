@@ -1,0 +1,47 @@
+<ion-view class="d-selling-preview" view-title="Sell Ticket Preview">
+  <!-- <ion-nav-buttons side="left">
+    <button menu-toggle="left" class="button button-icon icon ion-navicon"></button>
+  </ion-nav-buttons> -->
+  <ion-content class="padding">
+
+  	<div>Please review the info and click sell</div>
+
+  	<div class="list">
+	    <label class="item item-input">
+		    <span class="input-label">Event:</span>
+		    <input type="text" ng-model="ticketDetails.event.name" ng-disabled="true" />
+		  </label>
+		  <label class="item item-input">
+		    <span class="input-label">Date:</span>
+		    <input type="text" ng-model="ticketDetails.event.date" ng-disabled="true" />
+		  </label>
+		  <label class="item item-input">
+		    <span class="input-label">Location:</span>
+		    <input type="text" ng-model="ticketDetails.event.address" ng-disabled="true" />
+		  </label>
+	    <label class="item item-input">
+		    <span class="input-label">Face Value per Ticket:</span>
+		    <input type="text" ng-model="ticketDetails.face_value_per_ticket" ng-disabled="true" />
+		  </label>
+	    <label class="item item-input">
+		    <span class="input-label">Number of Tickets:</span>
+		    <input type="text" ng-model="ticketDetails.num_tickets" ng-disabled="true" />
+		  </label>
+		  <label class="item item-input">
+		    <span class="input-label">Price per Ticket:</span>
+		    <input type="text" ng-model="ticketDetails.price_per_ticket" ng-disabled="true" />
+		  </label>
+		  <label class="item item-input">
+		    <span class="input-label">Accepted Payments:</span>
+		    <input type="text" ng-value="ticketDetails.getPaymentMethods()" ng-disabled="true" />
+		  </label>
+		  <label class="item item-input">
+		    <span class="input-label">Delivery Methods:</span>
+		    <input type="text" ng-value="ticketDetails.getDeliveryMethods()" ng-disabled="true" />
+		  </label>
+	  </div>
+
+	  <button class="button button-full button-positive" ng-click="sellTicket()">Sell Ticket</button>
+
+  </ion-content>
+</ion-view>

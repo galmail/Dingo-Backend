@@ -1,6 +1,7 @@
 /* Event Details Style */
 
 .d-event-details {
+	background-color: #ECEBE8;
 
 	#event_container {
 		background-size: cover;
@@ -11,8 +12,8 @@
 			padding: 35px 10px;
 			img {
 				border: 1px solid white;
-				border-radius: 35px;
-				height: 75px;
+				border-radius: 48px;
+				height: 96px;
 			}
 		}
 		.event-info {
@@ -36,7 +37,8 @@
 				right: 0;
 			}
 			.ticket-photo {
-				height: 70px;
+				height: 80px;
+				width: 75px;
 			}
 			.ticket-price {
 				//width: 60px;

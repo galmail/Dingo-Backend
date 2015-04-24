@@ -3,47 +3,80 @@
  *
  */
 
-dingo.services.factory('User', function($http, Util) {
+dingo.services.factory('User', function($http, Util, Push) {
   
   var data = {};
   
   return {
+
+    loginCallbacks: [],
+    newMessagesCallbacks: [],
+
+    //register an observer
+    registerToLoginCallback: function(callback){
+      this.loginCallbacks.push(callback);
+    },
+
+    //call this when you know user has logged in
+    notifyLogin: function(){
+      var self = this;
+      angular.forEach(self.loginCallbacks, function(callback){
+        callback();
+      });
+    },
+
+    //register an observer
+    registerToNewMessagesCallback: function(callback){
+      this.newMessagesCallbacks.push(callback);
+    },
+
+    notifyNewMessages: function(){
+      var self = this;
+      angular.forEach(self.newMessagesCallbacks, function(callback){
+        callback();
+      });
+    },
   	
     getInfo: function(){ return data; },
   	
-    setInfo: function(newdata){ data = newdata; },
+    setInfo: function(newdata){ angular.extend(data, newdata); },
 
-    saveCredentials: function(email,token){
+    saveCredentials: function(email,auth_token){
       localStorage.setItem('email',email);
-      localStorage.setItem('token',token);
+      localStorage.setItem('auth_token',auth_token);
     },
 
     isLogged: function(){
-      return (localStorage.getItem('email')!=null && localStorage.getItem('token')!=null);
+      return this.getInfo().logged;
     },
 
     logout: function(){
       delete(localStorage.email);
-      delete(localStorage.token);
+      delete(localStorage.auth_token);
+      this.setInfo({});
     },
   	
     login: function(callback){
   		var self = this;
-  		$http.get('/users/sign_in',{
+      $http.get('/users/sign_in',{
   			params: {
   				email: self.getInfo().email,
-  				password: self.getInfo().password
+  				password: self.getInfo().password,
+          auth_token: self.getInfo().auth_token
   			}
   		}).success(function(res){
   			console.log('login success: ' + JSON.stringify(res));
-        data.user_id = res.id;
+        res.logged = true;
+        self.setInfo(res);
   			// save auth_token
         $http.defaults.headers.common = {
           'X-User-Email': res.email,
           'X-User-Token': res.auth_token
         };
         self.saveCredentials(res.email,res.auth_token);
+        Push.register();
   			callback(true);
+        self.notifyLogin();
   		}).error(function(){
   			console.log('login error');
   			callback(false);
@@ -82,21 +115,40 @@ dingo.services.factory('User', function($http, Util) {
   		var userData = params;
   		userData.fb_id = params.id;
   		delete(userData.id);
-  		if(params.birthday){
+  		// birthday
+      if(params.birthday){
   			var bdate = params.birthday.split('/');
   			userData.birthday = bdate[1] + '/' + bdate[0] + '/' + bdate[2];
         userData.dateOfBirth = bdate[2] + '-' + bdate[0] + '-' + bdate[1];
   		}
-  		userData.password = userData.fb_id;
+  		// password
+      userData.password = "fb"+userData.fb_id;
+      // photo url
       userData.photo_url = "http://graph.facebook.com/"+userData.fb_id+"/picture?type=large";
+      // gender
       if(userData.gender == 'male'){
         userData.gender = 'M';
       }
       else if(userData.gender == 'female'){
         userData.gender = 'F';
       }
+      // email
+      if(userData.email==null || userData.email==''){
+        var firstName = userData.name.split(' ')[0];
+        userData.email = firstName + userData.fb_id + '@guest.dingoapp.co.uk';
+      }
   		return userData;
-  	}
+  	},
+
+    updateProfile: function(userData,callback){
+      this.setInfo(userData);
+      $http.post('/api/v1/users',this.getInfo())
+      .success(function(){
+        callback(true);
+      }).error(function(){
+        callback(false);
+      });
+    }
 
 
   };

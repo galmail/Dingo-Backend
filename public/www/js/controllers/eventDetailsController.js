@@ -3,13 +3,16 @@
  *
  */
 
-dingo.controllers.controller('EventDetailsCtrl', function($scope,$location,$stateParams,Event,Ticket) {
+dingo.controllers.controller('EventDetailsCtrl', function($scope,$location,$stateParams,Event,Ticket,User) {
 
 	$scope.event = {};
 	$scope.tickets = [];
 
-	// run on init
-	(function(){
+	$scope.go = function(path) {
+	  $location.path(path);
+	};
+
+	var init = function(){
 		console.log('Running EventDetailsCtrl...');
 		// loading event
 		var eventId = $stateParams.eventId;
@@ -19,28 +22,13 @@ dingo.controllers.controller('EventDetailsCtrl', function($scope,$location,$stat
 		Ticket.getByEventId(eventId,function(tickets){
 			$scope.tickets = tickets;
 		});
-		
-
-
-		// for(var i=0;i<20;i++){
-		// 	$scope.tickets.push({
-		// 		id: i+1,
-		// 		name: 'Ticket ' + (i+1),
-		// 		photo: 'http://s3-us-west-2.amazonaws.com/dingoapp-test/events/photos/057/899/f5-/tiny_pic/Xmas-K.jpg?1416413614'
-		// 	});
-		// };
-
-	})();
-
-
-
-
-
-	
-
-	$scope.go = function(path) {
-	  $location.path(path);
 	};
 
+
+
+	// run on init for every controller
+	(function(){
+		if(User.isLogged()) init(); else User.registerToLoginCallback(init);
+	})();
 
 });

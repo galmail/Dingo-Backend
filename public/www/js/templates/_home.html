@@ -16,12 +16,9 @@
         <ion-tab title="Sell Tickets" icon="dingo-icon-sell-ticket" href="#/home/sell-ticket">
           <ion-nav-view name="sell-ticket-tab"></ion-nav-view>
         </ion-tab>
-        <ion-tab title="Messages" icon="dingo-icon-messages" href="#/home/messages">
+        <ion-tab title="Messages" badge="num_unread_messages" badge-style="badge-assertive" icon="dingo-icon-messages" href="#/home/messages">
           <ion-nav-view name="messages-tab"></ion-nav-view>
         </ion-tab>
-        <!-- <ion-tab title="Search" icon="dingo-icon-search" href="#/home/search">
-          <ion-nav-view name="search-tab"></ion-nav-view>
-        </ion-tab> -->
       </ion-tabs>
     </ion-view>
 
@@ -47,6 +44,16 @@
         <ion-item menu-close nav-clear class="item item-icon-left" href="#/app/settings">
           <i class="icon ion-android-settings"></i>
           Settings Screen
+        </ion-item>
+
+        <ion-item menu-close nav-clear class="item item-icon-left" href="#/app/mytickets">
+          <i class="icon ion-images"></i>
+          My Tickets
+        </ion-item>
+
+        <ion-item menu-close nav-clear class="item item-icon-left" href="#/app/faq">
+          <i class="icon ion-android-information"></i>
+          FAQ's
         </ion-item>
 
         <ion-item menu-close nav-clear class="item item-icon-left" href="#/app/about">

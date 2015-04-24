@@ -7823,8 +7823,8 @@ $ios-transition-box-shadow-end: -200px 0px 200px rgba(0,0,0,0.15), -5px 0px 5px 
     color: #fff;
     background-image: url('../img/login_screen/dingo_logo@2x.png');
     background-repeat: no-repeat;
-    background-size: 21px;
-    background-position: 90px 10px;
+    background-size: 48px;
+    background-position: 73px 0px;
     width: 200px;
     margin-left: auto;
     margin-right: auto; }
@@ -7834,33 +7834,37 @@ $ios-transition-box-shadow-end: -200px 0px 200px rgba(0,0,0,0.15), -5px 0px 5px 
     color: #fff; }
 
 /* Home Style */
-.d-home .tabs-positive > .tabs {
-  background-color: #398FAB;
-  color: #fff; }
-.d-home .icon.dingo-icon-home {
-  background-image: url('../img/home_screen/home_icon@2x.png');
-  background-repeat: no-repeat;
-  background-size: 28px;
-  width: 28px;
-  background-position-y: 2px; }
-.d-home .icon.dingo-icon-sell-ticket {
-  background-image: url('../img/home_screen/list_tickets_icon@2x.png');
-  background-repeat: no-repeat;
-  background-size: 46px;
-  width: 46px;
-  background-position-y: 0px; }
-.d-home .icon.dingo-icon-messages {
-  background-image: url('../img/home_screen/messages_icon@2x.png');
-  background-repeat: no-repeat;
-  background-size: 30px;
-  width: 30px;
-  background-position-y: 4px; }
-.d-home .icon.dingo-icon-search {
-  background-image: url('../img/home_screen/search_icon@2x.png');
-  background-repeat: no-repeat;
-  background-size: 23px;
-  width: 23px;
-  background-position-y: 4px; }
+.d-home {
+  background-color: #ECEBE8; }
+  .d-home .tabs-positive > .tabs {
+    background-color: #398FAB;
+    color: #fff; }
+    .d-home .tabs-positive > .tabs .tab-item {
+      color: #fff; }
+  .d-home .icon.dingo-icon-home {
+    background-image: url('../img/home_screen/home_icon@2x.png');
+    background-repeat: no-repeat;
+    background-size: 28px;
+    width: 28px;
+    background-position-y: 2px; }
+  .d-home .icon.dingo-icon-sell-ticket {
+    background-image: url('../img/home_screen/list_tickets_icon@2x.png');
+    background-repeat: no-repeat;
+    background-size: 46px;
+    width: 46px;
+    background-position-y: 0px; }
+  .d-home .icon.dingo-icon-messages {
+    background-image: url('../img/home_screen/messages_icon@2x.png');
+    background-repeat: no-repeat;
+    background-size: 30px;
+    width: 30px;
+    background-position-y: 4px; }
+  .d-home .icon.dingo-icon-search {
+    background-image: url('../img/home_screen/search_icon@2x.png');
+    background-repeat: no-repeat;
+    background-size: 23px;
+    width: 23px;
+    background-position-y: 4px; }
 
 /* Login Style */
 .d-login {
@@ -7870,20 +7874,20 @@ $ios-transition-box-shadow-end: -200px 0px 200px rgba(0,0,0,0.15), -5px 0px 5px 
     text-align: center;
     padding-top: 55px; }
     .d-login .logo img {
-      height: 50px; }
+      height: 240px; }
   .d-login .fb-login {
     text-align: center;
-    padding-top: 35px; }
+    padding-top: 10px; }
     .d-login .fb-login img {
-      height: 40px; }
+      height: 50px; }
   .d-login .text {
     font-family: helvetica;
     font-size: 14px;
     text-align: center;
-    margin-top: 20px;
+    margin-top: 10px;
     padding-right: 20px;
     padding-left: 20px;
-    color: #9B9B9B; }
+    color: #FFFFFF; }
   .d-login .or-icon {
     text-align: center;
     margin-top: 20px; }
@@ -7896,247 +7900,385 @@ $ios-transition-box-shadow-end: -200px 0px 200px rgba(0,0,0,0.15), -5px 0px 5px 
       height: 35px; }
 
 /* Events Style */
-.d-events .bar-search {
-  padding: 0; }
-.d-events #categories_container .categories {
-  overflow: hidden; }
-  .d-events #categories_container .categories .category {
-    padding: 0;
-    margin-right: 5px;
-    float: left;
-    width: 160px;
-    height: 122px;
-    border: 0; }
-    .d-events #categories_container .categories .category:last-child {
-      margin-right: 0; }
-    .d-events #categories_container .categories .category label.checkbox {
-      height: 100%;
-      top: inherit;
-      bottom: 0; }
-      .d-events #categories_container .categories .category label.checkbox input {
-        position: absolute;
-        bottom: 0;
-        margin-bottom: 12px;
-        right: -3px; }
-    .d-events #categories_container .categories .category img {
-      position: absolute;
+.d-events {
+  background-color: #ECEBE8; }
+  .d-events .bar-search {
+    padding: 0; }
+  .d-events #categories_container .categories {
+    overflow: hidden; }
+    .d-events #categories_container .categories .category {
+      padding: 0;
+      margin-right: 5px;
+      float: left;
+      width: 49%;
       height: 113px;
-      width: 160px; }
-    .d-events #categories_container .categories .category .category-name {
+      border: 0; }
+      .d-events #categories_container .categories .category:last-child {
+        margin-right: 0; }
+      .d-events #categories_container .categories .category label.checkbox {
+        height: 100%;
+        top: inherit;
+        bottom: 0; }
+        .d-events #categories_container .categories .category label.checkbox input {
+          position: absolute;
+          bottom: 0;
+          margin-bottom: 12px;
+          right: -3px; }
+      .d-events #categories_container .categories .category img {
+        position: absolute;
+        height: 100%;
+        width: 100%; }
+      .d-events #categories_container .categories .category .category-name {
+        position: absolute;
+        color: white;
+        bottom: 0;
+        margin-bottom: 15px;
+        left: 5px; }
+  .d-events #events_container .events-date {
+    color: #fff;
+    background-color: #398FAB;
+    margin-bottom: 5px;
+    padding: 2px; }
+  .d-events #events_container .event .row {
+    padding: 0;
+    margin-bottom: 10px;
+    color: inherit;
+    text-decoration: inherit; }
+    .d-events #events_container .event .row.ion-chevron-right:before {
+      margin-top: 20px;
       position: absolute;
-      color: white;
-      bottom: 0;
-      margin-bottom: 15px;
-      left: 5px; }
-.d-events #events_container .events-date {
-  color: #fff;
-  background-color: #398FAB;
-  margin-bottom: 5px;
-  padding: 2px; }
-.d-events #events_container .event .row {
-  padding: 0;
-  margin-bottom: 10px;
-  color: inherit;
-  text-decoration: inherit; }
-  .d-events #events_container .event .row.ion-chevron-right:before {
-    margin-top: 20px;
-    position: absolute;
-    right: 0; }
-  .d-events #events_container .event .row > div {
-    height: 70px; }
-  .d-events #events_container .event .row .event-pic {
-    width: 70px; }
-  .d-events #events_container .event .row .event-info .event-title {
-    font-weight: bold;
-    font-size: 16px;
-    padding: 0 5px; }
-  .d-events #events_container .event .row .event-info .event-address {
-    padding: 0 5px;
-    font-size: 10px; }
-  .d-events #events_container .event .row .event-info .event-time {
-    padding: 0 5px;
-    font-size: 10px;
-    color: gray; }
-  .d-events #events_container .event .row .event-price .event-price-from {
-    font-size: 12px; }
-  .d-events #events_container .event .row .event-price .event-price-per-ticket {
-    font-size: 10px;
-    color: gray; }
-  .d-events #events_container .event .row .event-price .event-price-available-tickets {
-    font-size: 8px;
-    color: gray; }
+      right: 0; }
+    .d-events #events_container .event .row > div {
+      height: 70px; }
+    .d-events #events_container .event .row .event-pic {
+      width: 70px; }
+    .d-events #events_container .event .row .event-info .event-title {
+      font-weight: bold;
+      font-size: 18px;
+      padding: 0 5px; }
+    .d-events #events_container .event .row .event-info .event-address {
+      padding: 0 5px;
+      font-size: 14px; }
+    .d-events #events_container .event .row .event-info .event-time {
+      padding: 0 5px;
+      font-size: 12px;
+      color: gray; }
+    .d-events #events_container .event .row .event-price .event-price-from {
+      font-size: 16px; }
+    .d-events #events_container .event .row .event-price .event-price-per-ticket {
+      font-size: 14px;
+      color: gray; }
+    .d-events #events_container .event .row .event-price .event-price-available-tickets {
+      font-size: 14px;
+      color: gray; }
 
 /* Event Details Style */
-.d-event-details #event_container {
-  background-size: cover;
-  background-repeat: no-repeat;
-  height: 150px;
-  margin-bottom: 10px; }
-  .d-event-details #event_container .event-photo {
-    padding: 35px 10px; }
-    .d-event-details #event_container .event-photo img {
-      border: 1px solid white;
-      border-radius: 35px;
-      height: 75px; }
-  .d-event-details #event_container .event-info {
-    color: #fff; }
-    .d-event-details #event_container .event-info .event-title {
-      font-size: 22px;
-      line-height: 28px;
-      padding: 12px 0; }
-.d-event-details .tickets .ticket {
-  border: none;
-  margin-bottom: 10px; }
-  .d-event-details .tickets .ticket.ion-chevron-right:before {
-    margin-top: 20px;
-    position: absolute;
-    right: 0; }
-  .d-event-details .tickets .ticket .ticket-photo {
-    height: 70px; }
-  .d-event-details .tickets .ticket .ticket-price .ticket-price-from {
-    font-size: 12px; }
-  .d-event-details .tickets .ticket .ticket-price .ticket-price-per-ticket {
-    font-size: 10px;
-    color: gray; }
-  .d-event-details .tickets .ticket .ticket-price .ticket-price-available-tickets {
-    font-size: 8px;
-    color: gray; }
+.d-event-details {
+  background-color: #ECEBE8; }
+  .d-event-details #event_container {
+    background-size: cover;
+    background-repeat: no-repeat;
+    height: 150px;
+    margin-bottom: 10px; }
+    .d-event-details #event_container .event-photo {
+      padding: 35px 10px; }
+      .d-event-details #event_container .event-photo img {
+        border: 1px solid white;
+        border-radius: 48px;
+        height: 96px; }
+    .d-event-details #event_container .event-info {
+      color: #fff; }
+      .d-event-details #event_container .event-info .event-title {
+        font-size: 22px;
+        line-height: 28px;
+        padding: 12px 0; }
+  .d-event-details .tickets .ticket {
+    border: none;
+    margin-bottom: 10px; }
+    .d-event-details .tickets .ticket.ion-chevron-right:before {
+      margin-top: 20px;
+      position: absolute;
+      right: 0; }
+    .d-event-details .tickets .ticket .ticket-photo {
+      height: 80px;
+      width: 75px; }
+    .d-event-details .tickets .ticket .ticket-price .ticket-price-from {
+      font-size: 12px; }
+    .d-event-details .tickets .ticket .ticket-price .ticket-price-per-ticket {
+      font-size: 10px;
+      color: gray; }
+    .d-event-details .tickets .ticket .ticket-price .ticket-price-available-tickets {
+      font-size: 8px;
+      color: gray; }
 
 /* Ticket Details Style */
-.d-ticket-details #ticket_container {
-  background-size: cover;
-  background-repeat: no-repeat;
-  height: 150px;
-  margin-bottom: 10px; }
-  .d-ticket-details #ticket_container .event-photo {
-    padding: 35px 10px; }
-    .d-ticket-details #ticket_container .event-photo img {
-      border: 1px solid white;
-      border-radius: 35px;
-      height: 75px; }
-  .d-ticket-details #ticket_container .event-info {
-    color: #fff; }
-    .d-ticket-details #ticket_container .event-info .event-title {
-      font-size: 22px;
-      line-height: 28px;
-      padding: 12px 0; }
-.d-ticket-details .ticket-info .item-input {
-  border-right: 0;
-  border-left: 0; }
-  .d-ticket-details .ticket-info .item-input:first-child {
-    border-top: 0; }
-  .d-ticket-details .ticket-info .item-input .input-label {
-    font-size: 14px;
-    width: 150px; }
-  .d-ticket-details .ticket-info .item-input input {
-    background-color: inherit; }
-.d-ticket-details .ticket-actions .photo {
-  width: 120px;
-  border-radius: 10px; }
-.d-ticket-details .ticket-actions .button {
-  margin-top: 0px;
-  min-height: 0px;
-  line-height: 30px; }
-  .d-ticket-details .ticket-actions .button.buy-button {
-    font-weight: bold;
-    border: 3px solid; }
+.d-ticket-details {
+  background-color: #ECEBE8; }
+  .d-ticket-details #ticket_container {
+    background-size: cover;
+    background-repeat: no-repeat;
+    height: 150px;
+    margin-bottom: 10px; }
+    .d-ticket-details #ticket_container .event-photo {
+      padding: 35px 10px; }
+      .d-ticket-details #ticket_container .event-photo img {
+        border: 1px solid white;
+        border-radius: 48px;
+        height: 96px; }
+    .d-ticket-details #ticket_container .event-info {
+      color: #fff; }
+      .d-ticket-details #ticket_container .event-info .event-title {
+        font-size: 22px;
+        line-height: 28px;
+        padding: 12px 0; }
+  .d-ticket-details .ticket-info .item-input {
+    border-right: 0;
+    border-left: 0; }
+    .d-ticket-details .ticket-info .item-input:first-child {
+      border-top: 0; }
+    .d-ticket-details .ticket-info .item-input .input-label {
+      font-size: 14px;
+      width: 150px; }
+    .d-ticket-details .ticket-info .item-input input {
+      background-color: inherit; }
+  .d-ticket-details .ticket-actions .photo {
+    height: 120px;
+    border-radius: 60px; }
+  .d-ticket-details .ticket-actions .button {
+    margin-top: 0px;
+    min-height: 0px;
+    line-height: 30px; }
+    .d-ticket-details .ticket-actions .button.buy-button {
+      font-weight: bold;
+      border: 3px solid; }
 
 /* Sell Ticket Style */
-.d-sell-ticket .event-name .events-list .item {
-  font-weight: bold;
-  background-color: lightgray;
-  border-bottom: 2px solid white; }
+.d-sell-ticket {
+  background-color: #ECEBE8; }
+  .d-sell-ticket .event-name .events-list .item {
+    font-weight: bold;
+    background-color: lightgray;
+    border-bottom: 2px solid white; }
 
 /* Messages Style */
-.d-messages #chat {
-  background-color: #eee; }
-  .d-messages #chat #header-chat {
-    background-color: #555;
-    color: white;
-    padding: 10px;
-    text-align: center;
-    text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.6); }
-  .d-messages #chat .chat-box {
-    height: 300px;
-    margin-bottom: 10px; }
-  .d-messages #chat #mensajes {
-    padding: 10px;
-    height: 100px; }
-    .d-messages #chat #mensajes .mensaje-amigo {
-      margin-bottom: 10px; }
-      .d-messages #chat #mensajes .mensaje-amigo img {
-        display: inline-block;
-        vertical-align: top;
-        border-radius: 5px;
-        width: 50px; }
-      .d-messages #chat #mensajes .mensaje-amigo .contenido {
-        background-color: #3990BF;
-        border-radius: 5px;
-        color: white;
-        display: inline-block;
-        font-size: 13px;
-        padding: 10px;
-        vertical-align: top;
-        max-width: 210px; }
-      .d-messages #chat #mensajes .mensaje-amigo .flecha-derecha {
-        display: inline-block;
-        margin-left: -6px;
-        margin-top: 10px;
-        width: 0;
-        height: 0;
-        border-top: 0px solid transparent;
-        border-bottom: 15px solid transparent;
-        border-left: 15px solid #3990BF; }
-      .d-messages #chat #mensajes .mensaje-amigo .fecha {
-        color: #777;
-        font-style: italic;
-        font-size: 13px;
-        text-align: left;
-        margin-top: 10px; }
-    .d-messages #chat #mensajes .mensaje-autor {
-      margin-bottom: 10px; }
-      .d-messages #chat #mensajes .mensaje-autor img {
-        display: inline-block;
-        vertical-align: top;
-        border-radius: 5px;
-        width: 50px; }
-      .d-messages #chat #mensajes .mensaje-autor .contenido {
-        background-color: white;
-        border-radius: 5px;
-        box-shadow: 2px 2px 3px rgba(0, 0, 0, 0.3);
-        display: inline-block;
-        font-size: 13px;
-        padding: 10px;
-        vertical-align: top;
-        max-width: 210px; }
-      .d-messages #chat #mensajes .mensaje-autor .fecha {
-        color: #777;
-        font-style: italic;
-        font-size: 13px;
-        text-align: right;
-        margin-right: 35px;
-        margin-top: 10px; }
-      .d-messages #chat #mensajes .mensaje-autor .flecha-izquierda {
-        display: inline-block;
-        margin-right: -6px;
-        margin-top: 10px;
-        width: 0;
-        height: 0;
-        border-top: 0px solid transparent;
-        border-bottom: 15px solid transparent;
-        border-right: 15px solid white; }
-  .d-messages #chat #caja-mensaje {
-    background-color: #A8DCF7;
-    margin: 0 auto;
-    padding: 5px 10px; }
-    .d-messages #chat #caja-mensaje input {
-      border: solid 1px #4193BF;
-      outline: none;
-      padding: 10px; }
-    .d-messages #chat #caja-mensaje button {
-      border: 0;
-      background-color: #4193BF;
+.d-messages {
+  background-color: #ECEBE8; }
+  .d-messages #peers .peer {
+    padding: 0;
+    margin-bottom: 10px;
+    color: inherit;
+    text-decoration: inherit;
+    overflow: hidden;
+    display: block;
+    clear: both;
+    border-bottom: 1px solid black;
+    background-color: lightgreen; }
+    .d-messages #peers .peer.ion-chevron-right:before {
+      margin-top: 30px;
+      position: absolute;
+      right: 15px;
+      font-size: 16px; }
+      .d-messages #peers .peer.ion-chevron-right:before > div {
+        height: 70px; }
+    .d-messages #peers .peer .user-pic {
+      float: left;
+      width: 70px;
+      height: 70px; }
+    .d-messages #peers .peer .user-name {
+      float: left;
+      font-weight: bold;
+      font-size: 18px;
+      padding: 20px 15px; }
+  .d-messages #chat {
+    background-color: #eee; }
+    .d-messages #chat #header-chat {
+      background-color: #555;
       color: white;
-      font-size: 16px;
-      padding: 8px;
-      width: 50px; }
+      padding: 10px;
+      text-align: center;
+      text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.6);
+      margin-bottom: 10px; }
+    .d-messages #chat .chat-box {
+      height: 300px;
+      margin-bottom: 10px; }
+    .d-messages #chat #mensajes {
+      padding: 10px;
+      height: 100px; }
+      .d-messages #chat #mensajes .mensaje-amigo {
+        margin-bottom: 10px;
+        overflow: hidden;
+        clear: both; }
+        .d-messages #chat #mensajes .mensaje-amigo img {
+          float: right;
+          display: inline-block;
+          vertical-align: top;
+          border-radius: 5px;
+          width: 50px; }
+        .d-messages #chat #mensajes .mensaje-amigo .contenido {
+          float: right;
+          background-color: #3990BF;
+          border-radius: 5px;
+          color: white;
+          display: inline-block;
+          font-size: 13px;
+          padding: 10px;
+          vertical-align: top;
+          max-width: 210px; }
+        .d-messages #chat #mensajes .mensaje-amigo .flecha-derecha {
+          float: right;
+          display: inline-block;
+          margin-left: -6px;
+          margin-top: 10px;
+          width: 0;
+          height: 0;
+          border-top: 0px solid transparent;
+          border-bottom: 15px solid transparent;
+          border-left: 15px solid #3990BF; }
+        .d-messages #chat #mensajes .mensaje-amigo .fecha {
+          color: #777;
+          font-style: italic;
+          font-size: 13px;
+          text-align: left;
+          margin-top: 10px; }
+      .d-messages #chat #mensajes .mensaje-autor {
+        margin-bottom: 10px;
+        overflow: hidden;
+        clear: both; }
+        .d-messages #chat #mensajes .mensaje-autor img {
+          display: inline-block;
+          vertical-align: top;
+          border-radius: 5px;
+          width: 50px; }
+        .d-messages #chat #mensajes .mensaje-autor .contenido {
+          background-color: white;
+          border-radius: 5px;
+          box-shadow: 2px 2px 3px rgba(0, 0, 0, 0.3);
+          display: inline-block;
+          font-size: 13px;
+          padding: 10px;
+          vertical-align: top;
+          max-width: 210px; }
+        .d-messages #chat #mensajes .mensaje-autor .fecha {
+          color: #777;
+          font-style: italic;
+          font-size: 13px;
+          text-align: right;
+          margin-right: 35px;
+          margin-top: 10px; }
+        .d-messages #chat #mensajes .mensaje-autor .flecha-izquierda {
+          display: inline-block;
+          margin-right: -6px;
+          margin-top: 10px;
+          width: 0;
+          height: 0;
+          border-top: 0px solid transparent;
+          border-bottom: 15px solid transparent;
+          border-right: 15px solid white; }
+    .d-messages #chat #caja-mensaje {
+      background-color: #A8DCF7;
+      margin: 0 auto;
+      padding: 5px 10px; }
+      .d-messages #chat #caja-mensaje input {
+        border: solid 1px #4193BF;
+        outline: none;
+        padding: 10px; }
+      .d-messages #chat #caja-mensaje button {
+        border: 0;
+        background-color: #4193BF;
+        color: white;
+        font-size: 16px;
+        padding: 8px;
+        width: 50px; }
+
+/* About Style */
+.d-about {
+  background-color: #ECEBE8; }
+  .d-about .abouticon {
+    text-align: center;
+    padding-top: 35px;
+    padding-bottom: 20px; }
+    .d-about .abouticon img {
+      height: 70px;
+      width: 70px; }
+  .d-about .dlogo {
+    text-align: center;
+    padding-top: 50px;
+    padding-bottom: 10px; }
+  .d-about .text {
+    font-family: helvetica;
+    padding-top: 30x;
+    font-size: 20px;
+    text-align: center;
+    margin-top: 10px;
+    padding-right: 20px;
+    padding-left: 20px;
+    color: #4A4A4A; }
+
+/* Settings Style */
+.d-settings {
+  background-color: #ECEBE8; }
+  .d-settings .settingsicon {
+    text-align: center;
+    padding-top: 35px;
+    padding-bottom: 15px; }
+    .d-settings .settingsicon img {
+      height: 70px;
+      width: 70px; }
+  .d-settings .facebook-button {
+    display: block;
+    text-align: center;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 30px;
+    margin-bottom: 10px; }
+
+/* FAQ Style */
+.d-faq {
+  background-color: #ECEBE8; }
+  .d-faq .faqicon {
+    text-align: center;
+    padding-top: 35px;
+    padding-bottom: 35px; }
+    .d-faq .faqicon img {
+      height: 80px;
+      width: 80px; }
+
+/* tandcs Style */
+.d-tandcs {
+  background-color: #ECEBE8; }
+  .d-tandcs .tandcsicon {
+    text-align: center;
+    padding-top: 35px;
+    padding-bottom: 15px; }
+    .d-tandcs .tandcsicon img {
+      height: 70px;
+      width: 70px; }
+
+/* FAQdetail Style */
+.d-faqdetail {
+  background-color: #ECEBE8; }
+  .d-faqdetail .faqdetailicon {
+    text-align: center;
+    padding-top: 35px; }
+    .d-faqdetail .faqdetailicon img {
+      height: 80px;
+      width: 80px; }
+
+/* privacypolicy Style */
+.d-privacypolicy {
+  background-color: #ECEBE8; }
+  .d-privacypolicy .privacypolicyicon {
+    text-align: center;
+    padding-top: 35px;
+    padding-bottom: 15px; }
+    .d-privacypolicy .privacypolicyicon img {
+      height: 70px;
+      width: 70px; }
+
+/* my tickets Style */
+.d-mytickets {
+  background-color: #ECEBE8; }
+  .d-mytickets .myticketsicon {
+    text-align: center;
+    padding-top: 35px;
+    padding-bottom: 20px; }

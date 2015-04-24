@@ -1,12 +1,17 @@
 /* Home Style */
 
 .d-home {
+	background-color: #ECEBE8;
 
 	////// BOTTOM BAR //////
 
 	.tabs-positive > .tabs {
 		background-color: #398FAB;
 		color: #fff;
+		.tab-item {
+			color: #fff;
+			
+		}
 	}
 	
 

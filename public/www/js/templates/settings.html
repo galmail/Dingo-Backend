@@ -2,7 +2,70 @@
   <ion-nav-buttons side="left">
     <button menu-toggle="left" class="button button-icon icon ion-navicon"></button>
   </ion-nav-buttons>
+  <ion-nav-buttons side="right">
+    <button class="button button-clear button-light" ng-click="saveSettings()">Save</button>
+  </ion-nav-buttons>
+
   <ion-content class="has-header">
-    Settings Screen
+
+    <div class="settingsicon">
+      <img src="img/settings_screen/settings_icon@2x.png"/>
+    </div>
+
+    <div class="list">
+    	<div class="item item-divider">
+		    My Profile
+		  </div>
+		  <label class="item item-input">
+		    <span class="input-label">First Name</span>
+		    <input type="text" ng-model="user_data.name" />
+		  </label>
+		  <label class="item item-input">
+		    <span class="input-label">Surname</span>
+		    <input type="text" ng-model="user_data.surname" />
+		  </label>
+		  <label class="item item-input">
+		    <span class="input-label">Email</span>
+		    <input type="email" ng-model="user_data.email" />
+		  </label>
+		  <label class="item item-input item-select">
+		    <div class="input-label">
+		      City
+		    </div>
+		    <select>
+		      <option selected>London</option>
+		    </select>
+		  </label>
+		  <div class="item item-divider">
+		    Settings
+		  </div>
+		  <li class="item item-toggle">
+		     Push Notifications
+		     <label class="toggle toggle-balanced">
+		       <input ng-model="user_data.allow_push_notifications" type="checkbox" name="push-notifications" />
+		       <div class="track">
+		         <div class="handle"></div>
+		       </div>
+		     </label>
+		  </li>
+
+<!-- 	  	phil commented, email toggle.
+		  <li class="item item-toggle">
+		     Emails from Dingo
+		     <label class="toggle toggle-balanced">
+		       <input ng-model="user_data.allow_dingo_emails" type="checkbox" name="push-notifications" />
+		       <div class="track">
+		         <div class="handle"></div>
+		       </div>
+		     </label>
+		  </li> -->
+<!-- 		  phil commented, old FB button
+		  <button ng-show="user_data.fb_id == null" class="button facebook-button icon-left ion-social-facebook button-positive" ng-click="connectWithFacebook()">Connect With Facebook</button> -->
+
+		  <button ng-show="user_data.fb_id == null" class="button button-large button-clear facebook-button" ng-click="connectWithFacebook()"><img src="img/settings_screen/fbbutton.png"/></button>
+
+		  <button class="button button-clear button-assertive button-full" ng-click="logout()">Logout</button>
+
+		</div>
   </ion-content>
 </ion-view>

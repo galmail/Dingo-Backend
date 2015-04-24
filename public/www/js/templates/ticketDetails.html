@@ -31,8 +31,8 @@
         <input type="text" value="{{ticket.ticket_type}}" disabled="true"/>
       </label>
       <label class="item item-input">
-        <span class="input-label">Payment:</span>
-        <input type="text" value="{{ticket.payment_options}}" disabled="true"/>
+        <span class="input-label">Description:</span>
+        <input type="text" value="{{ticket.description}}" disabled="true"/>
       </label>
       <label class="item item-input">
         <span class="input-label">Delivery:</span>
@@ -45,9 +45,10 @@
         <img class="photo" ng-src="{{ticket.user_photo}}" />
       </div>
       <div class="col">
-        <button class="button button-outline button-positive button-block buy-button">Buy</button>
+        <button ng-click="buyTicket(ticket.id)" class="button button-outline button-positive button-block buy-button">Buy</button>
         <button class="button button-outline button-positive button-block">Contact Seller</button>
-        <button class="button button-outline button-positive button-block">New Offer</button>
+<!--         remove new offer
+        <button class="button button-outline button-positive button-block">New Offer</button> -->
       </div>
     </div>
 

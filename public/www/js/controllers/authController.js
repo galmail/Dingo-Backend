@@ -3,47 +3,67 @@
  *
  */
 
-dingo.controllers.controller('AuthCtrl', function($scope, $ionicModal, $timeout, $http, User, Util, Push) {
-
-  setTimeout(function(){ Push.register(); }, 5000);
+dingo.controllers.controller('AuthCtrl', function($scope, Facebook, $ionicModal, $timeout, $http, User, Util, Config) {
 
   // Login with facebook
   $scope.fbLogin = function(){
-    if (window.cordova && window.cordova.platformId == "browser"){
-      var fbAppId = "667287336672842";
-      console.log('initiating facebook sdk, fbAppId=' + fbAppId);
-      facebookConnectPlugin.browserInit(fbAppId);
-    }
 
-    if (!window.facebookConnectPlugin){
-      alert('Facebook plugin only works on devices');
+    var FBApi = null;
+    var FBLogin = null;
+
+    // if (window.cordova && window.cordova.platformId == "browser"){
+    //   var fbAppId = Config.FacebookAppId;
+    //   console.log('initiating facebook sdk, fbAppId=' + fbAppId);
+    //   facebookConnectPlugin.browserInit(fbAppId);
+    // }
+
+    if(window.facebookConnectPlugin){
+      FBLogin = function(callback,error){
+        var array_permissions = ['public_profile,email'];
+        return facebookConnectPlugin.login(array_permissions,callback,error);
+      };
+      FBApi = function(requestPath,callback,error){
+        var array_permissions = [];
+        return facebookConnectPlugin.api(requestPath, array_permissions, callback, error);
+      };
     }
     else {
-      facebookConnectPlugin.login(["email"],
-        function (response){
-          console.log('user is connected with facebook!');
-          facebookConnectPlugin.api( "me/", ["user_birthday"],
-            function (response){
-              var userData = User.fbParseUserInfo(response);
-              User.setInfo(userData);
-              User.connect(function(ok){
-                if(ok){
-                  alert('User is logged in!');
-                  //Push.register();
-                }
-                else {
-                  alert('User is not logged in!');
-                }
-              });
-            }
-          );
-        },
-        function (response){
-          //alert(JSON.stringify(response))
-          alert('User is not connected with facebook!');
-        }
-      );
+      FBLogin = function(callback){
+        return Facebook.login(callback,{scope: 'public_profile,email'});
+      };
+      FBApi = function(requestPath,callback,error){
+        var method = 'get';
+        var params = null;
+        return Facebook.api(requestPath, method, params, callback);
+      };
     }
+
+    
+    FBLogin(
+      function (response){
+        console.log('user is connected with facebook!');
+        FBApi("me/",
+          function (response){
+            var userData = User.fbParseUserInfo(response);
+            User.setInfo(userData);
+            User.connect(function(ok){
+              if(ok){
+                alert('User is logged in!');
+              }
+              else {
+                alert('User is not logged in!');
+              }
+            });
+          }
+        );
+      },
+      function (response){
+        //alert(JSON.stringify(response))
+        alert('User is not connected with facebook!');
+      }
+    );
+    
+    
   }
 
   // Login as Guest
@@ -65,7 +85,6 @@ dingo.controllers.controller('AuthCtrl', function($scope, $ionicModal, $timeout,
     User.connect(function(ok){
       if(ok){
         alert('user is logged in!');
-        //Push.register();
       }
       else {
         alert('user is not logged in!');

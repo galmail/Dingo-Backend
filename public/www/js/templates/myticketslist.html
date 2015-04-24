@@ -1,0 +1,31 @@
+<ion-view class="d-mytickets-list" title="">
+  <!-- <ion-nav-buttons side="left">
+    <button menu-toggle="left" class="button button-icon icon ion-navicon"></button>
+  </ion-nav-buttons> -->
+  <ion-content class="has-header">
+    
+	<h3>My {{ticketsType}} Tickets</h3>
+
+
+	<div ng-repeat="ticket in tickets">
+		<div class="card">
+			<div class="list">
+			  <label class="item item-input">
+			    <span class="input-label">Ticket ID</span>
+			    <input type="text" ng-value="ticket.id" ng-disabled="true"/>
+			  </label>
+			  <label class="item item-input">
+			    <span class="input-label">Ticket Price</span>
+			    <input type="text" ng-value="ticket.price" ng-disabled="true"/>
+			  </label>
+			  <label class="item item-input">
+			    <span class="input-label">Event ID</span>
+			    <input type="text" ng-value="event.id" ng-disabled="true"/>
+			  </label>
+			</div>
+		</div>
+	</div>
+
+
+  </ion-content>
+</ion-view>
