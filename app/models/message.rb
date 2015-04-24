@@ -69,7 +69,8 @@ class Message < ActiveRecord::Base
         data = {
           :alert => msg,
           :badge => self.receiver.num_unread_messages,
-          :sound => 'default'
+          :sound => 'default',
+          :conversation_id => self.conversation_id
           # :other => {
             # :sender_id => self.sender_id,
             # :sender_fb_id => self.sender.fb_id,
