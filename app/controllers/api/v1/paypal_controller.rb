@@ -93,6 +93,7 @@ class Api::V1::PaypalController < Api::BaseController
     # Get Userinfo
     userinfo = tokeninfo.userinfo
     puts "User Info: " << userinfo.to_hash
+    render :json=> userinfo.as_json, status: :ok
   end
   
 end
