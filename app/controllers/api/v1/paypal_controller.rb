@@ -1,5 +1,7 @@
 class Api::V1::PaypalController < Api::BaseController
   
+  include PayPal::SDK::OpenIDConnect
+  
   # Paypal handlers
   def index
     puts params.inspect
@@ -77,10 +79,20 @@ class Api::V1::PaypalController < Api::BaseController
   end
   
   def connect
-    puts "Got the autorization_code: #{params[:code]}"
+    code = params[:code]
+    puts "Got the autorization_code: #{code}"
     # get access token and then get the user email
-    
-    
+    tokeninfo = Tokeninfo.create(code)
+    puts "Token1: " << tokeninfo.to_hash
+    # Refresh tokeninfo object
+    tokeninfo = tokeninfo.refresh
+    puts "Token2: " << tokeninfo.to_hash
+    # Create tokeninfo by using refresh token
+    tokeninfo = Tokeninfo.refresh(tokeninfo)
+    puts "Token3: " << tokeninfo.to_hash
+    # Get Userinfo
+    userinfo = tokeninfo.userinfo
+    puts "User Info: " << userinfo.to_hash
   end
   
 end
