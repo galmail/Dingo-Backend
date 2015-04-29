@@ -76,4 +76,11 @@ class Api::V1::PaypalController < Api::BaseController
     #render :text => "Notification Received. Order ID: #{params[:order_id]}"
   end
   
+  def connect
+    puts "Got the autorization_code: #{params[:code]}"
+    # get access token and then get the user email
+    
+    
+  end
+  
 end

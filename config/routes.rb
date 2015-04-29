@@ -58,6 +58,7 @@ Rails.application.routes.draw do
         post  'success'
         post  'cancel'
         post  'notification'
+        post  'connect'
       end
       
       namespace :stripe do
