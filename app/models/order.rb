@@ -72,7 +72,7 @@ class Order < ActiveRecord::Base
       return true
     end
     
-    if self.status == 'AUTHORISED' and self.pending_payment_notified == false
+    if self.status == 'AUTHORISED' and !self.pending_payment_notified
       # just notify admin for now
       OrderNotifier.notify_pending_payment_release(self).deliver
       self.pending_payment_notified = true
