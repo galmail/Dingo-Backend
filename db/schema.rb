@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150408215458) do
+ActiveRecord::Schema.define(version: 20150429113700) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -167,15 +167,16 @@ ActiveRecord::Schema.define(version: 20150408215458) do
     t.uuid     "creditcard_id"
     t.uuid     "event_id"
     t.uuid     "offer_id"
-    t.integer  "num_tickets",                                          default: 1
-    t.decimal  "amount",                       precision: 8, scale: 2
-    t.string   "status",           limit: 255
+    t.integer  "num_tickets",                                                  default: 1
+    t.decimal  "amount",                               precision: 8, scale: 2
+    t.string   "status",                   limit: 255
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.string   "paypal_key",       limit: 255
+    t.string   "paypal_key",               limit: 255
     t.text     "buyers_note"
-    t.string   "delivery_options", limit: 255
+    t.string   "delivery_options",         limit: 255
     t.uuid     "promo_id"
+    t.boolean  "pending_payment_notified",                                     default: false
   end
 
   create_table "promos", id: :uuid, default: "uuid_generate_v4()", force: :cascade do |t|

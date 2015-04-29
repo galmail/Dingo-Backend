@@ -2,22 +2,23 @@
 #
 # Table name: orders
 #
-#  id               :uuid             not null, primary key
-#  sender_id        :integer
-#  receiver_id      :integer
-#  ticket_id        :uuid
-#  creditcard_id    :uuid
-#  event_id         :uuid
-#  offer_id         :uuid
-#  num_tickets      :integer          default("1")
-#  amount           :decimal(8, 2)
-#  status           :string(255)
-#  created_at       :datetime
-#  updated_at       :datetime
-#  paypal_key       :string(255)
-#  buyers_note      :text
-#  delivery_options :string(255)
-#  promo_id         :uuid
+#  id                       :uuid             not null, primary key
+#  sender_id                :integer
+#  receiver_id              :integer
+#  ticket_id                :uuid
+#  creditcard_id            :uuid
+#  event_id                 :uuid
+#  offer_id                 :uuid
+#  num_tickets              :integer          default("1")
+#  amount                   :decimal(8, 2)
+#  status                   :string(255)
+#  created_at               :datetime
+#  updated_at               :datetime
+#  paypal_key               :string(255)
+#  buyers_note              :text
+#  delivery_options         :string(255)
+#  promo_id                 :uuid
+#  pending_payment_notified :boolean          default("false")
 #
 
 class Order < ActiveRecord::Base
@@ -71,9 +72,11 @@ class Order < ActiveRecord::Base
       return true
     end
     
-    if self.status == 'AUTHORISED'
+    if self.status == 'AUTHORISED' and self.pending_payment_notified == false
       # just notify admin for now
       OrderNotifier.notify_pending_payment_release(self).deliver
+      self.pending_payment_notified = true
+      self.save
       return true
     end
     
