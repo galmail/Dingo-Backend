@@ -96,9 +96,9 @@ class Api::V1::PaypalController < Api::BaseController
     puts "Got Token2"
     puts tokeninfo.to_hash
     # Create tokeninfo by using refresh token
-    tokeninfo = Tokeninfo.refresh(tokeninfo)
-    puts "Got Token3"
-    puts tokeninfo.to_hash
+    # tokeninfo = Tokeninfo.refresh(tokeninfo)
+    # puts "Got Token3"
+    # puts tokeninfo.to_hash
     # Get Userinfo
     userinfo = tokeninfo.userinfo
     puts "User Info"
