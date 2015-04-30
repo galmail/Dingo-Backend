@@ -80,20 +80,30 @@ class Api::V1::PaypalController < Api::BaseController
   
   def connect
     code = params[:code]
+    PayPal::SDK.configure({
+      :openid_client_id     => ENV['PAYPAL_CLIENTID'],
+      :openid_client_secret => ENV['PAYPAL_SECRET'],
+      :openid_redirect_uri  => "http://dingoapp.co.uk"
+    })
     puts "Got the autorization_code: #{code}"
     puts Tokeninfo.authorize_url( :scope => "openid profile" )
     # get access token and then get the user email
     tokeninfo = Tokeninfo.create(code)
-    puts "Token1: " << tokeninfo.to_hash
+    puts "Got Token1"
+    puts tokeninfo.to_hash
     # Refresh tokeninfo object
     tokeninfo = tokeninfo.refresh
-    puts "Token2: " << tokeninfo.to_hash
+    puts "Got Token2"
+    puts tokeninfo.to_hash
     # Create tokeninfo by using refresh token
     tokeninfo = Tokeninfo.refresh(tokeninfo)
-    puts "Token3: " << tokeninfo.to_hash
+    puts "Got Token3"
+    puts tokeninfo.to_hash
     # Get Userinfo
     userinfo = tokeninfo.userinfo
-    puts "User Info: " << userinfo.to_hash
+    puts "User Info"
+    puts userinfo.to_hash
+    
     render :json=> userinfo.as_json, status: :ok
   end
   
