@@ -32,8 +32,8 @@ defaults: &defaults
   PAYPAL_MODE: sandbox
   # Paypal Rest API Credentials
   PAYPAL_ENDPOINT: api.sandbox.paypal.com
-  PAYPAL_CLIENTID: AWdYAhAitDP7Y1AFRQ6h68YlNcBiMcBgg1Grc-rfMrAqAIG_gHWSupG6E9A_
-  PAYPAL_SECRET: EJJFbhA6igUr5gUL5BHuXIks0lBCIZBlvx9NiLQ0QGmV7t2HILnehGmV_0v5
+  PAYPAL_CLIENTID: AYuyqBCZYRwnOGI6k7DPlkgltTCEoX8m4b8XHZFqqQb0SAJLsx__gPpfnsyy
+  PAYPAL_SECRET: EBT5hxDVku8zaY_5KJpPO9R8eFKtrNei-CY0dxYMQJrfB5Bc3oerkWhqg9C8
   # Paypal Classic API Credentials
   PAYPAL_APP_ID: APP-80W284485P519543T
   PAYPAL_USERNAME: phil-facilitator_api1.dingoapp.co.uk

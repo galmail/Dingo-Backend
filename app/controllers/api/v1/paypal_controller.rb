@@ -81,6 +81,7 @@ class Api::V1::PaypalController < Api::BaseController
   def connect
     code = params[:code]
     puts "Got the autorization_code: #{code}"
+    puts Tokeninfo.authorize_url( :scope => "openid profile" )
     # get access token and then get the user email
     tokeninfo = Tokeninfo.create(code)
     puts "Token1: " << tokeninfo.to_hash
