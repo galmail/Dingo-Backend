@@ -85,26 +85,16 @@ class Api::V1::PaypalController < Api::BaseController
       :openid_client_secret => ENV['PAYPAL_SECRET'],
       :openid_redirect_uri  => "http://dingoapp.co.uk"
     })
-    puts "Got the autorization_code: #{code}"
-    puts Tokeninfo.authorize_url( :scope => "openid profile" )
-    # get access token and then get the user email
+    # Get Access Token
     tokeninfo = Tokeninfo.create(code)
-    puts "Got Token1"
-    puts tokeninfo.to_hash
-    # Refresh tokeninfo object
+    # Refresh Token
     tokeninfo = tokeninfo.refresh
-    puts "Got Token2"
-    puts tokeninfo.to_hash
-    # Create tokeninfo by using refresh token
-    # tokeninfo = Tokeninfo.refresh(tokeninfo)
-    # puts "Got Token3"
-    # puts tokeninfo.to_hash
-    # Get Userinfo
+    # Get User Info
     userinfo = tokeninfo.userinfo
-    puts "User Info"
-    puts userinfo.to_hash
-    
-    render :json=> userinfo.as_json, status: :ok
+    # save it
+    current_user.paypal_account = userinfo.email
+    current_user.save
+    render :json=> current_user.as_json, status: :ok
   end
   
 end
