@@ -293,7 +293,7 @@ DEPENDENCIES
   newrelic_rpm
   paperclip
   paypal-sdk-adaptivepayments
-  paypal-sdk-rest
+  paypal-sdk-rest (~> 1.1.3)
   pg
   pushmeup
   rails (= 4.2.0)

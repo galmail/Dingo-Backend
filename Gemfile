@@ -73,7 +73,7 @@ gem 'pushmeup'
 gem 'figaro'
 gem 'settingslogic'
 
-gem 'paypal-sdk-rest'
+gem 'paypal-sdk-rest', '~> 1.1.3'
 gem 'paypal-sdk-adaptivepayments'
 
 gem 'rollbar', '~> 1.3.1' #tracking errors with rollbar
