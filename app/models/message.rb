@@ -67,10 +67,13 @@ class Message < ActiveRecord::Base
       elsif device.brand.downcase.index('android')
         #puts "Sending Android Push to #{self.receiver.name} with msg: #{msg}"
         data = {
-          :alert => msg,
-          :badge => self.receiver.num_unread_messages,
-          :sound => 'default',
+          :message => msg,
+          :title => 'Push Notification Title',
           :conversation_id => self.conversation_id
+          #:badge => self.receiver.num_unread_messages,
+          #:alert => msg,
+          #:sound => 'default',
+          
           # :other => {
             # :sender_id => self.sender_id,
             # :sender_fb_id => self.sender.fb_id,
