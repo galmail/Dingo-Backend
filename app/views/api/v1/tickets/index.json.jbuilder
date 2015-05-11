@@ -2,6 +2,10 @@ json.ignore_nil!
 json.tickets @tickets do |ticket|
   json.id ticket.id
   json.event_id ticket.event_id
+  json.event_name ticket.event.name
+  json.event_date ticket.event.date
+  json.event_address ticket.event.address
+  
   json.user_id ticket.user_id
   json.user_name ticket.user.name
   json.user_email ticket.user.inbox_email
