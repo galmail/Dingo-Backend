@@ -5,7 +5,7 @@ json.tickets @tickets do |ticket|
   json.event_name ticket.event.name
   json.event_date ticket.event.date
   json.event_address ticket.event.address
-  
+  json.event_city ticket.event.city
   json.user_id ticket.user_id
   json.user_name ticket.user.name
   json.user_email ticket.user.inbox_email
