@@ -6,6 +6,7 @@ json.tickets @tickets do |ticket|
   json.event_date ticket.event.date
   json.event_address ticket.event.address
   json.event_city ticket.event.city
+  json.event_photo ticket.event.photo(:thumb) if ticket.event.photo.present?
   json.user_id ticket.user_id
   json.user_name ticket.user.name
   json.user_email ticket.user.inbox_email
