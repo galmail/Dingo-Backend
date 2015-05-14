@@ -33,7 +33,7 @@ class Api::V1::MessagesController < Api::BaseController
     @messages = Message.where(filters).where(conditions.insert(0,query)).order('created_at DESC').limit(Settings.MESSAGES_LIMIT.to_i)
     
     if params.has_key?(:conversation_id)
-      @messages.delete_if { |msg| msg.from_dingo and msg.sender_id == current_user.id }
+      @messages.to_a.delete_if { |msg| msg.from_dingo and msg.sender_id == current_user.id }
     end
     
   end
