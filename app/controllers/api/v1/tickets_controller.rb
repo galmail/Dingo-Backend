@@ -35,7 +35,7 @@ class Api::V1::TicketsController < Api::BaseController
       
       @tickets = Ticket.where(filters).where(conditions).order('price ASC').limit(Settings.TICKETS_LIMIT.to_i)
       @tickets.concat(extra_tickets)
-      @tickets.to_a.uniq{|ticket| ticket.id}
+      @tickets = @tickets.uniq
     end
     
     # Create Ticket
