@@ -68,7 +68,7 @@ class Message < ActiveRecord::Base
         #puts "Sending Android Push to #{self.receiver.name} with msg: #{msg}"
         data = {
           :message => msg,
-          :title => 'New message from Dingo',
+          :title => 'New Message from Dingo!',
           :conversation_id => self.conversation_id
           #:badge => self.receiver.num_unread_messages,
           #:alert => msg,
