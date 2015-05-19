@@ -13,13 +13,9 @@ class Api::V1::MessagesController < Api::BaseController
       filters[:receiver_id] = params[:receiver_id]
     end
 
-    #if params.has_key?(:conversations)
-    #  if params[:conversations]
     query << and_query(query) << "(sender_id = ? OR receiver_id = ?)"
     conditions << current_user.id
     conditions << current_user.id
-    #  end
-    #end
 
     if params.has_key?(:content)
       query << and_query(query) << "content ILIKE ?"
