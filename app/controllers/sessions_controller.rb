@@ -16,6 +16,7 @@ class SessionsController < Devise::RegistrationsController
         :name => myuser.name,
         :surname => myuser.surname,
         :email => params[:email],
+        :notification_email => myuser.notification_email,
         :auth_token => myuser.authentication_token,
         :allow_dingo_emails => myuser.allow_dingo_emails,
         :allow_push_notifications => myuser.allow_push_notifications,
