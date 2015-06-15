@@ -35,7 +35,16 @@ class Api::V1::TicketsController < Api::BaseController
       
       @tickets = Ticket.where(filters).where(conditions).order('price ASC').limit(Settings.TICKETS_LIMIT.to_i)
       @tickets.concat(extra_tickets)
-      @tickets = @tickets.uniq
+      
+      # remove duplicate tickets
+      uniq_tickets = []
+      tickets.each do |ticket|
+        res = uniq_tickets.select {|uniq_ticket| uniq_ticket.id == ticket.id }
+        if res.empty?
+          uniq_tickets << ticket
+        end
+      end
+      @tickets = uniq_tickets
     end
     
     # Create Ticket
