@@ -38,7 +38,7 @@ class Api::V1::TicketsController < Api::BaseController
       
       # remove duplicate tickets
       uniq_tickets = []
-      tickets.each do |ticket|
+      @tickets.each do |ticket|
         res = uniq_tickets.select {|uniq_ticket| uniq_ticket.id == ticket.id }
         if res.empty?
           uniq_tickets << ticket
