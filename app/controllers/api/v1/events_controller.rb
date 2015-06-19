@@ -18,7 +18,7 @@ class Api::V1::EventsController < Api::BaseController
       end
       
       # get_inactive_events
-      if params[:any]
+      if params[:any]=='true'
         filters.delete(:for_sale)
         order_by_field = 'name ASC'
       end
