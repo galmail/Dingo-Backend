@@ -1,7 +1,14 @@
 class Api::V1::AlertsController < Api::BaseController
     
     def index
-      @alerts = Alert.where(:user_id => current_user.id, :active => true)
+      filters = { active: true, :user_id => current_user.id }
+      
+      # get_alerts_by_event
+      if params.has_key?(:event_id)
+        filters[:event_id] = params[:event_id]
+      end
+      
+      @alerts = Alert.where(filters)
     end
     
     def create
