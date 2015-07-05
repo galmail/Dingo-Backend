@@ -74,7 +74,7 @@ class Api::V1::MessagesController < Api::BaseController
     
     messages.each { |msg|
       peer = msg.get_peer(current_user.id)
-      conversations << { :id => msg.conversation_id, :user_id => peer.id, :user_name => peer.name, :user_pic => peer.photo_url, :event_name => msg.get_event_name, :last_msg_sent => msg.created_at }
+      conversations << { :id => msg.conversation_id, :user_id => peer.id, :user_name => peer.name, :user_pic => peer.photo_url, :event_name => msg.get_event_name, :last_msg_sent => msg.created_at, :last_msg_read => msg.read }
     }
     render :json => conversations.as_json, status: :ok
   end
