@@ -69,7 +69,7 @@ class Api::V1::MessagesController < Api::BaseController
     query = "(sender_id = ? OR receiver_id = ?)"
     conditions = [current_user.id,current_user.id]
     
-    messages = Message.where(filters).where(conditions.insert(0,query)).order('created_at DESC').select(:conversation_id,:sender_id,:receiver_id,:ticket_id).distinct
+    messages = Message.where(filters).where(conditions.insert(0,query)).order('created_at DESC').select(:conversation_id,:sender_id,:receiver_id,:ticket_id,:created_at).distinct
     messages = messages.to_a.uniq { |msg| msg.conversation_id }
     
     messages.each { |msg|
