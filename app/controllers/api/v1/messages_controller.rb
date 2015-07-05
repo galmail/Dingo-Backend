@@ -69,10 +69,11 @@ class Api::V1::MessagesController < Api::BaseController
     query = "(sender_id = ? OR receiver_id = ?)"
     conditions = [current_user.id,current_user.id]
     
-    messages = Message.where(filters).where(conditions.insert(0,query)).order('created_at DESC').select(:conversation_id,:sender_id,:receiver_id,:ticket_id,:created_at).distinct
+    messages = Message.where(filters).where(conditions.insert(0,query)).order('created_at DESC').select(:id,:conversation_id,:sender_id,:receiver_id,:ticket_id,:created_at).distinct
     messages = messages.to_a.uniq { |msg| msg.conversation_id }
     
     messages.each { |msg|
+      msg = Message.find(msg.id)
       peer = msg.get_peer(current_user.id)
       conversations << { :id => msg.conversation_id, :user_id => peer.id, :user_name => peer.name, :user_pic => peer.photo_url, :event_name => msg.get_event_name, :last_msg_sent => msg.created_at, :last_msg_read => msg.read }
     }
