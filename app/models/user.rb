@@ -8,7 +8,7 @@
 #  reset_password_token     :string(255)
 #  reset_password_sent_at   :datetime
 #  remember_created_at      :datetime
-#  sign_in_count            :integer          default("0"), not null
+#  sign_in_count            :integer          default(0), not null
 #  current_sign_in_at       :datetime
 #  last_sign_in_at          :datetime
 #  current_sign_in_ip       :string(255)
@@ -21,13 +21,13 @@
 #  city                     :string(255)
 #  photo_url                :string(255)
 #  surname                  :string(255)
-#  banned                   :boolean          default("false")
-#  allow_dingo_emails       :boolean          default("true")
-#  allow_push_notifications :boolean          default("true")
+#  banned                   :boolean          default(FALSE)
+#  allow_dingo_emails       :boolean          default(TRUE)
+#  allow_push_notifications :boolean          default(TRUE)
 #  fb_id                    :string(255)
 #  paypal_account           :string(255)
 #  promo                    :string(255)
-#  promo_used               :boolean          default("false")
+#  promo_used               :boolean          default(FALSE)
 #  notification_email       :string(255)
 #
 

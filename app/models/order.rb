@@ -9,7 +9,7 @@
 #  creditcard_id            :uuid
 #  event_id                 :uuid
 #  offer_id                 :uuid
-#  num_tickets              :integer          default("1")
+#  num_tickets              :integer          default(1)
 #  amount                   :decimal(8, 2)
 #  status                   :string(255)
 #  created_at               :datetime
@@ -18,7 +18,7 @@
 #  buyers_note              :text
 #  delivery_options         :string(255)
 #  promo_id                 :uuid
-#  pending_payment_notified :boolean          default("false")
+#  pending_payment_notified :boolean          default(FALSE)
 #
 
 class Order < ActiveRecord::Base

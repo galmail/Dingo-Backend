@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150429113700) do
+ActiveRecord::Schema.define(version: 20150712211241) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -129,6 +129,18 @@ ActiveRecord::Schema.define(version: 20150429113700) do
   add_index "events", ["category_id"], name: "index_events_on_category_id", using: :btree
   add_index "events", ["date"], name: "index_events_on_date", using: :btree
   add_index "events", ["venue_id"], name: "index_events_on_venue_id", using: :btree
+
+  create_table "gumtrees", force: :cascade do |t|
+    t.string   "link"
+    t.string   "title"
+    t.string   "description"
+    t.string   "price"
+    t.string   "identification"
+    t.string   "published"
+    t.boolean  "mail_sent",      default: false
+    t.datetime "created_at",                     null: false
+    t.datetime "updated_at",                     null: false
+  end
 
   create_table "messages", id: :uuid, default: "uuid_generate_v4()", force: :cascade do |t|
     t.integer  "sender_id"

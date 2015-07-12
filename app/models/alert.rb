@@ -9,7 +9,7 @@
 #  created_at  :datetime
 #  updated_at  :datetime
 #  description :string(255)
-#  active      :boolean          default("true")
+#  active      :boolean          default(TRUE)
 #
 
 class Alert < ActiveRecord::Base

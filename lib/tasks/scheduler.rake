@@ -31,3 +31,41 @@ task :notify_pending_orders => :environment do
   
   puts "****** Finished Release Authorised Orders Task ******"
 end
+
+
+
+desc "This task collect gumtree ticket sellers info"
+task :collect_gumtree_sellers => :environment do
+  puts "****** Starting Collect Gumtree Sellers Task ******"
+  GUMTREE_URL = "http://www.gumtree.com/tickets/london"
+  IMPORT_IO_API_KEY = "9d3b167ee670402fada5bf9e3719ae58b68de907cdcfd5624c62b9be5d7089272c33171a976841df3af2e3def31ac906662da1bb1c71c8a65361b7f12804358adb7a96d043b73a120af23282bb7a5731"
+  require 'rest-client'
+  response = RestClient.get 'http://api.import.io/store/connector/_magic', {:params => {:url => GUMTREE_URL, :_apikey => IMPORT_IO_API_KEY}}
+  res = JSON.parse(response)
+  res["tables"][0]["results"].each { |obj|
+    gt = Gumtree.new({
+      :link => obj["listing_link"],
+      :title => obj["listingtitle_value"],
+      :description => obj["listinghide_description"],
+      :price => obj["listing_price/_source"],
+      :identification => obj["listing_link"].split('/').last,
+      :published => obj["adposted_value"]
+    })
+    gt.save
+  }
+  puts "****** Finished Collect Gumtree Sellers Task ******"
+end
+
+desc "This task promote dingo to gumtree sellers"
+task :promote_dingo_to_gumtree_sellers => :environment do
+  puts "****** Starting Promote Dingo to Gumtree Sellers Task ******"
+  
+  #Step 1: run over the gumtree table and post message to every seller
+  
+  puts "****** Finished Promote Dingo to Gumtree Sellers Task ******"
+end
+  
+  
+  
+  
+

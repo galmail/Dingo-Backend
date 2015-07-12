@@ -24,11 +24,11 @@
 #  photo3_updated_at      :datetime
 #  delivery_options       :string(255)
 #  payment_options        :string(255)
-#  number_of_tickets      :integer          default("1")
+#  number_of_tickets      :integer          default(1)
 #  face_value_per_ticket  :decimal(8, 2)
-#  available              :boolean          default("true")
+#  available              :boolean          default(TRUE)
 #  ticket_type            :string(255)
-#  number_of_tickets_sold :integer          default("0")
+#  number_of_tickets_sold :integer          default(0)
 #
 
 class Ticket < ActiveRecord::Base
