@@ -59,13 +59,25 @@ end
 desc "This task promote dingo to gumtree sellers"
 task :promote_dingo_to_gumtree_sellers => :environment do
   puts "****** Starting Promote Dingo to Gumtree Sellers Task ******"
-  
   #Step 1: run over the gumtree table and post message to every seller
-  
+  gumtrees = Gumtree.where({:mail_sent => false}).order('created_at DESC')
+  gumtrees.each { |obj|
+    response = RestClient.post("http://www.gumtree.com/reply/responsive",
+    {
+      :form => {
+        "message" => "Hi, We've got some posible buyers for your ticket on Dingo. If you are interested, list your ticket in seconds on dingoapp.co.uk",
+        "senderName" => "Dingo",
+        "senderEmail" => "hi@dingoapp.co.uk",
+        "advertId" => obj.identification,
+        "advertClickSource" => "featured",
+        "optInMarketing" => "on"
+      }
+    }.to_json, :content_type => :json
+    )
+    
+    # if response is 301 then set mail_sent = true
+    
+  }
   puts "****** Finished Promote Dingo to Gumtree Sellers Task ******"
 end
   
-  
-  
-  
-
