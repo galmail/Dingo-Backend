@@ -15,4 +15,5 @@
 #
 
 class Gumtree < ActiveRecord::Base
+  validates :identification, uniqueness: true
 end

@@ -51,7 +51,11 @@ task :collect_gumtree_sellers => :environment do
       :identification => obj["listing_link"].split('/').last,
       :published => obj["adposted_value"]
     })
+begin    
     gt.save
+rescue
+   # keep going
+end
   }
   puts "****** Finished Collect Gumtree Sellers Task ******"
 end
@@ -62,7 +66,7 @@ task :promote_dingo_to_gumtree_sellers => :environment do
   #Step 1: run over the gumtree table and post message to every seller
   gumtrees = Gumtree.where({:mail_sent => false}).order('created_at DESC')
   gumtrees.each { |obj|
-    response = RestClient.post("http://www.gumtree.com/reply/responsive",
+    RestClient.post("http://www.gumtree.com/reply/responsive",
     {
       :form => {
         "message" => "Hi, We've got some posible buyers for your ticket on Dingo. If you are interested, list your ticket in seconds on dingoapp.co.uk",
@@ -72,11 +76,21 @@ task :promote_dingo_to_gumtree_sellers => :environment do
         "advertClickSource" => "featured",
         "optInMarketing" => "on"
       }
-    }.to_json, :content_type => :json
-    )
-    
-    # if response is 301 then set mail_sent = true
-    
+    },
+    :multipart => true
+    ){ |response, request, result, &block|
+      case response.code
+      when 301
+        # It worked, set sent_mail=true
+        obj.sent_mail = true
+        obj.save
+      when 501
+        # Server Error, it failed
+      else
+        # Do something
+        response
+      end
+    }
   }
   puts "****** Finished Promote Dingo to Gumtree Sellers Task ******"
 end
