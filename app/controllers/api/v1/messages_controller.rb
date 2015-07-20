@@ -86,6 +86,21 @@ class Api::V1::MessagesController < Api::BaseController
     render :json => { :num_unread_messages => current_user.num_unread_messages }, status: :ok
   end
   
+  def send_all_a_message
+    params.require(:msg)
+    users = User.where(:banned => false)
+    users.each { |u|
+      Message.new({
+        :content => params[:msg],
+        :sender_id => Settings.DINGO_USER_ID,
+        :receiver_id => u.id,
+        :from_dingo => true
+      })
+    }
+    render :json => { :num_messages_sent => users.count }, status: :ok
+  end
+  
+  
   private
 
   def and_query(query)

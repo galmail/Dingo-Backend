@@ -4,7 +4,7 @@
              xmlns="http://wadl.dev.java.net/2009/02"
              xsi:schemaLocation="http://wadl.dev.java.net/2009/02 http://apigee.com/schemas/wadl-schema.xsd http://api.apigee.com/wadl/2010/07/ http://apigee.com/schemas/apigee-wadl-extensions.xsd">
 
-    <resources base="http://dingoapp-staging.herokuapp.com">
+    <resources base="http://dingoapp.herokuapp.com">
         
 <!-- ##################### AUTHENTICATION ##################### -->        
         
@@ -452,6 +452,22 @@
                 </apigee:tags>
                 <apigee:authentication required="true"/>
                 <doc apigee:url="http://api.mydomain.com/doc/my-method">mark_message_as_read</doc>
+            </method>
+        </resource>
+        
+        <!-- send_all_a_message -->
+        <resource path="/api/v1/messages/send_all_a_message">
+            <param name="Content-Type" required="true" type="xsd:string" style="header" default="application/json"></param>
+            <param name="Accept" required="true" type="xsd:string" style="header" default="application/json"></param>
+            
+            <param name="msg" required="true" type="xsd:string" style="query" default=""></param>
+            
+            <method id="send_all_a_message" name="POST" apigee:displayName="Send All a Message">
+                <apigee:tags>
+                    <apigee:tag primary="true">Messages</apigee:tag>
+                </apigee:tags>
+                <apigee:authentication required="true"/>
+                <doc apigee:url="http://api.mydomain.com/doc/my-method">send_all_a_message</doc>
             </method>
         </resource>
         
