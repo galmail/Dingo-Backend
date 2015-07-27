@@ -14,6 +14,20 @@
 #  updated_at     :datetime         not null
 #
 
+require 'rest-client'
+
 class Gumtree < ActiveRecord::Base
   validates :identification, uniqueness: true
+  
+  def sendmail
+    return false if self.mail_sent
+    # call gumtree bot to send mail and mark as "sent"
+    response = RestClient.get "http://dingoapp.co.uk:3000/sendmail/#{self.identification}"
+    res = JSON.parse(response)
+    if res["success"] == "true"
+      self.mail_sent = true
+      self.save
+    end
+  end
+  
 end
