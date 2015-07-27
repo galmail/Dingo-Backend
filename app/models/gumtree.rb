@@ -24,10 +24,11 @@ class Gumtree < ActiveRecord::Base
     # call gumtree bot to send mail and mark as "sent"
     response = RestClient.get "http://dingoapp.co.uk:3000/sendmail/#{self.identification}"
     res = JSON.parse(response)
-    if res["success"] == "true"
+    success = (res["success"] == "true")
+    if success
       self.mail_sent = true
-      self.save
     end
+    return success
   end
   
 end

@@ -52,8 +52,8 @@ begin
       :identification => obj["listing_link"].split('/').last,
       :published => obj["adposted_value"]
     })
-    gt.save
     gt.sendmail
+    gt.save
   }
 rescue
    # do nothing
