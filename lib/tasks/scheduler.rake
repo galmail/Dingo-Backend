@@ -44,19 +44,28 @@ task :collect_gumtree_sellers => :environment do
 begin
   res = JSON.parse(response)
   res["tables"][0]["results"].each { |obj|
-    gt = Gumtree.new({
-      :link => obj["listing_link"],
-      :title => obj["listingtitle_value"],
-      :description => obj["listinghide_description"],
-      :price => obj["listing_price/_source"],
-      :identification => obj["listing_link"].split('/').last,
-      :published => obj["adposted_value"]
-    })
-    gt.mail_sent = gt.sendmail
-    gt.save
+    gt = Gumtree.find_by identification: obj["listing_link"].split('/').last
+    if gt.nil?
+      gt = Gumtree.new({
+        :link => obj["listing_link"],
+        :title => obj["listingtitle_value"],
+        :description => obj["listinghide_description"],
+        :price => obj["listing_price/_source"],
+        :identification => obj["listing_link"].split('/').last,
+        :published => obj["adposted_value"]
+      })
+      gt.mail_sent = gt.sendmail
+      gt.save
+    else
+      gt.mail_sent = gt.sendmail
+      gt.update_attributes(:mail_sent => true)
+    end
+    puts "mail_sent to id:#{gt.identification} = #{gt.mail_sent}"
+    puts "sleeping for 10 seconds..."
+    sleep(10)
   }
 rescue
-   # do nothing
+  # do nothing
 end
   puts "****** Finished Collect Gumtree Sellers Task ******"
 end
