@@ -54,10 +54,10 @@ begin
     })
     gt.save
     gt.sendmail
+  }
 rescue
    # do nothing
 end
-  }
   puts "****** Finished Collect Gumtree Sellers Task ******"
 end
 
