@@ -41,9 +41,9 @@ task :collect_gumtree_sellers => :environment do
   IMPORT_IO_API_KEY = "9d3b167ee670402fada5bf9e3719ae58b68de907cdcfd5624c62b9be5d7089272c33171a976841df3af2e3def31ac906662da1bb1c71c8a65361b7f12804358adb7a96d043b73a120af23282bb7a5731"
   require 'rest-client'
   response = RestClient.get 'http://api.import.io/store/connector/_magic', {:params => {:url => GUMTREE_URL, :_apikey => IMPORT_IO_API_KEY}}
-begin
   res = JSON.parse(response)
   res["tables"][0]["results"].each { |obj|
+begin
     gt = Gumtree.find_by identification: obj["listing_link"].split('/').last
     if gt.nil?
       gt = Gumtree.new({
@@ -54,19 +54,21 @@ begin
         :identification => obj["listing_link"].split('/').last,
         :published => obj["adposted_value"]
       })
-      gt.mail_sent = gt.sendmail
       gt.save
-    else
-      gt.mail_sent = gt.sendmail
-      gt.update_attributes(:mail_sent => true)
     end
-    puts "mail_sent to id:#{gt.identification} = #{gt.mail_sent}"
-    puts "sleeping for 10 seconds..."
-    sleep(10)
-  }
+    
+    if !gt.mail_sent
+      mail_sent_ok = gt.sendmail
+      gt.update_attributes(:mail_sent => mail_sent_ok)
+      puts "mail_sent to id:#{gt.identification} = #{gt.mail_sent}"
+      puts "sleeping for 10 seconds..."
+      sleep(10)
+    end
+    
 rescue
   # do nothing
 end
+  }
   puts "****** Finished Collect Gumtree Sellers Task ******"
 end
 
