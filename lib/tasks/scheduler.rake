@@ -44,32 +44,17 @@ task :collect_gumtree_sellers => :environment do
   res = JSON.parse(response)
   res["tables"][0]["results"].each { |obj|
 begin
-    gt = Gumtree.find_by identification: obj["listing_link"].split('/').last
-    if gt.nil?
-      puts "saving new listing"
-      gt = Gumtree.new({
-        :link => obj["listing_link"],
-        :title => obj["listingtitle_value"],
-        :description => obj["listinghide_description"],
-        :price => obj["listing_price/_source"],
-        :identification => obj["listing_link"].split('/').last,
-        :published => obj["adposted_value"]
-      })
-      gt.save
-    end
-    
-    if !gt.mail_sent
-      puts "sending mail to seller..."
-      mail_sent_ok = gt.sendmail
-      gt.update_attributes(:mail_sent => mail_sent_ok)
-      puts "mail_sent to id:#{gt.identification} = #{gt.mail_sent}"
-      puts "sleeping for 10 seconds..."
-      sleep(10)
-    end
-    
+  gt = Gumtree.new({
+    :link => obj["listing_link"],
+    :title => obj["listingtitle_value"],
+    :description => obj["listinghide_description"],
+    :price => obj["listing_price/_source"],
+    :identification => obj["listing_link"].split('/').last,
+    :published => obj["adposted_value"]
+  })
+  gt.save
 rescue
-  # do nothing
-  puts "something went wrong..."
+  # do nothing, just skip
 end
   }
   puts "****** Finished Collect Gumtree Sellers Task ******"
@@ -78,35 +63,17 @@ end
 desc "This task promote dingo to gumtree sellers"
 task :promote_dingo_to_gumtree_sellers => :environment do
   puts "****** Starting Promote Dingo to Gumtree Sellers Task ******"
-  #Step 1: run over the gumtree table and post message to every seller
-  gumtrees = Gumtree.where({:mail_sent => false}).order('created_at DESC')
-  gumtrees.each { |obj|
-    RestClient.post("http://www.gumtree.com/reply/responsive",
-    {
-      :form => {
-        "message" => "Hi, We've got some posible buyers for your ticket on Dingo. If you are interested, list your ticket in seconds on dingoapp.co.uk",
-        "senderName" => "Dingo",
-        "senderEmail" => "hi@dingoapp.co.uk",
-        "advertId" => obj.identification,
-        "advertClickSource" => "featured",
-        "optInMarketing" => "on"
-      }
-    },
-    :multipart => true
-    ){ |response, request, result, &block|
-      case response.code
-      when 301
-        # It worked, set sent_mail=true
-        obj.sent_mail = true
-        obj.save
-      when 501
-        # Server Error, it failed
-      else
-        # Do something
-        response
-      end
-    }
+  
+  gumtrees = Gumtree.where({:mail_sent => false}).order('created_at DESC').limit(50)
+  gumtrees.each { |gt|
+    puts "sending mail to seller..."
+    mail_sent_ok = gt.sendmail
+    gt.update_attributes(:mail_sent => mail_sent_ok)
+    puts "mail_sent to id:#{gt.identification} = #{gt.mail_sent}"
+    puts "sleeping for 10 seconds..."
+    sleep(10)
   }
+  
   puts "****** Finished Promote Dingo to Gumtree Sellers Task ******"
 end
   
