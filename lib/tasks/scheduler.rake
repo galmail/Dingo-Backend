@@ -46,6 +46,7 @@ task :collect_gumtree_sellers => :environment do
 begin
     gt = Gumtree.find_by identification: obj["listing_link"].split('/').last
     if gt.nil?
+      puts "saving new listing"
       gt = Gumtree.new({
         :link => obj["listing_link"],
         :title => obj["listingtitle_value"],
@@ -58,6 +59,7 @@ begin
     end
     
     if !gt.mail_sent
+      puts "sending mail to seller..."
       mail_sent_ok = gt.sendmail
       gt.update_attributes(:mail_sent => mail_sent_ok)
       puts "mail_sent to id:#{gt.identification} = #{gt.mail_sent}"
@@ -67,6 +69,7 @@ begin
     
 rescue
   # do nothing
+  puts "something went wrong..."
 end
   }
   puts "****** Finished Collect Gumtree Sellers Task ******"
