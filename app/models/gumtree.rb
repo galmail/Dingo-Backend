@@ -22,7 +22,7 @@ class Gumtree < ActiveRecord::Base
   def sendmail
     return false if self.mail_sent
     # call gumtree bot to send mail and mark as "sent"
-    response = RestClient.get "http://dingoapp.co.uk:3000/sendmail/#{self.identification}"
+    response = RestClient.get "http://52.18.108.118:3000/sendmail/#{self.identification}"
     res = JSON.parse(response)
     return (res["success"] == "true")
   end
