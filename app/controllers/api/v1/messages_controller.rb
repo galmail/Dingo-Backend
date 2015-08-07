@@ -90,12 +90,13 @@ class Api::V1::MessagesController < Api::BaseController
     params.require(:msg)
     users = User.where(:banned => false)
     users.each { |u|
-      Message.new({
+      msg = Message.new({
         :content => params[:msg],
         :sender_id => Settings.DINGO_USER_ID,
         :receiver_id => u.id,
         :from_dingo => true
       })
+      msg.notify
     }
     render :json => { :num_messages_sent => users.count }, status: :ok
   end
