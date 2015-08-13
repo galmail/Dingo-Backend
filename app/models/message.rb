@@ -43,13 +43,13 @@ class Message < ActiveRecord::Base
     self.conversation_id = "#{self.ticket_id}-#{id_part1}-#{id_part2}"
   end
   
-  def notify(dont_chop)
+  def notify
     msg = "#{self.sender.name}: #{self.content}"
     if self.from_dingo
       msg = "#{self.content}"
     end
     
-    msg = msg[0,30] << '...' unless msg.length < 30 or dont_chop
+    msg = msg[0,30] << '...' unless msg.length < 30
     
     User.find(self.receiver_id).devices.each { |device|
       if device.brand.downcase.index('apple')
