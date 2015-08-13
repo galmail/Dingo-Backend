@@ -80,7 +80,9 @@ end
 desc "This task sends push notification to everyone"
 task :dingo_announcement, [:message]  => :environment  do |t, args|
   puts "****** Starting Dingo Announcement Task ******"
-  User.where(:banned => false).each { |u|
+  
+  
+  User.where(:email => "galmail@gmail.com").each { |u|
     msg = Message.new({
       :content => args.message,
       :sender_id => Settings.DINGO_USER_ID,
@@ -89,6 +91,8 @@ task :dingo_announcement, [:message]  => :environment  do |t, args|
     })
     msg.notify
   }
+  
+  
   puts "****** Finished Dingo Announcement Task ******"
 end
 
