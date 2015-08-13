@@ -76,4 +76,19 @@ task :promote_dingo_to_gumtree_sellers => :environment do
   
   puts "****** Finished Promote Dingo to Gumtree Sellers Task ******"
 end
-  
+
+desc "This task sends push notification to everyone"
+task :dingo_announcement, [:message]  => :environment  do |t, args|
+  puts "****** Starting Dingo Announcement Task ******"
+  User.where(:banned => false).each { |u|
+    msg = Message.new({
+      :content => args.message,
+      :sender_id => Settings.DINGO_USER_ID,
+      :receiver_id => u.id,
+      :from_dingo => true
+    })
+    msg.notify
+  }
+  puts "****** Finished Dingo Announcement Task ******"
+end
+
