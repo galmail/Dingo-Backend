@@ -1,11 +1,5 @@
 # Add application configuration variables here, as shown below.
 
-# PUSHER_APP_ID: "2954"
-# PUSHER_KEY: 7381a978f7dd7f9a1117
-# PUSHER_SECRET: abdc3b896a0ffb85d373
-# STRIPE_API_KEY: EdAvEPVEC3LuaTg5Q3z6WbDVqZlcBQ8Z
-# STRIPE_PUBLIC_KEY: pk_BRgD57O8fHja9HxduJUszhef6jCyS
-
 defaults: &defaults
   # Settings
   DINGO_EMAIL: dingo@dingoapp.co.uk
@@ -18,34 +12,30 @@ defaults: &defaults
   
   # Amazon S3
   AWS_BUCKET: dingoapp-test
-  AWS_KEY: AKIAIW4PW5CMS4TEGVIA
-  AWS_SECRET: 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
+  AWS_KEY: aws-key
+  AWS_SECRET: aws-secret
   # Apple Push Notifications
   APN_HOST: gateway.push.apple.com   #gateway.sandbox.push.apple.com
   APN_PORT: "2195"
   APN_PEM_FILE: app/assets/certificates/certProd.pem #certDev.pem
-  APN_PASSWORD: Dingo123
+  APN_PASSWORD: apn-password
   # Android Push Notifications
   GCM_HOST: https://android.googleapis.com/gcm/send
-  GCM_KEY: AIzaSyCYXJZ9YKTrGIzbZD2ueDW_tbWKI_6Hv0c
+  GCM_KEY: gcm-key
   # Paypal API
   PAYPAL_MODE: sandbox
   # Paypal Rest API Credentials
   PAYPAL_ENDPOINT: api.sandbox.paypal.com
-  PAYPAL_CLIENTID: AYuyqBCZYRwnOGI6k7DPlkgltTCEoX8m4b8XHZFqqQb0SAJLsx__gPpfnsyy
-  PAYPAL_SECRET: EBT5hxDVku8zaY_5KJpPO9R8eFKtrNei-CY0dxYMQJrfB5Bc3oerkWhqg9C8
+  PAYPAL_CLIENTID: paypalId
+  PAYPAL_SECRET: paypalSecret
   # Paypal Classic API Credentials
   PAYPAL_APP_ID: APP-80W284485P519543T
   PAYPAL_USERNAME: phil-facilitator_api1.dingoapp.co.uk
-  PAYPAL_PASSWORD: "1405585596"
-  PAYPAL_SIGNATURE: ASD0y8Fzvt3Gmspmqmq2CJmwwoIfA56HtZ-HEYSq12aMXnhatYMp4ngi
+  PAYPAL_PASSWORD: "paypalPassword"
+  PAYPAL_SIGNATURE: paypalSignature
   # Stripe API
-  STRIPE_TEST_SECRET_KEY: sk_test_oOtIVbTqQwYv4akcaF44jY4I
-  STRIPE_LIVE_SECRET_KEY: sk_live_B9Hy26fXoyBjWFj010RWOCtO
-  
-  # Email Config
-  #SENDGRID_USERNAME: app27239716@heroku.com
-  #SENDGRID_PASSWORD: sb2voc1w
+  STRIPE_TEST_SECRET_KEY: st_test_key
+  STRIPE_LIVE_SECRET_KEY: sk_live_key
   
 development:
   <<: *defaults
@@ -57,22 +47,22 @@ production:
   <<: *defaults
   # Amazon S3
   AWS_BUCKET: dingoapp-prod
-  AWS_KEY: AKIAIW4PW5CMS4TEGVIA
-  AWS_SECRET: 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
+  AWS_KEY: awsKey
+  AWS_SECRET: awsSecret
   
   # Apple Push Notifications
   APN_HOST: gateway.push.apple.com
   APN_PORT: "2195"
   APN_PEM_FILE: app/assets/certificates/certProd.pem
-  APN_PASSWORD: Dingo123
+  APN_PASSWORD: apnPasswd
 
   # Paypal API
   PAYPAL_MODE: live
   PAYPAL_ENDPOINT: api.paypal.com
   
   # Paypal Classic API Credentials
-  PAYPAL_APP_ID: APP-2XC46381VX587041T
+  PAYPAL_APP_ID: APP-ID
   PAYPAL_USERNAME: phil_api1.dingoapp.co.uk
-  PAYPAL_PASSWORD: XYLCNNEHXX5UCP58
-  PAYPAL_SIGNATURE: ATKWSwvWzKAEiFaECQxYOi4PQtfxALHX82vnYz4aahCwwLZXdW70kOqR
+  PAYPAL_PASSWORD: paypalPasswd
+  PAYPAL_SIGNATURE: paypalSignature
 
